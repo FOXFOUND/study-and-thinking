@@ -1,0 +1,52 @@
+1.	FastStone Capture 屏幕录像，截屏，截屏处理，滚动截屏，屏幕标注
+2.	VMware Workstation Pro 虚拟机
+3.	dnSpy .net逆向工具 动态调试，查看.net头
+4.	吾爱破解工具包 安全软件集合
+5.	Screen Recorder 局域网直播
+6.	Ashampoo Snap 9 录屏时可以录制键盘操作
+7.	Bandicam 可以录制摄像头的视频录制工具
+8.	WinDbg (X64)  window内核调试工具
+9.	PYG_ODBG  ring3级反汇编调试工具。
+10.IDA Pro (32-bit) 静态调试工具，逆向源代码
+11.Wireshark  网络数据包镜像工具
+12. Fiddler 4 HTTPS/Http 请求监控工具
+13. UltraISO ISO文件制作，制作系统U盘。
+14. RegistryFinder 注册表搜索工具 相当于文件的everything
+15. Procmon  windows消息监控工具，可以查看window当前所有的消息过程
+16. process explorer  进程监视工具，可以看到进程的继承关系，进程引用dll文件配合process hacker可以查看进程引用的文件以及进程网络通信过程。
+17. Sandboxie Control  window虚拟机软件BZ4.07-128Pro.msi也是虚拟机
+18.notepad++ 文件文件编辑工具，可以使用插件hex查看，更专业的工具是winhex这个工具专门进行16进制编辑。
+19. TIM   windows下的qq轻聊版，专注于聊天过程，没有广告。支持完全版qq的所有功能。单击头像 UWP风格通信，双击头像传统QQ风格通信。
+20. 微信  支持文件传输，不支持朋友圈功能，支持查看文章。
+21. 网易云音乐  个性化音乐软件，没有酷狗之类的弹出广告。
+22. Shadowsocks  VPN软件，支持多种加密模式，支持智能代理模式。
+23. Snipaste  小巧的截屏工具。没有广告。
+24. LastPass  密码管理软件，没有桌面版只有浏览器版。多浏览器支持。
+25. 翻译   windows应用商店，google翻译没有桌面版，必应翻译广告太多。这个翻译使用google翻译的接口，相当于google翻译的桌面版，支持语音输入，以及离线字典功能。
+26. Persepolis Download Manager  下载工具。支持多协议 HTTP,TORRENT,磁力链接下载，支持多线程下载。免费开源。没有广告。在google浏览器上，火狐浏览器上由插件，使用Persepolis Download Manager进行下载的时候，由于插件功能的不完善，所以要先将Persepolis Download Manager打开，然后插件实现接口转换。
+27. GitHub   文档管理软件。具有文档的时光机功能，个人免费。
+28. 天行VPN   每天1小时试用。多地区，多线路，有的地区暗网可以使用，速度中等。
+29.Firefox Developer Edition   火狐浏览器开发者版本，想对于正常的firefox ，调试功能更多，界面更炫酷，界面切换的流畅性更好。
+30. 金山清理独立版   垃圾清理软件，快速，无广告。
+31. Android Studio      android平台开发工具
+32. Visual Studio 2017    c++，java，window phone，web 等windows平台开发工具
+32. Mtracer     正则表达式测试工具
+32. Ccleaner    专业的垃圾清理工具，可以有效清理注册表以及上网使用痕迹。
+33. 星图       windows应用商店，3d视角查看星座和宇宙。
+34. Signal Private Messenger     加密聊天软件 支持google浏览器插件，以及android，ios 开源，免费。具有视频通话，加密传送文件等功能。
+35. Telegram Desktop   加密聊天软件，具有windows pc版以及UWP版。具有QQ群功能。使用人数广泛。
+36. Tor Browser      暗网浏览器，通过使用暗网，躲避信息追踪，以及可以搜索一切不能见光的信息。
+37. 搜索 Everything      文件搜索工具。使用数据库功能，查询速度极快，但是数据库需要占据一定的磁盘空间。
+38.PotPlayer 64 bit    音视频播放工具，具有多个文件支持，播放快速，支持悬浮窗口，免费，无广告。
+39. 爱奇艺     网络视频播放工具，UWP版无广告，相应速度很快，但是视频全屏时可能出短时间花屏。
+40. 哔哩哔哩动画    自媒体视频平台，无广告，视频更新速度较快。
+41. navicat       图形化数据库管理工具，支持多种数据库，需要付费，无广告。
+42. Genymotion      android虚拟机。运行速度以及流畅性接近真机。
+43. 卡巴斯基安全软件      系统安全软件，支持自定义防火墙功能，勒索软件识别，文档保护，反跟踪等功能，
+44. 福昕阅读器        pdf文档查看，编辑工具 ，免费，无广告，对pdf的文件的管理功能相对于adobe免费版更完整。
+45. Picasa 3         图片查看工具，相应速度快，动画效果明显。
+46. KeePass 2      密码管理软件，windows客户端版。免费
+47. Smart Defrag 5      磁盘整理工具，智能，快速。
+48. SSDFresh       ssd固态硬盘优化工具，免费，付费去TAG窗口。
+49. 百度网盘        网络硬盘，支持断点续传。免费用户限速。
+50.offices  2016 professional plus+visio     文字处理，演示，表格，笔记，网络电话，海报，流程图。高效办公
