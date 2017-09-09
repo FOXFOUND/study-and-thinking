@@ -1,0 +1,711 @@
+﻿九月 06, 2017 8:18:24 下午 org.apache.tomcat.util.digester.SetPropertiesRule begin
+警告: [SetPropertiesRule]{Server/Service/Engine/Host/Context} Setting property 'source' to 'org.eclipse.jst.jee.server:jsptest' did not find a matching property.
+九月 06, 2017 8:18:24 下午 org.apache.tomcat.util.digester.SetPropertiesRule begin
+警告: [SetPropertiesRule]{Server/Service/Engine/Host/Context} Setting property 'source' to 'org.eclipse.jst.jee.server:struts2test' did not find a matching property.
+九月 06, 2017 8:18:24 下午 org.apache.tomcat.util.digester.SetPropertiesRule begin
+警告: [SetPropertiesRule]{Server/Service/Engine/Host/Context} Setting property 'source' to 'org.eclipse.jst.jee.server:sshtest3' did not find a matching property.
+九月 06, 2017 8:18:24 下午 org.apache.catalina.startup.VersionLoggerListener log
+信息: Server version:        Apache Tomcat/7.0.79
+九月 06, 2017 8:18:24 下午 org.apache.catalina.startup.VersionLoggerListener log
+信息: Server built:          Jun 26 2017 16:25:20 UTC
+九月 06, 2017 8:18:24 下午 org.apache.catalina.startup.VersionLoggerListener log
+信息: Server number:         7.0.79.0
+九月 06, 2017 8:18:24 下午 org.apache.catalina.startup.VersionLoggerListener log
+信息: OS Name:               Windows 10
+九月 06, 2017 8:18:24 下午 org.apache.catalina.startup.VersionLoggerListener log
+信息: OS Version:            10.0
+九月 06, 2017 8:18:24 下午 org.apache.catalina.startup.VersionLoggerListener log
+信息: Architecture:          amd64
+九月 06, 2017 8:18:24 下午 org.apache.catalina.startup.VersionLoggerListener log
+信息: Java Home:             C:\Program Files\Java\jdk1.8.0_141\jre
+九月 06, 2017 8:18:24 下午 org.apache.catalina.startup.VersionLoggerListener log
+信息: JVM Version:           1.8.0_141-b15
+九月 06, 2017 8:18:24 下午 org.apache.catalina.startup.VersionLoggerListener log
+信息: JVM Vendor:            Oracle Corporation
+九月 06, 2017 8:18:24 下午 org.apache.catalina.startup.VersionLoggerListener log
+信息: CATALINA_BASE:         D:\apache-tomcat-7.0.79
+九月 06, 2017 8:18:24 下午 org.apache.catalina.startup.VersionLoggerListener log
+信息: CATALINA_HOME:         D:\apache-tomcat-7.0.79
+九月 06, 2017 8:18:24 下午 org.apache.catalina.startup.VersionLoggerListener log
+信息: Command line argument: -Djava.util.logging.config.file=D:\apache-tomcat-7.0.79\conf\logging.properties
+九月 06, 2017 8:18:24 下午 org.apache.catalina.startup.VersionLoggerListener log
+信息: Command line argument: -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager
+九月 06, 2017 8:18:24 下午 org.apache.catalina.startup.VersionLoggerListener log
+信息: Command line argument: -Djdk.tls.ephemeralDHKeySize=2048
+九月 06, 2017 8:18:24 下午 org.apache.catalina.startup.VersionLoggerListener log
+信息: Command line argument: -Djava.endorsed.dirs=D:\apache-tomcat-7.0.79\endorsed
+九月 06, 2017 8:18:24 下午 org.apache.catalina.startup.VersionLoggerListener log
+信息: Command line argument: -Dcatalina.base=D:\apache-tomcat-7.0.79
+九月 06, 2017 8:18:24 下午 org.apache.catalina.startup.VersionLoggerListener log
+信息: Command line argument: -Dcatalina.home=D:\apache-tomcat-7.0.79
+九月 06, 2017 8:18:24 下午 org.apache.catalina.startup.VersionLoggerListener log
+信息: Command line argument: -Djava.io.tmpdir=D:\apache-tomcat-7.0.79\temp
+九月 06, 2017 8:18:24 下午 org.apache.catalina.core.AprLifecycleListener lifecycleEvent
+信息: Loaded APR based Apache Tomcat Native library 1.2.12 using APR version 1.5.2.
+九月 06, 2017 8:18:24 下午 org.apache.catalina.core.AprLifecycleListener lifecycleEvent
+信息: APR capabilities: IPv6 [true], sendfile [true], accept filters [false], random [true].
+九月 06, 2017 8:18:25 下午 org.apache.catalina.core.AprLifecycleListener initializeSSL
+信息: OpenSSL successfully initialized (OpenSSL 1.0.2k  26 Jan 2017)
+九月 06, 2017 8:18:25 下午 org.apache.coyote.AbstractProtocol init
+信息: Initializing ProtocolHandler ["http-apr-8090"]
+九月 06, 2017 8:18:25 下午 org.apache.coyote.AbstractProtocol init
+信息: Initializing ProtocolHandler ["ajp-apr-8009"]
+九月 06, 2017 8:18:25 下午 org.apache.catalina.startup.Catalina load
+信息: Initialization processed in 2026 ms
+九月 06, 2017 8:18:25 下午 org.apache.catalina.core.StandardService startInternal
+信息: Starting service Catalina
+九月 06, 2017 8:18:25 下午 org.apache.catalina.core.StandardEngine startInternal
+信息: Starting Servlet Engine: Apache Tomcat/7.0.79
+九月 06, 2017 8:18:26 下午 org.apache.catalina.util.SessionIdGeneratorBase createSecureRandom
+警告: Creation of SecureRandom instance for session ID generation using [SHA1PRNG] took [279] milliseconds.
+九月 06, 2017 8:18:28 下午 org.apache.catalina.startup.TldConfig execute
+信息: At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+九月 06, 2017 8:18:28 下午 org.springframework.web.context.ContextLoader initWebApplicationContext
+信息: Root WebApplicationContext: initialization started
+九月 06, 2017 8:18:28 下午 org.springframework.context.support.AbstractApplicationContext prepareRefresh
+信息: Refreshing Root WebApplicationContext: startup date [Wed Sep 06 20:18:28 CST 2017]; root of context hierarchy
+九月 06, 2017 8:18:28 下午 org.springframework.beans.factory.xml.XmlBeanDefinitionReader loadBeanDefinitions
+信息: Loading XML bean definitions from ServletContext resource [/WEB-INF/classes/application-context.xml]
+九月 06, 2017 8:18:29 下午 org.springframework.beans.factory.support.DefaultListableBeanFactory preInstantiateSingletons
+信息: Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@8e998d2: defining beans [icddao]; root of factory hierarchy
+九月 06, 2017 8:18:29 下午 org.springframework.web.context.ContextLoader initWebApplicationContext
+信息: Root WebApplicationContext: initialization completed in 505 ms
+九月 06, 2017 8:18:29 下午 com.opensymphony.xwork2.util.logging.commons.CommonsLogger info
+信息: Parsing configuration file [struts-default.xml]
+九月 06, 2017 8:18:29 下午 com.opensymphony.xwork2.util.logging.commons.CommonsLogger info
+信息: Parsing configuration file [struts-plugin.xml]
+九月 06, 2017 8:18:29 下午 com.opensymphony.xwork2.util.logging.commons.CommonsLogger info
+信息: Parsing configuration file [struts.xml]
+九月 06, 2017 8:18:29 下午 com.opensymphony.xwork2.util.logging.commons.CommonsLogger info
+信息: Choosing bean (spring) for (com.opensymphony.xwork2.ObjectFactory)
+九月 06, 2017 8:18:29 下午 com.opensymphony.xwork2.util.logging.commons.CommonsLogger info
+信息: Choosing bean (struts) for (com.opensymphony.xwork2.factory.ActionFactory)
+九月 06, 2017 8:18:29 下午 com.opensymphony.xwork2.util.logging.commons.CommonsLogger info
+信息: Choosing bean (struts) for (com.opensymphony.xwork2.factory.ResultFactory)
+九月 06, 2017 8:18:29 下午 com.opensymphony.xwork2.util.logging.commons.CommonsLogger info
+信息: Choosing bean (struts) for (com.opensymphony.xwork2.factory.ConverterFactory)
+九月 06, 2017 8:18:29 下午 com.opensymphony.xwork2.util.logging.commons.CommonsLogger info
+信息: Choosing bean (struts) for (com.opensymphony.xwork2.factory.InterceptorFactory)
+九月 06, 2017 8:18:29 下午 com.opensymphony.xwork2.util.logging.commons.CommonsLogger info
+信息: Choosing bean (struts) for (com.opensymphony.xwork2.factory.ValidatorFactory)
+九月 06, 2017 8:18:29 下午 com.opensymphony.xwork2.util.logging.commons.CommonsLogger info
+信息: Choosing bean (struts) for (com.opensymphony.xwork2.factory.UnknownHandlerFactory)
+九月 06, 2017 8:18:29 下午 com.opensymphony.xwork2.util.logging.commons.CommonsLogger info
+信息: Choosing bean (struts) for (com.opensymphony.xwork2.FileManagerFactory)
+九月 06, 2017 8:18:29 下午 com.opensymphony.xwork2.util.logging.commons.CommonsLogger info
+信息: Choosing bean (struts) for (com.opensymphony.xwork2.conversion.impl.XWorkConverter)
+九月 06, 2017 8:18:29 下午 com.opensymphony.xwork2.util.logging.commons.CommonsLogger info
+信息: Choosing bean (struts) for (com.opensymphony.xwork2.conversion.impl.CollectionConverter)
+九月 06, 2017 8:18:29 下午 com.opensymphony.xwork2.util.logging.commons.CommonsLogger info
+信息: Choosing bean (struts) for (com.opensymphony.xwork2.conversion.impl.ArrayConverter)
+九月 06, 2017 8:18:29 下午 com.opensymphony.xwork2.util.logging.commons.CommonsLogger info
+信息: Choosing bean (struts) for (com.opensymphony.xwork2.conversion.impl.DateConverter)
+九月 06, 2017 8:18:29 下午 com.opensymphony.xwork2.util.logging.commons.CommonsLogger info
+信息: Choosing bean (struts) for (com.opensymphony.xwork2.conversion.impl.NumberConverter)
+九月 06, 2017 8:18:29 下午 com.opensymphony.xwork2.util.logging.commons.CommonsLogger info
+信息: Choosing bean (struts) for (com.opensymphony.xwork2.conversion.impl.StringConverter)
+九月 06, 2017 8:18:29 下午 com.opensymphony.xwork2.util.logging.commons.CommonsLogger info
+信息: Choosing bean (struts) for (com.opensymphony.xwork2.conversion.ConversionPropertiesProcessor)
+九月 06, 2017 8:18:29 下午 com.opensymphony.xwork2.util.logging.commons.CommonsLogger info
+信息: Choosing bean (struts) for (com.opensymphony.xwork2.conversion.ConversionFileProcessor)
+九月 06, 2017 8:18:29 下午 com.opensymphony.xwork2.util.logging.commons.CommonsLogger info
+信息: Choosing bean (struts) for (com.opensymphony.xwork2.conversion.ConversionAnnotationProcessor)
+九月 06, 2017 8:18:29 下午 com.opensymphony.xwork2.util.logging.commons.CommonsLogger info
+信息: Choosing bean (struts) for (com.opensymphony.xwork2.conversion.TypeConverterCreator)
+九月 06, 2017 8:18:29 下午 com.opensymphony.xwork2.util.logging.commons.CommonsLogger info
+信息: Choosing bean (struts) for (com.opensymphony.xwork2.conversion.TypeConverterHolder)
+九月 06, 2017 8:18:29 下午 com.opensymphony.xwork2.util.logging.commons.CommonsLogger info
+信息: Choosing bean (struts) for (com.opensymphony.xwork2.TextProvider)
+九月 06, 2017 8:18:29 下午 com.opensymphony.xwork2.util.logging.commons.CommonsLogger info
+信息: Choosing bean (struts) for (com.opensymphony.xwork2.LocaleProvider)
+九月 06, 2017 8:18:29 下午 com.opensymphony.xwork2.util.logging.commons.CommonsLogger info
+信息: Choosing bean (struts) for (com.opensymphony.xwork2.ActionProxyFactory)
+九月 06, 2017 8:18:29 下午 com.opensymphony.xwork2.util.logging.commons.CommonsLogger info
+信息: Choosing bean (struts) for (com.opensymphony.xwork2.conversion.ObjectTypeDeterminer)
+九月 06, 2017 8:18:29 下午 com.opensymphony.xwork2.util.logging.commons.CommonsLogger info
+信息: Choosing bean (struts) for (org.apache.struts2.dispatcher.mapper.ActionMapper)
+九月 06, 2017 8:18:29 下午 com.opensymphony.xwork2.util.logging.commons.CommonsLogger info
+信息: Choosing bean (jakarta) for (org.apache.struts2.dispatcher.multipart.MultiPartRequest)
+九月 06, 2017 8:18:29 下午 com.opensymphony.xwork2.util.logging.commons.CommonsLogger info
+信息: Choosing bean (struts) for (org.apache.struts2.views.freemarker.FreemarkerManager)
+九月 06, 2017 8:18:29 下午 com.opensymphony.xwork2.util.logging.commons.CommonsLogger info
+信息: Choosing bean (struts) for (org.apache.struts2.components.UrlRenderer)
+九月 06, 2017 8:18:29 下午 com.opensymphony.xwork2.util.logging.commons.CommonsLogger info
+信息: Choosing bean (struts) for (com.opensymphony.xwork2.validator.ActionValidatorManager)
+九月 06, 2017 8:18:29 下午 com.opensymphony.xwork2.util.logging.commons.CommonsLogger info
+信息: Choosing bean (struts) for (com.opensymphony.xwork2.util.ValueStackFactory)
+九月 06, 2017 8:18:29 下午 com.opensymphony.xwork2.util.logging.commons.CommonsLogger info
+信息: Choosing bean (struts) for (com.opensymphony.xwork2.util.reflection.ReflectionProvider)
+九月 06, 2017 8:18:29 下午 com.opensymphony.xwork2.util.logging.commons.CommonsLogger info
+信息: Choosing bean (struts) for (com.opensymphony.xwork2.util.reflection.ReflectionContextFactory)
+九月 06, 2017 8:18:29 下午 com.opensymphony.xwork2.util.logging.commons.CommonsLogger info
+信息: Choosing bean (struts) for (com.opensymphony.xwork2.util.PatternMatcher)
+九月 06, 2017 8:18:29 下午 com.opensymphony.xwork2.util.logging.commons.CommonsLogger info
+信息: Choosing bean (struts) for (org.apache.struts2.util.ContentTypeMatcher)
+九月 06, 2017 8:18:29 下午 com.opensymphony.xwork2.util.logging.commons.CommonsLogger info
+信息: Choosing bean (struts) for (org.apache.struts2.dispatcher.StaticContentLoader)
+九月 06, 2017 8:18:29 下午 com.opensymphony.xwork2.util.logging.commons.CommonsLogger info
+信息: Choosing bean (struts) for (com.opensymphony.xwork2.UnknownHandlerManager)
+九月 06, 2017 8:18:29 下午 com.opensymphony.xwork2.util.logging.commons.CommonsLogger info
+信息: Choosing bean (struts) for (org.apache.struts2.views.util.UrlHelper)
+九月 06, 2017 8:18:29 下午 com.opensymphony.xwork2.util.logging.commons.CommonsLogger info
+信息: Choosing bean (struts) for (com.opensymphony.xwork2.util.TextParser)
+九月 06, 2017 8:18:29 下午 com.opensymphony.xwork2.util.logging.commons.CommonsLogger info
+信息: Choosing bean (struts) for (org.apache.struts2.dispatcher.DispatcherErrorHandler)
+九月 06, 2017 8:18:29 下午 com.opensymphony.xwork2.util.logging.commons.CommonsLogger info
+信息: Choosing bean (struts) for (com.opensymphony.xwork2.security.ExcludedPatternsChecker)
+九月 06, 2017 8:18:29 下午 com.opensymphony.xwork2.util.logging.commons.CommonsLogger info
+信息: Choosing bean (struts) for (com.opensymphony.xwork2.security.AcceptedPatternsChecker)
+九月 06, 2017 8:18:29 下午 com.opensymphony.xwork2.util.logging.commons.CommonsLogger info
+信息: Initializing Struts-Spring integration...
+九月 06, 2017 8:18:29 下午 com.opensymphony.xwork2.util.logging.commons.CommonsLogger info
+信息: Setting autowire strategy to name
+九月 06, 2017 8:18:29 下午 com.opensymphony.xwork2.util.logging.commons.CommonsLogger info
+信息: ... initialized Struts-Spring integration successfully
+九月 06, 2017 8:18:32 下午 org.apache.catalina.startup.TldConfig execute
+信息: At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+九月 06, 2017 8:18:32 下午 com.opensymphony.xwork2.config.providers.XmlConfigurationProvider info
+信息: Parsing configuration file [struts-default.xml]
+九月 06, 2017 8:18:32 下午 com.opensymphony.xwork2.config.providers.XmlConfigurationProvider info
+信息: Unable to locate configuration files of the name struts-plugin.xml, skipping
+九月 06, 2017 8:18:32 下午 com.opensymphony.xwork2.config.providers.XmlConfigurationProvider info
+信息: Parsing configuration file [struts-plugin.xml]
+九月 06, 2017 8:18:32 下午 com.opensymphony.xwork2.config.providers.XmlConfigurationProvider info
+信息: Parsing configuration file [struts.xml]
+九月 06, 2017 8:18:32 下午 org.apache.struts2.config.AbstractBeanSelectionProvider info
+信息: Choosing bean (struts) for (com.opensymphony.xwork2.ObjectFactory)
+九月 06, 2017 8:18:32 下午 org.apache.struts2.config.AbstractBeanSelectionProvider info
+信息: Choosing bean (struts) for (com.opensymphony.xwork2.factory.ActionFactory)
+九月 06, 2017 8:18:32 下午 org.apache.struts2.config.AbstractBeanSelectionProvider info
+信息: Choosing bean (struts) for (com.opensymphony.xwork2.factory.ResultFactory)
+九月 06, 2017 8:18:32 下午 org.apache.struts2.config.AbstractBeanSelectionProvider info
+信息: Choosing bean (struts) for (com.opensymphony.xwork2.factory.ConverterFactory)
+九月 06, 2017 8:18:32 下午 org.apache.struts2.config.AbstractBeanSelectionProvider info
+信息: Choosing bean (struts) for (com.opensymphony.xwork2.factory.InterceptorFactory)
+九月 06, 2017 8:18:32 下午 org.apache.struts2.config.AbstractBeanSelectionProvider info
+信息: Choosing bean (struts) for (com.opensymphony.xwork2.factory.ValidatorFactory)
+九月 06, 2017 8:18:32 下午 org.apache.struts2.config.AbstractBeanSelectionProvider info
+信息: Choosing bean (struts) for (com.opensymphony.xwork2.factory.UnknownHandlerFactory)
+九月 06, 2017 8:18:32 下午 org.apache.struts2.config.AbstractBeanSelectionProvider info
+信息: Choosing bean (struts) for (com.opensymphony.xwork2.FileManagerFactory)
+九月 06, 2017 8:18:32 下午 org.apache.struts2.config.AbstractBeanSelectionProvider info
+信息: Choosing bean (struts) for (com.opensymphony.xwork2.conversion.impl.XWorkConverter)
+九月 06, 2017 8:18:32 下午 org.apache.struts2.config.AbstractBeanSelectionProvider info
+信息: Choosing bean (struts) for (com.opensymphony.xwork2.conversion.impl.CollectionConverter)
+九月 06, 2017 8:18:32 下午 org.apache.struts2.config.AbstractBeanSelectionProvider info
+信息: Choosing bean (struts) for (com.opensymphony.xwork2.conversion.impl.ArrayConverter)
+九月 06, 2017 8:18:32 下午 org.apache.struts2.config.AbstractBeanSelectionProvider info
+信息: Choosing bean (struts) for (com.opensymphony.xwork2.conversion.impl.DateConverter)
+九月 06, 2017 8:18:32 下午 org.apache.struts2.config.AbstractBeanSelectionProvider info
+信息: Choosing bean (struts) for (com.opensymphony.xwork2.conversion.impl.NumberConverter)
+九月 06, 2017 8:18:32 下午 org.apache.struts2.config.AbstractBeanSelectionProvider info
+信息: Choosing bean (struts) for (com.opensymphony.xwork2.conversion.impl.StringConverter)
+九月 06, 2017 8:18:32 下午 org.apache.struts2.config.AbstractBeanSelectionProvider info
+信息: Choosing bean (struts) for (com.opensymphony.xwork2.conversion.ConversionPropertiesProcessor)
+九月 06, 2017 8:18:32 下午 org.apache.struts2.config.AbstractBeanSelectionProvider info
+信息: Choosing bean (struts) for (com.opensymphony.xwork2.conversion.ConversionFileProcessor)
+九月 06, 2017 8:18:32 下午 org.apache.struts2.config.AbstractBeanSelectionProvider info
+信息: Choosing bean (struts) for (com.opensymphony.xwork2.conversion.ConversionAnnotationProcessor)
+九月 06, 2017 8:18:32 下午 org.apache.struts2.config.AbstractBeanSelectionProvider info
+信息: Choosing bean (struts) for (com.opensymphony.xwork2.conversion.TypeConverterCreator)
+九月 06, 2017 8:18:32 下午 org.apache.struts2.config.AbstractBeanSelectionProvider info
+信息: Choosing bean (struts) for (com.opensymphony.xwork2.conversion.TypeConverterHolder)
+九月 06, 2017 8:18:32 下午 org.apache.struts2.config.AbstractBeanSelectionProvider info
+信息: Choosing bean (struts) for (com.opensymphony.xwork2.TextProvider)
+九月 06, 2017 8:18:32 下午 org.apache.struts2.config.AbstractBeanSelectionProvider info
+信息: Choosing bean (struts) for (com.opensymphony.xwork2.LocaleProvider)
+九月 06, 2017 8:18:32 下午 org.apache.struts2.config.AbstractBeanSelectionProvider info
+信息: Choosing bean (struts) for (com.opensymphony.xwork2.ActionProxyFactory)
+九月 06, 2017 8:18:32 下午 org.apache.struts2.config.AbstractBeanSelectionProvider info
+信息: Choosing bean (struts) for (com.opensymphony.xwork2.conversion.ObjectTypeDeterminer)
+九月 06, 2017 8:18:32 下午 org.apache.struts2.config.AbstractBeanSelectionProvider info
+信息: Choosing bean (struts) for (org.apache.struts2.dispatcher.mapper.ActionMapper)
+九月 06, 2017 8:18:32 下午 org.apache.struts2.config.AbstractBeanSelectionProvider info
+信息: Choosing bean (jakarta) for (org.apache.struts2.dispatcher.multipart.MultiPartRequest)
+九月 06, 2017 8:18:33 下午 org.apache.struts2.config.AbstractBeanSelectionProvider info
+信息: Choosing bean (struts) for (org.apache.struts2.views.freemarker.FreemarkerManager)
+九月 06, 2017 8:18:33 下午 org.apache.struts2.config.AbstractBeanSelectionProvider info
+信息: Choosing bean (struts) for (org.apache.struts2.components.UrlRenderer)
+九月 06, 2017 8:18:33 下午 org.apache.struts2.config.AbstractBeanSelectionProvider info
+信息: Choosing bean (struts) for (com.opensymphony.xwork2.validator.ActionValidatorManager)
+九月 06, 2017 8:18:33 下午 org.apache.struts2.config.AbstractBeanSelectionProvider info
+信息: Choosing bean (struts) for (com.opensymphony.xwork2.util.ValueStackFactory)
+九月 06, 2017 8:18:33 下午 org.apache.struts2.config.AbstractBeanSelectionProvider info
+信息: Choosing bean (struts) for (com.opensymphony.xwork2.util.reflection.ReflectionProvider)
+九月 06, 2017 8:18:33 下午 org.apache.struts2.config.AbstractBeanSelectionProvider info
+信息: Choosing bean (struts) for (com.opensymphony.xwork2.util.reflection.ReflectionContextFactory)
+九月 06, 2017 8:18:33 下午 org.apache.struts2.config.AbstractBeanSelectionProvider info
+信息: Choosing bean (struts) for (com.opensymphony.xwork2.util.PatternMatcher)
+九月 06, 2017 8:18:33 下午 org.apache.struts2.config.AbstractBeanSelectionProvider info
+信息: Choosing bean (struts) for (org.apache.struts2.util.ContentTypeMatcher)
+九月 06, 2017 8:18:33 下午 org.apache.struts2.config.AbstractBeanSelectionProvider info
+信息: Choosing bean (struts) for (org.apache.struts2.dispatcher.StaticContentLoader)
+九月 06, 2017 8:18:33 下午 org.apache.struts2.config.AbstractBeanSelectionProvider info
+信息: Choosing bean (struts) for (com.opensymphony.xwork2.UnknownHandlerManager)
+九月 06, 2017 8:18:33 下午 org.apache.struts2.config.AbstractBeanSelectionProvider info
+信息: Choosing bean (struts) for (org.apache.struts2.views.util.UrlHelper)
+九月 06, 2017 8:18:33 下午 org.apache.struts2.config.AbstractBeanSelectionProvider info
+信息: Choosing bean (struts) for (com.opensymphony.xwork2.util.TextParser)
+九月 06, 2017 8:18:33 下午 org.apache.struts2.config.AbstractBeanSelectionProvider info
+信息: Choosing bean (struts) for (org.apache.struts2.dispatcher.DispatcherErrorHandler)
+九月 06, 2017 8:18:33 下午 org.apache.struts2.config.AbstractBeanSelectionProvider info
+信息: Choosing bean (struts) for (com.opensymphony.xwork2.security.ExcludedPatternsChecker)
+九月 06, 2017 8:18:33 下午 org.apache.struts2.config.AbstractBeanSelectionProvider info
+信息: Choosing bean (struts) for (com.opensymphony.xwork2.security.AcceptedPatternsChecker)
+九月 06, 2017 8:18:33 下午 org.apache.catalina.startup.HostConfig deployWAR
+信息: Deploying web application archive D:\apache-tomcat-7.0.79\webapps\struts2-rest-showcase.war
+九月 06, 2017 8:18:35 下午 org.apache.catalina.startup.TldConfig execute
+信息: At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+九月 06, 2017 8:18:37 下午 org.apache.catalina.startup.HostConfig deployWAR
+信息: Deployment of web application archive D:\apache-tomcat-7.0.79\webapps\struts2-rest-showcase.war has finished in 3,408 ms
+九月 06, 2017 8:18:37 下午 org.apache.catalina.startup.HostConfig deployDirectory
+信息: Deploying web application directory D:\apache-tomcat-7.0.79\webapps\docs
+九月 06, 2017 8:18:37 下午 org.apache.catalina.startup.HostConfig deployDirectory
+信息: Deployment of web application directory D:\apache-tomcat-7.0.79\webapps\docs has finished in 70 ms
+九月 06, 2017 8:18:37 下午 org.apache.catalina.startup.HostConfig deployDirectory
+信息: Deploying web application directory D:\apache-tomcat-7.0.79\webapps\examples
+九月 06, 2017 8:18:37 下午 org.apache.catalina.startup.HostConfig deployDirectory
+信息: Deployment of web application directory D:\apache-tomcat-7.0.79\webapps\examples has finished in 388 ms
+九月 06, 2017 8:18:37 下午 org.apache.catalina.startup.HostConfig deployDirectory
+信息: Deploying web application directory D:\apache-tomcat-7.0.79\webapps\host-manager
+九月 06, 2017 8:18:37 下午 org.apache.catalina.startup.HostConfig deployDirectory
+信息: Deployment of web application directory D:\apache-tomcat-7.0.79\webapps\host-manager has finished in 100 ms
+九月 06, 2017 8:18:37 下午 org.apache.catalina.startup.HostConfig deployDirectory
+信息: Deploying web application directory D:\apache-tomcat-7.0.79\webapps\manager
+九月 06, 2017 8:18:37 下午 org.apache.catalina.startup.HostConfig deployDirectory
+信息: Deployment of web application directory D:\apache-tomcat-7.0.79\webapps\manager has finished in 90 ms
+九月 06, 2017 8:18:37 下午 org.apache.catalina.startup.HostConfig deployDirectory
+信息: Deploying web application directory D:\apache-tomcat-7.0.79\webapps\ROOT
+九月 06, 2017 8:18:38 下午 org.apache.catalina.startup.HostConfig deployDirectory
+信息: Deployment of web application directory D:\apache-tomcat-7.0.79\webapps\ROOT has finished in 70 ms
+九月 06, 2017 8:18:38 下午 org.apache.coyote.AbstractProtocol start
+信息: Starting ProtocolHandler ["http-apr-8090"]
+九月 06, 2017 8:18:38 下午 org.apache.coyote.AbstractProtocol start
+信息: Starting ProtocolHandler ["ajp-apr-8009"]
+九月 06, 2017 8:18:38 下午 org.apache.catalina.startup.Catalina start
+信息: Server startup in 12178 ms
+2017-09-06 20:19:51,831 INFO  [http-apr-8090-exec-6] rest.RestActionInvocation (RestActionInvocation.java:373) - Executed action [/!index!xhtml!200] took 41 ms (execution: 23 ms, result: 18 ms)
+九月 06, 2017 8:19:52 下午 org.apache.jasper.compiler.TldLocationsCache tldScanJar
+信息: At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+2017-09-06 20:19:53,890 INFO  [http-apr-8090-exec-10] rest.RestActionInvocation (RestActionInvocation.java:373) - Executed action [/orders!index!xhtml!200] took 2036 ms (execution: 6 ms, result: 2030 ms)
+2017-09-06 20:19:59,149 WARN  [http-apr-8090-exec-1] components.ServletUrlRenderer (ServletUrlRenderer.java:204) - No configuration found for the specified action: '/orders/org.apache.struts2.dispatcher.Parameter$Request@38759bcb' in namespace: ''. Form action defaulting to 'action' attribute's literal value.
+2017-09-06 20:19:59,464 WARN  [http-apr-8090-exec-1] components.ServletUrlRenderer (ServletUrlRenderer.java:204) - No configuration found for the specified action: '/orders/org.apache.struts2.dispatcher.Parameter$Request@38759bcb' in namespace: ''. Form action defaulting to 'action' attribute's literal value.
+2017-09-06 20:19:59,482 INFO  [http-apr-8090-exec-1] rest.RestActionInvocation (RestActionInvocation.java:373) - Executed action [/orders!edit!xhtml!200] took 852 ms (execution: 11 ms, result: 841 ms)
+2017-09-06 20:22:10,975 WARN  [http-apr-8090-exec-9] components.ServletUrlRenderer (ServletUrlRenderer.java:204) - No configuration found for the specified action: '/orders/org.apache.struts2.dispatcher.Parameter$Request@10ce056c' in namespace: ''. Form action defaulting to 'action' attribute's literal value.
+2017-09-06 20:22:11,005 WARN  [http-apr-8090-exec-9] components.ServletUrlRenderer (ServletUrlRenderer.java:204) - No configuration found for the specified action: '/orders/org.apache.struts2.dispatcher.Parameter$Request@10ce056c' in namespace: ''. Form action defaulting to 'action' attribute's literal value.
+2017-09-06 20:22:11,009 INFO  [http-apr-8090-exec-9] rest.RestActionInvocation (RestActionInvocation.java:373) - Executed action [/orders!edit!xhtml!200] took 51 ms (execution: 5 ms, result: 46 ms)
+2017-09-06 20:24:34,315 WARN  [http-apr-8090-exec-7] components.ServletUrlRenderer (ServletUrlRenderer.java:204) - No configuration found for the specified action: '/orders/org.apache.struts2.dispatcher.Parameter$Request@3e0a2bde' in namespace: ''. Form action defaulting to 'action' attribute's literal value.
+2017-09-06 20:24:34,331 WARN  [http-apr-8090-exec-7] components.ServletUrlRenderer (ServletUrlRenderer.java:204) - No configuration found for the specified action: '/orders/org.apache.struts2.dispatcher.Parameter$Request@3e0a2bde' in namespace: ''. Form action defaulting to 'action' attribute's literal value.
+2017-09-06 20:24:34,334 INFO  [http-apr-8090-exec-7] rest.RestActionInvocation (RestActionInvocation.java:373) - Executed action [/orders!edit!xhtml!200] took 26 ms (execution: 1 ms, result: 25 ms)
+九月 06, 2017 8:25:43 下午 org.apache.coyote.http11.AbstractHttp11Processor process
+信息: Error parsing HTTP request header
+ Note: further occurrences of HTTP header parsing errors will be logged at DEBUG level.
+java.lang.IllegalArgumentException: Invalid character found in method name. HTTP method names must be tokens
+        at org.apache.coyote.http11.InternalAprInputBuffer.parseRequestLine(InternalAprInputBuffer.java:182)
+        at org.apache.coyote.http11.AbstractHttp11Processor.process(AbstractHttp11Processor.java:1028)
+        at org.apache.coyote.AbstractProtocol$AbstractConnectionHandler.process(AbstractProtocol.java:637)
+        at org.apache.tomcat.util.net.AprEndpoint$SocketProcessor.doRun(AprEndpoint.java:2549)
+        at org.apache.tomcat.util.net.AprEndpoint$SocketProcessor.run(AprEndpoint.java:2538)
+        at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+        at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+        at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+        at java.lang.Thread.run(Thread.java:748)
+
+九月 06, 2017 8:25:44 下午 org.apache.coyote.http11.AbstractHttp11Processor process
+信息: Error parsing HTTP request header
+ Note: further occurrences of HTTP header parsing errors will be logged at DEBUG level.
+java.lang.IllegalArgumentException: Invalid character found in method name. HTTP method names must be tokens
+        at org.apache.coyote.http11.InternalAprInputBuffer.parseRequestLine(InternalAprInputBuffer.java:182)
+        at org.apache.coyote.http11.AbstractHttp11Processor.process(AbstractHttp11Processor.java:1028)
+        at org.apache.coyote.AbstractProtocol$AbstractConnectionHandler.process(AbstractProtocol.java:637)
+        at org.apache.tomcat.util.net.AprEndpoint$SocketProcessor.doRun(AprEndpoint.java:2549)
+        at org.apache.tomcat.util.net.AprEndpoint$SocketProcessor.run(AprEndpoint.java:2538)
+        at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+        at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+        at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+        at java.lang.Thread.run(Thread.java:748)
+
+com.thoughtworks.xstream.converters.ConversionException: java.lang.String cannot be cast to java.security.Provider$Service : java.lang.String cannot be cast to java.security.Provider$Service
+---- Debugging information ----
+message             : java.lang.String cannot be cast to java.security.Provider$Service
+cause-exception     : java.lang.ClassCastException
+cause-message       : java.lang.String cannot be cast to java.security.Provider$Service
+class               : java.util.HashMap
+required-type       : java.util.HashMap
+converter-type      : com.thoughtworks.xstream.converters.collections.MapConverter
+path                : /map/entry
+line number         : 48
+version             : 1.4.8
+-------------------------------
+        at com.thoughtworks.xstream.core.TreeUnmarshaller.convert(TreeUnmarshaller.java:79)
+        at com.thoughtworks.xstream.core.AbstractReferenceUnmarshaller.convert(AbstractReferenceUnmarshaller.java:65)
+        at com.thoughtworks.xstream.core.TreeUnmarshaller.convertAnother(TreeUnmarshaller.java:66)
+        at com.thoughtworks.xstream.core.TreeUnmarshaller.convertAnother(TreeUnmarshaller.java:50)
+        at com.thoughtworks.xstream.core.TreeUnmarshaller.start(TreeUnmarshaller.java:134)
+        at com.thoughtworks.xstream.core.AbstractTreeMarshallingStrategy.unmarshal(AbstractTreeMarshallingStrategy.java:32)
+        at com.thoughtworks.xstream.XStream.unmarshal(XStream.java:1206)
+        at com.thoughtworks.xstream.XStream.unmarshal(XStream.java:1190)
+        at com.thoughtworks.xstream.XStream.fromXML(XStream.java:1120)
+        at org.apache.struts2.rest.handler.XStreamHandler.toObject(XStreamHandler.java:45)
+        at org.apache.struts2.rest.ContentTypeInterceptor.intercept(ContentTypeInterceptor.java:64)
+        at com.opensymphony.xwork2.DefaultActionInvocation.invoke(DefaultActionInvocation.java:240)
+        at org.apache.struts2.rest.RestActionInvocation.invoke(RestActionInvocation.java:135)
+        at com.opensymphony.xwork2.interceptor.ParametersInterceptor.doIntercept(ParametersInterceptor.java:133)
+        at com.opensymphony.xwork2.interceptor.MethodFilterInterceptor.intercept(MethodFilterInterceptor.java:97)
+        at com.opensymphony.xwork2.DefaultActionInvocation.invoke(DefaultActionInvocation.java:240)
+        at org.apache.struts2.rest.RestActionInvocation.invoke(RestActionInvocation.java:135)
+        at com.opensymphony.xwork2.interceptor.StaticParametersInterceptor.intercept(StaticParametersInterceptor.java:192)
+        at com.opensymphony.xwork2.DefaultActionInvocation.invoke(DefaultActionInvocation.java:240)
+        at org.apache.struts2.rest.RestActionInvocation.invoke(RestActionInvocation.java:135)
+        at org.apache.struts2.interceptor.CheckboxInterceptor.intercept(CheckboxInterceptor.java:88)
+        at com.opensymphony.xwork2.DefaultActionInvocation.invoke(DefaultActionInvocation.java:240)
+        at org.apache.struts2.rest.RestActionInvocation.invoke(RestActionInvocation.java:135)
+        at org.apache.struts2.interceptor.FileUploadInterceptor.intercept(FileUploadInterceptor.java:245)
+        at com.opensymphony.xwork2.DefaultActionInvocation.invoke(DefaultActionInvocation.java:240)
+        at org.apache.struts2.rest.RestActionInvocation.invoke(RestActionInvocation.java:135)
+        at com.opensymphony.xwork2.interceptor.ModelDrivenInterceptor.intercept(ModelDrivenInterceptor.java:99)
+        at com.opensymphony.xwork2.DefaultActionInvocation.invoke(DefaultActionInvocation.java:240)
+        at org.apache.struts2.rest.RestActionInvocation.invoke(RestActionInvocation.java:135)
+        at com.opensymphony.xwork2.interceptor.ScopedModelDrivenInterceptor.intercept(ScopedModelDrivenInterceptor.java:139)
+        at com.opensymphony.xwork2.DefaultActionInvocation.invoke(DefaultActionInvocation.java:240)
+        at org.apache.struts2.rest.RestActionInvocation.invoke(RestActionInvocation.java:135)
+        at com.opensymphony.xwork2.interceptor.ParametersInterceptor.doIntercept(ParametersInterceptor.java:133)
+        at com.opensymphony.xwork2.interceptor.MethodFilterInterceptor.intercept(MethodFilterInterceptor.java:97)
+        at com.opensymphony.xwork2.DefaultActionInvocation.invoke(DefaultActionInvocation.java:240)
+        at org.apache.struts2.rest.RestActionInvocation.invoke(RestActionInvocation.java:135)
+        at org.apache.struts2.interceptor.ProfilingActivationInterceptor.intercept(ProfilingActivationInterceptor.java:104)
+        at com.opensymphony.xwork2.DefaultActionInvocation.invoke(DefaultActionInvocation.java:240)
+        at org.apache.struts2.rest.RestActionInvocation.invoke(RestActionInvocation.java:135)
+        at org.apache.struts2.interceptor.debugging.DebuggingInterceptor.intercept(DebuggingInterceptor.java:253)
+        at com.opensymphony.xwork2.DefaultActionInvocation.invoke(DefaultActionInvocation.java:240)
+        at org.apache.struts2.rest.RestActionInvocation.invoke(RestActionInvocation.java:135)
+        at com.opensymphony.xwork2.interceptor.ChainingInterceptor.intercept(ChainingInterceptor.java:155)
+        at com.opensymphony.xwork2.DefaultActionInvocation.invoke(DefaultActionInvocation.java:240)
+        at org.apache.struts2.rest.RestActionInvocation.invoke(RestActionInvocation.java:135)
+        at org.apache.struts2.interceptor.I18nInterceptor.intercept(I18nInterceptor.java:151)
+        at com.opensymphony.xwork2.DefaultActionInvocation.invoke(DefaultActionInvocation.java:240)
+        at org.apache.struts2.rest.RestActionInvocation.invoke(RestActionInvocation.java:135)
+        at com.opensymphony.xwork2.interceptor.PrepareInterceptor.doIntercept(PrepareInterceptor.java:174)
+        at com.opensymphony.xwork2.interceptor.MethodFilterInterceptor.intercept(MethodFilterInterceptor.java:97)
+        at com.opensymphony.xwork2.DefaultActionInvocation.invoke(DefaultActionInvocation.java:240)
+        at org.apache.struts2.rest.RestActionInvocation.invoke(RestActionInvocation.java:135)
+        at org.apache.struts2.interceptor.MessageStoreInterceptor.intercept(MessageStoreInterceptor.java:208)
+        at com.opensymphony.xwork2.DefaultActionInvocation.invoke(DefaultActionInvocation.java:240)
+        at org.apache.struts2.rest.RestActionInvocation.invoke(RestActionInvocation.java:135)
+        at org.apache.struts2.interceptor.ServletConfigInterceptor.intercept(ServletConfigInterceptor.java:171)
+        at com.opensymphony.xwork2.DefaultActionInvocation.invoke(DefaultActionInvocation.java:240)
+        at org.apache.struts2.rest.RestActionInvocation.invoke(RestActionInvocation.java:135)
+        at com.opensymphony.xwork2.interceptor.AliasInterceptor.intercept(AliasInterceptor.java:195)
+        at com.opensymphony.xwork2.DefaultActionInvocation.invoke(DefaultActionInvocation.java:240)
+        at org.apache.struts2.rest.RestActionInvocation.invoke(RestActionInvocation.java:135)
+        at com.opensymphony.xwork2.interceptor.ExceptionMappingInterceptor.intercept(ExceptionMappingInterceptor.java:193)
+        at com.opensymphony.xwork2.DefaultActionInvocation.invoke(DefaultActionInvocation.java:240)
+        at org.apache.struts2.rest.RestActionInvocation.invoke(RestActionInvocation.java:135)
+        at com.opensymphony.xwork2.DefaultActionProxy.execute(DefaultActionProxy.java:154)
+        at org.apache.struts2.dispatcher.Dispatcher.serviceAction(Dispatcher.java:564)
+        at org.apache.struts2.dispatcher.ExecuteOperations.executeAction(ExecuteOperations.java:81)
+        at org.apache.struts2.dispatcher.filter.StrutsPrepareAndExecuteFilter.doFilter(StrutsPrepareAndExecuteFilter.java:113)
+        at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:241)
+        at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:208)
+        at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:218)
+        at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:110)
+        at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:506)
+        at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:169)
+        at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:103)
+        at org.apache.catalina.valves.AccessLogValve.invoke(AccessLogValve.java:962)
+        at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:116)
+        at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:445)
+        at org.apache.coyote.http11.AbstractHttp11Processor.process(AbstractHttp11Processor.java:1115)
+        at org.apache.coyote.AbstractProtocol$AbstractConnectionHandler.process(AbstractProtocol.java:637)
+        at org.apache.tomcat.util.net.AprEndpoint$SocketProcessor.doRun(AprEndpoint.java:2549)
+        at org.apache.tomcat.util.net.AprEndpoint$SocketProcessor.run(AprEndpoint.java:2538)
+        at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+        at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+        at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+        at java.lang.Thread.run(Thread.java:748)
+Caused by: java.lang.ClassCastException: java.lang.String cannot be cast to java.security.Provider$Service
+        at javax.crypto.Cipher.chooseFirstProvider(Cipher.java:746)
+        at javax.crypto.Cipher.update(Cipher.java:1828)
+        at javax.crypto.CipherInputStream.getMoreData(CipherInputStream.java:132)
+        at javax.crypto.CipherInputStream.read(CipherInputStream.java:239)
+        at com.sun.xml.internal.bind.v2.util.ByteArrayOutputStreamEx.readFrom(ByteArrayOutputStreamEx.java:65)
+        at com.sun.xml.internal.bind.v2.runtime.unmarshaller.Base64Data.get(Base64Data.java:182)
+        at com.sun.xml.internal.bind.v2.runtime.unmarshaller.Base64Data.toString(Base64Data.java:286)
+        at jdk.nashorn.internal.objects.NativeString.getStringValue(NativeString.java:121)
+        at jdk.nashorn.internal.objects.NativeString.hashCode(NativeString.java:117)
+        at java.util.HashMap.hash(HashMap.java:338)
+        at java.util.HashMap.put(HashMap.java:611)
+        at com.thoughtworks.xstream.converters.collections.MapConverter.putCurrentEntryIntoMap(MapConverter.java:113)
+        at com.thoughtworks.xstream.converters.collections.MapConverter.populateMap(MapConverter.java:98)
+        at com.thoughtworks.xstream.converters.collections.MapConverter.populateMap(MapConverter.java:92)
+        at com.thoughtworks.xstream.converters.collections.MapConverter.unmarshal(MapConverter.java:87)
+        at com.thoughtworks.xstream.core.TreeUnmarshaller.convert(TreeUnmarshaller.java:72)
+        ... 85 more
+2017-09-06 20:26:07,548 ERROR [http-apr-8090-exec-8] dispatcher.DefaultDispatcherErrorHandler (DefaultDispatcherErrorHandler.java:69) - Exception occurred during processing request: com.thoughtworks.xstream.converters.ConversionException: java.lang.String cannot be cast to java.security.Provider$Service : java.lang.String cannot be cast to java.security.Provider$Service
+---- Debugging information ----
+message             : java.lang.String cannot be cast to java.security.Provider$Service
+cause-exception     : java.lang.ClassCastException
+cause-message       : java.lang.String cannot be cast to java.security.Provider$Service
+class               : java.util.HashMap
+required-type       : java.util.HashMap
+converter-type      : com.thoughtworks.xstream.converters.collections.MapConverter
+path                : /map/entry
+line number         : 48
+version             : 1.4.8
+-------------------------------
+com.thoughtworks.xstream.converters.ConversionException: java.lang.String cannot be cast to java.security.Provider$Service : java.lang.String cannot be cast to java.security.Provider$Service
+---- Debugging information ----
+message             : java.lang.String cannot be cast to java.security.Provider$Service
+cause-exception     : java.lang.ClassCastException
+cause-message       : java.lang.String cannot be cast to java.security.Provider$Service
+class               : java.util.HashMap
+required-type       : java.util.HashMap
+converter-type      : com.thoughtworks.xstream.converters.collections.MapConverter
+path                : /map/entry
+line number         : 48
+version             : 1.4.8
+-------------------------------
+        at com.thoughtworks.xstream.core.TreeUnmarshaller.convert(TreeUnmarshaller.java:79)
+        at com.thoughtworks.xstream.core.AbstractReferenceUnmarshaller.convert(AbstractReferenceUnmarshaller.java:65)
+        at com.thoughtworks.xstream.core.TreeUnmarshaller.convertAnother(TreeUnmarshaller.java:66)
+        at com.thoughtworks.xstream.core.TreeUnmarshaller.convertAnother(TreeUnmarshaller.java:50)
+        at com.thoughtworks.xstream.core.TreeUnmarshaller.start(TreeUnmarshaller.java:134)
+        at com.thoughtworks.xstream.core.AbstractTreeMarshallingStrategy.unmarshal(AbstractTreeMarshallingStrategy.java:32)
+        at com.thoughtworks.xstream.XStream.unmarshal(XStream.java:1206)
+        at com.thoughtworks.xstream.XStream.unmarshal(XStream.java:1190)
+        at com.thoughtworks.xstream.XStream.fromXML(XStream.java:1120)
+        at org.apache.struts2.rest.handler.XStreamHandler.toObject(XStreamHandler.java:45)
+        at org.apache.struts2.rest.ContentTypeInterceptor.intercept(ContentTypeInterceptor.java:64)
+        at com.opensymphony.xwork2.DefaultActionInvocation.invoke(DefaultActionInvocation.java:240)
+        at org.apache.struts2.rest.RestActionInvocation.invoke(RestActionInvocation.java:135)
+        at com.opensymphony.xwork2.interceptor.ParametersInterceptor.doIntercept(ParametersInterceptor.java:133)
+        at com.opensymphony.xwork2.interceptor.MethodFilterInterceptor.intercept(MethodFilterInterceptor.java:97)
+        at com.opensymphony.xwork2.DefaultActionInvocation.invoke(DefaultActionInvocation.java:240)
+        at org.apache.struts2.rest.RestActionInvocation.invoke(RestActionInvocation.java:135)
+        at com.opensymphony.xwork2.interceptor.StaticParametersInterceptor.intercept(StaticParametersInterceptor.java:192)
+        at com.opensymphony.xwork2.DefaultActionInvocation.invoke(DefaultActionInvocation.java:240)
+        at org.apache.struts2.rest.RestActionInvocation.invoke(RestActionInvocation.java:135)
+        at org.apache.struts2.interceptor.CheckboxInterceptor.intercept(CheckboxInterceptor.java:88)
+        at com.opensymphony.xwork2.DefaultActionInvocation.invoke(DefaultActionInvocation.java:240)
+        at org.apache.struts2.rest.RestActionInvocation.invoke(RestActionInvocation.java:135)
+        at org.apache.struts2.interceptor.FileUploadInterceptor.intercept(FileUploadInterceptor.java:245)
+        at com.opensymphony.xwork2.DefaultActionInvocation.invoke(DefaultActionInvocation.java:240)
+        at org.apache.struts2.rest.RestActionInvocation.invoke(RestActionInvocation.java:135)
+        at com.opensymphony.xwork2.interceptor.ModelDrivenInterceptor.intercept(ModelDrivenInterceptor.java:99)
+        at com.opensymphony.xwork2.DefaultActionInvocation.invoke(DefaultActionInvocation.java:240)
+        at org.apache.struts2.rest.RestActionInvocation.invoke(RestActionInvocation.java:135)
+        at com.opensymphony.xwork2.interceptor.ScopedModelDrivenInterceptor.intercept(ScopedModelDrivenInterceptor.java:139)
+        at com.opensymphony.xwork2.DefaultActionInvocation.invoke(DefaultActionInvocation.java:240)
+        at org.apache.struts2.rest.RestActionInvocation.invoke(RestActionInvocation.java:135)
+        at com.opensymphony.xwork2.interceptor.ParametersInterceptor.doIntercept(ParametersInterceptor.java:133)
+        at com.opensymphony.xwork2.interceptor.MethodFilterInterceptor.intercept(MethodFilterInterceptor.java:97)
+        at com.opensymphony.xwork2.DefaultActionInvocation.invoke(DefaultActionInvocation.java:240)
+        at org.apache.struts2.rest.RestActionInvocation.invoke(RestActionInvocation.java:135)
+        at org.apache.struts2.interceptor.ProfilingActivationInterceptor.intercept(ProfilingActivationInterceptor.java:104)
+        at com.opensymphony.xwork2.DefaultActionInvocation.invoke(DefaultActionInvocation.java:240)
+        at org.apache.struts2.rest.RestActionInvocation.invoke(RestActionInvocation.java:135)
+        at org.apache.struts2.interceptor.debugging.DebuggingInterceptor.intercept(DebuggingInterceptor.java:253)
+        at com.opensymphony.xwork2.DefaultActionInvocation.invoke(DefaultActionInvocation.java:240)
+        at org.apache.struts2.rest.RestActionInvocation.invoke(RestActionInvocation.java:135)
+        at com.opensymphony.xwork2.interceptor.ChainingInterceptor.intercept(ChainingInterceptor.java:155)
+        at com.opensymphony.xwork2.DefaultActionInvocation.invoke(DefaultActionInvocation.java:240)
+        at org.apache.struts2.rest.RestActionInvocation.invoke(RestActionInvocation.java:135)
+        at org.apache.struts2.interceptor.I18nInterceptor.intercept(I18nInterceptor.java:151)
+        at com.opensymphony.xwork2.DefaultActionInvocation.invoke(DefaultActionInvocation.java:240)
+        at org.apache.struts2.rest.RestActionInvocation.invoke(RestActionInvocation.java:135)
+        at com.opensymphony.xwork2.interceptor.PrepareInterceptor.doIntercept(PrepareInterceptor.java:174)
+        at com.opensymphony.xwork2.interceptor.MethodFilterInterceptor.intercept(MethodFilterInterceptor.java:97)
+        at com.opensymphony.xwork2.DefaultActionInvocation.invoke(DefaultActionInvocation.java:240)
+        at org.apache.struts2.rest.RestActionInvocation.invoke(RestActionInvocation.java:135)
+        at org.apache.struts2.interceptor.MessageStoreInterceptor.intercept(MessageStoreInterceptor.java:208)
+        at com.opensymphony.xwork2.DefaultActionInvocation.invoke(DefaultActionInvocation.java:240)
+        at org.apache.struts2.rest.RestActionInvocation.invoke(RestActionInvocation.java:135)
+        at org.apache.struts2.interceptor.ServletConfigInterceptor.intercept(ServletConfigInterceptor.java:171)
+        at com.opensymphony.xwork2.DefaultActionInvocation.invoke(DefaultActionInvocation.java:240)
+        at org.apache.struts2.rest.RestActionInvocation.invoke(RestActionInvocation.java:135)
+        at com.opensymphony.xwork2.interceptor.AliasInterceptor.intercept(AliasInterceptor.java:195)
+        at com.opensymphony.xwork2.DefaultActionInvocation.invoke(DefaultActionInvocation.java:240)
+        at org.apache.struts2.rest.RestActionInvocation.invoke(RestActionInvocation.java:135)
+        at com.opensymphony.xwork2.interceptor.ExceptionMappingInterceptor.intercept(ExceptionMappingInterceptor.java:193)
+        at com.opensymphony.xwork2.DefaultActionInvocation.invoke(DefaultActionInvocation.java:240)
+        at org.apache.struts2.rest.RestActionInvocation.invoke(RestActionInvocation.java:135)
+        at com.opensymphony.xwork2.DefaultActionProxy.execute(DefaultActionProxy.java:154)
+        at org.apache.struts2.dispatcher.Dispatcher.serviceAction(Dispatcher.java:564)
+        at org.apache.struts2.dispatcher.ExecuteOperations.executeAction(ExecuteOperations.java:81)
+        at org.apache.struts2.dispatcher.filter.StrutsPrepareAndExecuteFilter.doFilter(StrutsPrepareAndExecuteFilter.java:113)
+        at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:241)
+        at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:208)
+        at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:218)
+        at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:110)
+        at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:506)
+        at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:169)
+        at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:103)
+        at org.apache.catalina.valves.AccessLogValve.invoke(AccessLogValve.java:962)
+        at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:116)
+        at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:445)
+        at org.apache.coyote.http11.AbstractHttp11Processor.process(AbstractHttp11Processor.java:1115)
+        at org.apache.coyote.AbstractProtocol$AbstractConnectionHandler.process(AbstractProtocol.java:637)
+        at org.apache.tomcat.util.net.AprEndpoint$SocketProcessor.doRun(AprEndpoint.java:2549)
+        at org.apache.tomcat.util.net.AprEndpoint$SocketProcessor.run(AprEndpoint.java:2538)
+        at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+        at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+        at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+        at java.lang.Thread.run(Thread.java:748)
+Caused by: java.lang.ClassCastException: java.lang.String cannot be cast to java.security.Provider$Service
+        at javax.crypto.Cipher.chooseFirstProvider(Cipher.java:746)
+        at javax.crypto.Cipher.update(Cipher.java:1828)
+        at javax.crypto.CipherInputStream.getMoreData(CipherInputStream.java:132)
+        at javax.crypto.CipherInputStream.read(CipherInputStream.java:239)
+        at com.sun.xml.internal.bind.v2.util.ByteArrayOutputStreamEx.readFrom(ByteArrayOutputStreamEx.java:65)
+        at com.sun.xml.internal.bind.v2.runtime.unmarshaller.Base64Data.get(Base64Data.java:182)
+        at com.sun.xml.internal.bind.v2.runtime.unmarshaller.Base64Data.toString(Base64Data.java:286)
+        at jdk.nashorn.internal.objects.NativeString.getStringValue(NativeString.java:121)
+        at jdk.nashorn.internal.objects.NativeString.hashCode(NativeString.java:117)
+        at java.util.HashMap.hash(HashMap.java:338)
+        at java.util.HashMap.put(HashMap.java:611)
+        at com.thoughtworks.xstream.converters.collections.MapConverter.putCurrentEntryIntoMap(MapConverter.java:113)
+        at com.thoughtworks.xstream.converters.collections.MapConverter.populateMap(MapConverter.java:98)
+        at com.thoughtworks.xstream.converters.collections.MapConverter.populateMap(MapConverter.java:92)
+        at com.thoughtworks.xstream.converters.collections.MapConverter.unmarshal(MapConverter.java:87)
+        at com.thoughtworks.xstream.core.TreeUnmarshaller.convert(TreeUnmarshaller.java:72)
+        ... 85 more
+2017-09-06 20:28:36,673 ERROR [http-apr-8090-exec-1] dispatcher.DefaultDispatcherErrorHandler (DefaultDispatcherErrorHandler.java:69) - Exception occurred during processing request: com.thoughtworks.xstream.converters.ConversionException: java.lang.String cannot be cast to java.security.Provider$Service : java.lang.String cannot be cast to java.security.Provider$Service
+---- Debugging information ----
+message             : java.lang.String cannot be cast to java.security.Provider$Service
+cause-exception     : java.lang.ClassCastException
+cause-message       : java.lang.String cannot be cast to java.security.Provider$Service
+class               : java.util.HashMap
+required-type       : java.util.HashMap
+converter-type      : com.thoughtworks.xstream.converters.collections.MapConverter
+path                : /map/entry
+line number         : 48
+version             : 1.4.8
+-------------------------------
+com.thoughtworks.xstream.converters.ConversionException: java.lang.String cannot be cast to java.security.Provider$Service : java.lang.String cannot be cast to java.security.Provider$Service
+---- Debugging information ----
+message             : java.lang.String cannot be cast to java.security.Provider$Service
+cause-exception     : java.lang.ClassCastException
+cause-message       : java.lang.String cannot be cast to java.security.Provider$Service
+class               : java.util.HashMap
+required-type       : java.util.HashMap
+converter-type      : com.thoughtworks.xstream.converters.collections.MapConverter
+path                : /map/entry
+line number         : 48
+version             : 1.4.8
+-------------------------------
+        at com.thoughtworks.xstream.core.TreeUnmarshaller.convert(TreeUnmarshaller.java:79)
+        at com.thoughtworks.xstream.core.AbstractReferenceUnmarshaller.convert(AbstractReferenceUnmarshaller.java:65)
+        at com.thoughtworks.xstream.core.TreeUnmarshaller.convertAnother(TreeUnmarshaller.java:66)
+        at com.thoughtworks.xstream.core.TreeUnmarshaller.convertAnother(TreeUnmarshaller.java:50)
+        at com.thoughtworks.xstream.core.TreeUnmarshaller.start(TreeUnmarshaller.java:134)
+        at com.thoughtworks.xstream.core.AbstractTreeMarshallingStrategy.unmarshal(AbstractTreeMarshallingStrategy.java:32)
+        at com.thoughtworks.xstream.XStream.unmarshal(XStream.java:1206)
+        at com.thoughtworks.xstream.XStream.unmarshal(XStream.java:1190)
+        at com.thoughtworks.xstream.XStream.fromXML(XStream.java:1120)
+        at org.apache.struts2.rest.handler.XStreamHandler.toObject(XStreamHandler.java:45)
+        at org.apache.struts2.rest.ContentTypeInterceptor.intercept(ContentTypeInterceptor.java:64)
+        at com.opensymphony.xwork2.DefaultActionInvocation.invoke(DefaultActionInvocation.java:240)
+        at org.apache.struts2.rest.RestActionInvocation.invoke(RestActionInvocation.java:135)
+        at com.opensymphony.xwork2.interceptor.ParametersInterceptor.doIntercept(ParametersInterceptor.java:133)
+        at com.opensymphony.xwork2.interceptor.MethodFilterInterceptor.intercept(MethodFilterInterceptor.java:97)
+        at com.opensymphony.xwork2.DefaultActionInvocation.invoke(DefaultActionInvocation.java:240)
+        at org.apache.struts2.rest.RestActionInvocation.invoke(RestActionInvocation.java:135)
+        at com.opensymphony.xwork2.interceptor.StaticParametersInterceptor.intercept(StaticParametersInterceptor.java:192)
+        at com.opensymphony.xwork2.DefaultActionInvocation.invoke(DefaultActionInvocation.java:240)
+        at org.apache.struts2.rest.RestActionInvocation.invoke(RestActionInvocation.java:135)
+        at org.apache.struts2.interceptor.CheckboxInterceptor.intercept(CheckboxInterceptor.java:88)
+        at com.opensymphony.xwork2.DefaultActionInvocation.invoke(DefaultActionInvocation.java:240)
+        at org.apache.struts2.rest.RestActionInvocation.invoke(RestActionInvocation.java:135)
+        at org.apache.struts2.interceptor.FileUploadInterceptor.intercept(FileUploadInterceptor.java:245)
+        at com.opensymphony.xwork2.DefaultActionInvocation.invoke(DefaultActionInvocation.java:240)
+        at org.apache.struts2.rest.RestActionInvocation.invoke(RestActionInvocation.java:135)
+        at com.opensymphony.xwork2.interceptor.ModelDrivenInterceptor.intercept(ModelDrivenInterceptor.java:99)
+        at com.opensymphony.xwork2.DefaultActionInvocation.invoke(DefaultActionInvocation.java:240)
+        at org.apache.struts2.rest.RestActionInvocation.invoke(RestActionInvocation.java:135)
+        at com.opensymphony.xwork2.interceptor.ScopedModelDrivenInterceptor.intercept(ScopedModelDrivenInterceptor.java:139)
+        at com.opensymphony.xwork2.DefaultActionInvocation.invoke(DefaultActionInvocation.java:240)
+        at org.apache.struts2.rest.RestActionInvocation.invoke(RestActionInvocation.java:135)
+        at com.opensymphony.xwork2.interceptor.ParametersInterceptor.doIntercept(ParametersInterceptor.java:133)
+        at com.opensymphony.xwork2.interceptor.MethodFilterInterceptor.intercept(MethodFilterInterceptor.java:97)
+        at com.opensymphony.xwork2.DefaultActionInvocation.invoke(DefaultActionInvocation.java:240)
+        at org.apache.struts2.rest.RestActionInvocation.invoke(RestActionInvocation.java:135)
+        at org.apache.struts2.interceptor.ProfilingActivationInterceptor.intercept(ProfilingActivationInterceptor.java:104)
+        at com.opensymphony.xwork2.DefaultActionInvocation.invoke(DefaultActionInvocation.java:240)
+        at org.apache.struts2.rest.RestActionInvocation.invoke(RestActionInvocation.java:135)
+        at org.apache.struts2.interceptor.debugging.DebuggingInterceptor.intercept(DebuggingInterceptor.java:253)
+        at com.opensymphony.xwork2.DefaultActionInvocation.invoke(DefaultActionInvocation.java:240)
+        at org.apache.struts2.rest.RestActionInvocation.invoke(RestActionInvocation.java:135)
+        at com.opensymphony.xwork2.interceptor.ChainingInterceptor.intercept(ChainingInterceptor.java:155)
+        at com.opensymphony.xwork2.DefaultActionInvocation.invoke(DefaultActionInvocation.java:240)
+        at org.apache.struts2.rest.RestActionInvocation.invoke(RestActionInvocation.java:135)
+        at org.apache.struts2.interceptor.I18nInterceptor.intercept(I18nInterceptor.java:151)
+        at com.opensymphony.xwork2.DefaultActionInvocation.invoke(DefaultActionInvocation.java:240)
+        at org.apache.struts2.rest.RestActionInvocation.invoke(RestActionInvocation.java:135)
+        at com.opensymphony.xwork2.interceptor.PrepareInterceptor.doIntercept(PrepareInterceptor.java:174)
+        at com.opensymphony.xwork2.interceptor.MethodFilterInterceptor.intercept(MethodFilterInterceptor.java:97)
+        at com.opensymphony.xwork2.DefaultActionInvocation.invoke(DefaultActionInvocation.java:240)
+        at org.apache.struts2.rest.RestActionInvocation.invoke(RestActionInvocation.java:135)
+        at org.apache.struts2.interceptor.MessageStoreInterceptor.intercept(MessageStoreInterceptor.java:208)
+        at com.opensymphony.xwork2.DefaultActionInvocation.invoke(DefaultActionInvocation.java:240)
+        at org.apache.struts2.rest.RestActionInvocation.invoke(RestActionInvocation.java:135)
+        at org.apache.struts2.interceptor.ServletConfigInterceptor.intercept(ServletConfigInterceptor.java:171)
+        at com.opensymphony.xwork2.DefaultActionInvocation.invoke(DefaultActionInvocation.java:240)
+        at org.apache.struts2.rest.RestActionInvocation.invoke(RestActionInvocation.java:135)
+        at com.opensymphony.xwork2.interceptor.AliasInterceptor.intercept(AliasInterceptor.java:195)
+        at com.opensymphony.xwork2.DefaultActionInvocation.invoke(DefaultActionInvocation.java:240)
+        at org.apache.struts2.rest.RestActionInvocation.invoke(RestActionInvocation.java:135)
+        at com.opensymphony.xwork2.interceptor.ExceptionMappingInterceptor.intercept(ExceptionMappingInterceptor.java:193)
+        at com.opensymphony.xwork2.DefaultActionInvocation.invoke(DefaultActionInvocation.java:240)
+        at org.apache.struts2.rest.RestActionInvocation.invoke(RestActionInvocation.java:135)
+        at com.opensymphony.xwork2.DefaultActionProxy.execute(DefaultActionProxy.java:154)
+        at org.apache.struts2.dispatcher.Dispatcher.serviceAction(Dispatcher.java:564)
+        at org.apache.struts2.dispatcher.ExecuteOperations.executeAction(ExecuteOperations.java:81)
+        at org.apache.struts2.dispatcher.filter.StrutsPrepareAndExecuteFilter.doFilter(StrutsPrepareAndExecuteFilter.java:113)
+        at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:241)
+        at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:208)
+        at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:218)
+        at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:110)
+        at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:506)
+        at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:169)
+        at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:103)
+        at org.apache.catalina.valves.AccessLogValve.invoke(AccessLogValve.java:962)
+        at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:116)
+        at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:445)
+        at org.apache.coyote.http11.AbstractHttp11Processor.process(AbstractHttp11Processor.java:1115)
+        at org.apache.coyote.AbstractProtocol$AbstractConnectionHandler.process(AbstractProtocol.java:637)
+        at org.apache.tomcat.util.net.AprEndpoint$SocketProcessor.doRun(AprEndpoint.java:2549)
+        at org.apache.tomcat.util.net.AprEndpoint$SocketProcessor.run(AprEndpoint.java:2538)
+        at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+        at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+        at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+        at java.lang.Thread.run(Thread.java:748)
+Caused by: java.lang.ClassCastException: java.lang.String cannot be cast to java.security.Provider$Service
+        at javax.crypto.Cipher.chooseFirstProvider(Cipher.java:746)
+        at javax.crypto.Cipher.update(Cipher.java:1828)
+        at javax.crypto.CipherInputStream.getMoreData(CipherInputStream.java:132)
+        at javax.crypto.CipherInputStream.read(CipherInputStream.java:239)
+        at com.sun.xml.internal.bind.v2.util.ByteArrayOutputStreamEx.readFrom(ByteArrayOutputStreamEx.java:65)
+        at com.sun.xml.internal.bind.v2.runtime.unmarshaller.Base64Data.get(Base64Data.java:182)
+        at com.sun.xml.internal.bind.v2.runtime.unmarshaller.Base64Data.toString(Base64Data.java:286)
+        at jdk.nashorn.internal.objects.NativeString.getStringValue(NativeString.java:121)
+        at jdk.nashorn.internal.objects.NativeString.hashCode(NativeString.java:117)
+        at java.util.HashMap.hash(HashMap.java:338)
+        at java.util.HashMap.put(HashMap.java:611)
+        at com.thoughtworks.xstream.converters.collections.MapConverter.putCurrentEntryIntoMap(MapConverter.java:113)
+        at com.thoughtworks.xstream.converters.collections.MapConverter.populateMap(MapConverter.java:98)
+        at com.thoughtworks.xstream.converters.collections.MapConverter.populateMap(MapConverter.java:92)
+        at com.thoughtworks.xstream.converters.collections.MapConverter.unmarshal(MapConverter.java:87)
+        at com.thoughtworks.xstream.core.TreeUnmarshaller.convert(TreeUnmarshaller.java:72)
+        ... 85 more
+2017-09-06 20:28:42,092 ERROR [http-apr-8090-exec-9] dispatcher.DefaultDispatcherErrorHandler (DefaultDispatcherErrorHandler.java:69) - Exception occurred during processing request: com.thoughtworks.xstream.converters.ConversionException: java.lang.String cannot be cast to java.security.Provider$Service : java.lang.String cannot be cast to java.security.Provider$Service
+---- Debugging information ----
+message             : java.lang.String cannot be cast to java.security.Provider$Service
+cause-exception     : java.lang.ClassCastException
+cause-message       : java.lang.String cannot be cast to java.security.Provider$Service
+class               : java.util.HashMap
+required-type       : java.util.HashMap
+converter-type      : com.thoughtworks.xstream.converters.collections.MapConverter
+path                : /map/entry
+line number         : 48
+version             : 1.4.8
+-------------------------------
