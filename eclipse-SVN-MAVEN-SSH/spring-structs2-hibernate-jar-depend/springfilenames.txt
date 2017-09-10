@@ -1,0 +1,6 @@
+commons-logging-1.0.4.jar
+spring-aop-4.2.4.RELEASE.jar
+spring-beans-4.2.4.RELEASE.jar
+spring-context-4.2.4.RELEASE.jar
+spring-core-4.2.4.RELEASE.jar
+spring-expression-4.2.4.RELEASE.jar
