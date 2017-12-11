@@ -1,0 +1,161 @@
+Windows PowerShell
+版权所有 (C) Microsoft Corporation。保留所有权利。
+
+PS C:\WINDOWS\system32> netsh interface portproxy add v4tov4 listenaddress=192.168.137.1 listenport=1521 connectaddress=
+127.0.0.1  connectport=1521
+
+PS C:\WINDOWS\system32> netsh interface portproxy show  v4tov4
+
+侦听 ipv4:                 连接到 ipv4:
+
+地址            端口        地址            端口
+--------------- ----------  --------------- ----------
+192.168.137.1   1521        127.0.0.1       1521
+
+PS C:\WINDOWS\system32> netsh interface portproxy add v4tov4 listenaddress=192.168.137.1 listenport=1521 connectaddress=
+
+
+PS C:\WINDOWS\system32>  netsh interface portproxy show  v4tov4
+
+侦听 ipv4:                 连接到 ipv4:
+
+地址            端口        地址            端口
+--------------- ----------  --------------- ----------
+192.168.137.1   1521                        1521
+
+PS C:\WINDOWS\system32>  netsh interface portproxy add v4tov4 listenaddress=192.168.137.1 listenport=1521 connectaddress
+=
+
+PS C:\WINDOWS\system32> 127.0.0.1  connectport=1521
+所在位置 行:1 字符: 12
++ 127.0.0.1  connectport=1521
++            ~~~~~~~~~~~~~~~~
+表达式或语句中包含意外的标记“connectport=1521”。
+    + CategoryInfo          : ParserError: (:) [], ParentContainsErrorRecordException
+    + FullyQualifiedErrorId : UnexpectedToken
+
+PS C:\WINDOWS\system32> netsh interface portproxy add v4tov4 listenaddress=192.168.137.1 listenport=9999 connectaddress=
+127.0.0.1  connectport=8080
+
+PS C:\WINDOWS\system32>  netsh interface portproxy show  v4tov4
+
+侦听 ipv4:                 连接到 ipv4:
+
+地址            端口        地址            端口
+--------------- ----------  --------------- ----------
+192.168.137.1   1521                        1521
+192.168.137.1   9999        127.0.0.1       8080
+
+PS C:\WINDOWS\system32> netsh interface portproxy add v4tov4 listenaddress=192.168.137.1 listenport=9998 connectaddress=
+127.0.0.1  connectport=8080
+
+PS C:\WINDOWS\system32> netsh interface portproxy add v4tov4 listenaddress=192.168.137.1 listenport=55555 connectaddress
+=127.0.0.1  connectport=8080
+
+PS C:\WINDOWS\system32> netsh interface portproxy add v4tov4 listenaddress=192.168.137.1 listenport=5* connectaddress=12
+7.0.0.1  connectport=8080
+
+PS C:\WINDOWS\system32>  netsh interface portproxy show  v4tov4
+
+侦听 ipv4:                 连接到 ipv4:
+
+地址            端口        地址            端口
+--------------- ----------  --------------- ----------
+192.168.137.1   1521                        1521
+192.168.137.1   9999        127.0.0.1       8080
+192.168.137.1   9998        127.0.0.1       8080
+192.168.137.1   55555       127.0.0.1       8080
+192.168.137.1   5*          127.0.0.1       8080
+
+PS C:\WINDOWS\system32> netsh interface portproxy delete v4tov4
+一个或多个重要的参数没有输入。
+请验证需要的参数，然后再次输入。
+此命令提供的语法不正确。请查看帮助以获取正确的语法信息。
+
+用法: delete v4tov4 [listenport=]<integer>|<servicename>
+            [[listenaddress=]<IPv4 address>|<hostname>]
+            [[protocol=]tcp]
+
+参数:
+
+       标记             值
+       listenport     - 要侦听的 IPv4 端口。
+       listenport     - 要侦听的 IPv4 地址。
+       protocol       - 要使用的协议。当前仅支持 TCP。
+
+注释: 删除要侦听的 IPv4 的项并通过 Ipv4 代理连接。
+
+
+PS C:\WINDOWS\system32> netsh interface portproxy delete v4tov4 192.168.137.1
+系统找不到指定的文件。
+
+
+PS C:\WINDOWS\system32> netsh interface portproxy delete v4tov4 listaddress=192.168.137.1
+'listaddress' 不是这个指令的有效参数。
+此命令提供的语法不正确。请查看帮助以获取正确的语法信息。
+
+用法: delete v4tov4 [listenport=]<integer>|<servicename>
+            [[listenaddress=]<IPv4 address>|<hostname>]
+            [[protocol=]tcp]
+
+参数:
+
+       标记             值
+       listenport     - 要侦听的 IPv4 端口。
+       listenport     - 要侦听的 IPv4 地址。
+       protocol       - 要使用的协议。当前仅支持 TCP。
+
+注释: 删除要侦听的 IPv4 的项并通过 Ipv4 代理连接。
+
+
+PS C:\WINDOWS\system32> netsh interface portproxy delete v4tov4 listaddress=192.168.137.1 listenport=1521
+'listaddress' 不是这个指令的有效参数。
+此命令提供的语法不正确。请查看帮助以获取正确的语法信息。
+
+用法: delete v4tov4 [listenport=]<integer>|<servicename>
+            [[listenaddress=]<IPv4 address>|<hostname>]
+            [[protocol=]tcp]
+
+参数:
+
+       标记             值
+       listenport     - 要侦听的 IPv4 端口。
+       listenport     - 要侦听的 IPv4 地址。
+       protocol       - 要使用的协议。当前仅支持 TCP。
+
+注释: 删除要侦听的 IPv4 的项并通过 Ipv4 代理连接。
+
+
+PS C:\WINDOWS\system32> netsh interface portproxy delete v4tov4 listaddress=192.168.137.1 listenport=1521 protocol=tcp
+'listaddress' 不是这个指令的有效参数。
+此命令提供的语法不正确。请查看帮助以获取正确的语法信息。
+
+用法: delete v4tov4 [listenport=]<integer>|<servicename>
+            [[listenaddress=]<IPv4 address>|<hostname>]
+            [[protocol=]tcp]
+
+参数:
+
+       标记             值
+       listenport     - 要侦听的 IPv4 端口。
+       listenport     - 要侦听的 IPv4 地址。
+       protocol       - 要使用的协议。当前仅支持 TCP。
+
+注释: 删除要侦听的 IPv4 的项并通过 Ipv4 代理连接。
+
+
+PS C:\WINDOWS\system32> netsh interface portproxy delete v4tov4 listenaddress=192.168.137.1 listenport=1521 protocol=tcp
+
+
+PS C:\WINDOWS\system32> netsh interface portproxy delete v4tov4 listenaddress=192.168.137.1 listenport=9999 protocol=tcp
+
+
+PS C:\WINDOWS\system32> netsh interface portproxy delete v4tov4 listenaddress=192.168.137.1 listenport=9998 protocol=tcp
+
+
+PS C:\WINDOWS\system32> netsh interface portproxy delete v4tov4 listenaddress=192.168.137.1 listenport=55555 protocol=tc
+p
+
+PS C:\WINDOWS\system32> netsh interface portproxy delete v4tov4 listenaddress=192.168.137.1 listenport=5* protocol=tcp
+
+PS C:\WINDOWS\system32>  netsh interface portproxy show  v4tov4
