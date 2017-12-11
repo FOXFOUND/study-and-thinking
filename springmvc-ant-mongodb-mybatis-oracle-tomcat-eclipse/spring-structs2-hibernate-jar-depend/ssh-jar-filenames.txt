@@ -1,0 +1,183 @@
+http://www.findjar.com/index.x
+https://mvnrepository.com/
+
+antlr-2.7.7.jar
+Artifact:	antlr
+Version:	2.7.7
+Name:	AntLR Parser Generator
+Description:	A framework for constructing recognizers, compilers, and translators from grammatical descriptions containing Java, C#, C++, or Python actions.
+URL:	http://www.antlr.org/
+Download:	MAVEN2 http://mirrors.ibiblio.org/pub/mirrors/maven2/antlr/antlr/2.7.7/antlr-2.7.7.jar
+Size:	435.0 KB
+
+
+aopalliance-.jar
+Artifact:	aopalliance
+Version:	1.0
+Name:	AOP alliance
+Description:	AOP Alliance
+URL:	http://aopalliance.sourceforge.net
+Download:	MAVEN2 http://mirrors.ibiblio.org/pub/mirrors/maven2/aopalliance/aopalliance/1.0/aopalliance-1.0.jar
+Size:	5.0 KB
+
+aspectjweaver-1.8.10.jar
+Vendor:	aspectj.org
+Title:	org.aspectj.weaver
+Artifact:	aspectjweaver
+Version:	1.5.0
+Name:	AspectJ weaver
+Description:	The AspectJ weaver introduces advices to java classes
+URL:	http://www.aspectj.org
+Download:	MAVEN2 http://mirrors.ibiblio.org/pub/mirrors/maven2/aspectj/aspectjweaver/1.5.0/aspectjweaver-1.5.0.jar
+Size:	1.67 MB
+
+commons-fileupload-1.3.2.jar
+Vendor:	Apache Software Foundation
+Version:	11
+Name:	Oracle Containers for Java
+URL:	http://www.oracle.com/technology/tech/java/oc4j/index.html
+Size:	22.0 KB
+
+commons-io-2.2.jar
+Vendor:	Apache Software Foundation
+Title:	Commons IO
+Artifact:	commons-io
+Version:	1.0
+Name:	IO
+Description:	Commons-IO contains utility classes, stream implementations, file filters, and endian classes.
+URL:	http://jakarta.apache.org/commons/io/
+Download:	MAVEN http://mirrors.ibiblio.org/pub/mirrors/maven/commons-io/jars/commons-io-1.2.jar
+Size:	65.0 KB
+
+commons-lang3-3.2.jar
+Vendor:	Apache Software Foundation
+Title:	org.apache.commons.lang
+Artifact:	commons-lang
+Version:	3.7
+Name:	Lang
+Description:	Commons.Lang, a package of Java utility classes for the classes that are in java.lang's hierarchy, or are considered to be so standard as to justify existence in java.lang.
+URL:	http://jakarta.apache.org/commons/lang/
+Download:	MAVEN http://mirrors.ibiblio.org/pub/mirrors/maven/commons-lang/jars/commons-lang-2.0.jar
+Size:	166.0 KB
+
+commons-logging-1.1.1.jar
+Vendor:	Apache Software Foundation
+Version:	11
+Name:	Oracle Containers for Java
+URL:	http://www.oracle.com/technology/tech/java/oc4j/index.html
+Size:	38.0 KB
+
+dom4j-1.6.1.jar
+Vendor:	MetaStuff Ltd.
+Title:	org.dom4j
+Artifact:	jaxme-api
+Version:	0.3
+Name:	dom4j
+Description:	dom4j: the flexible XML framework for Java
+URL:	http://sourceforge.net/projects/dom4j
+Download:	MAVEN http://mirrors.ibiblio.org/pub/mirrors/maven/dom4j/jars/dom4j-1.5.1.jar
+Size:	371.0 KB
+
+freemarker-2.3.22.jar
+Vendor:	Visigoth Software Society
+Artifact:	freemarker
+Version:	1.5.3
+Name:	BSD-style license
+Description:	FreeMarker is a "template engine"; a generic tool to generate text output based on templates.
+URL:	http://freemarker.org/
+Download:	MAVEN2 http://mirrors.ibiblio.org/pub/mirrors/maven2/freemarker/freemarker/1.5.3/freemarker-1.5.3.jar
+Size:	97.0 KB
+
+hibernate-commons-annotations-4.0.5.Final.jar
+Vendor:	hibernate.org
+Artifact:	hibernate-commons-annotations
+Version:	3.0.0.ga
+Name:	Hibernate Commons Annotations
+Description:	Hibernate Commons Annotations is a utility project used by annotations based Hibernate sub-projects.
+Download:	MAVEN2 http://mirrors.ibiblio.org/pub/mirrors/maven2/org/hibernate/hibernate-commons-annotations/3.0.0.ga/hibernate-commons-annotations-3.0.0.ga.jar
+Size:	65.0 KB
+
+hibernate-core-4.3.11.Final.jar
+
+Vendor:	Hibernate.org
+Title:	Hibernate Core
+Artifact:	hibernate-core
+Version:	3.3.0.CR1
+Name:	Hibernate Core
+Description:	The core functionality of Hibernate
+Download:	MAVEN2 http://mirrors.ibiblio.org/pub/mirrors/maven2/org/hibernate/hibernate-core/3.3.0.CR1/hibernate-core-3.3.0.CR1.jar
+Size:	2.15 MB
+
+hibernate-jpa-2.1-api-1.0.0.Final.jar
+Vendor:	hibernate.org
+Description:Clean-room definition of JPA APIs intended for use in developing Hibernate JPA implementation. 
+
+jandex-1.1.0.Final.jar
+Description: Java Annotation Indexer
+
+
+javassist-3.18.1-GA.jar
+Description: Javassist (JAVA programming ASSISTant) makes Java bytecode manipulation simple. It is a class library for editing bytecodes in Java.
+
+jboss-logging-3.1.3.GA.jar
+Description: Apache Commons Logging is a thin adapter allowing configurable bridging to other, well known logging systems.
+
+jboss-logging-annotations-1.2.0.Beta1.jar
+Description: Apache Commons Logging is a thin adapter allowing configurable bridging to other, well known logging systems.
+
+jboss-transaction-api_1.2_spec-1.0.0.Final.jar
+Description: The Java Transaction 1.2 API classes
+
+json.org.jar
+Description: JSON is a light-weight, language independent, data interchange format. See http://www.JSON.org/ The files in this package implement JSON encoders/decoders in Java. It also includes the capability to convert between JSON and XML, HTTP headers, Cookies, and CDL. This is a reference implementation. There is a large number of JSON packages in Java. Perhaps someday the Java community will standardize on one. Until then, choose carefully. 
+
+junit-4.7.jar
+Description: JUnit is a unit testing framework for Java, created by Erich Gamma and Kent Beck.
+
+log4j-api-2.8.2.jar
+Description: The Apache Log4j Implementation
+
+log4j-core-2.8.2.jar
+Description: The Apache Log4j Implementation
+
+mysql-connector-java-5.1.42-bin.jar
+Description: MySQL JDBC Type 4 driver
+
+ognl-3.0.19.jar
+Description: OGNL - Object Graph Navigation Library
+
+ojdbc14.jar
+Description: Oracle JDBC driver classes for use with JDK1.4
+
+servlet-api.jar
+Description: Java Servlet API
+
+spring-aop-3.2.4.RELEASE.jar
+Description: Spring AOP
+
+spring-beans-3.2.4.RELEASE.jar
+Description: Spring Beans
+
+spring-context-3.2.4.RELEASE.jar
+Description: Spring Context
+
+spring-context-support-3.2.4.RELEASE-javadoc.jar
+Description: Spring Context Support
+
+spring-core-3.2.4.RELEASE.jar
+Description: Spring Core
+
+spring-expression-3.2.4.RELEASE.jar
+Description: Spring Context
+
+spring-web-3.2.1.RELEASE.jar
+Description: Spring Web
+
+struts2-core-2.3.33.jar
+Description: Core Jackson processing abstractions (aka Streaming API), implementation for JSON
+
+struts2-spring-plugin-2.3.4.1.jar
+Description: Struts 2 Spring Plugin
+
+xwork-core-2.3.33.jar
+Description: Core Jackson processing abstractions (aka Streaming API), implementation for JSON
