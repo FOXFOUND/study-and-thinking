@@ -1,0 +1,39 @@
+Microsoft Windows [版本 10.0.15063]
+(c) 2017 Microsoft Corporation。保留所有权利。
+
+C:\WINDOWS\system32>cd d:/asmdebug
+
+C:\WINDOWS\system32>D:
+
+d:\asmdebug>ml /c /coff text.asm
+Microsoft (R) Macro Assembler Version 6.14.8444
+Copyright (C) Microsoft Corp 1981-1997.  All rights reserved.
+
+ Assembling: text.asm
+MASM : fatal error A1000: cannot open file : text.asm
+
+d:\asmdebug>ml /c /coff text.asm
+Microsoft (R) Macro Assembler Version 6.14.8444
+Copyright (C) Microsoft Corp 1981-1997.  All rights reserved.
+
+ Assembling: text.asm
+
+***********
+ASCII build
+***********
+
+
+d:\asmdebug>link /subsystem:windows text.obj
+该版本的 d:\asmdebug\LINK.EXE 与你运行的 Windows 版本不兼容。请查看计算机的系统信息，然后联系软件发布者。
+
+d:\asmdebug>link
+该版本的 d:\asmdebug\LINK.EXE 与你运行的 Windows 版本不兼容。请查看计算机的系统信息，然后联系软件发布者。
+
+d:\asmdebug>link /subsystem:windows text.obj
+Microsoft (R) Incremental Linker Version 5.12.8078
+Copyright (C) Microsoft Corp 1992-1998. All rights reserved.
+
+
+d:\asmdebug>text
+
+d:\asmdebug>
