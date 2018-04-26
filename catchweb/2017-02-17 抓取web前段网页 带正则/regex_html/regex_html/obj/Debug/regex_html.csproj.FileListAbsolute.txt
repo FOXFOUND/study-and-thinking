@@ -1,0 +1,6 @@
+D:\vsproject\regex_html\regex_html\bin\Debug\regex_html.exe.config
+D:\vsproject\regex_html\regex_html\bin\Debug\regex_html.exe
+D:\vsproject\regex_html\regex_html\bin\Debug\regex_html.pdb
+D:\vsproject\regex_html\regex_html\obj\Debug\regex_html.csprojResolveAssemblyReference.cache
+D:\vsproject\regex_html\regex_html\obj\Debug\regex_html.exe
+D:\vsproject\regex_html\regex_html\obj\Debug\regex_html.pdb

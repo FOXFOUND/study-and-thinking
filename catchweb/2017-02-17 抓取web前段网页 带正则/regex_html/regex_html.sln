@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.21005.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "regex_html", "regex_html\regex_html.csproj", "{1F04AA6F-7A37-42DC-9AEB-26B02C66F0FD}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1F04AA6F-7A37-42DC-9AEB-26B02C66F0FD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1F04AA6F-7A37-42DC-9AEB-26B02C66F0FD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1F04AA6F-7A37-42DC-9AEB-26B02C66F0FD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1F04AA6F-7A37-42DC-9AEB-26B02C66F0FD}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

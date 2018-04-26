@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="google-site-verification" content="0FNbiBWk1FugWYo-RiGxQyIHebGeLoXp3HB7AxIFKy8" />
+    <meta name="baidu-site-verification" content="tYoUqpkCCv" />
+    <meta name="baidu-site-verification" content="IGN97NW90O" />
+    
+    <title>Promise与异步 | ouvenzhang的博客</title>
+
+    <meta http-equiv="x-dns-prefetch-control" content="on" />
+    <link rel="dns-prefetch" href="cdnjs.cloudflare.com" />
+    <link rel="dns-prefetch" href="1.url.cn" />
+
+    <meta name="description" itemprop="description" content="Promise与异步,Promise,异步编程 ">
+    <meta itemprop="name" content="Promise与异步">
+    <meta itemprop="image" content="http://ouvens.github.io/blog/assets/logo.png">
+    <meta itemprop="keywords" name="keywords" content="Promise与异步,Promise,异步编程 ">
+
+    
+    <meta name="author" content="ouvenzhang">
+    <meta name="copyright" content="&copy; ouvenzhang 2017">
+    <meta name="protocol" content="1">
+    
+
+    <!-- External libraries -->
+    <link rel="stylesheet" href="/assets/css/iconfont.css">
+    <link rel="stylesheet" href="/css/monokai_sublime.css">
+
+    <!-- Favicon and other icons (made with http://www.favicon-generator.org/) -->
+    <link rel="shortcut icon" href="/assets/favicon.ico" type="image/x-icon">
+  	<link rel="icon" href="/assets/favicon.ico" type="image/x-icon">
+    
+  	<meta name="msapplication-TileColor" content="#ffffff">
+  	<meta name="theme-color" content="#ffffff">
+    <meta name="msapplication-TileImage" content="/assets/icons/icon.png">
+
+  	<!-- Site styles -->
+    <link rel="stylesheet" href="/css/main.css">
+
+    <link rel="alternate" type="application/rss+xml" title="极限前端" href="http://ouvens.github.io//feed.xml" />
+    <script>
+    // 访问统计
+    var domain = 'jixianqianduan.com';
+    var oldDomain = 'ouvens.github.io';
+    if(location.host === domain){
+        var _hmt = _hmt || [];
+        (function() {
+          var hm = document.createElement("script");
+          hm.src = "//hm.baidu.com/hm.js?b536b128dc21c3d18fdc028f0609e3f0";
+          var s = document.getElementsByTagName("script")[0]; 
+          s.parentNode.insertBefore(hm, s);
+        })();
+    }else if(location.host === oldDomain){
+        window.location.href = location.href.replace(oldDomain, domain);
+        var _hmt = _hmt || [];
+        (function() {
+          var hm = document.createElement("script");
+          hm.src = "//hm.baidu.com/hm.js?041efd2cb345ca1b9dbdbb2383cb716d";
+          var s = document.getElementsByTagName("script")[0]; 
+          s.parentNode.insertBefore(hm, s);
+        })();
+    }
+
+    // 链接提交
+
+    if(location.protocol === 'https'){
+        !function(){var e=/([http|https]:\/\/[a-zA-Z0-9\_\.]+\.baidu\.com)/gi,r=window.location.href,t=document.referrer;if(!e.test(r)){var o="https://sp0.baidu.com/9_Q4simg2RQJ8t7jm9iCKT-xh_/s.gif";t?(o+="?r="+encodeURIComponent(document.referrer),r&&(o+="&l="+r)):r&&(o+="?l="+r);var i=new Image;i.src=o}}(window);
+    }else{
+        !function(){var e=/([http|https]:\/\/[a-zA-Z0-9\_\.]+\.baidu\.com)/gi,r=window.location.href,o=document.referrer;if(!e.test(r)){var n="//api.share.baidu.com/s.gif";o?(n+="?r="+encodeURIComponent(document.referrer),r&&(n+="&l="+r)):r&&(n+="?l="+r);var t=new Image;t.src=n}}(window);
+    }
+
+
+    </script>
+</head>
+
+    <body>
+        <div class="navigation" role="banner">
+    <div class="navigation-wrapper">
+    <a href="/" class="logo">
+    	
+      <img src="/assets/logo.png" alt="极限前端">
+      
+    </a>
+    <span class="search-input" id="search-input">
+      <input type="text" value="" class="search-text" placeholder="输入搜索关键字">
+      <i class="icon-font i-search search-btn"></i>
+    </span>
+    <a href="javascript:void(0)" class="navigation-menu-button" id="js-mobile-menu">
+    	<i class="icon-font i-list fa fa-bars"></i>
+    </a>
+    <span class="nav" role="navigation">
+      <ul id="js-navigation-menu" class="navigation-menu show">
+      	
+          
+          <li class="nav-link">
+            <a href="/about/">关于</a>
+          </li>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+          <li class="nav-link">
+            <a href="/category/">所有文章</a>
+          </li>
+          
+        
+          
+          <li class="nav-link">
+            <a href="/tags/">标签分类</a>
+          </li>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          <li id="github-info" class="nav-link" title="https://github.com/ouvens">
+            <a class="github-info" href="https://github.com/ouvens" target="_blank">
+            <img src="/assets/github.png" height="34" width="130" alt="github地址"></a>
+          </li>
+      </ul>
+    </span>
+  </div>
+</div>
+
+            <div class="page-content">
+        <div class="post">
+<div class="post-header-container has-cover">
+	<header class="post-header">
+	  <h1 class="title">Promise与异步</h1>
+	  <p class="info">by <strong>ouven</strong></p>
+	</header>
+</div>
+<div class="wrapper">
+
+
+
+<div class="post-meta">
+	<div class="post-date">2016年03月04日</div>
+	<div class="post-categories">
+	 in  
+		<a target="_blank" href="/category/?cate=frontend-javascript">Frontend-javascript</a>
+	  
+	</div>
+</div>	
+
+<article class="post-content">
+  <p>  接触过promise的的都知道它的应用场景和用途，Promise可以用来避免异步操作函数里的嵌套回调（callback hell）问题，因为解决异步最直接的方法是回调嵌套，将后一个的操作放在前一个操作的异步回调里，但如果操作多了，就会有很多层的嵌套。</p>
+
+<p>  Promise的实现方式比较多，有丰富的第三方库，ES6也已经原生支持了Promise，jquery中也有$.Deferred()等可以解决异步嵌套问题。</p>
+
+<p><strong>先给下Promise学术点的<a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Promise">描述</a>：</strong></p>
+
+<p>  promise代表一个异步操作的执行返回状态，这个执行返回状态在promise对象创建时未必已知。它允许你为异步操作的成功或失败指定处理方法。 这使得异步方法可以像同步方法那样返回值：异步方法会返回一个包含了原返回状态的 promise 对象来替代原返回状态。</p>
+
+<h4 id="promise">一、Promise的适用场景</h4>
+
+<p>  Promise并非适用于所有的异步场景，例如事件的绑定，某个程度上Promise有点类似事件的监听回调，当触发某个操作时进行后面特定的逻辑。但Promise只能执行一次，且需要前面特定的操作执行完成才会进行下一步，一般分成功和失败两种场景，成功或失败后会立即执行响应函数。这就很适合判断一个比较耗时的操作是否最终执行成功的场景，就如我们通常理解的ajax网络请求、读取localstorage等操作。</p>
+
+<h3 id="promise-1">二、Promise的表现</h3>
+
+<p>  如果使用回调方法处理多个操作的异步场景，判断某个操作成功或失败的控制在于声明的匿名函数里面，使用Promise对象则可以重新定义异步执行的状态和控制逻辑。</p>
+
+<p>  promises的最重要的特点就是它把我们处理任何函数调用的成功或者失败的方式规范成了可预测的形式，特别是如果这个调用实际上的异步的。</p>
+
+<p>  Promise中有几个状态：</p>
+
+<ul>
+  <li>
+    <p>pending: 初始状态。 非 fulfilled 或 rejected。</p>
+  </li>
+  <li>
+    <p>resolved: 成功的操作。也有的成为fulfilled 。</p>
+  </li>
+  <li>
+    <p>rejected: 失败的操作。</p>
+  </li>
+</ul>
+
+<p>  不同的Promise差异基本表现如下：</p>
+
+<ul>
+  <li>
+    <p>构造Promise对象 new Promise().resolve() 或者 new Pomise(function(resolve, reject) {})</p>
+  </li>
+  <li>
+    <p>是否有 .done() .fail() .always() 等方法</p>
+  </li>
+  <li>
+    <p>是否有Promise.all()方法</p>
+  </li>
+  <li>
+    <p>是否有isRejected() isResolved()</p>
+  </li>
+  <li>
+    <p>.then() return 结果链式的</p>
+  </li>
+</ul>
+
+<h3 id="promise-2">三、几种规范的promise</h3>
+
+<h4 id="promisepromisea-promisea">2.1、Promise的Promise/A 规范和Promise/A+规范</h4>
+
+<p>先看下规范的地址： 
+http://wiki.commonjs.org/wiki/Promises/A
+https://promisesaplus.com/</p>
+
+<p>  什么是A+规范的Promise? Promises/A+是在Promises/A的基础上对原有规范进行修正和增强。</p>
+
+<p><strong>Promise A+与Promise A的主要区别:</strong></p>
+
+<ul>
+  <li>
+    <p>符合Promise/A+规范的promise实现均以then方法为交互核心。Promises/A+组织会因新发现的问题以向后兼容的方式修改规范，因此Promises/A+规范相对来说还是比较稳定的。</p>
+  </li>
+  <li>
+    <p>A+规范强调了不同实现之间的互操作和混用，通过术语thenable来区分promise对象，当一个对象拥有then函数就认为是promise对象</p>
+  </li>
+  <li>
+    <p>A+定义当onFulfilled或者onRejected返回promise时后的处理过程，他们必须是作为函数来调用，而且调用过程必须是异步的</p>
+  </li>
+  <li>
+    <p>A+严格定义了then方法链式调用时onFulfilled或者onRejected的调用顺序</p>
+  </li>
+</ul>
+
+<p>目前判断是否为Promise/ A+规范主要看Promiise的方法含有new Pomise(function(resolve, reject) {})、then、resolve、all等方法。ES6 Promise的实现严格遵循了Promise/A+规范。例如Defferd就不是Promise/ A+的规范。</p>
+
+<h4 id="defferd">2.2、Defferd实现规范</h4>
+
+<p>  比较典型的是jquery的Defferd方法实现的Promise，另外jquery还有一个Promise的类型，实现的原理相同，但是不遵循Promise/A +规范，相对于Promise没有那么稳定。</p>
+
+<p>  我们先来看看jquery的Promise是怎样实现的。我们看下jquery的Deferred实现源码：</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37</pre></td><td class="code"><pre>
+<span class="c1">// 精简后主要逻辑的源码</span>
+<span class="nl">Deferred</span><span class="p">:</span> <span class="kd">function</span><span class="p">(</span> <span class="nx">func</span> <span class="p">)</span> <span class="p">{</span>
+        <span class="kd">var</span> <span class="nx">tuples</span> <span class="o">=</span> <span class="p">[</span>
+                <span class="c1">// action, add listener, listener list, final state</span>
+                <span class="p">[</span> <span class="s2">"resolve"</span><span class="p">,</span> <span class="s2">"done"</span><span class="p">,</span> <span class="nx">jQuery</span><span class="p">.</span><span class="nx">Callbacks</span><span class="p">(</span><span class="s2">"once memory"</span><span class="p">),</span> <span class="s2">"resolved"</span> <span class="p">],</span>
+                <span class="p">[</span> <span class="s2">"reject"</span><span class="p">,</span> <span class="s2">"fail"</span><span class="p">,</span> <span class="nx">jQuery</span><span class="p">.</span><span class="nx">Callbacks</span><span class="p">(</span><span class="s2">"once memory"</span><span class="p">),</span> <span class="s2">"rejected"</span> <span class="p">],</span>
+                <span class="p">[</span> <span class="s2">"notify"</span><span class="p">,</span> <span class="s2">"progress"</span><span class="p">,</span> <span class="nx">jQuery</span><span class="p">.</span><span class="nx">Callbacks</span><span class="p">(</span><span class="s2">"memory"</span><span class="p">)</span> <span class="p">]</span>
+            <span class="p">],</span>
+            <span class="nx">state</span> <span class="o">=</span> <span class="s2">"pending"</span><span class="p">,</span>
+            <span class="nx">promise</span> <span class="o">=</span> <span class="p">{</span>
+                <span class="na">state</span><span class="p">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{},</span>
+                <span class="na">always</span><span class="p">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{},</span>
+                <span class="na">then</span><span class="p">:</span> <span class="kd">function</span><span class="p">(</span> <span class="cm">/* fnDone, fnFail, fnProgress */</span> <span class="p">)</span> <span class="p">{</span> <span class="p">},</span>
+                <span class="c1">// Get a promise for this deferred</span>
+                <span class="c1">// If obj is provided, the promise aspect is added to the object</span>
+                <span class="na">promise</span><span class="p">:</span> <span class="kd">function</span><span class="p">(</span> <span class="nx">obj</span> <span class="p">)</span> <span class="p">{}</span>
+            <span class="p">},</span>
+            <span class="nx">deferred</span> <span class="o">=</span> <span class="p">{};</span>
+        <span class="nx">jQuery</span><span class="p">.</span><span class="nx">each</span><span class="p">(</span> <span class="nx">tuples</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span> <span class="nx">i</span><span class="p">,</span> <span class="nx">tuple</span> <span class="p">)</span> <span class="p">{</span>
+            <span class="nx">deferred</span><span class="p">[</span> <span class="nx">tuple</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="s2">"With"</span> <span class="p">]</span> <span class="o">=</span> <span class="nx">list</span><span class="p">.</span><span class="nx">fireWith</span><span class="p">;</span>
+        <span class="p">});</span>
+        <span class="nx">promise</span><span class="p">.</span><span class="nx">promise</span><span class="p">(</span> <span class="nx">deferred</span> <span class="p">);</span>
+        <span class="c1">// All done!</span>
+        <span class="k">return</span> <span class="nx">deferred</span><span class="p">;</span>
+    <span class="p">},</span>
+
+<span class="c1">// 调用时间订阅方法</span>
+
+<span class="kd">var</span> <span class="nx">def</span> <span class="o">=</span> <span class="nx">$</span><span class="p">.</span><span class="nx">Deferred</span><span class="p">();</span>
+  <span class="nx">def</span><span class="p">.</span><span class="nx">done</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
+     <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="err">“成功”</span><span class="p">);</span>
+  <span class="p">}).</span><span class="nx">fail</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
+      <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="err">“失败”</span><span class="p">);</span>
+  <span class="p">}).</span><span class="k">catch</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
+      <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="err">“再一次成功”</span><span class="p">);</span>
+  <span class="p">})</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p>  可见，jquery的Deferred是个工厂类，返回的是内部构建的deferred对象；tuples 含有三个$.Callbacks对象，分别表示成功，失败，处理中三种状态；创建的promise对象，具有state、always、then、primise方法；扩展primise对象生成最终的Deferred对象，返回该对象；没有resolve、reject、all等Promise/A+ 规范的常用方法。</p>
+
+<h3 id="section">三、兼容性</h3>
+
+<p><img src="http://7tszky.com1.z0.glb.clouddn.com/FglTi7fYmY9pkdE0Ux3LA_h22bPe" alt="" /></p>
+
+<p>目前使用需要使用polyfill，也就是原生实现一个Promise支持较低浏览器，第三方实现库很多后面给了个学习的较好例子。</p>
+
+<h3 id="generator">四、generator的异步</h3>
+
+<p>  Promise处理异步问题相信都了解了。ES6里的generator还有另一个处理异步的方法，那ES6定义这两个特性岂不是重复了？</p>
+
+<p>  单独地介绍Generator没有太大价值，因为它除了更复杂外，功能与普通函数没有太大差别。真正让Generator具有价值的是yield关键字，这个yield关键字让Generator内部的逻辑能够切割成多个部分。并且可以灵活控制内部的执行情况。</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14</pre></td><td class="code"><pre><span class="c1">// 申明要用 var gen = function* (){} 的方式</span>
+<span class="kd">var</span> <span class="nx">compute</span> <span class="o">=</span> <span class="kd">function</span><span class="o">*</span> <span class="p">(</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">yield</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">a</span> <span class="o">+</span> <span class="nx">b</span><span class="p">);</span>
+  <span class="k">yield</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">a</span> <span class="o">-</span> <span class="nx">b</span><span class="p">);</span>
+  <span class="k">yield</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">a</span> <span class="o">*</span> <span class="nx">b</span><span class="p">);</span>
+  <span class="k">yield</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">a</span> <span class="o">/</span> <span class="nx">b</span><span class="p">);</span>
+<span class="p">};</span>
+
+<span class="kd">var</span> <span class="nx">generator</span> <span class="o">=</span> <span class="nx">compute</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span>
+
+<span class="nx">generator</span><span class="p">.</span><span class="nx">next</span><span class="p">();</span> <span class="c1">// 6</span>
+<span class="nx">generator</span><span class="p">.</span><span class="nx">next</span><span class="p">();</span> <span class="c1">// 2</span>
+<span class="nx">generator</span><span class="p">.</span><span class="nx">next</span><span class="p">();</span> <span class="c1">// 8</span>
+<span class="nx">generator</span><span class="p">.</span><span class="nx">next</span><span class="p">();</span> <span class="c1">// 2</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+<p>运行时使用node –harmony-generators test.js</p>
+
+<p>  不难发现它的运行过程，generator函数运行到yield时会停止，等待下一个next()方法调用让它继续执行。我们改下成为异步方法，异步我们需要借助高阶函数</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16</pre></td><td class="code"><pre><span class="kd">var</span> <span class="nx">helper</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">fn</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+        <span class="kd">var</span> <span class="nx">args</span> <span class="o">=</span> <span class="p">[].</span><span class="nx">slice</span><span class="p">.</span><span class="nx">call</span><span class="p">(</span><span class="nx">arguments</span><span class="p">);</span>
+        <span class="kd">var</span> <span class="nx">pass</span><span class="p">;</span>
+        <span class="nx">args</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span> <span class="c1">// 在回调函数中植入收集逻辑</span>
+            <span class="k">if</span> <span class="p">(</span><span class="nx">pass</span><span class="p">)</span> <span class="p">{</span>
+                <span class="nx">pass</span><span class="p">.</span><span class="nx">apply</span><span class="p">(</span><span class="kc">null</span><span class="p">,</span> <span class="nx">arguments</span><span class="p">);</span>
+            <span class="p">}</span>
+        <span class="p">});</span>
+        <span class="nx">fn</span><span class="p">.</span><span class="nx">apply</span><span class="p">(</span><span class="kc">null</span><span class="p">,</span> <span class="nx">args</span><span class="p">);</span>
+
+        <span class="k">return</span> <span class="kd">function</span><span class="p">(</span><span class="nx">fn</span><span class="p">)</span> <span class="p">{</span> <span class="c1">// 传入一个收集函数</span>
+            <span class="nx">pass</span> <span class="o">=</span> <span class="nx">fn</span><span class="p">;</span>
+        <span class="p">};</span>
+    <span class="p">};</span>
+<span class="p">};</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p>那么后面的写法做下修改</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41</pre></td><td class="code"><pre>
+<span class="kd">var</span> <span class="nx">sum</span> <span class="o">=</span> <span class="nx">helper</span><span class="p">(</span><span class="kd">function</span> <span class="nx">sum</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">){</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">a</span> <span class="o">+</span> <span class="nx">b</span><span class="p">);</span>
+<span class="p">});</span>
+
+<span class="kd">var</span> <span class="nx">minus</span> <span class="o">=</span> <span class="nx">helper</span><span class="p">(</span><span class="kd">function</span> <span class="nx">minus</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">){</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">a</span> <span class="o">-</span> <span class="nx">b</span><span class="p">);</span>
+<span class="p">});</span>
+
+<span class="kd">var</span> <span class="nx">muti</span><span class="o">=</span> <span class="nx">helper</span><span class="p">(</span><span class="kd">function</span> <span class="nx">muti</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">){</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">a</span> <span class="o">*</span> <span class="nx">b</span><span class="p">);</span>
+<span class="p">});</span>
+
+<span class="kd">var</span> <span class="nx">devide</span><span class="o">=</span> <span class="nx">helper</span><span class="p">(</span><span class="kd">function</span> <span class="nx">devide</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">){</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">a</span> <span class="o">/</span> <span class="nx">b</span><span class="p">);</span>
+<span class="p">});</span>
+
+<span class="kd">var</span> <span class="nx">compute</span> <span class="o">=</span> <span class="kd">function</span><span class="o">*</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">yield</span> <span class="nx">sum</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">);</span>
+    <span class="k">yield</span> <span class="nx">minus</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">);</span>
+    <span class="k">yield</span> <span class="nx">muti</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">);</span>
+    <span class="k">yield</span> <span class="nx">devide</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">);</span>
+<span class="p">};</span>
+
+<span class="kd">var</span> <span class="nx">generator</span> <span class="o">=</span> <span class="nx">compute</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">state</span> <span class="o">=</span> <span class="nx">generator</span><span class="p">.</span><span class="nx">next</span><span class="p">();</span>
+
+<span class="cm">/**
+ * next 返回 {value:'',done: false}的结构，value表示执行传入的值，done表示是否结束
+ * @param  {[type]} !state.done [description]
+ * @return {[type]}             [description]
+ */</span>
+ 
+<span class="nx">setTimeout</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+
+    <span class="k">while</span> <span class="p">(</span><span class="o">!</span><span class="nx">state</span><span class="p">.</span><span class="nx">done</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">state</span> <span class="o">=</span> <span class="nx">generator</span><span class="p">.</span><span class="nx">next</span><span class="p">();</span>
+    <span class="p">}</span>
+<span class="p">},</span> <span class="mi">100</span><span class="p">);</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'other'</span><span class="p">);</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p>generator实现异步的方法也有比较完整的封装方式，实现先可以看：https://github.com/ouvens/co
+可以看个简单版的：</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15</pre></td><td class="code"><pre><span class="kd">var</span> <span class="nx">co</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">flow</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">generator</span> <span class="o">=</span> <span class="nx">flow</span><span class="p">();</span>
+    <span class="kd">var</span> <span class="nx">next</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kd">var</span> <span class="nx">result</span> <span class="o">=</span> <span class="nx">generator</span><span class="p">.</span><span class="nx">next</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
+        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">result</span><span class="p">.</span><span class="nx">done</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">result</span><span class="p">.</span><span class="nx">value</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
+                <span class="k">if</span> <span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
+                    <span class="k">throw</span> <span class="nx">err</span><span class="p">;</span>
+                <span class="p">}</span>
+                <span class="nx">next</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
+            <span class="p">});</span>
+        <span class="p">}</span>
+    <span class="p">};</span>
+    <span class="nx">next</span><span class="p">();</span>
+<span class="p">};</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p>我们小结一下通过Generator进行流程控制的特点。
+- 每个异步方法都需要标准化为yield关键字能接受的方法，使我们有机会注入特殊逻辑，这个过程被称为thunkify。
+- 需要巧妙地将异步调用执行完成得到的结果通过.next()传递给下一段流程。
+- 需要递归地将业务逻辑执行完成。</p>
+
+<p>需要注意的是yield只能暂停Generator内部的逻辑，它并不是真正暂停整个线程，Generator外的业务逻辑依然会继续执行下去。</p>
+
+<h3 id="section-1">五、总结</h3>
+
+<p>  实现异步的方法目前有，自定义嵌套，Promise、generator、Defferd，还有ES7的async（其实是generator的封装），不同场景可以选择不同的方式去实现</p>
+
+<p><strong>简单的Promise实现样例：</strong>
+https://github.com/ouvens/promise</p>
+
+<p><strong>generator异步实现：</strong>
+https://github.com/tj/co</p>
+
+<p><strong>参考文章：</strong>
+http://www.infoq.com/cn/articles/generator-and-asynchronous-programming/
+https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Promise
+http://www.shaynegui.com/promise-aplus-implementation/
+http://www.html5rocks.com/zh/tutorials/es6/promises/
+https://blog.domenic.me/youre-missing-the-point-of-promises/#toc_1
+https://github.com/nodejs/node-v0.x-archive/wiki/modules#async-flow
+http://www.html-js.com/article/JavaScript-tips-on-how-to-implement-a-ECMAScript-6-promise-patch</p>
+
+</article>
+
+
+<div class="tags">
+	<strong>Tags:</strong> <a target="_blank" href="/tags/?tag=Promise">Promise</a>,&nbsp;<a target="_blank" href="/tags/?tag=异步编程">异步编程</a>
+</div>
+
+
+	<script src="/assets/js/github.comment.js"></script>
+	<div class="gc-comments" data-repos="ouvens/ouvens.github.io" data-issues="3" >
+	    <div class="gc-comments-title">
+	        评论
+	    </div>
+	    <div class="gc-comments-info">
+	        想在此留下评论，请访问 <a href="issues_link">issues_link</a> 提交评论
+	    </div>
+	</div>
+</div>
+</div>
+
+
+    </div>
+    
+<div class="qr-code qr-code-pay" title="加个微信交流交流">
+    <img src="/assets/qrcode/qr-code-person.jpg" width="200" height="200" alt="公众号">
+    <p>加我赏红包，哈哈哈</p>
+</div>
+
+<div class="qr-code qr-code-wx" title="定期获取更新动态">
+    <img src="/assets/qrcode/qrcode.jpg" width="200" height="200" alt="公众号">
+    <p>欢迎关注 <strong>极限前端</strong> 公众号</p>
+</div>
+
+
+    
+<footer class="site-footer">
+  <div class="wrapper">
+    <h3 class="footer-heading">极限前端</h3>
+    <div class="site-navigation">
+    	<p><strong>站内</strong></p>
+      <ul class="pages">
+        
+        
+          <li class="nav-link"><a href="/about/">关于</a>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+          <li class="nav-link"><a href="/category/">所有文章</a>
+        
+        
+        
+          <li class="nav-link"><a href="/tags/">标签分类</a>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+      </ul>
+    </div>
+    <div class="site-contact">
+    	<p><strong>相关链接</strong></p>
+        <ul class="social-media-list">
+      	<li>
+      		<a href="mailto:1025224452@qq.com">
+	      		<i class="icon-font i-star"></i>
+	      		<span class="username">1025224452@qq.com</span>
+      		</a>
+      	</li>
+
+      	
+	      	
+	      	<li>
+	           <a href="https://github.com/ouvens" title="Fork me on GitHub">
+	               <i class="icon-font i-heart"></i>
+	               <span class="username">ouvens</span>
+	           </a>
+	        </li>
+	      	
+      	
+
+      </ul>
+    </div>
+    <div class="site-signature">
+    	<p class="rss-subscribe text"><strong>订阅<a href="/feed.xml">via RSS</a></strong></p>
+      <p class="text">极限前端, 极限前端社区, ouven的博客, ouvenzhang的博客, www.jixianqianduan.com, github地址, 前端技术, 讲述前端高效技术与前沿。</p>
+    </div>
+  </div>
+</footer>
+
+<!-- Scripts -->
+<script src="//1.url.cn/jslib/jquery/1.9.1/jquery.min.js" defer></script>
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.5/highlight.min.js" defer></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/lightbox2/2.7.1/js/lightbox.min.js" defer></script>
+
+<script src="/assets/js/main.js" defer></script>
+
+    </body>
+</html>

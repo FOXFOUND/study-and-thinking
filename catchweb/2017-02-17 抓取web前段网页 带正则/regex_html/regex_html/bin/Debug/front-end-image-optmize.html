@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="google-site-verification" content="0FNbiBWk1FugWYo-RiGxQyIHebGeLoXp3HB7AxIFKy8" />
+    <meta name="baidu-site-verification" content="tYoUqpkCCv" />
+    <meta name="baidu-site-verification" content="IGN97NW90O" />
+    
+    <title>web前端图片极限优化策略 | ouvenzhang的博客</title>
+
+    <meta http-equiv="x-dns-prefetch-control" content="on" />
+    <link rel="dns-prefetch" href="cdnjs.cloudflare.com" />
+    <link rel="dns-prefetch" href="1.url.cn" />
+
+    <meta name="description" itemprop="description" content="web前端图片极限优化策略,前端优化,图片优化 ">
+    <meta itemprop="name" content="web前端图片极限优化策略">
+    <meta itemprop="image" content="http://ouvens.github.io/blog/assets/logo.png">
+    <meta itemprop="keywords" name="keywords" content="web前端图片极限优化策略,前端优化,图片优化 ">
+
+    
+    <meta name="author" content="ouvenzhang">
+    <meta name="copyright" content="&copy; ouvenzhang 2017">
+    <meta name="protocol" content="1">
+    
+
+    <!-- External libraries -->
+    <link rel="stylesheet" href="/assets/css/iconfont.css">
+    <link rel="stylesheet" href="/css/monokai_sublime.css">
+
+    <!-- Favicon and other icons (made with http://www.favicon-generator.org/) -->
+    <link rel="shortcut icon" href="/assets/favicon.ico" type="image/x-icon">
+  	<link rel="icon" href="/assets/favicon.ico" type="image/x-icon">
+    
+  	<meta name="msapplication-TileColor" content="#ffffff">
+  	<meta name="theme-color" content="#ffffff">
+    <meta name="msapplication-TileImage" content="/assets/icons/icon.png">
+
+  	<!-- Site styles -->
+    <link rel="stylesheet" href="/css/main.css">
+
+    <link rel="alternate" type="application/rss+xml" title="极限前端" href="http://ouvens.github.io//feed.xml" />
+    <script>
+    // 访问统计
+    var domain = 'jixianqianduan.com';
+    var oldDomain = 'ouvens.github.io';
+    if(location.host === domain){
+        var _hmt = _hmt || [];
+        (function() {
+          var hm = document.createElement("script");
+          hm.src = "//hm.baidu.com/hm.js?b536b128dc21c3d18fdc028f0609e3f0";
+          var s = document.getElementsByTagName("script")[0]; 
+          s.parentNode.insertBefore(hm, s);
+        })();
+    }else if(location.host === oldDomain){
+        window.location.href = location.href.replace(oldDomain, domain);
+        var _hmt = _hmt || [];
+        (function() {
+          var hm = document.createElement("script");
+          hm.src = "//hm.baidu.com/hm.js?041efd2cb345ca1b9dbdbb2383cb716d";
+          var s = document.getElementsByTagName("script")[0]; 
+          s.parentNode.insertBefore(hm, s);
+        })();
+    }
+
+    // 链接提交
+
+    if(location.protocol === 'https'){
+        !function(){var e=/([http|https]:\/\/[a-zA-Z0-9\_\.]+\.baidu\.com)/gi,r=window.location.href,t=document.referrer;if(!e.test(r)){var o="https://sp0.baidu.com/9_Q4simg2RQJ8t7jm9iCKT-xh_/s.gif";t?(o+="?r="+encodeURIComponent(document.referrer),r&&(o+="&l="+r)):r&&(o+="?l="+r);var i=new Image;i.src=o}}(window);
+    }else{
+        !function(){var e=/([http|https]:\/\/[a-zA-Z0-9\_\.]+\.baidu\.com)/gi,r=window.location.href,o=document.referrer;if(!e.test(r)){var n="//api.share.baidu.com/s.gif";o?(n+="?r="+encodeURIComponent(document.referrer),r&&(n+="&l="+r)):r&&(n+="?l="+r);var t=new Image;t.src=n}}(window);
+    }
+
+
+    </script>
+</head>
+
+    <body>
+        <div class="navigation" role="banner">
+    <div class="navigation-wrapper">
+    <a href="/" class="logo">
+    	
+      <img src="/assets/logo.png" alt="极限前端">
+      
+    </a>
+    <span class="search-input" id="search-input">
+      <input type="text" value="" class="search-text" placeholder="输入搜索关键字">
+      <i class="icon-font i-search search-btn"></i>
+    </span>
+    <a href="javascript:void(0)" class="navigation-menu-button" id="js-mobile-menu">
+    	<i class="icon-font i-list fa fa-bars"></i>
+    </a>
+    <span class="nav" role="navigation">
+      <ul id="js-navigation-menu" class="navigation-menu show">
+      	
+          
+          <li class="nav-link">
+            <a href="/about/">关于</a>
+          </li>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+          <li class="nav-link">
+            <a href="/category/">所有文章</a>
+          </li>
+          
+        
+          
+          <li class="nav-link">
+            <a href="/tags/">标签分类</a>
+          </li>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          <li id="github-info" class="nav-link" title="https://github.com/ouvens">
+            <a class="github-info" href="https://github.com/ouvens" target="_blank">
+            <img src="/assets/github.png" height="34" width="130" alt="github地址"></a>
+          </li>
+      </ul>
+    </span>
+  </div>
+</div>
+
+            <div class="page-content">
+        <div class="post">
+<div class="post-header-container has-cover">
+	<header class="post-header">
+	  <h1 class="title">web前端图片极限优化策略</h1>
+	  <p class="info">by <strong>ouven</strong></p>
+	</header>
+</div>
+<div class="wrapper">
+
+
+
+<div class="post-meta">
+	<div class="post-date">2015年11月17日</div>
+	<div class="post-categories">
+	 in  
+		<a target="_blank" href="/category/?cate=frontend-weboptimize">Frontend-weboptimize</a>
+	  
+	</div>
+</div>	
+
+<article class="post-content">
+  <p>  随着web的发展，网站资源的流量也变得越来越大。据统计，60%的网站流量均来自网站图片，可见对图片合理优化可以大幅影响网站流量，减小带宽消耗和服务器压力。</p>
+
+<h4 id="web">一、现有web图片格式</h4>
+<p>我们先来看下现在常用的web图片的格式：</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>图片格式</th>
+      <th>支持透明</th>
+      <th>动画支持</th>
+      <th>压缩方式</th>
+      <th>浏览器支持</th>
+      <th>相对原图大小</th>
+      <th>适应场景</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>baseline-jpeg</td>
+      <td>不支持</td>
+      <td>不支持</td>
+      <td>有损</td>
+      <td>所有</td>
+      <td>由画质决定</td>
+      <td>所有通用场景</td>
+    </tr>
+    <tr>
+      <td>progressive-jpeg</td>
+      <td>不支持</td>
+      <td>不支持</td>
+      <td>有损</td>
+      <td>所有</td>
+      <td>由画质决定</td>
+      <td>所有通用场景, 渐进式加载</td>
+    </tr>
+    <tr>
+      <td>gif</td>
+      <td>支持</td>
+      <td>支持</td>
+      <td>无损</td>
+      <td>所有</td>
+      <td>由帧数和每帧图片大小决定</td>
+      <td>简单颜色，动画</td>
+    </tr>
+    <tr>
+      <td>png</td>
+      <td>支持</td>
+      <td>不支持</td>
+      <td>无损</td>
+      <td>所有</td>
+      <td>由png色值位数决定</td>
+      <td>需要透明时</td>
+    </tr>
+    <tr>
+      <td>webp</td>
+      <td>支持</td>
+      <td>不支持</td>
+      <td>有损</td>
+      <td>Chrome、Opera</td>
+      <td>由压缩率决定</td>
+      <td>复杂颜色及形状，浏览器平台可预知</td>
+    </tr>
+    <tr>
+      <td>apng</td>
+      <td>支持</td>
+      <td>支持</td>
+      <td>无损</td>
+      <td>Firefox、Safari、iOS Safari</td>
+      <td>由每帧图片决定</td>
+      <td>需要半透明效果的动画</td>
+    </tr>
+    <tr>
+      <td>svg</td>
+      <td>支持</td>
+      <td>支持</td>
+      <td>无损</td>
+      <td>所有(IE8以上)</td>
+      <td>由内容和特效复杂度决定</td>
+      <td>简单图形，需要良好的放缩体验，需要动态控制图片特效</td>
+    </tr>
+    <tr>
+      <td>bpg</td>
+      <td>支持</td>
+      <td>支持</td>
+      <td>有损</td>
+      <td>不支持，需要js解码</td>
+      <td>由画质决定</td>
+      <td>jpeg上需要极限优化的场景</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>几种文件格式的特点概述</strong></p>
+
+<ul>
+  <li>
+    <p><strong>baseline-jpeg</strong>
+  这种类型的JPEG文件存储方式是按从上到下的扫描方式，把每一行顺序的保存在JPEG文件中。打开这个文件显示它的内容时，数据将按照存储时的顺序从上到下一行一行的被显示出来，直到所有的数据都被读完，就完成了整张图片的显示。如果文件较大或者网络下载速度较慢，那么就会看到图片被一行行加载的效果，这种格式的JPEG没有什么优点，因此，一般都推荐使用Progressive JPEG</p>
+  </li>
+  <li>
+    <p><strong>preogressive-jpeg</strong>
+  和Baseline一遍扫描不同，Progressive JPEG文件包含多次扫描，这些扫描顺寻的存储在JPEG文件中。打开文件过程中，会先显示整个图片的模糊轮廓，随着扫描次数的增加，图片变得越来越清晰。这种格式的主要优点是在网络较慢的情况下，可以看到图片的轮廓知道正在加载的图片大概是什么。
+  __这两种jpeg格式文件的效果对比如下：</p>
+
+    <p><img src="http://7tszky.com1.z0.glb.clouddn.com/Fo8q3huYFyQma_rsSvo28dUyd7mN" alt="" /></p>
+
+    <p>jpeg优势：
+  非常通用，JPEG在色调及颜色平滑变化的相片或是写实绘画（painting）上可以达到它最佳的效果。</p>
+
+    <p>jpeg劣势：
+  它并不适合于线条绘图（drawing）和其他文字或图示（iconic）的图形,因为它的压缩方法用在这些图形的型态上,会得到不适当的结果；</p>
+  </li>
+  <li><strong>gif</strong>
+  GIF(Graphics Interchange Format)的原义是“图像互换格式”，GIF文件的数据，是一种基于LZW算法(串表压缩算法)连续色调的无损压缩格式。是目前web网页中十分常用的一种动画文件格式。
+  优势：
+    <ol>
+      <li>优秀的压缩算法使其在一定程度上保证图像质量的同时将体积变得很小</li>
+      <li>可插入多帧,从而实现动画效果</li>
+      <li>可设置透明色以产生对象浮现于背景之上的效果</li>
+    </ol>
+
+    <p>劣势：
+　由于采用了8位压缩,最多只能处理256种颜色（2的8次方）,故不宜应用于真彩图像。</p>
+  </li>
+  <li>
+    <p><strong>png</strong>
+  png文件分为png8(8位透明png)、png24(256色png)、png32(多阶透明png)，png的有点在于使用位图实现web上的透明图片，以实现比较好的体验。</p>
+
+    <p><img src="http://7tszky.com1.z0.glb.clouddn.com/FllKVugS_RwLmFvDF7UyUPpmv-DL" alt="" /></p>
+
+    <p>优势：
+  - 支持256色调色板技术以产生小体积文件
+  - 最高支持48位真彩色图像以及16位灰度图像。
+  - 支持Alpha通道的半透明特性。
+  - 支持图像亮度的gamma校正信息。- 支持存储附加文本信息,以保留图像名称、作者、版权、创作时间、注释等信息。
+  - 使用无损压缩。
+  - 渐近显示和流式读写,适合在网络传输中快速显示预览效果后再展示全貌。
+  - 使用CRC循环冗余编码防止文件出错。
+  - 最新的PNG标准允许在一个文件内存储多幅图像。</p>
+
+    <p>劣势：
+  - 但也有一些软件不能使用适合的预测，生成的文件较大(IE6只支持PNG8)</p>
+  </li>
+  <li>
+    <p><strong>webp</strong></p>
+
+    <p>目前移动端Android4.0以上、PC端chorme 10+（14 ~ 16 有渲染bug）、opera 11+ 、safri均支持webp格式图片。
+  WEBP与JPG相比较，编码速度慢10倍，解码速度慢1.5倍，而绝大部分的网络应用中，图片都是静态文件，所以对于用户使用只需要关心解码速度即可。但实际上，webp虽然会增加额外的解码时间，但是由于减少了文件体积，缩短了加载的时间，实际上文件的渲染速度反而变快了。</p>
+
+    <p><a href="http://www.webpagetest.org/video/view.php?id=130125_7b15e676f5fa0b736f247ff0ed36517e64d9c9ea">图片加载测试样例</a></p>
+
+    <p>webp上目前可行的应用场景：
+  - 1.客户端软件，内嵌了基于Chromium的webview，这类浏览器中应用的网页是可以完全使用webp格式，提升加载渲染速度，不考虑兼容。
+  - 2.用node-webkit开发的程序，用webp可以减少文件包的体积。
+  - 3.移动应用 或 网页游戏 ,界面需要大量图片,可以嵌入webp的解码包,能够节省用户流量，提升访问速度</p>
+
+    <p>优势：
+  - 对于png图片,webp比png小了45%,但是缺点是你压缩的时候需要的时间更久了；</p>
+
+    <p>劣势：
+  - 兼容性不太好, 只有opera,和chrome支持;</p>
+  </li>
+  <li>
+    <p><strong>apng</strong></p>
+
+    <p>简单来讲apng格式图片使用多个单张png连接起来的动画图片格式，支持全透明通道动画。相比于gif动画，没有毛刺，质量更高，但目前支持的浏览器并不完全。可以去can i use查看其兼容性。目前可用性相对较低，适用于对动画质量要求很高的情况。</p>
+  </li>
+  <li><strong>svg</strong>
+  是一种矢量图片，支持透明，缩放，动画，除了android 2.3的手机，其它场景都支持，是一种比较好的图片代替方案。
+  优势：
+    <ul>
+      <li>矢量图形，不受像素影响——SVG的这个特性使得它在不同的平台或者媒体下表现良好，无论屏幕分辨率如何</li>
+      <li>SVG对动画的支持较好；其DOM结构可以被其特定语法或者Javascript控制，从而轻松的实现动画</li>
+      <li>Javascript可以完全控制SVG Dom 元素</li>
+      <li>SVG的结构是 XML，其可访问性（盲文、声音朗读等）、可操作性、可编程性、可被CSS样式化完胜Canvas。另外，其支持 ARIA 属性，使其如虎添翼。</li>
+    </ul>
+
+    <p>劣势：
+  - DOM比正常的图形慢，而且如果其结点多而杂，就更慢了
+  - 不适合网页游戏等；当然，我们可以结合 Canvas + SVG来实现</p>
+  </li>
+  <li>
+    <p><strong>bpg</strong></p>
+
+    <p>http://bellard.org/bpg/
+  <a href="http://xooyoozoo.github.io/yolo-octo-bugfixes/#avenches&amp;bpg=s&amp;bpg=s">图片画质比较</a>
+  <a href="http://blog.ibireme.com/2015/11/02/mobile_image_benchmark/">性能测试对比</a></p>
+
+    <p>BPG (Better Portable Graphics) 是一个新的图片格式。用来代替jpeg和webp的方案。这种格式主要有以下特点
+  优势：
+  - 高压缩比。在画质相同的情况下比jpeg小的多
+  - 使用一个很小的js解码器就可以被浏览器支持
+  - 基于高清视频压缩标准 (HEVC) 一个子集开发 
+  - 支持和jpeg相同的色值，并且在有损压缩的通知支持透明，
+  - 单通道支持8到14位色值区域
+  - 支持有损压缩
+  - 可以添加更多的元数据编码
+  - 支持动画
+  - 相近画质前提下比webp更小</p>
+
+    <p>性能：
+  - 根据mozilla的研究，bpg使用的HEVC编码比原生的HEVC性能更好，因为BPG的头部比HEVC的头部更小
+  - 支持4:2:2和4:2:0的色值设置
+  - BPG可以用于硬件上支持HEVC编解码器</p>
+
+    <p>这种图片格式目前还没有被浏览器支持，需要js解码，但其优势非常明显。</p>
+
+    <p>另外还有mozjpg、sharpP的图片格式，由于目前仍在起步阶段，这里暂不介绍了，有兴趣的可以去跟进了解下。</p>
+  </li>
+</ul>
+
+<h4 id="section">二、前端的图片优化方案</h4>
+
+<ol>
+  <li>
+    <p><strong>使用base64编码代替图片</strong>
+ 场景：适用于图片大小小于2KB，页面上引用图片总数不多的情况
+ 原理：将图片转换为base64编码字符串inline到页面或css中
+ 优势：减少http的请求次数，并可以放到后台数据库中，只传输字符串，有较多的构建工具可以直接实现
+ 劣势：这种方法仅限于图片总数较少，而且图片大小小于2KB的情况。否则图片字符串会变得很长很长</p>
+  </li>
+  <li>
+    <p><strong>合并图片sprite(雪碧图)</strong>
+ 场景：任何用到页面图片的场景
+ 原理：将多个页面上用到的背景图片合并成一个大的图片在页面中引用
+ 优势：可以有效的较少请求个数，而且，而不影响开发体验，使用构建插件可以做到对开发者透明。适用于页面图片多且丰富的场景。
+ 劣势：生成的图片体积较大，减少请求个数同时也增加了图片大小，不合理拆分将不利于并行加载</p>
+  </li>
+  <li>
+    <p><strong>使用css、svg、canvas或iconfont代替图片</strong></p>
+
+    <p>css代替图片
+ 场景：适用于移动端或较高级的浏览器，而且绘制的图案较为简单。
+ 原理：css方式可以用来绘制相对简单的团来代替图片，一般使用before或者after伪元素来丰富图案的复杂度。
+ 优势：具有实现简单，图片体积小的特点，可以实现简单的动态效果
+ 劣势：也受限于css的兼容性特点，绘制复杂图案困难</p>
+
+    <p>svg的描述和适用场景上文已说明。</p>
+
+    <p>canvas代替图片
+ 场景：需要高性能的图片或动画
+ 原理：适用html5的canvas元素绘制创建图片
+ 优势：整个就是画2D图形时，页面渲染性能比较高，页面渲染性能受图形复杂度影响小，性能只受图形的分辨率的影响，画出来的图形可以直接保存为 .png 或者 .jpg的图形，适合于画光栅图像或者不规则图形
+ 劣势：没有dom操作，必须依赖定时器，文字渲染性能差，不能添加描述(title属性什么的)，兼容性限制</p>
+
+    <p>iconfont是一种web字体来代替图片的解决方案：
+ 场景：代替页面上色彩单一的图片
+ 优势：兼容性好，应用广，目前使用也很广泛
+ 劣势：但是由于字体的颜色设置单一，只能用于代替颜色单一的图片，对于色彩复杂的图片，iconfont处理起来比较困难</p>
+  </li>
+  <li>
+    <p><strong>响应式图片</strong>
+ 场景：不同终端对同一个图片需求不一样，可以根据终端加载不同的图片来节省没必要的流量
+ 原理：通过picture元素，picturefill或平台判断来为不同终端平台输出不同的图片
+ 优势：减少没必要的图片加载，灵活控制，慢速用户加载小图片不至于加载失败，移动端没必要加载大尺寸图片等，可以通过不同方式兼容所有浏览器
+ 劣势：无法避免图片的加载过程，图片本身没优化</p>
+  </li>
+  <li>
+    <p><strong>图片压缩</strong>
+ 场景：在不得不加载图片的前提下，要进一步提升优化效果，只能通过有损或无损压缩来减少图片的大小。
+ 原理：对图片进行无损、有损压缩，转为压缩后图片来实现
+ 优势：减少图片加载流量，效果比较明显
+ 劣势：服务器和浏览器压力增大，而且服务器需要额外的服务支持</p>
+  </li>
+  <li>
+    <p><strong>更好的图片格式</strong>
+ 场景：之前说到webp、bpg、sharpP等新图片格式具有更好的压缩比，可以使用这类新型的图片来代替原始图片
+ 原理：对图片格式转换，在画质可以接受的情况下达到更好的压缩比效果
+ 优势：减少图片加载流量，效果比较明显
+ 劣势：服务器和浏览器压力增大，而且服务器需要额外的服务支持，格式转换要考虑浏览器的兼容性</p>
+  </li>
+</ol>
+
+<h4 id="section-1">三、图片压缩</h4>
+<p>压缩图片方式比较多，例如下面的部分工具平台：</p>
+
+<p>Kraken (Web)
+主页： https://kraken.io/</p>
+
+<p>智图
+主页： http://zhitu.tencent.com/
+支持原图png转为jpeg和webp(目前不支持bpg)，并提供各种压缩比压缩，目前在tx内部广泛使用。</p>
+
+<p>目前bpg格式图片也有部分公司在试用。这方面也可以尝试下。</p>
+
+<h4 id="section-2">四、小结</h4>
+
+<p>  上面提供了web图片的一些格式特点和图片优化的可行方案，具体的场景需要考虑选择不同的方式来进行优化。当然常见的优化思路为：页面静态资源图片使用css，canvas，svg，iconfont，sprite，base64来优化，后台返回的数据资源图片则通过响应式、图片压缩来优化，同时尽可能考虑使用新的更高压缩比的图片来做图片转化。例如webp、bpg</p>
+
+<p><a href="https://developers.google.com/web/fundamentals/performance/optimizing-content-efficiency/image-optimization?hl=zh-cn">google image rearch 链接</a></p>
+
+</article>
+
+
+<div class="tags">
+	<strong>Tags:</strong> <a target="_blank" href="/tags/?tag=前端优化">前端优化</a>,&nbsp;<a target="_blank" href="/tags/?tag=图片优化">图片优化</a>
+</div>
+
+
+	<script src="/assets/js/github.comment.js"></script>
+	<div class="gc-comments" data-repos="ouvens/ouvens.github.io" data-issues="3" >
+	    <div class="gc-comments-title">
+	        评论
+	    </div>
+	    <div class="gc-comments-info">
+	        想在此留下评论，请访问 <a href="issues_link">issues_link</a> 提交评论
+	    </div>
+	</div>
+</div>
+</div>
+
+
+    </div>
+    
+<div class="qr-code qr-code-pay" title="加个微信交流交流">
+    <img src="/assets/qrcode/qr-code-person.jpg" width="200" height="200" alt="公众号">
+    <p>加我赏红包，哈哈哈</p>
+</div>
+
+<div class="qr-code qr-code-wx" title="定期获取更新动态">
+    <img src="/assets/qrcode/qrcode.jpg" width="200" height="200" alt="公众号">
+    <p>欢迎关注 <strong>极限前端</strong> 公众号</p>
+</div>
+
+
+    
+<footer class="site-footer">
+  <div class="wrapper">
+    <h3 class="footer-heading">极限前端</h3>
+    <div class="site-navigation">
+    	<p><strong>站内</strong></p>
+      <ul class="pages">
+        
+        
+          <li class="nav-link"><a href="/about/">关于</a>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+          <li class="nav-link"><a href="/category/">所有文章</a>
+        
+        
+        
+          <li class="nav-link"><a href="/tags/">标签分类</a>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+      </ul>
+    </div>
+    <div class="site-contact">
+    	<p><strong>相关链接</strong></p>
+        <ul class="social-media-list">
+      	<li>
+      		<a href="mailto:1025224452@qq.com">
+	      		<i class="icon-font i-star"></i>
+	      		<span class="username">1025224452@qq.com</span>
+      		</a>
+      	</li>
+
+      	
+	      	
+	      	<li>
+	           <a href="https://github.com/ouvens" title="Fork me on GitHub">
+	               <i class="icon-font i-heart"></i>
+	               <span class="username">ouvens</span>
+	           </a>
+	        </li>
+	      	
+      	
+
+      </ul>
+    </div>
+    <div class="site-signature">
+    	<p class="rss-subscribe text"><strong>订阅<a href="/feed.xml">via RSS</a></strong></p>
+      <p class="text">极限前端, 极限前端社区, ouven的博客, ouvenzhang的博客, www.jixianqianduan.com, github地址, 前端技术, 讲述前端高效技术与前沿。</p>
+    </div>
+  </div>
+</footer>
+
+<!-- Scripts -->
+<script src="//1.url.cn/jslib/jquery/1.9.1/jquery.min.js" defer></script>
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.5/highlight.min.js" defer></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/lightbox2/2.7.1/js/lightbox.min.js" defer></script>
+
+<script src="/assets/js/main.js" defer></script>
+
+    </body>
+</html>

@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="google-site-verification" content="0FNbiBWk1FugWYo-RiGxQyIHebGeLoXp3HB7AxIFKy8" />
+    <meta name="baidu-site-verification" content="tYoUqpkCCv" />
+    <meta name="baidu-site-verification" content="IGN97NW90O" />
+    
+    <title>sublime插件安装说明 | ouvenzhang的博客</title>
+
+    <meta http-equiv="x-dns-prefetch-control" content="on" />
+    <link rel="dns-prefetch" href="cdnjs.cloudflare.com" />
+    <link rel="dns-prefetch" href="1.url.cn" />
+
+    <meta name="description" itemprop="description" content="sublime插件安装说明,sublime,插件安装 ">
+    <meta itemprop="name" content="sublime插件安装说明">
+    <meta itemprop="image" content="http://ouvens.github.io/blog/assets/logo.png">
+    <meta itemprop="keywords" name="keywords" content="sublime插件安装说明,sublime,插件安装 ">
+
+    
+    <meta name="author" content="ouvenzhang">
+    <meta name="copyright" content="&copy; ouvenzhang 2017">
+    <meta name="protocol" content="1">
+    
+
+    <!-- External libraries -->
+    <link rel="stylesheet" href="/assets/css/iconfont.css">
+    <link rel="stylesheet" href="/css/monokai_sublime.css">
+
+    <!-- Favicon and other icons (made with http://www.favicon-generator.org/) -->
+    <link rel="shortcut icon" href="/assets/favicon.ico" type="image/x-icon">
+  	<link rel="icon" href="/assets/favicon.ico" type="image/x-icon">
+    
+  	<meta name="msapplication-TileColor" content="#ffffff">
+  	<meta name="theme-color" content="#ffffff">
+    <meta name="msapplication-TileImage" content="/assets/icons/icon.png">
+
+  	<!-- Site styles -->
+    <link rel="stylesheet" href="/css/main.css">
+
+    <link rel="alternate" type="application/rss+xml" title="极限前端" href="http://ouvens.github.io//feed.xml" />
+    <script>
+    // 访问统计
+    var domain = 'jixianqianduan.com';
+    var oldDomain = 'ouvens.github.io';
+    if(location.host === domain){
+        var _hmt = _hmt || [];
+        (function() {
+          var hm = document.createElement("script");
+          hm.src = "//hm.baidu.com/hm.js?b536b128dc21c3d18fdc028f0609e3f0";
+          var s = document.getElementsByTagName("script")[0]; 
+          s.parentNode.insertBefore(hm, s);
+        })();
+    }else if(location.host === oldDomain){
+        window.location.href = location.href.replace(oldDomain, domain);
+        var _hmt = _hmt || [];
+        (function() {
+          var hm = document.createElement("script");
+          hm.src = "//hm.baidu.com/hm.js?041efd2cb345ca1b9dbdbb2383cb716d";
+          var s = document.getElementsByTagName("script")[0]; 
+          s.parentNode.insertBefore(hm, s);
+        })();
+    }
+
+    // 链接提交
+
+    if(location.protocol === 'https'){
+        !function(){var e=/([http|https]:\/\/[a-zA-Z0-9\_\.]+\.baidu\.com)/gi,r=window.location.href,t=document.referrer;if(!e.test(r)){var o="https://sp0.baidu.com/9_Q4simg2RQJ8t7jm9iCKT-xh_/s.gif";t?(o+="?r="+encodeURIComponent(document.referrer),r&&(o+="&l="+r)):r&&(o+="?l="+r);var i=new Image;i.src=o}}(window);
+    }else{
+        !function(){var e=/([http|https]:\/\/[a-zA-Z0-9\_\.]+\.baidu\.com)/gi,r=window.location.href,o=document.referrer;if(!e.test(r)){var n="//api.share.baidu.com/s.gif";o?(n+="?r="+encodeURIComponent(document.referrer),r&&(n+="&l="+r)):r&&(n+="?l="+r);var t=new Image;t.src=n}}(window);
+    }
+
+
+    </script>
+</head>
+
+    <body>
+        <div class="navigation" role="banner">
+    <div class="navigation-wrapper">
+    <a href="/" class="logo">
+    	
+      <img src="/assets/logo.png" alt="极限前端">
+      
+    </a>
+    <span class="search-input" id="search-input">
+      <input type="text" value="" class="search-text" placeholder="输入搜索关键字">
+      <i class="icon-font i-search search-btn"></i>
+    </span>
+    <a href="javascript:void(0)" class="navigation-menu-button" id="js-mobile-menu">
+    	<i class="icon-font i-list fa fa-bars"></i>
+    </a>
+    <span class="nav" role="navigation">
+      <ul id="js-navigation-menu" class="navigation-menu show">
+      	
+          
+          <li class="nav-link">
+            <a href="/about/">关于</a>
+          </li>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+          <li class="nav-link">
+            <a href="/category/">所有文章</a>
+          </li>
+          
+        
+          
+          <li class="nav-link">
+            <a href="/tags/">标签分类</a>
+          </li>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          <li id="github-info" class="nav-link" title="https://github.com/ouvens">
+            <a class="github-info" href="https://github.com/ouvens" target="_blank">
+            <img src="/assets/github.png" height="34" width="130" alt="github地址"></a>
+          </li>
+      </ul>
+    </span>
+  </div>
+</div>
+
+            <div class="page-content">
+        <div class="post">
+<div class="post-header-container has-cover">
+	<header class="post-header">
+	  <h1 class="title">sublime插件安装说明</h1>
+	  <p class="info">by <strong>ouven</strong></p>
+	</header>
+</div>
+<div class="wrapper">
+
+
+
+<div class="post-meta">
+	<div class="post-date">2013年12月24日</div>
+	<div class="post-categories">
+	 in  
+		<a target="_blank" href="/category/?cate=frontend-resource">Frontend-resource</a>
+	  
+	</div>
+</div>	
+
+<article class="post-content">
+  <h3 id="section">系统&amp;环境要求</h3>
+
+<ul>
+  <li>sublime3</li>
+  <li>win7 &amp; OSX10</li>
+  <li>node</li>
+  <li>ruby</li>
+  <li>sublime3</li>
+</ul>
+
+<h3 id="section-1">脚本安装配置</h3>
+
+<p>按下 ctrl+`
+复制粘贴以下代码执行，直到弹出【安装成功】弹窗</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2</pre></td><td class="code"><pre>
+<span class="nx">pl</span><span class="o">=</span><span class="s2">"SublimeLinter,SublimeLinter-jscs,SublimeLinter-jshint,SublimeLinter-csslint,SublimeLinter-contrib-scss-lint,Emmet,EJS,SCSS,CSScomb,JsFormat,DocBlockr,SnippetMaker,BracketHighlighter,SassBeautify,SideBarEnhancements,CSS Snippets,JavaScript &amp; NodeJS Snippets,TortoiseSVN"</span><span class="p">;</span><span class="kr">import</span> <span class="nx">webbrowser</span><span class="p">,</span><span class="nx">urllib</span><span class="p">.</span><span class="nx">request</span><span class="p">,</span><span class="nx">os</span><span class="p">;</span><span class="nx">jcp</span><span class="o">=</span><span class="nx">os</span><span class="p">.</span><span class="nx">path</span><span class="p">.</span><span class="nx">join</span><span class="p">(</span><span class="nx">sublime</span><span class="p">.</span><span class="nx">packages_path</span><span class="p">(),</span><span class="s2">"User"</span><span class="p">,</span><span class="s2">".jshintrc"</span><span class="p">);</span><span class="nx">scssp</span><span class="o">=</span><span class="nx">os</span><span class="p">.</span><span class="nx">path</span><span class="p">.</span><span class="nx">join</span><span class="p">(</span><span class="nx">sublime</span><span class="p">.</span><span class="nx">packages_path</span><span class="p">(),</span><span class="s2">"User"</span><span class="p">,</span><span class="s2">".scss-lint.yml"</span><span class="p">);</span><span class="nx">jscsp</span><span class="o">=</span><span class="nx">os</span><span class="p">.</span><span class="nx">path</span><span class="p">.</span><span class="nx">join</span><span class="p">(</span><span class="nx">sublime</span><span class="p">.</span><span class="nx">packages_path</span><span class="p">(),</span><span class="s2">"User"</span><span class="p">,</span><span class="s2">".jscsrc"</span><span class="p">);</span><span class="nx">sm</span><span class="o">=</span><span class="p">{</span><span class="s2">"Preferences"</span><span class="p">:{</span><span class="s2">"translate_tabs_to_spaces"</span><span class="p">:</span><span class="nx">True</span><span class="p">,</span><span class="s2">"word_wrap"</span><span class="p">:</span><span class="nx">True</span><span class="p">,</span><span class="s2">"wrap_width"</span><span class="p">:</span><span class="mi">120</span><span class="p">,</span><span class="s2">"tab_size"</span><span class="p">:</span><span class="mi">4</span><span class="p">,</span><span class="s2">"default_line_ending"</span><span class="p">:</span><span class="s2">"unix"</span><span class="p">},</span><span class="s2">"SublimeLinter"</span><span class="p">:{</span><span class="s2">"user"</span><span class="p">:{</span><span class="s2">"gutter_theme"</span><span class="p">:</span><span class="s2">"Packages/SublimeLinter/gutter-themes/Blueberry/round/Blueberry - round.gutter-theme"</span><span class="p">,</span><span class="s2">"lint_mode"</span><span class="p">:</span><span class="s2">"manual"</span><span class="p">,</span><span class="s2">"linters"</span><span class="p">:{</span><span class="s2">"csslint"</span><span class="p">:{</span><span class="s2">"@disable"</span><span class="p">:</span><span class="nx">False</span><span class="p">,</span><span class="s2">"args"</span><span class="p">:[],</span><span class="s2">"errors"</span><span class="p">:</span><span class="s2">""</span><span class="p">,</span><span class="s2">"excludes"</span><span class="p">:[],</span><span class="s2">"ignore"</span><span class="p">:</span><span class="s2">"box-model,adjoining-classes,box-sizing,compatible-vendor-prefixes,gradients,text-indent,fallback-colors,star-property-hack,underscore-property-hack,bulletproof-font-face,font-faces,import,regex-selectors,universal-selector,unqualified-attributes,overqualified-elements,duplicate-background-images,floats,font-sizes,ids,important,outline-none,qualified-headings,unique-headings"</span><span class="p">,</span><span class="s2">"warnings"</span><span class="p">:</span><span class="s2">""</span><span class="p">},</span><span class="s2">"jscs"</span><span class="p">:{</span><span class="s2">"@disable"</span><span class="p">:</span><span class="nx">False</span><span class="p">,</span><span class="s2">"args"</span><span class="p">:[</span><span class="s2">"--config"</span><span class="p">,</span><span class="nx">jscsp</span><span class="p">],</span><span class="s2">"excludes"</span><span class="p">:[]},</span><span class="s2">"scss"</span><span class="p">:{</span><span class="s2">"@disable"</span><span class="p">:</span><span class="nx">False</span><span class="p">,</span><span class="s2">"args"</span><span class="p">:[</span><span class="s2">"--config"</span><span class="p">,</span><span class="nx">scssp</span><span class="p">],</span><span class="s2">"exclude-linter"</span><span class="p">:</span><span class="s2">""</span><span class="p">,</span><span class="s2">"include-linter"</span><span class="p">:</span><span class="s2">""</span><span class="p">,</span><span class="s2">"excludes"</span><span class="p">:[]},</span><span class="s2">"jshint"</span><span class="p">:{</span><span class="s2">"@disable"</span><span class="p">:</span><span class="nx">False</span><span class="p">,</span><span class="s2">"args"</span><span class="p">:[</span><span class="s2">"--config"</span><span class="p">,</span><span class="nx">jcp</span><span class="p">],</span><span class="s2">"excludes"</span><span class="p">:[]}},</span><span class="s2">"mark_style"</span><span class="p">:</span><span class="s2">"outline"</span><span class="p">}},</span><span class="s2">"JsFormat"</span><span class="p">:{</span><span class="s2">"indent_size"</span><span class="p">:</span><span class="mi">4</span><span class="p">,</span><span class="s2">"indent_char"</span><span class="p">:</span><span class="s2">" "</span><span class="p">,</span><span class="s2">"eol"</span><span class="p">:</span><span class="s2">"\n"</span><span class="p">,</span><span class="s2">"indent_level"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="s2">"indent_with_tabs"</span><span class="p">:</span><span class="nx">False</span><span class="p">,</span><span class="s2">"preserve_newlines"</span><span class="p">:</span><span class="nx">True</span><span class="p">,</span><span class="s2">"max_preserve_newlines"</span><span class="p">:</span><span class="mi">10</span><span class="p">,</span><span class="s2">"jslint_happy"</span><span class="p">:</span><span class="nx">False</span><span class="p">,</span><span class="s2">"space_after_anon_function"</span><span class="p">:</span><span class="nx">False</span><span class="p">,</span><span class="s2">"brace_style"</span><span class="p">:</span><span class="s2">"collapse"</span><span class="p">,</span><span class="s2">"keep_array_indentation"</span><span class="p">:</span><span class="nx">False</span><span class="p">,</span><span class="s2">"keep_function_indentation"</span><span class="p">:</span><span class="nx">False</span><span class="p">,</span><span class="s2">"space_before_conditional"</span><span class="p">:</span><span class="nx">True</span><span class="p">,</span><span class="s2">"break_chained_methods"</span><span class="p">:</span><span class="nx">False</span><span class="p">,</span><span class="s2">"eval_code"</span><span class="p">:</span><span class="nx">False</span><span class="p">,</span><span class="s2">"unescape_strings"</span><span class="p">:</span><span class="nx">False</span><span class="p">,</span><span class="s2">"wrap_line_length"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="s2">"wrap_attributes"</span><span class="p">:</span><span class="s2">"auto"</span><span class="p">,</span><span class="s2">"wrap_attributes_indent_size"</span><span class="p">:</span><span class="mi">4</span><span class="p">,</span><span class="s2">"end_with_newline"</span><span class="p">:</span><span class="nx">True</span><span class="p">},</span><span class="s2">"CSScomb"</span><span class="p">:{</span><span class="s2">"config"</span><span class="p">:{</span><span class="s2">"remove-empty-rulesets"</span><span class="p">:</span><span class="nx">True</span><span class="p">,</span><span class="s2">"always-semicolon"</span><span class="p">:</span><span class="nx">True</span><span class="p">,</span><span class="s2">"color-case"</span><span class="p">:</span><span class="s2">"lower"</span><span class="p">,</span><span class="s2">"block-indent"</span><span class="p">:</span><span class="s2">"    "</span><span class="p">,</span><span class="s2">"color-shorthand"</span><span class="p">:</span><span class="nx">True</span><span class="p">,</span><span class="s2">"element-case"</span><span class="p">:</span><span class="s2">"lower"</span><span class="p">,</span><span class="s2">"eof-newline"</span><span class="p">:</span><span class="nx">True</span><span class="p">,</span><span class="s2">"leading-zero"</span><span class="p">:</span><span class="nx">False</span><span class="p">,</span><span class="s2">"quotes"</span><span class="p">:</span><span class="s2">"double"</span><span class="p">,</span><span class="s2">"sort-order-fallback"</span><span class="p">:</span><span class="s2">"abc"</span><span class="p">,</span><span class="s2">"space-before-colon"</span><span class="p">:</span><span class="s2">""</span><span class="p">,</span><span class="s2">"space-after-colon"</span><span class="p">:</span><span class="s2">" "</span><span class="p">,</span><span class="s2">"space-before-combinator"</span><span class="p">:</span><span class="s2">" "</span><span class="p">,</span><span class="s2">"space-after-combinator"</span><span class="p">:</span><span class="s2">" "</span><span class="p">,</span><span class="s2">"space-between-declarations"</span><span class="p">:</span><span class="s2">"\n"</span><span class="p">,</span><span class="s2">"space-before-opening-brace"</span><span class="p">:</span><span class="s2">" "</span><span class="p">,</span><span class="s2">"space-after-opening-brace"</span><span class="p">:</span><span class="s2">"\n"</span><span class="p">,</span><span class="s2">"space-after-selector-delimiter"</span><span class="p">:</span><span class="s2">"\n"</span><span class="p">,</span><span class="s2">"space-before-selector-delimiter"</span><span class="p">:</span><span class="s2">""</span><span class="p">,</span><span class="s2">"space-before-closing-brace"</span><span class="p">:</span><span class="s2">"\n"</span><span class="p">,</span><span class="s2">"strip-spaces"</span><span class="p">:</span><span class="nx">True</span><span class="p">,</span><span class="s2">"tab-size"</span><span class="p">:</span><span class="nx">True</span><span class="p">,</span><span class="s2">"unitless-zero"</span><span class="p">:</span><span class="nx">True</span><span class="p">,</span><span class="s2">"vendor-prefix-align"</span><span class="p">:</span><span class="nx">True</span><span class="p">,</span><span class="s2">"sort-order"</span><span class="p">:[[</span><span class="s2">"display"</span><span class="p">,</span><span class="s2">"visibility"</span><span class="p">,</span><span class="s2">"float"</span><span class="p">,</span><span class="s2">"clear"</span><span class="p">,</span><span class="s2">"overflow"</span><span class="p">,</span><span class="s2">"overflow-x"</span><span class="p">,</span><span class="s2">"overflow-y"</span><span class="p">,</span><span class="s2">"clip"</span><span class="p">,</span><span class="s2">"zoom"</span><span class="p">],[</span><span class="s2">"table-layout"</span><span class="p">,</span><span class="s2">"empty-cells"</span><span class="p">,</span><span class="s2">"caption-side"</span><span class="p">,</span><span class="s2">"border-spacing"</span><span class="p">,</span><span class="s2">"border-collapse"</span><span class="p">,</span><span class="s2">"list-style"</span><span class="p">,</span><span class="s2">"list-style-position"</span><span class="p">,</span><span class="s2">"list-style-type"</span><span class="p">,</span><span class="s2">"list-style-image"</span><span class="p">],[</span><span class="s2">"-webkit-box-orient"</span><span class="p">,</span><span class="s2">"-webkit-box-direction"</span><span class="p">,</span><span class="s2">"-webkit-box-decoration-break"</span><span class="p">,</span><span class="s2">"-webkit-box-pack"</span><span class="p">,</span><span class="s2">"-webkit-box-align"</span><span class="p">,</span><span class="s2">"-webkit-box-flex"</span><span class="p">],[</span><span class="s2">"position"</span><span class="p">,</span><span class="s2">"top"</span><span class="p">,</span><span class="s2">"right"</span><span class="p">,</span><span class="s2">"bottom"</span><span class="p">,</span><span class="s2">"left"</span><span class="p">,</span><span class="s2">"z-index"</span><span class="p">],[</span><span class="s2">"margin"</span><span class="p">,</span><span class="s2">"margin-top"</span><span class="p">,</span><span class="s2">"margin-right"</span><span class="p">,</span><span class="s2">"margin-bottom"</span><span class="p">,</span><span class="s2">"margin-left"</span><span class="p">,</span><span class="s2">"-webkit-box-sizing"</span><span class="p">,</span><span class="s2">"-moz-box-sizing"</span><span class="p">,</span><span class="s2">"box-sizing"</span><span class="p">,</span><span class="s2">"border"</span><span class="p">,</span><span class="s2">"border-width"</span><span class="p">,</span><span class="s2">"border-style"</span><span class="p">,</span><span class="s2">"border-color"</span><span class="p">,</span><span class="s2">"border-top"</span><span class="p">,</span><span class="s2">"border-top-width"</span><span class="p">,</span><span class="s2">"border-top-style"</span><span class="p">,</span><span class="s2">"border-top-color"</span><span class="p">,</span><span class="s2">"border-right"</span><span class="p">,</span><span class="s2">"border-right-width"</span><span class="p">,</span><span class="s2">"border-right-style"</span><span class="p">,</span><span class="s2">"border-right-color"</span><span class="p">,</span><span class="s2">"border-bottom"</span><span class="p">,</span><span class="s2">"border-bottom-width"</span><span class="p">,</span><span class="s2">"border-bottom-style"</span><span class="p">,</span><span class="s2">"border-bottom-color"</span><span class="p">,</span><span class="s2">"border-left"</span><span class="p">,</span><span class="s2">"border-left-width"</span><span class="p">,</span><span class="s2">"border-left-style"</span><span class="p">,</span><span class="s2">"border-left-color"</span><span class="p">,</span><span class="s2">"-webkit-border-radius"</span><span class="p">,</span><span class="s2">"-moz-border-radius"</span><span class="p">,</span><span class="s2">"border-radius"</span><span class="p">,</span><span class="s2">"-webkit-border-top-left-radius"</span><span class="p">,</span><span class="s2">"-moz-border-radius-topleft"</span><span class="p">,</span><span class="s2">"border-top-left-radius"</span><span class="p">,</span><span class="s2">"-webkit-border-top-right-radius"</span><span class="p">,</span><span class="s2">"-moz-border-radius-topright"</span><span class="p">,</span><span class="s2">"border-top-right-radius"</span><span class="p">,</span><span class="s2">"-webkit-border-bottom-right-radius"</span><span class="p">,</span><span class="s2">"-moz-border-radius-bottomright"</span><span class="p">,</span><span class="s2">"border-bottom-right-radius"</span><span class="p">,</span><span class="s2">"-webkit-border-bottom-left-radius"</span><span class="p">,</span><span class="s2">"-moz-border-radius-bottomleft"</span><span class="p">,</span><span class="s2">"border-bottom-left-radius"</span><span class="p">,</span><span class="s2">"-webkit-border-image"</span><span class="p">,</span><span class="s2">"-moz-border-image"</span><span class="p">,</span><span class="s2">"-o-border-image"</span><span class="p">,</span><span class="s2">"border-image"</span><span class="p">,</span><span class="s2">"-webkit-border-image-source"</span><span class="p">,</span><span class="s2">"-moz-border-image-source"</span><span class="p">,</span><span class="s2">"-o-border-image-source"</span><span class="p">,</span><span class="s2">"border-image-source"</span><span class="p">,</span><span class="s2">"-webkit-border-image-slice"</span><span class="p">,</span><span class="s2">"-moz-border-image-slice"</span><span class="p">,</span><span class="s2">"-o-border-image-slice"</span><span class="p">,</span><span class="s2">"border-image-slice"</span><span class="p">,</span><span class="s2">"-webkit-border-image-width"</span><span class="p">,</span><span class="s2">"-moz-border-image-width"</span><span class="p">,</span><span class="s2">"-o-border-image-width"</span><span class="p">,</span><span class="s2">"border-image-width"</span><span class="p">,</span><span class="s2">"-webkit-border-image-outset"</span><span class="p">,</span><span class="s2">"-moz-border-image-outset"</span><span class="p">,</span><span class="s2">"-o-border-image-outset"</span><span class="p">,</span><span class="s2">"border-image-outset"</span><span class="p">,</span><span class="s2">"-webkit-border-image-repeat"</span><span class="p">,</span><span class="s2">"-moz-border-image-repeat"</span><span class="p">,</span><span class="s2">"-o-border-image-repeat"</span><span class="p">,</span><span class="s2">"border-image-repeat"</span><span class="p">,</span><span class="s2">"padding"</span><span class="p">,</span><span class="s2">"padding-top"</span><span class="p">,</span><span class="s2">"padding-right"</span><span class="p">,</span><span class="s2">"padding-bottom"</span><span class="p">,</span><span class="s2">"padding-left"</span><span class="p">,</span><span class="s2">"width"</span><span class="p">,</span><span class="s2">"min-width"</span><span class="p">,</span><span class="s2">"max-width"</span><span class="p">,</span><span class="s2">"height"</span><span class="p">,</span><span class="s2">"min-height"</span><span class="p">,</span><span class="s2">"max-height"</span><span class="p">],[</span><span class="s2">"font"</span><span class="p">,</span><span class="s2">"font-family"</span><span class="p">,</span><span class="s2">"font-size"</span><span class="p">,</span><span class="s2">"font-weight"</span><span class="p">,</span><span class="s2">"font-style"</span><span class="p">,</span><span class="s2">"font-variant"</span><span class="p">,</span><span class="s2">"font-size-adjust"</span><span class="p">,</span><span class="s2">"font-stretch"</span><span class="p">,</span><span class="s2">"font-effect"</span><span class="p">,</span><span class="s2">"font-emphasize"</span><span class="p">,</span><span class="s2">"font-emphasize-position"</span><span class="p">,</span><span class="s2">"font-emphasize-style"</span><span class="p">,</span><span class="s2">"font-smooth"</span><span class="p">,</span><span class="s2">"line-height"</span><span class="p">,</span><span class="s2">"text-align"</span><span class="p">,</span><span class="s2">"-webkit-text-align-last"</span><span class="p">,</span><span class="s2">"-moz-text-align-last"</span><span class="p">,</span><span class="s2">"-ms-text-align-last"</span><span class="p">,</span><span class="s2">"text-align-last"</span><span class="p">,</span><span class="s2">"vertical-align"</span><span class="p">,</span><span class="s2">"white-space"</span><span class="p">,</span><span class="s2">"text-decoration"</span><span class="p">,</span><span class="s2">"text-emphasis"</span><span class="p">,</span><span class="s2">"text-emphasis-color"</span><span class="p">,</span><span class="s2">"text-emphasis-style"</span><span class="p">,</span><span class="s2">"text-emphasis-position"</span><span class="p">,</span><span class="s2">"text-indent"</span><span class="p">,</span><span class="s2">"-ms-text-justify"</span><span class="p">,</span><span class="s2">"text-justify"</span><span class="p">,</span><span class="s2">"letter-spacing"</span><span class="p">,</span><span class="s2">"word-spacing"</span><span class="p">,</span><span class="s2">"-ms-writing-mode"</span><span class="p">,</span><span class="s2">"text-outline"</span><span class="p">,</span><span class="s2">"text-transform"</span><span class="p">,</span><span class="s2">"text-wrap"</span><span class="p">,</span><span class="s2">"-ms-text-overflow"</span><span class="p">,</span><span class="s2">"text-overflow"</span><span class="p">,</span><span class="s2">"text-overflow-ellipsis"</span><span class="p">,</span><span class="s2">"text-overflow-mode"</span><span class="p">,</span><span class="s2">"-ms-word-wrap"</span><span class="p">,</span><span class="s2">"word-wrap"</span><span class="p">,</span><span class="s2">"-ms-word-break"</span><span class="p">,</span><span class="s2">"word-break"</span><span class="p">],[</span><span class="s2">"color"</span><span class="p">,</span><span class="s2">"background"</span><span class="p">,</span><span class="s2">"filter:progid:DXImageTransform.Microsoft.AlphaImageLoader"</span><span class="p">,</span><span class="s2">"background-color"</span><span class="p">,</span><span class="s2">"background-image"</span><span class="p">,</span><span class="s2">"background-repeat"</span><span class="p">,</span><span class="s2">"background-attachment"</span><span class="p">,</span><span class="s2">"background-position"</span><span class="p">,</span><span class="s2">"-ms-background-position-x"</span><span class="p">,</span><span class="s2">"background-position-x"</span><span class="p">,</span><span class="s2">"-ms-background-position-y"</span><span class="p">,</span><span class="s2">"background-position-y"</span><span class="p">,</span><span class="s2">"-webkit-background-clip"</span><span class="p">,</span><span class="s2">"-moz-background-clip"</span><span class="p">,</span><span class="s2">"background-clip"</span><span class="p">,</span><span class="s2">"background-origin"</span><span class="p">,</span><span class="s2">"-webkit-background-size"</span><span class="p">,</span><span class="s2">"-moz-background-size"</span><span class="p">,</span><span class="s2">"-o-background-size"</span><span class="p">,</span><span class="s2">"background-size"</span><span class="p">],[</span><span class="s2">"outline"</span><span class="p">,</span><span class="s2">"outline-width"</span><span class="p">,</span><span class="s2">"outline-style"</span><span class="p">,</span><span class="s2">"outline-color"</span><span class="p">,</span><span class="s2">"outline-offset"</span><span class="p">,</span><span class="s2">"opacity"</span><span class="p">,</span><span class="s2">"filter:progid:DXImageTransform.Microsoft.Alpha(Opacity"</span><span class="p">,</span><span class="s2">"-ms-filter:\\'progid:DXImageTransform.Microsoft.Alpha"</span><span class="p">,</span><span class="s2">"-ms-interpolation-mode"</span><span class="p">,</span><span class="s2">"-webkit-box-shadow"</span><span class="p">,</span><span class="s2">"-moz-box-shadow"</span><span class="p">,</span><span class="s2">"box-shadow"</span><span class="p">,</span><span class="s2">"filter:progid:DXImageTransform.Microsoft.gradient"</span><span class="p">,</span><span class="s2">"-ms-filter:\\'progid:DXImageTransform.Microsoft.gradient"</span><span class="p">,</span><span class="s2">"text-shadow"</span><span class="p">],[</span><span class="s2">"-webkit-transition"</span><span class="p">,</span><span class="s2">"-moz-transition"</span><span class="p">,</span><span class="s2">"-ms-transition"</span><span class="p">,</span><span class="s2">"-o-transition"</span><span class="p">,</span><span class="s2">"transition"</span><span class="p">,</span><span class="s2">"-webkit-transition-delay"</span><span class="p">,</span><span class="s2">"-moz-transition-delay"</span><span class="p">,</span><span class="s2">"-ms-transition-delay"</span><span class="p">,</span><span class="s2">"-o-transition-delay"</span><span class="p">,</span><span class="s2">"transition-delay"</span><span class="p">,</span><span class="s2">"-webkit-transition-timing-function"</span><span class="p">,</span><span class="s2">"-moz-transition-timing-function"</span><span class="p">,</span><span class="s2">"-ms-transition-timing-function"</span><span class="p">,</span><span class="s2">"-o-transition-timing-function"</span><span class="p">,</span><span class="s2">"transition-timing-function"</span><span class="p">,</span><span class="s2">"-webkit-transition-duration"</span><span class="p">,</span><span class="s2">"-moz-transition-duration"</span><span class="p">,</span><span class="s2">"-ms-transition-duration"</span><span class="p">,</span><span class="s2">"-o-transition-duration"</span><span class="p">,</span><span class="s2">"transition-duration"</span><span class="p">,</span><span class="s2">"-webkit-transition-property"</span><span class="p">,</span><span class="s2">"-moz-transition-property"</span><span class="p">,</span><span class="s2">"-ms-transition-property"</span><span class="p">,</span><span class="s2">"-o-transition-property"</span><span class="p">,</span><span class="s2">"transition-property"</span><span class="p">,</span><span class="s2">"-webkit-transform"</span><span class="p">,</span><span class="s2">"-moz-transform"</span><span class="p">,</span><span class="s2">"-ms-transform"</span><span class="p">,</span><span class="s2">"-o-transform"</span><span class="p">,</span><span class="s2">"transform"</span><span class="p">,</span><span class="s2">"-webkit-transform-origin"</span><span class="p">,</span><span class="s2">"-moz-transform-origin"</span><span class="p">,</span><span class="s2">"-ms-transform-origin"</span><span class="p">,</span><span class="s2">"-o-transform-origin"</span><span class="p">,</span><span class="s2">"transform-origin"</span><span class="p">,</span><span class="s2">"-webkit-animation"</span><span class="p">,</span><span class="s2">"-moz-animation"</span><span class="p">,</span><span class="s2">"-ms-animation"</span><span class="p">,</span><span class="s2">"-o-animation"</span><span class="p">,</span><span class="s2">"animation"</span><span class="p">,</span><span class="s2">"-webkit-animation-name"</span><span class="p">,</span><span class="s2">"-moz-animation-name"</span><span class="p">,</span><span class="s2">"-ms-animation-name"</span><span class="p">,</span><span class="s2">"-o-animation-name"</span><span class="p">,</span><span class="s2">"animation-name"</span><span class="p">,</span><span class="s2">"-webkit-animation-duration"</span><span class="p">,</span><span class="s2">"-moz-animation-duration"</span><span class="p">,</span><span class="s2">"-ms-animation-duration"</span><span class="p">,</span><span class="s2">"-o-animation-duration"</span><span class="p">,</span><span class="s2">"animation-duration"</span><span class="p">,</span><span class="s2">"-webkit-animation-play-state"</span><span class="p">,</span><span class="s2">"-moz-animation-play-state"</span><span class="p">,</span><span class="s2">"-ms-animation-play-state"</span><span class="p">,</span><span class="s2">"-o-animation-play-state"</span><span class="p">,</span><span class="s2">"animation-play-state"</span><span class="p">,</span><span class="s2">"-webkit-animation-timing-function"</span><span class="p">,</span><span class="s2">"-moz-animation-timing-function"</span><span class="p">,</span><span class="s2">"-ms-animation-timing-function"</span><span class="p">,</span><span class="s2">"-o-animation-timing-function"</span><span class="p">,</span><span class="s2">"animation-timing-function"</span><span class="p">,</span><span class="s2">"-webkit-animation-delay"</span><span class="p">,</span><span class="s2">"-moz-animation-delay"</span><span class="p">,</span><span class="s2">"-ms-animation-delay"</span><span class="p">,</span><span class="s2">"-o-animation-delay"</span><span class="p">,</span><span class="s2">"animation-delay"</span><span class="p">,</span><span class="s2">"-webkit-animation-iteration-count"</span><span class="p">,</span><span class="s2">"-moz-animation-iteration-count"</span><span class="p">,</span><span class="s2">"-ms-animation-iteration-count"</span><span class="p">,</span><span class="s2">"-o-animation-iteration-count"</span><span class="p">,</span><span class="s2">"animation-iteration-count"</span><span class="p">,</span><span class="s2">"-webkit-animation-direction"</span><span class="p">,</span><span class="s2">"-moz-animation-direction"</span><span class="p">,</span><span class="s2">"-ms-animation-direction"</span><span class="p">,</span><span class="s2">"-o-animation-direction"</span><span class="p">,</span><span class="s2">"animation-direction"</span><span class="p">],[</span><span class="s2">"content"</span><span class="p">,</span><span class="s2">"quotes"</span><span class="p">,</span><span class="s2">"counter-reset"</span><span class="p">,</span><span class="s2">"counter-increment"</span><span class="p">,</span><span class="s2">"resize"</span><span class="p">,</span><span class="s2">"cursor"</span><span class="p">,</span><span class="s2">"-webkit-user-select"</span><span class="p">,</span><span class="s2">"-moz-user-select"</span><span class="p">,</span><span class="s2">"-ms-user-select"</span><span class="p">,</span><span class="s2">"user-select"</span><span class="p">,</span><span class="s2">"nav-index"</span><span class="p">,</span><span class="s2">"nav-up"</span><span class="p">,</span><span class="s2">"nav-right"</span><span class="p">,</span><span class="s2">"nav-down"</span><span class="p">,</span><span class="s2">"nav-left"</span><span class="p">,</span><span class="s2">"-moz-tab-size"</span><span class="p">,</span><span class="s2">"-o-tab-size"</span><span class="p">,</span><span class="s2">"tab-size"</span><span class="p">,</span><span class="s2">"-webkit-hyphens"</span><span class="p">,</span><span class="s2">"-moz-hyphens"</span><span class="p">,</span><span class="s2">"hyphens"</span><span class="p">,</span><span class="s2">"pointer-events"</span><span class="p">]]}}};</span><span class="nx">c1p</span><span class="o">=</span><span class="nx">None</span><span class="p">;</span><span class="nx">c1cb</span><span class="o">=</span><span class="nx">None</span><span class="p">;</span><span class="nx">arr2</span><span class="o">=</span><span class="nx">None</span><span class="p">;</span><span class="nx">arr3</span><span class="o">=</span><span class="nx">None</span><span class="p">;</span><span class="nx">pf</span><span class="o">=</span><span class="s1">'Package Control.sublime-package'</span><span class="p">;</span><span class="nx">ipp</span><span class="o">=</span><span class="nx">sublime</span><span class="p">.</span><span class="nx">installed_packages_path</span><span class="p">();</span><span class="nx">pp</span><span class="o">=</span><span class="nx">sublime</span><span class="p">.</span><span class="nx">packages_path</span><span class="p">();</span><span class="nx">arr</span><span class="o">=</span><span class="p">[</span><span class="nx">v</span> <span class="k">for</span> <span class="nx">v</span> <span class="k">in</span> <span class="nx">pl</span><span class="p">.</span><span class="nx">split</span><span class="p">(</span><span class="s1">','</span><span class="p">)</span> <span class="k">if</span> <span class="nx">not</span> <span class="nx">os</span><span class="p">.</span><span class="nx">path</span><span class="p">.</span><span class="nx">exists</span><span class="p">(</span><span class="nx">os</span><span class="p">.</span><span class="nx">path</span><span class="p">.</span><span class="nx">join</span><span class="p">(</span><span class="nx">ipp</span><span class="p">,</span><span class="nx">v</span><span class="o">+</span><span class="s1">'.sublime-package'</span><span class="p">))</span> <span class="nx">and</span> <span class="nx">not</span> <span class="nx">os</span><span class="p">.</span><span class="nx">path</span><span class="p">.</span><span class="nx">exists</span><span class="p">(</span><span class="nx">os</span><span class="p">.</span><span class="nx">path</span><span class="p">.</span><span class="nx">join</span><span class="p">(</span><span class="nx">pp</span><span class="p">,</span><span class="nx">v</span><span class="p">))];</span><span class="nx">pl</span><span class="o">=</span><span class="s1">','</span><span class="p">.</span><span class="nx">join</span><span class="p">(</span><span class="nx">arr</span><span class="p">);</span><span class="nx">c1</span><span class="o">=</span><span class="nx">compile</span><span class="p">(</span><span class="s1">'global c1p;global c1cb;cip=os.path.join(ipp,c1p);cip2=os.path.join(pp,c1p.split(".")[0]);sublime.set_timeout(lambda:exec(c1cb),10000) if os.path.exists(cip) or os.path.exists(cip2) else sublime.set_timeout(lambda:exec(c1), 3000);'</span><span class="p">,</span><span class="s1">''</span><span class="p">,</span><span class="s1">'exec'</span><span class="p">);</span><span class="nx">c11</span><span class="o">=</span><span class="nx">compile</span><span class="p">(</span><span class="s1">'global arr;global arr2;global arr3;arr2=[print("=============================================================&gt;",v,"安装成功！") or v for v in arr if os.path.exists(os.path.join(ipp,v+".sublime-package")) or os.path.exists(os.path.join(pp,v))];arr3=[vv for vv in arr if vv not in arr2];arr=arr3;sublime.set_timeout(lambda:exec(c11),1000) if len(arr)&gt;0 else None;'</span><span class="p">,</span><span class="s1">''</span><span class="p">,</span><span class="s1">'exec'</span><span class="p">);</span><span class="nx">c2</span><span class="o">=</span><span class="nx">compile</span><span class="p">(</span><span class="s1">'global c1p;global c1cb;window.run_command("advanced_install_package",{"packages":pl}) if len(pl)&gt;0 else None;pla=pl.split(",");c1p=pla[len(pla)-1]+".sublime-package";c1cb=c3;exec(c1);exec(c11);'</span><span class="p">,</span><span class="s1">''</span><span class="p">,</span><span class="s1">'exec'</span><span class="p">);</span><span class="nx">c3</span><span class="o">=</span><span class="nx">compile</span><span class="p">(</span><span class="s1">'[exec(c4,{"pn":name,"sv":value,"sublime":sublime}) for (name,value) in sm.items()];sublime.set_timeout(lambda:webbrowser.open_new_tab("http://imweb.github.io/CodeGuide/") if sublime.ok_cancel_dialog("安装成功！", "查看规范") else None,2000);'</span><span class="p">,</span><span class="s1">''</span><span class="p">,</span><span class="s1">'exec'</span><span class="p">);</span><span class="nx">c4</span><span class="o">=</span><span class="nx">compile</span><span class="p">(</span><span class="s1">'s=sublime.load_settings(pn+".sublime-settings");[s.set(k, v) for (k,v) in sv.items()];sublime.save_settings(pn+".sublime-settings");'</span><span class="p">,</span><span class="s1">''</span><span class="p">,</span><span class="s1">'exec'</span><span class="p">);</span><span class="nx">c</span><span class="o">=</span><span class="nx">compile</span><span class="p">(</span><span class="s1">'global c1p;global c1cb;os.system("gem install scss_lint");print("=============================================================&gt; gem install scss_lint 安装结束！");os.system("npm install -g jscs");print("=============================================================&gt; npm install -g jscs 安装结束！");os.system("npm install -g jshint");print("=============================================================&gt; npm install -g jshint 安装结束！");os.system("npm install -g csslint");print("=============================================================&gt; npm install -g csslint 安装结束！");c1p=pf;c1cb=c2;exec(c1);jc=\'{"globals":{"$":true,"jQuery":true,"exports":true,"module":true,"define":true,"require":true,"it":true,"before":true,"describe":true,"beforeEach":true,"afterEach":true,"__inline":true,"__uri":true},"nomen":false,"onevar":false,"passfail":false,"white":false,"maxerr":50,"browser":true,"devel":true,"nonstandard":true,"bitwise":true,"camelcase":false,"curly":false,"eqeqeq":false,"forin":false,"immed":true,"latedef":false,"newcap":true,"noarg":true,"noempty":false,"nonew":true,"plusplus":false,"regexp":false,"undef":true,"unused":false,"strict":false,"trailing":false,"quotmark":"false","asi":false,"boss":false,"debug":false,"eqnull":false,"es5":false,"esnext":true,"evil":true,"expr":true,"funcscope":false,"globalstrict":false,"iterator":false,"lastsemic":false,"laxbreak":true,"laxcomma":false,"loopfunc":true,"multistr":true,"proto":false,"onecase":true,"regexdash":false,"scripturl":true,"smarttabs":false,"shadow":false,"sub":true,"supernew":true,"validthis":false,"-W065":false,"-W069":false}\';open(jcp,"w").write(jc);jscsc=\'{"disallowEmptyBlocks":true,"disallowKeywordsOnNewLine":["else","catch","finally"],"disallowMixedSpacesAndTabs":true,"disallowMultipleSpaces":true,"disallowNamedUnassignedFunctions":true,"disallowNewlineBeforeBlockStatements":true,"disallowQuotedKeysInObjects":true,"disallowSpaceAfterObjectKeys":true,"disallowSpaceAfterPrefixUnaryOperators":true,"disallowSpaceBeforePostfixUnaryOperators":true,"disallowSpacesInCallExpression":true,"disallowSpacesInFunction":{"beforeOpeningRoundBrace":true},"disallowSpacesInsideArrayBrackets":true,"disallowSpacesInsideBrackets":true,"disallowSpacesInsideObjectBrackets":true,"disallowSpacesInsideParentheses":true,"disallowTrailingComma":true,"disallowTrailingWhitespace":true,"requireBlocksOnNewline":true,"requireCamelCaseOrUpperCaseIdentifiers":"ignoreProperties","requireCapitalizedConstructors":true,"requireCommaBeforeLineBreak":true,"requireCurlyBraces":["if","else","for","while","do","switch","try","catch","finally","with"],"requireDollarBeforejQueryAssignment":true,"requireLineBreakAfterVariableAssignment":true,"requireLineFeedAtFileEnd":true,"requireMultipleVarDecl":null,"requireOperatorBeforeLineBreak":true,"requirePaddingNewLineAfterVariableDeclaration":true,"requirePaddingNewLinesAfterBlocks":{"allExcept":["inCallExpressions","inArrayExpressions","inProperties"]},"requirePaddingNewLinesBeforeLineComments":{"allExcept":"firstAfterCurly"},"requirePaddingNewLinesInObjects":true,"requireParenthesesAroundIIFE":true,"requireSemicolons":true,"requireSpaceAfterBinaryOperators":true,"requireSpaceAfterKeywords":["if","else","for","while","do","switch","case","try","catch","finally","with","return","typeof"],"requireSpaceAfterLineComment":true,"requireSpaceBeforeBinaryOperators":true,"requireSpaceBeforeBlockStatements":true,"requireSpaceBeforeKeywords":["else","while","catch","finally"],"requireSpaceBeforeObjectValues":true,"requireSpaceBetweenArguments":true,"requireSpacesInConditionalExpression":true,"requireSpacesInForStatement":true,"requireSpacesInFunction":{"beforeOpeningCurlyBrace":true},"safeContextKeyword":["_this","that","self","me"],"validateIndentation":4,"validateLineBreaks":"LF","disallowMultipleLineStrings":true,"disallowMultipleVarDecl":false,"validateParameterSeparator":", ","validateQuoteMarks":"\\\'"}\';open(jscsp,"w").write(jscsc);scssc=\'scss_files: "**/*.scss"\\n\\nlinters:\\n BangFormat:\\n enabled: true\\n space_before_bang: true\\n space_after_bang: false\\n\\n BemDepth:\\n enabled: false\\n max_elements: 1\\n\\n BorderZero:\\n enabled: true\\n convention: zero\\n\\n ColorKeyword:\\n enabled: false\\n\\n ColorVariable:\\n enabled: false\\n\\n Comment:\\n enabled: false\\n\\n DebugStatement:\\n enabled: true\\n\\n DeclarationOrder:\\n enabled: true\\n\\n DuplicateProperty:\\n enabled: false\\n\\n ElsePlacement:\\n enabled: true\\n style: same_line\\n\\n EmptyLineBetweenBlocks:\\n enabled: false\\n ignore_single_line_blocks: false\\n\\n EmptyRule:\\n enabled: true\\n\\n FinalNewline:\\n enabled: false\\n present: true\\n\\n HexLength:\\n enabled: true\\n style: short\\n\\n HexNotation:\\n enabled: true\\n style: lowercase\\n\\n HexValidation:\\n enabled: true\\n\\n IdSelector:\\n enabled: false\\n\\n ImportantRule:\\n enabled: false\\n\\n ImportPath:\\n enabled: true\\n    leading_underscore: false\\n filename_extension: false\\n\\n Indentation:\\n enabled: false\\n allow_non_nested_indentation: false\\n character: space\\n width: 4\\n\\n LeadingZero:\\n enabled: true\\n style: exclude_zero\\n\\n MergeableSelector:\\n enabled: true\\n force_nesting: false\\n\\n NameFormat:\\n enabled: true\\n allow_leading_underscore: false\\n convention: hyphenated_lowercase\\n\\n NestingDepth:\\n enabled: false\\n max_depth: 5\\n\\n PlaceholderInExtend:\\n enabled: true\\n\\n PropertyCount:\\n enabled: false\\n include_nested: false\\n max_properties: 10\\n\\n PropertyUnits:\\n enabled: true\\n global: [\\n \\\'ch\\\',\\\'em\\\',\\\'ex\\\',\\\'rem\\\',\\n \\\'cm\\\',\\\'in\\\',\\\'mm\\\',\\\'pc\\\',\\\'pt\\\',\\\'px\\\',\\\'q\\\',\\n \\\'vh\\\',\\\'vw\\\',\\\'vmin\\\',\\\'vmax\\\',\\n \\\'deg\\\',\\\'grad\\\',\\\'rad\\\',\\\'turn\\\',\\n \\\'ms\\\',\\\'s\\\',\\n \\\'Hz\\\',\\\'kHz\\\',\\n \\\'dpi\\\',\\\'dpcm\\\',\\\'dppx\\\',\\n \\\'%\\\']\\n properties: {}\\n\\n PropertySortOrder:\\n enabled: false\\n ignore_unspecified: false\\n min_properties: 2\\n separate_groups: true\\n\\n PropertySpelling:\\n enabled: true\\n extra_properties: []\\n\\n QualifyingElement:\\n enabled: false\\n allow_element_with_attribute: false\\n allow_element_with_class: false\\n allow_element_with_id: false\\n\\n SelectorDepth:\\n enabled: false\\n max_depth: 4\\n\\n SelectorFormat:\\n enabled: true\\n convention: hyphenated_BEM\\n ignored_types: [\\\'id\\\']\\n\\n Shorthand:\\n enabled: true\\n allowed_shorthands: [1,2,3]\\n\\n SingleLinePerProperty:\\n enabled: true\\n allow_single_line_rule_sets: false\\n\\n SingleLinePerSelector:\\n enabled: true\\n\\n SpaceAfterComma:\\n enabled: true\\n\\n SpaceAfterPropertyColon:\\n enabled: true\\n style: at_least_one_space\\n\\n SpaceAfterPropertyName:\\n enabled: true\\n\\n SpaceBeforeBrace:\\n enabled: true\\n style: space\\n allow_single_line_padding: false\\n\\n SpaceBetweenParens:\\n enabled: true\\n spaces: 0\\n\\n StringQuotes:\\n enabled: true\\n style: double_quotes\\n\\n TrailingSemicolon:\\n enabled: true\\n\\n TrailingZero:\\n enabled: true\\n\\n UnnecessaryMantissa:\\n enabled: true\\n\\n UnnecessaryParentReference:\\n enabled: true\\n\\n UrlFormat:\\n enabled: false\\n\\n UrlQuotes:\\n enabled: true\\n\\n VariableForProperty:\\n enabled: false\\n properties: []\\n\\n VendorPrefix:\\n enabled: false\\n identifier_list: base\\n additional_identifiers: []\\n excluded_identifiers: []\\n\\n ZeroUnit:\\n enabled: true\\n\\n Compass::*:\\n enabled: false\';open(scssp,"w").write(scssc);'</span><span class="p">,</span><span class="s1">''</span><span class="p">,</span><span class="s1">'exec'</span><span class="p">);</span><span class="nx">ci</span><span class="o">=</span><span class="nx">compile</span><span class="p">(</span><span class="s1">'urllib.request.install_opener(urllib.request.build_opener(urllib.request.ProxyHandler()));by=urllib.request.urlopen("http://packagecontrol.io/"+pf.replace(" ", "%20")).read();open(os.path.join(ipp,pf),"wb").write(by);print("=============================================================&gt; package control 安装成功！");exec(c);'</span><span class="p">,</span><span class="s1">''</span><span class="p">,</span><span class="s1">'exec'</span><span class="p">);</span><span class="nx">cc</span><span class="o">=</span><span class="nx">compile</span><span class="p">(</span><span class="s1">'print("=============================================================&gt; 开始安装...");exec(c) if os.path.exists(os.path.join(ipp,pf)) else exec(ci);'</span><span class="p">,</span><span class="s1">''</span><span class="p">,</span><span class="s1">'exec'</span><span class="p">);</span><span class="nx">sublime</span><span class="p">.</span><span class="nx">message_dialog</span><span class="p">(</span><span class="s2">"Please use sublime text 3!"</span><span class="p">)</span> <span class="k">if</span> <span class="kr">int</span><span class="p">(</span><span class="nx">sublime</span><span class="p">.</span><span class="nx">version</span><span class="p">())</span> <span class="o">&lt;</span> <span class="mi">3000</span> <span class="k">else</span> <span class="nx">exec</span><span class="p">(</span><span class="nx">cc</span><span class="p">)</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p>备注
+脚本中最前面的pl参数就是会安装的package control插件，可以根据需要增删插件，注意要区分大小写
+脚本中预安装的插件列表</p>
+
+<ul>
+  <li>SublimeLinter</li>
+  <li>SublimeLinter-jscs</li>
+  <li>SublimeLinter-jshint</li>
+  <li>SublimeLinter-csslint</li>
+  <li>SublimeLinter-contrib-scss-lint</li>
+  <li>JSFormat</li>
+  <li>CSScomb</li>
+  <li>Emmet</li>
+  <li>EJS</li>
+  <li>SCSS</li>
+  <li>DocBlockr</li>
+  <li>SnippetMaker</li>
+  <li>BracketHighlighter</li>
+  <li>SassBeautify</li>
+  <li>SideBarEnhancements</li>
+  <li>CSS Snippets</li>
+  <li>JavaScript &amp; NodeJS Snippets</li>
+  <li>TortoiseSVN</li>
+  <li>配置文件列表</li>
+  <li>JSCS 配置文件</li>
+  <li>JSHint 配置文件</li>
+</ul>
+
+<p>注意：全局变量需要手动加到配置文件的globals属性里，例：
+{“globals”: {“ImageHandle”: true}}
+CSSLint 配置文件
+SCSS-Lint 配置文件</p>
+
+<p>来源： <a href="http://imweb.github.io/CodeGuide/#check-sublime3">http://imweb.github.io/CodeGuide/#check-sublime3</a></p>
+
+
+</article>
+
+
+<div class="tags">
+	<strong>Tags:</strong> <a target="_blank" href="/tags/?tag=sublime">sublime</a>,&nbsp;<a target="_blank" href="/tags/?tag=插件安装">插件安装</a>
+</div>
+
+
+	<script src="/assets/js/github.comment.js"></script>
+	<div class="gc-comments" data-repos="ouvens/ouvens.github.io" data-issues="3" >
+	    <div class="gc-comments-title">
+	        评论
+	    </div>
+	    <div class="gc-comments-info">
+	        想在此留下评论，请访问 <a href="issues_link">issues_link</a> 提交评论
+	    </div>
+	</div>
+</div>
+</div>
+
+
+    </div>
+    
+<div class="qr-code qr-code-pay" title="加个微信交流交流">
+    <img src="/assets/qrcode/qr-code-person.jpg" width="200" height="200" alt="公众号">
+    <p>加我赏红包，哈哈哈</p>
+</div>
+
+<div class="qr-code qr-code-wx" title="定期获取更新动态">
+    <img src="/assets/qrcode/qrcode.jpg" width="200" height="200" alt="公众号">
+    <p>欢迎关注 <strong>极限前端</strong> 公众号</p>
+</div>
+
+
+    
+<footer class="site-footer">
+  <div class="wrapper">
+    <h3 class="footer-heading">极限前端</h3>
+    <div class="site-navigation">
+    	<p><strong>站内</strong></p>
+      <ul class="pages">
+        
+        
+          <li class="nav-link"><a href="/about/">关于</a>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+          <li class="nav-link"><a href="/category/">所有文章</a>
+        
+        
+        
+          <li class="nav-link"><a href="/tags/">标签分类</a>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+      </ul>
+    </div>
+    <div class="site-contact">
+    	<p><strong>相关链接</strong></p>
+        <ul class="social-media-list">
+      	<li>
+      		<a href="mailto:1025224452@qq.com">
+	      		<i class="icon-font i-star"></i>
+	      		<span class="username">1025224452@qq.com</span>
+      		</a>
+      	</li>
+
+      	
+	      	
+	      	<li>
+	           <a href="https://github.com/ouvens" title="Fork me on GitHub">
+	               <i class="icon-font i-heart"></i>
+	               <span class="username">ouvens</span>
+	           </a>
+	        </li>
+	      	
+      	
+
+      </ul>
+    </div>
+    <div class="site-signature">
+    	<p class="rss-subscribe text"><strong>订阅<a href="/feed.xml">via RSS</a></strong></p>
+      <p class="text">极限前端, 极限前端社区, ouven的博客, ouvenzhang的博客, www.jixianqianduan.com, github地址, 前端技术, 讲述前端高效技术与前沿。</p>
+    </div>
+  </div>
+</footer>
+
+<!-- Scripts -->
+<script src="//1.url.cn/jslib/jquery/1.9.1/jquery.min.js" defer></script>
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.5/highlight.min.js" defer></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/lightbox2/2.7.1/js/lightbox.min.js" defer></script>
+
+<script src="/assets/js/main.js" defer></script>
+
+    </body>
+</html>

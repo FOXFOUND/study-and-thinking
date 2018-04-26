@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="google-site-verification" content="0FNbiBWk1FugWYo-RiGxQyIHebGeLoXp3HB7AxIFKy8" />
+    <meta name="baidu-site-verification" content="tYoUqpkCCv" />
+    <meta name="baidu-site-verification" content="IGN97NW90O" />
+    
+    <title>web前端响应式设计总结 | ouvenzhang的博客</title>
+
+    <meta http-equiv="x-dns-prefetch-control" content="on" />
+    <link rel="dns-prefetch" href="cdnjs.cloudflare.com" />
+    <link rel="dns-prefetch" href="1.url.cn" />
+
+    <meta name="description" itemprop="description" content="web前端响应式设计总结,web前端,响应式,腾讯课堂 ">
+    <meta itemprop="name" content="web前端响应式设计总结">
+    <meta itemprop="image" content="http://ouvens.github.io/blog/assets/logo.png">
+    <meta itemprop="keywords" name="keywords" content="web前端响应式设计总结,web前端,响应式,腾讯课堂 ">
+
+    
+    <meta name="author" content="ouvenzhang">
+    <meta name="copyright" content="&copy; ouvenzhang 2017">
+    <meta name="protocol" content="1">
+    
+
+    <!-- External libraries -->
+    <link rel="stylesheet" href="/assets/css/iconfont.css">
+    <link rel="stylesheet" href="/css/monokai_sublime.css">
+
+    <!-- Favicon and other icons (made with http://www.favicon-generator.org/) -->
+    <link rel="shortcut icon" href="/assets/favicon.ico" type="image/x-icon">
+  	<link rel="icon" href="/assets/favicon.ico" type="image/x-icon">
+    
+  	<meta name="msapplication-TileColor" content="#ffffff">
+  	<meta name="theme-color" content="#ffffff">
+    <meta name="msapplication-TileImage" content="/assets/icons/icon.png">
+
+  	<!-- Site styles -->
+    <link rel="stylesheet" href="/css/main.css">
+
+    <link rel="alternate" type="application/rss+xml" title="极限前端" href="http://ouvens.github.io//feed.xml" />
+    <script>
+    // 访问统计
+    var domain = 'jixianqianduan.com';
+    var oldDomain = 'ouvens.github.io';
+    if(location.host === domain){
+        var _hmt = _hmt || [];
+        (function() {
+          var hm = document.createElement("script");
+          hm.src = "//hm.baidu.com/hm.js?b536b128dc21c3d18fdc028f0609e3f0";
+          var s = document.getElementsByTagName("script")[0]; 
+          s.parentNode.insertBefore(hm, s);
+        })();
+    }else if(location.host === oldDomain){
+        window.location.href = location.href.replace(oldDomain, domain);
+        var _hmt = _hmt || [];
+        (function() {
+          var hm = document.createElement("script");
+          hm.src = "//hm.baidu.com/hm.js?041efd2cb345ca1b9dbdbb2383cb716d";
+          var s = document.getElementsByTagName("script")[0]; 
+          s.parentNode.insertBefore(hm, s);
+        })();
+    }
+
+    // 链接提交
+
+    if(location.protocol === 'https'){
+        !function(){var e=/([http|https]:\/\/[a-zA-Z0-9\_\.]+\.baidu\.com)/gi,r=window.location.href,t=document.referrer;if(!e.test(r)){var o="https://sp0.baidu.com/9_Q4simg2RQJ8t7jm9iCKT-xh_/s.gif";t?(o+="?r="+encodeURIComponent(document.referrer),r&&(o+="&l="+r)):r&&(o+="?l="+r);var i=new Image;i.src=o}}(window);
+    }else{
+        !function(){var e=/([http|https]:\/\/[a-zA-Z0-9\_\.]+\.baidu\.com)/gi,r=window.location.href,o=document.referrer;if(!e.test(r)){var n="//api.share.baidu.com/s.gif";o?(n+="?r="+encodeURIComponent(document.referrer),r&&(n+="&l="+r)):r&&(n+="?l="+r);var t=new Image;t.src=n}}(window);
+    }
+
+
+    </script>
+</head>
+
+    <body>
+        <div class="navigation" role="banner">
+    <div class="navigation-wrapper">
+    <a href="/" class="logo">
+    	
+      <img src="/assets/logo.png" alt="极限前端">
+      
+    </a>
+    <span class="search-input" id="search-input">
+      <input type="text" value="" class="search-text" placeholder="输入搜索关键字">
+      <i class="icon-font i-search search-btn"></i>
+    </span>
+    <a href="javascript:void(0)" class="navigation-menu-button" id="js-mobile-menu">
+    	<i class="icon-font i-list fa fa-bars"></i>
+    </a>
+    <span class="nav" role="navigation">
+      <ul id="js-navigation-menu" class="navigation-menu show">
+      	
+          
+          <li class="nav-link">
+            <a href="/about/">关于</a>
+          </li>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+          <li class="nav-link">
+            <a href="/category/">所有文章</a>
+          </li>
+          
+        
+          
+          <li class="nav-link">
+            <a href="/tags/">标签分类</a>
+          </li>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          <li id="github-info" class="nav-link" title="https://github.com/ouvens">
+            <a class="github-info" href="https://github.com/ouvens" target="_blank">
+            <img src="/assets/github.png" height="34" width="130" alt="github地址"></a>
+          </li>
+      </ul>
+    </span>
+  </div>
+</div>
+
+            <div class="page-content">
+        <div class="post">
+<div class="post-header-container has-cover">
+	<header class="post-header">
+	  <h1 class="title">web前端响应式设计总结</h1>
+	  <p class="info">by <strong>ouven</strong></p>
+	</header>
+</div>
+<div class="wrapper">
+
+
+
+<div class="post-meta">
+	<div class="post-date">2016年01月15日</div>
+	<div class="post-categories">
+	 in  
+		<a target="_blank" href="/category/?cate=frontend-css">Frontend-css</a>
+	  
+	</div>
+</div>	
+
+<article class="post-content">
+  <h2 id="web">web前端响应式设计总结</h2>
+
+<h4 id="section">一、响应式概述</h4>
+
+<p>  响应式是指根据不同设备浏览器分辨率或尺寸来展示不同页面结构、行为、表现的设计方式。这里总结了响应式网站设计需要涉及到的相关的内容，有不正确的欢迎大家指正。谈到响应式网站，目前比较主流的做法是通过前端通过判断userAgent来做页面的302跳转。</p>
+
+<p>那么问题来了，使用userAgent的问题：</p>
+
+<ul>
+  <li>依赖设备本身浏览器或设备特点，例如尺寸，屏幕分辨率等。</li>
+  <li>需要分配多个站点页面跳转适配浏览器。例如：ke.qq.com，m.ke.qq.com，来分别存放PC端和移动端的页面。</li>
+  <li>多了一次跳转，跳转之前的逻辑不能少，这样用户体验就慢了</li>
+</ul>
+
+<p>  当然我们也都知道像bootstrap这种ui框架也是响应式的，即写一份代码，在浏览器和移动端都能跑，然而事实上这些事远远不够的，而且在移动端为什么要加载那么多PC端的内容？</p>
+
+<p>  我们理解的是完整的响应式页面的设计不仅仅是通过屏幕尺寸来动态改变页面容器的宽度等，其实大部分人通常理解的都停留在这个方面。完整的响应式网站的实现其实需要考虑到以下这些问题：<strong>响应式布局</strong>、<strong>响应式html和css</strong>、<strong>响应式媒体</strong>、<strong>响应式javascript</strong>。</p>
+
+<p>  这些页面在移动端和PC端使用同一个页面(大家可以用chrome浏览器一下)，这样就避免了多余的302跳转，另外页面布局、逻辑、图片等内容都通过不同浏览器来适应。下面具体讲下各个部分的实现所涉及的内容。</p>
+
+<h4 id="section-1">二、响应式布局</h4>
+
+<p>  响应式布局是用来兼容浏览器分辨率，清晰度，横屏，竖屏的页面元素布局方式。一般使用栅格方式实现。时间思路有两种，一种是PC端优先，另一种是以移动优先，PC端作为一个扩展。由于移动端的资源比较优先，一般比较推荐从移动端扩展到PC端，这样就避免了在移动端加载多余的PC端内容。响应式布局主要可以结合几种实现方式：</p>
+
+<p><strong>1，移动端布局控制</strong></p>
+
+<p>使用 viewport标签在手机浏览器上控制布局控制不缩放等通用定义。</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2</pre></td><td class="code"><pre><span class="nt">&lt;meta</span> <span class="na">name=</span><span class="s">"viewport"</span> <span class="na">content=</span><span class="s">"width=device-width,initial-scale=1, maximum-scale=1"</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;meta</span> <span class="na">name=</span><span class="s">"apple-mobile-web-app-status-bar-style"</span> <span class="na">content=</span><span class="s">"blank"</span> <span class="nt">/&gt;</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p>由于这些定义在移动端必须定义，这里还是需要定义，用到PC端也不影响，只是有些多余。</p>
+
+<p><strong>2，普通元素的栅格布局</strong></p>
+
+<p>对于普通的div布局，使用了通用简单的栅格布局，相信这个大家都知道原理：</p>
+
+<div class="language-css highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16</pre></td><td class="code"><pre><span class="nc">.row</span><span class="p">{</span>
+  <span class="nl">width</span><span class="p">:</span> <span class="m">100%</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nc">.row</span> <span class="nc">.col-1</span> <span class="p">{</span>
+  <span class="nl">width</span><span class="p">:</span> <span class="m">8.33333333333%</span>
+<span class="p">}</span>
+
+<span class="nc">.row</span> <span class="nc">.col-2</span> <span class="p">{</span>
+  <span class="nl">width</span><span class="p">:</span> <span class="m">16.6666666667%</span>
+<span class="p">}</span>
+
+<span class="c">/* ...比较多，这里省略 */</span>
+
+<span class="nc">.row</span> <span class="nc">.col-12</span> <span class="p">{</span>
+  <span class="nl">width</span><span class="p">:</span> <span class="m">100%</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p>这里借鉴了其它的一下栅格系统的设计：
+Responsive Grid System
+Fluid 960 Grid(adaptjs)
+Simple Grid</p>
+
+<p><strong>3，不同设备元素容器布局</strong></p>
+
+<p>  通用栅格布局并不能解决我们全部的问题，例如某个页面板块列表，PC端一排展示4个，移动端一排展示2两个，使用栅格的话我们就需要重新定义.col-3和.col-6了。对于这种情况我们的处理方法也比较简单
+  对于移动端浏览器，通过简单的js逻辑判断，在html的body中加入mobile的内容，在body里面的相同元素使用不同的宽度布局的方式。这种方式订制化坚强，如果宽度布局用的不多，即可以使用这种不同宽度布局的方式来实现。这样就实现了一个普通div在移动端和PC端的不同布局。</p>
+
+<div class="language-css highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6</pre></td><td class="code"><pre>  <span class="nc">.container</span><span class="p">{</span>
+    <span class="nl">width</span><span class="p">:</span> <span class="m">25%</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="nc">.mobile</span> <span class="nc">.container</span><span class="p">{</span>
+    <span class="nl">width</span><span class="p">:</span> <span class="m">50%</span><span class="p">;</span>
+  <span class="p">}</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h4 id="htmlcss">三、响应式html与css</h4>
+
+<p>  这两个结合起来介绍是因为这两个比较强相关。由于移动端页面的html可能相对简单，但是扩展到PC会增加额外的html结构，例如下面截图中的框中部分，在移动端时不显示或显示另一种样式，例如下面两图对比。那我们如何做到两个平台两种不同展示呢？</p>
+
+<p><img src="http://7tszky.com1.z0.glb.clouddn.com/FkKIUveEN5Jq3a752ICPxQU4-Gmy" alt="" /></p>
+
+<p><img src="http://7tszky.com1.z0.glb.clouddn.com/Fpveyyy5IDVxFLcUHrIWoZ18fY3H" alt="" /></p>
+
+<p>  方法思路一：使用相同html结构，对于要在移动端要隐藏的dom元素，可以通过display:  none来控制html是否显示；对于展示样式不同的，需要在PC端额外引入css覆盖移动端的原有样式（之前说过了，PC端资源相对移动端比较充裕，PC端可以接受额外增减少量的css文件来实现响应式）。</p>
+
+<p>  方法思路二：动态使用js渲染不同内容，但是这样会增加移动端js大小，而且css样式文件必不可少。相比之下，我们使用了思路一的方案。其实使用js的渲染方案也是可以的，不过毕竟保留html比使用js简单。</p>
+
+<p>  讲到这里相信大家也都懂了。</p>
+
+<h4 id="section-2">四、响应式媒体</h4>
+
+<p>  响应式网站设计比较复杂的就是图片媒体处理了。布局做了响应式处理，但是在我们手机访问时，请求的图片还是PC浏览器上请求的大图；文件体积大，消耗流量多，请求延时长。响应式媒体要解决的两个关键点是媒体尺寸自适应和屏幕分辨率自适应。当然这里使用到的媒体主要指图片，但要明白的是，不仅仅只有图片。</p>
+
+<p>  先看看一般的媒体大小自适应解决方案，我们没有使用这里的方案，而是结合借鉴了这里的思路，而且我们也有必要了解这些解决方案。</p>
+
+<p><strong>1，使用css背景图片 (依赖media query)</strong></p>
+
+<p>  将图片设计为背景图片，并在css通过media query来加载所需要的背景图片。这样就会根据访问设备的属性来加载形影的图片。但是无法定义页面图片图片属性。</p>
+
+<p><strong>2，picture element (依赖浏览器新特性+midea query)</strong></p>
+
+<p>  W3C已经有一个用于响应式图形的草案：新定义标签<picture>，但因为它还只是草案，目前还没有支持的浏览器，期待在不久的未来我们能用上。虽然目前不支持，但我们还是来了解下这个浏览器的新特性，也和我们一贯的研究方向一致。
+picture是一个图形元素，内容由多个源图组成，并由CSS Media Queries来适配出合理图形，代码规范如下</picture></p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18</pre></td><td class="code"><pre><span class="nt">&lt;picture</span> <span class="na">width=</span><span class="s">"500"</span> <span class="na">height=</span><span class="s">"500"</span><span class="nt">&gt;</span>
+   <span class="nt">&lt;source</span> <span class="na">media=</span><span class="s">"(min-width: 640px)"</span> <span class="na">srcset=</span><span class="s">"large-1.jpg 1x, large-2.jpg 2x"</span><span class="nt">&gt;</span>
+   <span class="nt">&lt;source</span> <span class="na">media=</span><span class="s">"(min-width: 320px)"</span> <span class="na">srcset=</span><span class="s">"med-1.jpg 1x, med-2.jpg 2x"</span><span class="nt">&gt;</span>
+   <span class="nt">&lt;source</span> <span class="na">srcset=</span><span class="s">"small-1.jpg 1x, small-2.jpg 2x"</span><span class="nt">&gt;</span>
+   <span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">"small-1.jpg"</span> <span class="na">alt=</span><span class="s">""</span><span class="nt">&gt;</span>
+   <span class="nt">&lt;p&gt;</span>Accessible text<span class="nt">&lt;/p&gt;</span>
+   <span class="c">&lt;!-- Fallback content--&gt;</span>
+   <span class="nt">&lt;noscript&gt;</span>
+      <span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">"external/imgs/small.jpg"</span> <span class="na">alt=</span><span class="s">"Team photo"</span><span class="nt">&gt;</span>
+   <span class="nt">&lt;/noscript&gt;</span>
+<span class="nt">&lt;/picture&gt;</span>
+
+source: 一个图片源；
+media: 媒体查询，用于适配屏幕尺寸；
+srcset: 图片链接，1x适应普通屏，2x适应高清屏；
+<span class="nt">&lt;noscript/&gt;</span>: 当浏览器不支持脚本时的一个替代方案；
+<span class="nt">&lt;img/&gt;</span>: 初始图片；另外还有一个无障碍文本，类似<span class="nt">&lt;img/&gt;</span>的alt属性。
+<span class="nt">&lt;picture&gt;</span>目前还不支持，但它的原理我们是可借鉴的，所以就诞生了一个用于图片响应式处理的类库picturefill
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p><strong>3，picturefill (依赖js+media query)</strong></p>
+
+<p>  https://github.com/scottjehl/picturefill
+  http://scottjehl.github.io/picturefill/</p>
+
+<p>  可以认为是picture元素的一个polyfill，(什么是polyfill？晶哥第一次沙龙讲过，就是修复浏览器特性不支持的”腻子”)。
+未来我们可能使用picture元素来进行图片在页面的适应。而picturefill是w3c提供的最新的针对响应式图片的设计方案，但是需要浏览器支持picture属性，原理就是JS获取Source的源以及CSS Media Queries规则，输出适应图片。</p>
+
+<p>这个是picturefill实现的部分源码，大致看了一下，原理就是使用javascript来解析picture元素定义的标签，来在页面上强行使用picture类似元素。但是个人觉得性能方面值得去考虑。</p>
+
+<p><strong>4，adaptive-images</strong></p>
+
+<p>http://adaptive-images.com/</p>
+
+<p>  实现原理是浏览器访问服务器图片时带上浏览器的窗口信息，服务器获取后根据窗口信息获取相对应的图片返回。
+这是一个服务端解决方案，优点：一是不用更改现有的HTML标签结构，因此可快捷地应用于过去的项目；二是对于任何图片，包括JS添加的，都会起作用，即图片宽度不会大于浏览器宽度，三是由于其采用服务端解决方案，兼容性很广。
+  但是，其缺点也是明显的：首先，其依赖Cookie和JS，浏览器信息需要通过js存放cookie，发送时放在头部发送，这导致一些禁用或不能使用Cookie和JS的浏览器不能使用。然后是其对所有图片都起作用，这不适用于那些需要加载大图片的情形；最后，不适用于CDN，因为图片都是针对特定设备即时生成的，我觉得可以修改后端代码做</p>
+
+<p><strong>5，responsive-images.js(依赖js)</strong></p>
+
+<p>  官网：https://github.com/kvendrik/responsive-images.js
+  这个与picturefill类似，不过它不依赖media query，而是通过JS检测浏览器的可见视口宽度来决定选择合适的图片，因此其兼容性很广，所有的主流浏览器。同时也不需要额外的标签，而是需要额外的属性，但是它不支持JS添加的图片，至少目前还不支持。</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2</pre></td><td class="code"><pre><span class="nt">&lt;img</span> <span class="na">alt=</span><span class="s">'kitten!'</span> <span class="na">data-src-base=</span><span class="s">'demo/images/'</span> <span class="na">data-src=</span><span class="s">'&lt;480:smallest.jpg,
+ &lt;768:small.jpg,&lt;960:medium.jpg,&gt;960:big.jpg'</span> <span class="nt">/&gt;</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p><strong>6，不同屏幕分辨率自适应方案</strong></p>
+
+<p>  主要是解决高清屏(retina屏)的问题，由于高清屏与普通屏幕有所区别：</p>
+
+<p>  由于高清屏的特性，1px是由2×2个像素点来渲染，那么我们样式上的border:1px在Retina屏下会渲染成2px的边框，与设计稿有出入，为了追求1px精准还原，我们就不得不拿出一个完美的解决方案。(此处没去深究)JS检测是否高清屏：var retina = window.devicePixelRatio &gt; 1;
+  例如一个边框的</p>
+
+<div class="language-css highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7</pre></td><td class="code"><pre><span class="k">@media</span> <span class="n">only</span> <span class="n">screen</span> <span class="n">and</span> <span class="p">(</span><span class="n">-webkit-min-device-pixel-ratio</span><span class="p">:</span><span class="m">2</span><span class="p">),</span>
+       <span class="n">only</span> <span class="n">screen</span> <span class="n">and</span> <span class="p">(</span><span class="n">min-device-pixel-ratio</span><span class="p">:</span><span class="m">2</span><span class="p">)</span> <span class="p">{</span>
+<span class="nt">button</span> <span class="p">{</span>
+  <span class="nl">border</span><span class="p">:</span><span class="nb">none</span><span class="p">;</span>
+  <span class="nl">padding</span><span class="p">:</span><span class="m">0</span> <span class="m">16px</span><span class="p">;</span>
+  <span class="nl">background-size</span><span class="p">:</span> <span class="m">50%</span> <span class="m">50%</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p><strong>结合实现思路：</strong>
+  然而这里没有一种单一方案能满足我们的需求，不过借鉴这些思路的处理过程，我们的处理思路也基本类似：由于这里的图片数据是异步拉取渲染的，而且我们的图片加载选择和屏幕宽度无关，和浏览器设备相关，那就可以通过浏览器通过js(或css)获取用户设备类型、分辨率，然后通过判断用户设备输出适应的大小图片图片的dom结构，另外如果用户屏幕是高清屏，还的输出双倍分辨率的图片适应屏幕。</p>
+
+<h4 id="javascript">五、响应式javascript</h4>
+
+<p>  真正的响应式设计的网站，处理使用不同的布局、html、css和图片，还需要根据浏览器环境来异步加载不同的js文件。和之前思路一样，这里我们主要通过设备环境判断来异步加载不同的javascript，下面这样就实现了安装浏览器环境来加载了</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10</pre></td><td class="code"><pre>
+<span class="k">if</span><span class="p">(</span><span class="nx">isMobile</span><span class="p">){</span>
+    <span class="nx">require</span><span class="p">.</span><span class="nx">async</span><span class="p">([</span><span class="s1">'zepto'</span><span class="p">,</span> <span class="s1">'./mobileMain'</span><span class="p">],</span> <span class="kd">function</span><span class="p">(</span><span class="nx">$</span><span class="p">,</span> <span class="nx">main</span><span class="p">){</span>
+        <span class="nx">main</span><span class="p">.</span><span class="nx">init</span><span class="p">();</span>
+    <span class="p">});</span>
+<span class="p">}</span><span class="k">else</span><span class="p">{</span>
+    <span class="nx">require</span><span class="p">.</span><span class="nx">async</span><span class="p">([</span><span class="s1">'jquery'</span><span class="p">,</span> <span class="s1">'./main'</span><span class="p">],</span> <span class="kd">function</span><span class="p">(</span><span class="nx">$</span><span class="p">,</span> <span class="nx">main</span><span class="p">){</span>
+        <span class="nx">main</span><span class="p">.</span><span class="nx">init</span><span class="p">();</span>
+    <span class="p">});</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p>  这样就有效保证了当时移动端时加载移动端需要的js同时避免了多余的js文件的下载。至于这里如何打包，就是另一个问题了，而且有点坑要填，这里开始我们没有处理好判断逻辑打包的问题，后来通过自己开发构建插件实现这个逻辑的打包。</p>
+
+<h4 id="section-3">六、一般响应式网站架构</h4>
+
+<p>  这里实际不是我们的实现部分，而且不符合我们的需求，后台部署实现也复杂，但是这里还是总结补充梳理一下来做完整地做个总结。</p>
+
+<p>(1) 简单网站的响应式结构</p>
+
+<p>  使用media query指定屏幕适应属性实现网页自适应，不同设备下的css写在一个文件内，css按模块管理。模块分开，易于管理和编码实现，也便于维护，是中小型网站实现响应式的不二选择。</p>
+
+<p>缺点：对于样式复杂的网站没有拆分，不能根据对应屏幕加载对应样式，造成带宽浪费；不利于优化和cdn。</p>
+
+<p>(2) 分流响应式站点</p>
+
+<p>  javascript根据userAgent特性来加载不同域下的css，可以尽可能避免使用media query，不同浏览器环境下的样式分离管理，实现了平台样式分离，易于cdn管理。</p>
+
+<p>缺点：需要维护多套样式表，即使公共部分抽离，一旦修改，影响多个平台环境；需要判断UA；架构实现稍微复杂。</p>
+
+<p>(3) 后台页面直出</p>
+
+<p>  和adaptive-images实现方法类似，首先是建立在不同环境下样式分离管理的基础上，后台根据静态文件请求所带的cookie信息直出静态页面，拉取相对应的css。</p>
+
+<p>缺点：需要依赖cookie机制，服务器需要进行处理。(不过这层直出可以使用node中间服务获取，由这层服务请求后台，再返回给前端)</p>
+
+<h4 id="section-4">七、总结</h4>
+
+<p>  再来回头看下本文总结了啥，还是回到开头的几个问题，响应式网站设计实现包含的几个方面：<strong>响应式布局</strong>、<strong>响应式html和css</strong>、<strong>响应式媒体</strong>、<strong>响应式javascript</strong>，总结了较多别人的实现方案，也提出了我们的实践方法，另外补充了下通用的响应式架构。这里就先总结到这里，另外，有不准确的欢迎拍砖。</p>
+
+</article>
+
+
+<div class="tags">
+	<strong>Tags:</strong> <a target="_blank" href="/tags/?tag=web前端">web前端</a>,&nbsp;<a target="_blank" href="/tags/?tag=响应式">响应式</a>,&nbsp;<a target="_blank" href="/tags/?tag=腾讯课堂">腾讯课堂</a>
+</div>
+
+
+	<script src="/assets/js/github.comment.js"></script>
+	<div class="gc-comments" data-repos="ouvens/ouvens.github.io" data-issues="3" >
+	    <div class="gc-comments-title">
+	        评论
+	    </div>
+	    <div class="gc-comments-info">
+	        想在此留下评论，请访问 <a href="issues_link">issues_link</a> 提交评论
+	    </div>
+	</div>
+</div>
+</div>
+
+
+    </div>
+    
+<div class="qr-code qr-code-pay" title="加个微信交流交流">
+    <img src="/assets/qrcode/qr-code-person.jpg" width="200" height="200" alt="公众号">
+    <p>加我赏红包，哈哈哈</p>
+</div>
+
+<div class="qr-code qr-code-wx" title="定期获取更新动态">
+    <img src="/assets/qrcode/qrcode.jpg" width="200" height="200" alt="公众号">
+    <p>欢迎关注 <strong>极限前端</strong> 公众号</p>
+</div>
+
+
+    
+<footer class="site-footer">
+  <div class="wrapper">
+    <h3 class="footer-heading">极限前端</h3>
+    <div class="site-navigation">
+    	<p><strong>站内</strong></p>
+      <ul class="pages">
+        
+        
+          <li class="nav-link"><a href="/about/">关于</a>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+          <li class="nav-link"><a href="/category/">所有文章</a>
+        
+        
+        
+          <li class="nav-link"><a href="/tags/">标签分类</a>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+      </ul>
+    </div>
+    <div class="site-contact">
+    	<p><strong>相关链接</strong></p>
+        <ul class="social-media-list">
+      	<li>
+      		<a href="mailto:1025224452@qq.com">
+	      		<i class="icon-font i-star"></i>
+	      		<span class="username">1025224452@qq.com</span>
+      		</a>
+      	</li>
+
+      	
+	      	
+	      	<li>
+	           <a href="https://github.com/ouvens" title="Fork me on GitHub">
+	               <i class="icon-font i-heart"></i>
+	               <span class="username">ouvens</span>
+	           </a>
+	        </li>
+	      	
+      	
+
+      </ul>
+    </div>
+    <div class="site-signature">
+    	<p class="rss-subscribe text"><strong>订阅<a href="/feed.xml">via RSS</a></strong></p>
+      <p class="text">极限前端, 极限前端社区, ouven的博客, ouvenzhang的博客, www.jixianqianduan.com, github地址, 前端技术, 讲述前端高效技术与前沿。</p>
+    </div>
+  </div>
+</footer>
+
+<!-- Scripts -->
+<script src="//1.url.cn/jslib/jquery/1.9.1/jquery.min.js" defer></script>
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.5/highlight.min.js" defer></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/lightbox2/2.7.1/js/lightbox.min.js" defer></script>
+
+<script src="/assets/js/main.js" defer></script>
+
+    </body>
+</html>

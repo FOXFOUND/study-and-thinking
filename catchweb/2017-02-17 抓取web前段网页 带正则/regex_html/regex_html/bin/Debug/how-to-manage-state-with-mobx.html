@@ -1,0 +1,819 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="google-site-verification" content="0FNbiBWk1FugWYo-RiGxQyIHebGeLoXp3HB7AxIFKy8" />
+    <meta name="baidu-site-verification" content="tYoUqpkCCv" />
+    <meta name="baidu-site-verification" content="IGN97NW90O" />
+    
+    <title>【原译】使用MobX怎样管理JavaScript应用状态 | ouvenzhang的博客</title>
+
+    <meta http-equiv="x-dns-prefetch-control" content="on" />
+    <link rel="dns-prefetch" href="cdnjs.cloudflare.com" />
+    <link rel="dns-prefetch" href="1.url.cn" />
+
+    <meta name="description" itemprop="description" content="【原译】使用MobX怎样管理JavaScript应用状态,react,mobx ">
+    <meta itemprop="name" content="【原译】使用MobX怎样管理JavaScript应用状态">
+    <meta itemprop="image" content="http://ouvens.github.io/blog/assets/logo.png">
+    <meta itemprop="keywords" name="keywords" content="【原译】使用MobX怎样管理JavaScript应用状态,react,mobx ">
+
+    
+    <meta name="author" content="ouvenzhang">
+    <meta name="copyright" content="&copy; ouvenzhang 2017">
+    <meta name="protocol" content="1">
+    
+
+    <!-- External libraries -->
+    <link rel="stylesheet" href="/assets/css/iconfont.css">
+    <link rel="stylesheet" href="/css/monokai_sublime.css">
+
+    <!-- Favicon and other icons (made with http://www.favicon-generator.org/) -->
+    <link rel="shortcut icon" href="/assets/favicon.ico" type="image/x-icon">
+  	<link rel="icon" href="/assets/favicon.ico" type="image/x-icon">
+    
+  	<meta name="msapplication-TileColor" content="#ffffff">
+  	<meta name="theme-color" content="#ffffff">
+    <meta name="msapplication-TileImage" content="/assets/icons/icon.png">
+
+  	<!-- Site styles -->
+    <link rel="stylesheet" href="/css/main.css">
+
+    <link rel="alternate" type="application/rss+xml" title="极限前端" href="http://ouvens.github.io//feed.xml" />
+    <script>
+    // 访问统计
+    var domain = 'jixianqianduan.com';
+    var oldDomain = 'ouvens.github.io';
+    if(location.host === domain){
+        var _hmt = _hmt || [];
+        (function() {
+          var hm = document.createElement("script");
+          hm.src = "//hm.baidu.com/hm.js?b536b128dc21c3d18fdc028f0609e3f0";
+          var s = document.getElementsByTagName("script")[0]; 
+          s.parentNode.insertBefore(hm, s);
+        })();
+    }else if(location.host === oldDomain){
+        window.location.href = location.href.replace(oldDomain, domain);
+        var _hmt = _hmt || [];
+        (function() {
+          var hm = document.createElement("script");
+          hm.src = "//hm.baidu.com/hm.js?041efd2cb345ca1b9dbdbb2383cb716d";
+          var s = document.getElementsByTagName("script")[0]; 
+          s.parentNode.insertBefore(hm, s);
+        })();
+    }
+
+    // 链接提交
+
+    if(location.protocol === 'https'){
+        !function(){var e=/([http|https]:\/\/[a-zA-Z0-9\_\.]+\.baidu\.com)/gi,r=window.location.href,t=document.referrer;if(!e.test(r)){var o="https://sp0.baidu.com/9_Q4simg2RQJ8t7jm9iCKT-xh_/s.gif";t?(o+="?r="+encodeURIComponent(document.referrer),r&&(o+="&l="+r)):r&&(o+="?l="+r);var i=new Image;i.src=o}}(window);
+    }else{
+        !function(){var e=/([http|https]:\/\/[a-zA-Z0-9\_\.]+\.baidu\.com)/gi,r=window.location.href,o=document.referrer;if(!e.test(r)){var n="//api.share.baidu.com/s.gif";o?(n+="?r="+encodeURIComponent(document.referrer),r&&(n+="&l="+r)):r&&(n+="?l="+r);var t=new Image;t.src=n}}(window);
+    }
+
+
+    </script>
+</head>
+
+    <body>
+        <div class="navigation" role="banner">
+    <div class="navigation-wrapper">
+    <a href="/" class="logo">
+    	
+      <img src="/assets/logo.png" alt="极限前端">
+      
+    </a>
+    <span class="search-input" id="search-input">
+      <input type="text" value="" class="search-text" placeholder="输入搜索关键字">
+      <i class="icon-font i-search search-btn"></i>
+    </span>
+    <a href="javascript:void(0)" class="navigation-menu-button" id="js-mobile-menu">
+    	<i class="icon-font i-list fa fa-bars"></i>
+    </a>
+    <span class="nav" role="navigation">
+      <ul id="js-navigation-menu" class="navigation-menu show">
+      	
+          
+          <li class="nav-link">
+            <a href="/about/">关于</a>
+          </li>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+          <li class="nav-link">
+            <a href="/category/">所有文章</a>
+          </li>
+          
+        
+          
+          <li class="nav-link">
+            <a href="/tags/">标签分类</a>
+          </li>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          <li id="github-info" class="nav-link" title="https://github.com/ouvens">
+            <a class="github-info" href="https://github.com/ouvens" target="_blank">
+            <img src="/assets/github.png" height="34" width="130" alt="github地址"></a>
+          </li>
+      </ul>
+    </span>
+  </div>
+</div>
+
+            <div class="page-content">
+        <div class="post">
+<div class="post-header-container has-cover">
+	<header class="post-header">
+	  <h1 class="title">【原译】使用MobX怎样管理JavaScript应用状态</h1>
+	  <p class="info">by <strong>ouven</strong></p>
+	</header>
+</div>
+<div class="wrapper">
+
+
+
+<div class="post-meta">
+	<div class="post-date">2016年10月12日</div>
+	<div class="post-categories">
+	 in  
+		<a target="_blank" href="/category/?cate=article-translation">Article-translation</a>
+	  
+	</div>
+</div>	
+
+<article class="post-content">
+  <p>  【译者注】：这是mobxjs的一名作者写的mobx使用解析，读完觉得挺有意思。</p>
+
+<p>  如果你曾经用jQuery写过复杂的应用，你可能就会遇到管理不同页面部分UI内容同步的问题。常常，数据修改后需要体现在多个地方，随着项目的复杂化，你可能很难去管理。为了解决这个问题，我们常常需要使用事件来让页面的多个部分知道数据改变了。</p>
+
+<p>  所以，现在你是怎样管理这个状态的问题的呢？我确定你是通过订阅的方式来做的。这是对的，我敢肯定，如果你没有使用订阅的方式，那你实现起来太辛苦了，除非你使用了MobX。</p>
+
+<h4 id="section">什么是状态？</h4>
+
+<p>  这里是一个person对象，比如某个人，他有firstName，lastName和age，另外fullName()方法将显示他的全名。</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8</pre></td><td class="code"><pre><span class="kd">var</span> <span class="nx">person</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="na">firstName</span><span class="p">:</span> <span class="s1">'Matt'</span><span class="p">,</span>
+    <span class="na">lastName</span><span class="p">:</span> <span class="s1">'Ruby'</span><span class="p">,</span>
+    <span class="na">age</span><span class="p">:</span> <span class="mi">37</span><span class="p">,</span>
+    <span class="na">fullName</span><span class="p">:</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">firstName</span> <span class="o">+</span> <span class="s1">' '</span> <span class="o">+</span> <span class="k">this</span><span class="p">.</span><span class="nx">lastName</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">};</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p>  那么当这个人的信息修改时，是怎样体现到你输出内容上的呢？你在什么时候触发这些通知呢？在MobX之前，你可以使用setter来触发jQuery事件或者js信号。这些方案很好，但是使用它们不够清晰。我想在person对象的任何部分改变时就去自动触发。</p>
+
+<p>  这里是一段修改firstName信息的代码，如果我修改age，那么这是会触发修改通知的，因为我们将数据订阅绑定在person的整个对象上了。</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12</pre></td><td class="code"><pre><span class="nx">person</span><span class="p">.</span><span class="nx">events</span> <span class="o">=</span> <span class="p">{};</span>
+
+<span class="nx">person</span><span class="p">.</span><span class="nx">setData</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">$</span><span class="p">.</span><span class="nx">extend</span><span class="p">(</span><span class="nx">person</span><span class="p">,</span> <span class="nx">data</span><span class="p">);</span>
+    <span class="nx">$</span><span class="p">(</span><span class="nx">person</span><span class="p">.</span><span class="nx">events</span><span class="p">).</span><span class="nx">trigger</span><span class="p">(</span><span class="s1">'changed'</span><span class="p">);</span>
+<span class="p">};</span>
+
+<span class="nx">$</span><span class="p">(</span><span class="nx">person</span><span class="p">.</span><span class="nx">events</span><span class="p">).</span><span class="nx">on</span><span class="p">(</span><span class="s1">'changed'</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'first name: '</span> <span class="o">+</span> <span class="nx">person</span><span class="p">.</span><span class="nx">firstName</span><span class="p">);</span>
+<span class="p">});</span>
+
+<span class="nx">person</span><span class="p">.</span><span class="nx">setData</span><span class="p">({</span><span class="na">age</span><span class="p">:</span> <span class="mi">38</span><span class="p">});</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p>  我们怎样解决这个问题呢？很简单，为person对象的每个属性设置一个setter来触发每一个事件。等等，但是这样如果age和firstName同时改变了该怎么办。所以你得设置一个延时来保证两个属性都改变完成时才触发。这似乎行得通并且我就是这么干的。</p>
+
+<h4 id="mobx">通过MobX来解决</h4>
+
+<p>  <a href="https://github.com/mobxjs/mobx">MobX</a>是一个简单、高效的前端状态管理脚本库。
+  根据文档，Just do something to the state and MobX will make sure your app respects the changes。</p>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8</pre></td><td class="code"><pre>var person = mobx.observable({
+    firstName: 'Matt',
+    lastName: 'Ruby',
+    age: 37,
+    fullName: function () {
+    this.firstName + ' ' + this.lastName;
+    }
+});
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p>  注意下区别，mobx.observable是我做的唯一区别，我们再来看下console.log输出的内容。</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7</pre></td><td class="code"><pre><span class="nx">mobx</span><span class="p">.</span><span class="nx">autorun</span><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'first name: '</span> <span class="o">+</span> <span class="nx">person</span><span class="p">.</span><span class="nx">firstName</span><span class="p">);</span>
+<span class="p">});</span>
+
+<span class="nx">person</span><span class="p">.</span><span class="nx">age</span> <span class="o">=</span> <span class="mi">38</span><span class="p">;</span> <span class="c1">// 不打印内容</span>
+<span class="nx">person</span><span class="p">.</span><span class="nx">lastName</span> <span class="o">=</span> <span class="s1">'RUBY!'</span><span class="p">;</span> <span class="c1">// 仍然不打印内容</span>
+<span class="nx">person</span><span class="p">.</span><span class="nx">firstName</span> <span class="o">=</span> <span class="s1">'Matthew!'</span><span class="p">;</span> <span class="c1">// 打印内容</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p>  通过使用autorun， MobX只会检测使用到的内容。如果你觉得不够清楚，来看下下面的：</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7</pre></td><td class="code"><pre><span class="nx">mobx</span><span class="p">.</span><span class="nx">autorun</span><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'Full name: '</span> <span class="o">+</span> <span class="nx">person</span><span class="p">.</span><span class="nx">fullName</span><span class="p">);</span>
+<span class="p">});</span>
+
+<span class="nx">person</span><span class="p">.</span><span class="nx">age</span> <span class="o">=</span> <span class="mi">38</span><span class="p">;</span> <span class="c1">// 不打印内容</span>
+<span class="nx">person</span><span class="p">.</span><span class="nx">lastName</span> <span class="o">=</span> <span class="s1">'RUBY!'</span><span class="p">;</span> <span class="c1">// 打印内容</span>
+<span class="nx">person</span><span class="p">.</span><span class="nx">firstName</span> <span class="o">=</span> <span class="s1">'Matthew!'</span><span class="p">;</span> <span class="c1">// 打印内容</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p>  相信你已经理解了。</p>
+
+<h4 id="mobx-1">MobX核心概念</h4>
+
+<ul>
+  <li>observer</li>
+</ul>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19</pre></td><td class="code"><pre>
+<span class="kd">var</span> <span class="nx">log</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">$</span><span class="p">(</span><span class="s1">'#output'</span><span class="p">).</span><span class="nx">append</span><span class="p">(</span><span class="s1">'&lt;pre&gt;'</span> <span class="o">+</span><span class="nx">data</span><span class="o">+</span> <span class="s1">'&lt;/pre&gt;'</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kd">var</span> <span class="nx">person</span> <span class="o">=</span> <span class="nx">mobx</span><span class="p">.</span><span class="nx">observable</span><span class="p">({</span>
+    <span class="na">firstName</span><span class="p">:</span> <span class="s1">'Matt'</span><span class="p">,</span>
+    <span class="na">lastName</span><span class="p">:</span> <span class="s1">'Ruby'</span><span class="p">,</span>
+    <span class="na">age</span><span class="p">:</span> <span class="mi">34</span>
+<span class="p">});</span>
+
+<span class="nx">log</span><span class="p">(</span><span class="nx">person</span><span class="p">.</span><span class="nx">firstName</span><span class="p">);</span>
+
+<span class="nx">person</span><span class="p">.</span><span class="nx">firstName</span> <span class="o">=</span> <span class="s1">'Mike'</span><span class="p">;</span>
+<span class="nx">log</span><span class="p">(</span><span class="nx">person</span><span class="p">.</span><span class="nx">firstName</span><span class="p">);</span>
+
+<span class="nx">person</span><span class="p">.</span><span class="nx">firstName</span> <span class="o">=</span> <span class="s1">'Lissy'</span><span class="p">;</span>
+<span class="nx">log</span><span class="p">(</span><span class="nx">person</span><span class="p">.</span><span class="nx">firstName</span><span class="p">);</span>
+
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p>  MobX可观察的对象都是普通的对象。这个例子中我们没有观察任何内容，这里例子也向你展示了怎样将MobX使用到你的项目中。只需要使用mobx.observable()或 mobx.extendObservable()就可以了。</p>
+
+<ul>
+  <li>autorun</li>
+</ul>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21</pre></td><td class="code"><pre>
+<span class="kd">var</span> <span class="nx">person</span> <span class="o">=</span> <span class="nx">mobx</span><span class="p">.</span><span class="nx">observable</span><span class="p">({</span>
+    <span class="na">firstName</span><span class="p">:</span> <span class="s1">'Matt'</span><span class="p">,</span>
+    <span class="na">lastName</span><span class="p">:</span> <span class="s1">'Ruby'</span><span class="p">,</span>
+    <span class="na">age</span><span class="p">:</span> <span class="mi">0</span>
+<span class="p">});</span>
+
+<span class="nx">mobx</span><span class="p">.</span><span class="nx">autorun</span><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="nx">log</span><span class="p">(</span><span class="nx">person</span><span class="p">.</span><span class="nx">firstName</span> <span class="o">+</span> <span class="s1">' '</span> <span class="o">+</span> <span class="nx">person</span><span class="p">.</span><span class="nx">age</span><span class="p">);</span>
+<span class="p">});</span>
+
+<span class="c1">// this will print Matt NN 10 times</span>
+<span class="nx">_</span><span class="p">.</span><span class="nx">times</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="nx">person</span><span class="p">.</span><span class="nx">age</span> <span class="o">=</span> <span class="nx">_</span><span class="p">.</span><span class="nx">random</span><span class="p">(</span><span class="mi">40</span><span class="p">);</span>
+<span class="p">});</span>
+
+<span class="c1">// this will print nothing</span>
+<span class="nx">_</span><span class="p">.</span><span class="nx">times</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="nx">person</span><span class="p">.</span><span class="nx">lastName</span> <span class="o">=</span> <span class="nx">_</span><span class="p">.</span><span class="nx">random</span><span class="p">(</span><span class="mi">40</span><span class="p">);</span>
+<span class="p">});</span>
+
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p>  当变量值改变时，你肯定想做一些事情，所以使用autorun()，将会在任何一个观察的内容改变时触发回调。注意下上面的例子中age改变时autorun()为什么不会触发。</p>
+
+<ul>
+  <li>computed</li>
+</ul>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17</pre></td><td class="code"><pre>
+<span class="kd">var</span> <span class="nx">person</span> <span class="o">=</span> <span class="nx">mobx</span><span class="p">.</span><span class="nx">observable</span><span class="p">({</span>
+    <span class="na">firstName</span><span class="p">:</span> <span class="s1">'Matt'</span><span class="p">,</span>
+    <span class="na">lastName</span><span class="p">:</span> <span class="s1">'Ruby'</span><span class="p">,</span>
+    <span class="na">age</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="nx">get</span> <span class="nx">fullName</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">firstName</span> <span class="o">+</span> <span class="s1">' '</span> <span class="o">+</span> <span class="k">this</span><span class="p">.</span><span class="nx">lastName</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">});</span>
+<span class="nx">log</span><span class="p">(</span><span class="nx">person</span><span class="p">.</span><span class="nx">fullName</span><span class="p">);</span>
+
+<span class="nx">person</span><span class="p">.</span><span class="nx">firstName</span> <span class="o">=</span> <span class="s1">'Mike'</span><span class="p">;</span>
+<span class="nx">log</span><span class="p">(</span><span class="nx">person</span><span class="p">.</span><span class="nx">fullName</span><span class="p">);</span>
+
+<span class="nx">person</span><span class="p">.</span><span class="nx">firstName</span> <span class="o">=</span> <span class="s1">'Lissy'</span><span class="p">;</span>
+<span class="nx">log</span><span class="p">(</span><span class="nx">person</span><span class="p">.</span><span class="nx">fullName</span><span class="p">);</span>
+
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p>  注意下fullName()方法没有使用参数和get的用法，MobX会自动创建一个计算的值。这是我最喜欢MobX的一个原因。注意下person.fullName有什么不同的地方？这是一个函数，但是你没有调用就获取到了结果！通常，你使用的是person.fullName()，而不是person.fullName。这里就是你遇到的第一个getter函数。</p>
+
+<p>  不仅如此，MobX还会监听你计算值得依赖的变量，并且只在它们修改的时候运行触发更新。如果没有修改，将会直接返回之前缓存中的值。看下面一个例子。</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25</pre></td><td class="code"><pre>
+<span class="kd">var</span> <span class="nx">person</span> <span class="o">=</span> <span class="nx">mobx</span><span class="p">.</span><span class="nx">observable</span><span class="p">({</span>
+    <span class="na">firstName</span><span class="p">:</span> <span class="s1">'Matt'</span><span class="p">,</span>
+    <span class="na">lastName</span><span class="p">:</span> <span class="s1">'Ruby'</span><span class="p">,</span>
+    <span class="na">age</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="nx">get</span> <span class="nx">fullName</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="c1">// Note how this computed value is cached.</span>
+        <span class="c1">// We only hit this function 3 times.</span>
+        <span class="nx">log</span><span class="p">(</span><span class="s1">'-- hit fullName --'</span><span class="p">);</span>
+        <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">firstName</span> <span class="o">+</span> <span class="s1">' '</span> <span class="o">+</span> <span class="k">this</span><span class="p">.</span><span class="nx">lastName</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">});</span>
+
+<span class="nx">mobx</span><span class="p">.</span><span class="nx">autorun</span><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="nx">log</span><span class="p">(</span><span class="nx">person</span><span class="p">.</span><span class="nx">fullName</span> <span class="o">+</span> <span class="s1">' '</span> <span class="o">+</span> <span class="nx">person</span><span class="p">.</span><span class="nx">age</span><span class="p">);</span>
+<span class="p">});</span>
+
+<span class="c1">// this will print Matt Ruby NN 10 times</span>
+<span class="nx">_</span><span class="p">.</span><span class="nx">times</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="nx">person</span><span class="p">.</span><span class="nx">age</span> <span class="o">=</span> <span class="nx">_</span><span class="p">.</span><span class="nx">random</span><span class="p">(</span><span class="mi">40</span><span class="p">);</span>
+<span class="p">});</span>
+
+<span class="nx">person</span><span class="p">.</span><span class="nx">firstName</span> <span class="o">=</span> <span class="s1">'Mike'</span><span class="p">;</span>
+<span class="nx">person</span><span class="p">.</span><span class="nx">firstName</span> <span class="o">=</span> <span class="s1">'Lissy'</span><span class="p">;</span>
+
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p>  这里我们使用了person.fullName很多次，但是函数只有在firstName和lastName修改时才会运行。这就是MobX可以提供你应用速度的一种方式。还有其它的特性，可以看文档：<a href="https://mobxjs.github.io/mobx/refguide/api.html">https://mobxjs.github.io/mobx/refguide/api.html</a></p>
+
+<h4 id="mobx-2">使用MobX进行项目实践</h4>
+
+<p>  让我们直接看例子：</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27</pre></td><td class="code"><pre><span class="nt">&lt;h1&gt;</span>Test<span class="nt">&lt;/h1&gt;</span>
+<span class="nt">&lt;script&gt;</span>
+<span class="kd">var</span> <span class="nx">person</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="na">events</span><span class="p">:</span> <span class="p">{},</span>
+    <span class="na">firstName</span><span class="p">:</span> <span class="s1">'Matt'</span><span class="p">,</span>
+    <span class="na">lastName</span><span class="p">:</span> <span class="s1">'Ruby'</span><span class="p">,</span>
+    <span class="na">age</span><span class="p">:</span> <span class="mi">37</span><span class="p">,</span>
+    <span class="na">fullName</span><span class="p">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">firstName</span> <span class="o">+</span> <span class="s1">' '</span> <span class="o">+</span> <span class="k">this</span><span class="p">.</span><span class="nx">lastName</span><span class="p">;</span>
+    <span class="p">},</span>
+    <span class="na">setPersonData</span><span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">personData</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">$</span><span class="p">.</span><span class="nx">extend</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="nx">personData</span><span class="p">);</span>
+        <span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">events</span><span class="p">).</span><span class="nx">trigger</span><span class="p">(</span><span class="s1">'changed'</span><span class="p">,</span> <span class="nx">personData</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">};</span>
+<span class="kd">var</span> <span class="nx">renderCount</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<span class="nx">$</span><span class="p">(</span><span class="nx">person</span><span class="p">.</span><span class="nx">events</span><span class="p">).</span><span class="nx">on</span><span class="p">(</span><span class="s1">'changed'</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">renderCount</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="nx">$</span><span class="p">(</span><span class="s1">'h1'</span><span class="p">).</span><span class="nx">text</span><span class="p">(</span><span class="nx">person</span><span class="p">.</span><span class="nx">fullName</span><span class="p">()</span> <span class="o">+</span> <span class="s1">' render count: '</span><span class="o">+</span> <span class="nx">renderCount</span><span class="p">);</span>
+<span class="p">});</span>
+
+<span class="c1">// this will trigger every time</span>
+<span class="nx">_</span><span class="p">.</span><span class="nx">times</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">person</span><span class="p">.</span><span class="nx">setPersonData</span><span class="p">({</span><span class="na">age</span><span class="p">:</span> <span class="nx">_</span><span class="p">.</span><span class="nx">random</span><span class="p">(</span><span class="mi">20</span><span class="p">)});</span>
+<span class="p">});</span>
+<span class="nt">&lt;/script&gt;</span>
+
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p>  注意下这里name被重复渲染了10次，尽管我们没有修改firstName或lastName，你可使用多个事件来优化这里，在渲染之前做判断。但是太复杂了。下面是MobX的例子；</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25</pre></td><td class="code"><pre><span class="nt">&lt;h1&gt;</span>Test<span class="nt">&lt;/h1&gt;</span>
+
+<span class="nt">&lt;script&gt;</span>
+<span class="kd">var</span> <span class="nx">person</span> <span class="o">=</span> <span class="nx">mobx</span><span class="p">.</span><span class="nx">observable</span><span class="p">({</span>
+    <span class="na">firstName</span><span class="p">:</span> <span class="s1">'Matt'</span><span class="p">,</span>
+    <span class="na">lastName</span><span class="p">:</span> <span class="s1">'Ruby'</span><span class="p">,</span>
+    <span class="na">age</span><span class="p">:</span> <span class="mi">37</span><span class="p">,</span>
+    <span class="nx">get</span> <span class="nx">fullName</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">firstName</span> <span class="o">+</span> <span class="s1">' '</span> <span class="o">+</span> <span class="k">this</span><span class="p">.</span><span class="nx">lastName</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">});</span>
+<span class="kd">var</span> <span class="nx">renderCount</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<span class="nx">mobx</span><span class="p">.</span><span class="nx">autorun</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">renderCount</span><span class="o">++</span><span class="p">;</span>
+    <span class="nx">$</span><span class="p">(</span><span class="s1">'h1'</span><span class="p">).</span><span class="nx">text</span><span class="p">(</span><span class="nx">person</span><span class="p">.</span><span class="nx">fullName</span> <span class="o">+</span> <span class="s1">' render count: '</span> <span class="o">+</span> <span class="nx">renderCount</span><span class="p">);</span>
+<span class="p">});</span>
+
+<span class="c1">// this will trigger the render one time</span>
+<span class="nx">_</span><span class="p">.</span><span class="nx">times</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">person</span><span class="p">.</span><span class="nx">setPersonData</span><span class="p">({</span>
+        <span class="na">age</span><span class="p">:</span> <span class="nx">_</span><span class="p">.</span><span class="nx">random</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span>
+    <span class="p">});</span>
+<span class="p">});</span>
+<span class="nt">&lt;/script&gt;</span>
+
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p>  注意下这里为什么没有事件、触发器或on绑定。使用MobX，你会使用修改后的最新值。而且它只被渲染一次，这是因为我们没有修改内容时autorun只是一直在监听。</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25</pre></td><td class="code"><pre><span class="c1">// observable person</span>
+<span class="kd">var</span> <span class="nx">person</span> <span class="o">=</span> <span class="nx">mobx</span><span class="p">.</span><span class="nx">observable</span><span class="p">({</span>
+    <span class="na">firstName</span><span class="p">:</span> <span class="s1">'Matt'</span><span class="p">,</span>
+    <span class="na">lastName</span><span class="p">:</span> <span class="s1">'Ruby'</span><span class="p">,</span>
+    <span class="na">age</span><span class="p">:</span> <span class="mi">37</span>
+<span class="p">});</span>
+
+<span class="c1">// reduce the person to simple html</span>
+<span class="kd">var</span> <span class="nx">printObject</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">objectToPrint</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">_</span><span class="p">.</span><span class="nx">reduce</span><span class="p">(</span><span class="nx">objectToPrint</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">result</span><span class="p">,</span> <span class="nx">value</span><span class="p">,</span> <span class="nx">key</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">result</span> <span class="o">+=</span> <span class="nx">key</span> <span class="o">+</span> <span class="s1">': '</span> <span class="o">+</span> <span class="nx">value</span> <span class="o">+</span> <span class="s1">'&lt;br/&gt;'</span><span class="p">;</span>
+        <span class="k">return</span> <span class="nx">result</span><span class="p">;</span>
+      <span class="p">},</span> <span class="s1">''</span><span class="p">);</span>
+<span class="p">};</span>
+
+<span class="c1">// print out the person anytime there's a change</span>
+<span class="nx">mobx</span><span class="p">.</span><span class="nx">autorun</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
+    <span class="nx">$</span><span class="p">(</span><span class="s1">'#person'</span><span class="p">).</span><span class="nx">html</span><span class="p">(</span><span class="nx">printObject</span><span class="p">(</span><span class="nx">person</span><span class="p">));</span>
+<span class="p">});</span>
+
+<span class="c1">// watch all the input for changes and update the person</span>
+<span class="c1">// object accordingly.</span>
+<span class="nx">$</span><span class="p">(</span><span class="s1">'input'</span><span class="p">).</span><span class="nx">on</span><span class="p">(</span><span class="s1">'keyup'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">event</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">person</span><span class="p">[</span><span class="nx">event</span><span class="p">.</span><span class="nx">target</span><span class="p">.</span><span class="nx">name</span><span class="p">]</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">val</span><span class="p">();</span>
+<span class="p">});</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p>  这里我们能编辑person的所有信息来观察输出的内容情况，现在这个例子中有个小小的问题，这里input的值和person的值不同步，我们改下：</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8</pre></td><td class="code"><pre><span class="nx">mobx</span><span class="p">.</span><span class="nx">autorun</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
+    <span class="nx">$</span><span class="p">(</span><span class="s1">'#person'</span><span class="p">).</span><span class="nx">html</span><span class="p">(</span><span class="nx">printObject</span><span class="p">(</span><span class="nx">person</span><span class="p">));</span>
+     <span class="c1">// update the input values</span>
+    <span class="nx">_</span><span class="p">.</span><span class="nx">forIn</span><span class="p">(</span><span class="nx">person</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">value</span><span class="p">,</span> <span class="nx">key</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">$</span><span class="p">(</span><span class="s1">'input[name="'</span><span class="o">+</span><span class="nx">key</span><span class="o">+</span><span class="s1">'"]'</span><span class="p">).</span><span class="nx">val</span><span class="p">(</span><span class="nx">value</span><span class="p">);</span>
+    <span class="p">});</span>
+<span class="p">});</span>
+
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p>  或许你会说，你这里有重新渲染了啊。是的，你这看到的就是为什么很多人选择使用React的原因。React允许你将输出内容拆分小的组件进行个别的渲染。这里有个完整的例子：<a href="http://codepen.io/SitePoint/pen/EgwkwB?editors=1010">a jQuery example that I have optimized</a></p>
+
+<p>  MobX可能在实际项目中使用吗？不一定，如果我需要这种细粒度的操作使用React就可以了。当我在实际项目中使用MobX和jQuery时，我使用autorun()就可以解决很多问题了。<a href="http://codepen.io/SitePoint/pen/NRadwy?editors=1010">the same example built with React and MobX</a></p>
+
+<h4 id="section-1">更多相关资料</h4>
+
+<p><a href="https://mobxjs.github.io/mobx/faq/blogs.html">MobX blogs, tutorials and videos</a></p>
+
+<p><a href="https://egghead.io/courses/manage-complex-state-in-react-apps-with-mobx">Egghead.io course: Manage Complex State in React Apps with MobX</a></p>
+
+<p><a href="https://www.youtube.com/watch?v=XGwuM_u7UeQ">Practical React with MobX</a></p>
+
+<p><a href="https://github.com/mattruby/mobx-examples">Simple MobX Examples</a></p>
+
+<p><a href="https://mobxjs.github.io/mobx/refguide/api.html">MobX API reference</a></p>
+
+<p>原文作者：Matt Ruby
+原文地址：https://www.sitepoint.com/manage-javascript-application-state-mobx/
+译文作者：ouven</p>
+
+</article>
+
+
+<div class="tags">
+	<strong>Tags:</strong> <a target="_blank" href="/tags/?tag=react">react</a>,&nbsp;<a target="_blank" href="/tags/?tag=mobx">mobx</a>
+</div>
+
+
+	<script src="/assets/js/github.comment.js"></script>
+	<div class="gc-comments" data-repos="ouvens/ouvens.github.io" data-issues="3" >
+	    <div class="gc-comments-title">
+	        评论
+	    </div>
+	    <div class="gc-comments-info">
+	        想在此留下评论，请访问 <a href="issues_link">issues_link</a> 提交评论
+	    </div>
+	</div>
+</div>
+</div>
+
+
+    </div>
+    
+<div class="qr-code qr-code-pay" title="加个微信交流交流">
+    <img src="/assets/qrcode/qr-code-person.jpg" width="200" height="200" alt="公众号">
+    <p>加我赏红包，哈哈哈</p>
+</div>
+
+<div class="qr-code qr-code-wx" title="定期获取更新动态">
+    <img src="/assets/qrcode/qrcode.jpg" width="200" height="200" alt="公众号">
+    <p>欢迎关注 <strong>极限前端</strong> 公众号</p>
+</div>
+
+
+    
+<footer class="site-footer">
+  <div class="wrapper">
+    <h3 class="footer-heading">极限前端</h3>
+    <div class="site-navigation">
+    	<p><strong>站内</strong></p>
+      <ul class="pages">
+        
+        
+          <li class="nav-link"><a href="/about/">关于</a>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+          <li class="nav-link"><a href="/category/">所有文章</a>
+        
+        
+        
+          <li class="nav-link"><a href="/tags/">标签分类</a>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+      </ul>
+    </div>
+    <div class="site-contact">
+    	<p><strong>相关链接</strong></p>
+        <ul class="social-media-list">
+      	<li>
+      		<a href="mailto:1025224452@qq.com">
+	      		<i class="icon-font i-star"></i>
+	      		<span class="username">1025224452@qq.com</span>
+      		</a>
+      	</li>
+
+      	
+	      	
+	      	<li>
+	           <a href="https://github.com/ouvens" title="Fork me on GitHub">
+	               <i class="icon-font i-heart"></i>
+	               <span class="username">ouvens</span>
+	           </a>
+	        </li>
+	      	
+      	
+
+      </ul>
+    </div>
+    <div class="site-signature">
+    	<p class="rss-subscribe text"><strong>订阅<a href="/feed.xml">via RSS</a></strong></p>
+      <p class="text">极限前端, 极限前端社区, ouven的博客, ouvenzhang的博客, www.jixianqianduan.com, github地址, 前端技术, 讲述前端高效技术与前沿。</p>
+    </div>
+  </div>
+</footer>
+
+<!-- Scripts -->
+<script src="//1.url.cn/jslib/jquery/1.9.1/jquery.min.js" defer></script>
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.5/highlight.min.js" defer></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/lightbox2/2.7.1/js/lightbox.min.js" defer></script>
+
+<script src="/assets/js/main.js" defer></script>
+
+    </body>
+</html>

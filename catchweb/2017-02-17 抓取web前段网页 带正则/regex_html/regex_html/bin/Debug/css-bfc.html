@@ -1,0 +1,734 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="google-site-verification" content="0FNbiBWk1FugWYo-RiGxQyIHebGeLoXp3HB7AxIFKy8" />
+    <meta name="baidu-site-verification" content="tYoUqpkCCv" />
+    <meta name="baidu-site-verification" content="IGN97NW90O" />
+    
+    <title>BFC | ouvenzhang的博客</title>
+
+    <meta http-equiv="x-dns-prefetch-control" content="on" />
+    <link rel="dns-prefetch" href="cdnjs.cloudflare.com" />
+    <link rel="dns-prefetch" href="1.url.cn" />
+
+    <meta name="description" itemprop="description" content="BFC,css,bfc ">
+    <meta itemprop="name" content="BFC">
+    <meta itemprop="image" content="http://ouvens.github.io/blog/assets/logo.png">
+    <meta itemprop="keywords" name="keywords" content="BFC,css,bfc ">
+
+    
+    <meta name="author" content="ouvenzhang">
+    <meta name="copyright" content="&copy; ouvenzhang 2017">
+    <meta name="protocol" content="1">
+    
+
+    <!-- External libraries -->
+    <link rel="stylesheet" href="/assets/css/iconfont.css">
+    <link rel="stylesheet" href="/css/monokai_sublime.css">
+
+    <!-- Favicon and other icons (made with http://www.favicon-generator.org/) -->
+    <link rel="shortcut icon" href="/assets/favicon.ico" type="image/x-icon">
+  	<link rel="icon" href="/assets/favicon.ico" type="image/x-icon">
+    
+  	<meta name="msapplication-TileColor" content="#ffffff">
+  	<meta name="theme-color" content="#ffffff">
+    <meta name="msapplication-TileImage" content="/assets/icons/icon.png">
+
+  	<!-- Site styles -->
+    <link rel="stylesheet" href="/css/main.css">
+
+    <link rel="alternate" type="application/rss+xml" title="极限前端" href="http://ouvens.github.io//feed.xml" />
+    <script>
+    // 访问统计
+    var domain = 'jixianqianduan.com';
+    var oldDomain = 'ouvens.github.io';
+    if(location.host === domain){
+        var _hmt = _hmt || [];
+        (function() {
+          var hm = document.createElement("script");
+          hm.src = "//hm.baidu.com/hm.js?b536b128dc21c3d18fdc028f0609e3f0";
+          var s = document.getElementsByTagName("script")[0]; 
+          s.parentNode.insertBefore(hm, s);
+        })();
+    }else if(location.host === oldDomain){
+        window.location.href = location.href.replace(oldDomain, domain);
+        var _hmt = _hmt || [];
+        (function() {
+          var hm = document.createElement("script");
+          hm.src = "//hm.baidu.com/hm.js?041efd2cb345ca1b9dbdbb2383cb716d";
+          var s = document.getElementsByTagName("script")[0]; 
+          s.parentNode.insertBefore(hm, s);
+        })();
+    }
+
+    // 链接提交
+
+    if(location.protocol === 'https'){
+        !function(){var e=/([http|https]:\/\/[a-zA-Z0-9\_\.]+\.baidu\.com)/gi,r=window.location.href,t=document.referrer;if(!e.test(r)){var o="https://sp0.baidu.com/9_Q4simg2RQJ8t7jm9iCKT-xh_/s.gif";t?(o+="?r="+encodeURIComponent(document.referrer),r&&(o+="&l="+r)):r&&(o+="?l="+r);var i=new Image;i.src=o}}(window);
+    }else{
+        !function(){var e=/([http|https]:\/\/[a-zA-Z0-9\_\.]+\.baidu\.com)/gi,r=window.location.href,o=document.referrer;if(!e.test(r)){var n="//api.share.baidu.com/s.gif";o?(n+="?r="+encodeURIComponent(document.referrer),r&&(n+="&l="+r)):r&&(n+="?l="+r);var t=new Image;t.src=n}}(window);
+    }
+
+
+    </script>
+</head>
+
+    <body>
+        <div class="navigation" role="banner">
+    <div class="navigation-wrapper">
+    <a href="/" class="logo">
+    	
+      <img src="/assets/logo.png" alt="极限前端">
+      
+    </a>
+    <span class="search-input" id="search-input">
+      <input type="text" value="" class="search-text" placeholder="输入搜索关键字">
+      <i class="icon-font i-search search-btn"></i>
+    </span>
+    <a href="javascript:void(0)" class="navigation-menu-button" id="js-mobile-menu">
+    	<i class="icon-font i-list fa fa-bars"></i>
+    </a>
+    <span class="nav" role="navigation">
+      <ul id="js-navigation-menu" class="navigation-menu show">
+      	
+          
+          <li class="nav-link">
+            <a href="/about/">关于</a>
+          </li>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+          <li class="nav-link">
+            <a href="/category/">所有文章</a>
+          </li>
+          
+        
+          
+          <li class="nav-link">
+            <a href="/tags/">标签分类</a>
+          </li>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          <li id="github-info" class="nav-link" title="https://github.com/ouvens">
+            <a class="github-info" href="https://github.com/ouvens" target="_blank">
+            <img src="/assets/github.png" height="34" width="130" alt="github地址"></a>
+          </li>
+      </ul>
+    </span>
+  </div>
+</div>
+
+            <div class="page-content">
+        <div class="post">
+<div class="post-header-container has-cover">
+	<header class="post-header">
+	  <h1 class="title">BFC</h1>
+	  <p class="info">by <strong>ouven</strong></p>
+	</header>
+</div>
+<div class="wrapper">
+
+
+
+<div class="post-meta">
+	<div class="post-date">2014年11月19日</div>
+	<div class="post-categories">
+	 in  
+		<a target="_blank" href="/category/?cate=frontend-css">Frontend-css</a>
+	  
+	</div>
+</div>	
+
+<article class="post-content">
+  <h3 id="bfc">一、BFC是什么？</h3>
+
+<p>BFC（Block Formatting Context）直译为“块级格式化上下文”。</p>
+
+<p>是 W3C CSS 2.1 规范中的一个概念，它决定了元素如何对其内容进行定位，以及与其他元素的关系和相互作用。当涉及到可视化布局的时候，Block Formatting Context提供了一个环境，HTML元素在这个环境中按照一定规则进行布局。一个环境中的元素不会影响到其它环境中的布局。比如浮动元素会形成BFC，浮动元素内部子元素的主要受该浮动元素影响，两个浮动元素之间是互不影响的。也可以说BFC就是一个作用范围。可以把它理解成是一个独立的容器，并且这个容器的里box的布局，与这个容器外的毫不相干。</p>
+
+<p>另一个通俗点的解释是：在普通流中的 Box(框) 属于一种 formatting context(格式化上下文) ，类型可以是 block ，或者是 inline ，但不能同时属于这两者。并且， Block boxes(块框) 在 block formatting context(块格式化上下文) 里格式化， Inline boxes(块内框) 则在 inline formatting context(行内格式化上下文) 里格式化。任何被渲染的元素都属于一个 box ，并且不是 block ，就是 inline 。即使是未被任何元素包裹的文本，根据不同的情况，也会属于匿名的 block boxes 或者 inline boxes。所以上面的描述，即是把所有的元素划分到对应的 formatting context 里。</p>
+
+<p>BFC的元素有以下规则：</p>
+
+<p>1、在创建了 Block Formatting Context 的元素中，其子元素按文档流一个接一个地放置。垂直方向上他们的起点是一个包含块的顶部，两个相邻的元素之间的垂直距离取决于‘margin’ 特性。</p>
+
+<p>2、在 Block Formatting Context 中，每一个元素左外边与包含块的左边相接触（对于从右到左的格式化，右外边接触右边）， 即使存在浮动也是如此（尽管一个元素的内容区域会由于浮动而压缩），除非这个元素也创建了一个新的 Block Formatting Context 。</p>
+
+<p>3、Block Formatting Context就是页面上的一个隔离的独立容器，容器里面的子元素不会在布局上影响到外面的元素，反之也是如此。</p>
+
+<p>4、根据 CSS 2.1 9.5 Floats 中的描述，创建了 Block Formatting Context 的元素不能与浮动元素重叠。</p>
+
+<p>表格的 border-box、块级的替换元素、或是在普通流中创建了新的 block formatting context（如元素的 ‘overflow’ 特性不为 ‘visible’ 时）的元素不可以与位于相同的 block formatting context 中的浮动元素相重叠。</p>
+
+<p>5 、当容器有足够的剩余空间容纳 BFC 的宽度时，所有浏览器都会将 BFC 放置在浮动元素所在行的剩余空间内。</p>
+
+<p>6、 在 IE6 IE7 IE8 Chrome Opera 中，当 BFC 的宽度介于 “容器剩余宽度” 与 “容器宽度” 之间时，BFC 会显示在浮动元素的下一行；在 Safari 中，BFC 则仍然保持显示在浮动元素所在行，并且 BFC 溢出容器；在 Firefox 中，当容器本身也创建了 BFC 或者容器的 ‘padding-top’、’border-top-width’ 这些特性不都为 0 时表现与 IE8(S)、Chrome 类似，否则表现与 Safari 类似。</p>
+
+<p>经验证，最新版本的浏览中只有firefox会在同一行显示，其它浏览器均换行。</p>
+
+<p>7、 在 IE6 IE7 IE8 Opera 中，当 BFC 的宽度大于 “容器宽度” 时，BFC 会显示在浮动元素的下一行；在 Chrome Safari 中，BFC 则仍然保持显示在浮动元素所在行，并且 BFC 溢出容器；在 Firefox 中，当容器本身也创建了 BFC 或者容器的 ‘padding- top’、’border-top-width’ 这些特性不都为 0 时表现与 IE8(S) 类似，否则表现与 Chrome 类似。</p>
+
+<p>经验证，最新版本的浏览中只有firefox会在同一行显示，其它浏览器均换行。</p>
+
+<p>8、根据CSS2.1 规范第10.6.7部分的高度计算规则，在计算生成了 block formatting context 的元素的高度时，其浮动子元素应该参与计算。</p>
+
+<p>例子：</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40</pre></td><td class="code"><pre><span class="cp">&lt;!doctype html&gt;</span>
+<span class="nt">&lt;html&gt;&lt;head&gt;</span>
+<span class="nt">&lt;meta</span> <span class="na">charset=</span><span class="s">"utf8"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;title&gt;</span>无标题文档<span class="nt">&lt;/title&gt;</span>
+<span class="nt">&lt;style&gt;</span>
+<span class="o">*</span><span class="p">{</span> <span class="nl">padding</span><span class="p">:</span><span class="m">0</span><span class="p">;</span> <span class="nl">margin</span><span class="p">:</span><span class="m">0</span><span class="p">;</span> <span class="p">}</span>
+<span class="nf">#c1</span><span class="o">,</span><span class="nf">#c2</span><span class="p">{</span>
+    <span class="nl">border</span><span class="p">:</span><span class="no">blue</span> <span class="m">1px</span> <span class="nb">solid</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nf">#red</span><span class="o">,</span> <span class="nf">#yellow</span><span class="o">,</span> <span class="nf">#orange</span><span class="o">,</span> <span class="nf">#green</span><span class="p">{</span>
+    <span class="nl">width</span><span class="p">:</span><span class="m">100px</span><span class="p">;</span>
+    <span class="nl">height</span><span class="p">:</span><span class="m">100px</span><span class="p">;</span>
+    <span class="nl">float</span><span class="p">:</span><span class="nb">left</span><span class="p">;</span> 
+<span class="p">}</span>
+<span class="nf">#red</span><span class="p">{</span> 
+    <span class="nl">background-color</span><span class="p">:</span><span class="no">red</span><span class="p">;</span> 
+<span class="p">}</span>
+<span class="nf">#yellow</span><span class="p">{</span> 
+    <span class="nl">background-color</span><span class="p">:</span><span class="no">yellow</span><span class="p">;</span> 
+<span class="p">}</span>
+<span class="nf">#orange</span><span class="p">{</span> 
+    <span class="nl">background-color</span><span class="p">:</span><span class="no">orange</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nf">#green</span><span class="p">{</span>
+    <span class="nl">background-color</span><span class="p">:</span><span class="no">green</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nt">&lt;/style&gt;</span>
+<span class="nt">&lt;/head&gt;</span>
+<span class="nt">&lt;body&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"c1"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"red"</span><span class="nt">&gt;&lt;/div&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"yellow"</span><span class="nt">&gt;&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"c2"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"orange"</span><span class="nt">&gt;&lt;/div&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"green"</span><span class="nt">&gt;&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;p&gt;</span>Here is the text!<span class="nt">&lt;/p&gt;</span>
+<span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p>该段代码本意要形成两行两列的布局，但是由于#red，#yellow，#orange，#green四个div在同一个布局环境BFC中，因此虽然它们位于两个不同的div（#c1和#c2）中，但仍然不会换行，而是一行四列的排列。</p>
+
+<p>若要使之形成两行两列的布局，就要创建两个不同的布局环境，也可以说要创建两个BFC。那到底怎么创建BFC呢？</p>
+
+<p>二、如何产生BFC：当一个HTML元素满足下面条件的任何一点，都可以产生Block Formatting Context：</p>
+
+<p>float的值不为none。
+overflow的值不为visible。
+display的值为table-cell, table-caption, inline-block中的任何一个。
+position的值不为relative和static。
+如果还其它方式，请在回复中给出，我会及时更新！！</p>
+
+<p>上面的例子，我再加两行代码，创建两个BFC：</p>
+
+<div class="language-css highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2</pre></td><td class="code"><pre><span class="nf">#c1</span><span class="p">{</span><span class="nl">overflow</span><span class="p">:</span><span class="nb">hidden</span><span class="p">;}</span>
+<span class="nf">#c2</span><span class="p">{</span><span class="nl">overflow</span><span class="p">:</span><span class="nb">hidden</span><span class="p">;}</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p>上面创建了两个布局环境BFC。内部子元素的左浮动不会影响到外部元素。所以#c1和#c2没有受浮动的影响，仍然各自占据一行！</p>
+
+<h3 id="bfc-1">三、BFC能用来做什么？</h3>
+
+<p>a、不和浮动元素重叠</p>
+
+<p>如果一个浮动元素后面跟着一个非浮动的元素，那么就会产生一个覆盖的现象，很多自适应的两栏布局就是这么做的。</p>
+
+<p>看下面一个例子</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21</pre></td><td class="code"><pre>
+<span class="cp">&lt;!DOCTYPE HTML&gt;</span>
+<span class="nt">&lt;html&gt;</span>
+<span class="nt">&lt;head&gt;</span>
+<span class="nt">&lt;meta</span> <span class="na">charset=</span><span class="s">"utf8"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;title&gt;</span>无标题文档<span class="nt">&lt;/title&gt;</span>
+<span class="nt">&lt;style&gt;</span>
+<span class="nt">html</span><span class="o">,</span><span class="nt">body</span>
+<span class="p">{</span><span class="nl">height</span><span class="p">:</span><span class="m">100%</span><span class="p">;</span> <span class="p">}</span>
+<span class="o">*</span><span class="p">{</span> <span class="nl">padding</span><span class="p">:</span><span class="m">0</span><span class="p">;</span> <span class="nl">margin</span><span class="p">:</span><span class="m">0</span><span class="p">;</span> <span class="nl">color</span><span class="p">:</span><span class="m">#fff</span><span class="p">;</span> <span class="nl">text-decoration</span><span class="p">:</span><span class="nb">none</span><span class="p">;</span> <span class="nl">list-style</span><span class="p">:</span><span class="nb">none</span><span class="p">;</span> <span class="nl">font-family</span><span class="p">:</span><span class="s1">"微软雅黑"</span> <span class="p">}</span>
+<span class="nc">.aside</span>
+<span class="p">{</span><span class="nl">background</span><span class="p">:</span><span class="m">#f00</span><span class="p">;</span><span class="nl">width</span><span class="p">:</span><span class="m">170px</span><span class="p">;</span><span class="nl">float</span><span class="p">:</span><span class="nb">left</span><span class="p">;</span><span class="nl">height</span><span class="p">:</span><span class="m">300px</span><span class="p">;}</span>
+<span class="nc">.main</span>
+<span class="p">{</span><span class="nl">background</span><span class="p">:</span><span class="m">#090</span><span class="p">;</span><span class="nl">height</span><span class="p">:</span><span class="m">100%</span><span class="p">;}</span><span class="nt">&lt;/style&gt;</span>
+<span class="nt">&lt;/head&gt;</span>
+<span class="nt">&lt;body&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"aside"</span><span class="nt">&gt;&lt;/div&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"main"</span><span class="nt">&gt;&lt;/div&gt;</span>
+<span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
+
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p>效果如下：</p>
+
+<p><img src="http://7tszky.com1.z0.glb.clouddn.com/FmznDMLoTZ1im2ejU7aFp2KQXhuf" alt="" width="150" height="200" /></p>
+
+<p>很明显，.aside和.mian重叠了。试分析一下，由于两个box都处在同一个BFC中，都是以BFC边界为起点，如果两个box本身都具备BFC的话，会按顺序一个一个排列布局，现在.main并不具备BFC，按照规则2，内部元素都会从左边界开始，除非它本身具备BFC，按上面规则4拥有BFC的元素是不可以跟浮动元素重叠的，所以只要为.mian再创建一个BFC,就可以解决这个重叠的问题。上面已经说过创建BFC的方法，可以根据具体情况选用不同的方法，这里我选用的是加overflow:hidden。</p>
+
+<p>由于ie的原因需要再加一个解发haslayout的zoom:1，有关haslayout后面会讲到。</p>
+
+<p>b、清除元素内部浮动</p>
+
+<p>只要把父元素设为BFC就可以清理子元素的浮动了，最常见的用法就是在父元素上设置overflow: hidden样式，对于IE6加上zoom:1就可以了(IE Haslayout)。</p>
+
+<p>看下面例子：</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24</pre></td><td class="code"><pre><span class="cp">&lt;!DOCTYPE HTML&gt;</span>
+<span class="nt">&lt;html&gt;</span>
+<span class="nt">&lt;head&gt;</span>
+<span class="nt">&lt;meta</span> <span class="na">http-equiv=</span><span class="s">"Content-Type"</span> <span class="na">content=</span><span class="s">"text/html; charset=gb2312"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;title&gt;</span>无标题文档<span class="nt">&lt;/title&gt;</span>
+<span class="nt">&lt;style&gt;</span>
+<span class="nt">html</span><span class="o">,</span><span class="nt">body</span>
+<span class="p">{</span><span class="nl">height</span><span class="p">:</span><span class="m">100%</span><span class="p">;</span> <span class="p">}</span>
+ 
+<span class="o">*</span><span class="p">{</span> <span class="nl">padding</span><span class="p">:</span><span class="m">10px</span><span class="p">;</span> <span class="nl">margin</span><span class="p">:</span><span class="m">0</span><span class="p">;</span> <span class="nl">color</span><span class="p">:</span><span class="m">#000</span><span class="p">;</span> <span class="nl">text-decoration</span><span class="p">:</span><span class="nb">none</span><span class="p">;</span> <span class="nl">list-style</span><span class="p">:</span><span class="nb">none</span><span class="p">;</span> <span class="nl">font-family</span><span class="p">:</span><span class="s1">"微软雅黑"</span> <span class="p">}</span>
+ 
+<span class="nc">.outer</span><span class="p">{</span><span class="nl">width</span><span class="p">:</span><span class="m">300px</span><span class="p">;</span><span class="nl">border</span><span class="p">:</span><span class="m">1px</span> <span class="nb">solid</span> <span class="m">#666</span><span class="p">;</span><span class="nl">padding</span><span class="p">:</span><span class="m">10px</span><span class="p">;}</span>
+ 
+<span class="nc">.innerLeft</span><span class="p">{</span><span class="nl">height</span><span class="p">:</span><span class="m">100px</span><span class="p">;</span><span class="nl">width</span><span class="p">:</span><span class="m">100px</span><span class="p">;</span><span class="nl">float</span><span class="p">:</span><span class="nb">left</span><span class="p">;</span><span class="nl">background</span><span class="p">:</span><span class="m">#f00</span><span class="p">;}</span>
+ 
+<span class="nc">.innerRight</span><span class="p">{</span><span class="nl">height</span><span class="p">:</span><span class="m">100px</span><span class="p">;</span><span class="nl">width</span><span class="p">:</span><span class="m">100px</span><span class="p">;</span><span class="nl">float</span><span class="p">:</span><span class="nb">right</span><span class="p">;</span><span class="nl">background</span><span class="p">:</span><span class="m">#090</span><span class="p">;}</span><span class="nt">&lt;/style&gt;&lt;/head&gt;</span>
+<span class="nt">&lt;body&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"outer"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"innerLeft"</span><span class="nt">&gt;&lt;/div&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"innerRight"</span><span class="nt">&gt;&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
+
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p>效果如下</p>
+
+<p><img src="http://7tszky.com1.z0.glb.clouddn.com/FhlmsN3R1HQLmjtAKK2e3gzB13Ae" alt="" width="200" height="150" /></p>
+
+<p>根据 CSS2.1 规范第 10.6.3 部分的高度计算规则，在进行普通流中的块级非替换元素的高度计算时，浮动子元素不参与计算。</p>
+
+<p>同时 CSS2.1 规范第10.6.7部分的高度计算规则，在计算生成了 block formatting context 的元素的高度时，其浮动子元素应该参与计算。</p>
+
+<p>所以，触发外部容器BFC，高度将重新计算。比如给outer加上属性overflow:hidden触发其BFC。</p>
+
+<p>c、解决上下相邻两个元素重叠</p>
+
+<p>看下面例子：</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25</pre></td><td class="code"><pre><span class="cp">&lt;!DOCTYPE HTML&gt;</span>
+<span class="nt">&lt;html&gt;</span>
+<span class="nt">&lt;head&gt;</span>
+<span class="nt">&lt;meta</span> <span class="na">charset=</span><span class="s">"utf-8"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;title&gt;</span>无标题文档<span class="nt">&lt;/title&gt;</span>
+  <span class="nt">&lt;style&gt;</span>
+   
+  <span class="nt">html</span><span class="o">,</span><span class="nt">body</span>
+  <span class="p">{</span><span class="nl">height</span><span class="p">:</span><span class="m">100%</span><span class="p">;</span> <span class="p">}</span>
+   
+  <span class="o">*</span><span class="p">{</span> <span class="nl">padding</span><span class="p">:</span><span class="m">0</span><span class="p">;</span> <span class="nl">margin</span><span class="p">:</span><span class="m">0</span><span class="p">;</span> <span class="nl">color</span><span class="p">:</span><span class="m">#fff</span><span class="p">;</span> <span class="nl">text-decoration</span><span class="p">:</span><span class="nb">none</span><span class="p">;</span> <span class="nl">list-style</span><span class="p">:</span><span class="nb">none</span><span class="p">;</span> <span class="nl">font-family</span><span class="p">:</span><span class="s1">"微软雅黑"</span> <span class="p">}</span>
+   
+  <span class="nc">.rowone</span>
+  <span class="p">{</span><span class="nl">background</span><span class="p">:</span><span class="m">#f00</span><span class="p">;</span><span class="nl">height</span><span class="p">:</span><span class="m">100px</span><span class="p">;</span><span class="nl">margin-bottom</span><span class="p">:</span><span class="m">20px</span><span class="p">;</span><span class="nl">overflow</span><span class="p">:</span><span class="nb">hidden</span><span class="p">;}</span>
+   
+  <span class="nc">.rowtow</span>
+  <span class="p">{</span><span class="nl">background</span><span class="p">:</span><span class="m">#090</span><span class="p">;</span><span class="nl">height</span><span class="p">:</span><span class="m">100px</span><span class="p">;</span><span class="nl">margin-top</span><span class="p">:</span><span class="m">20px</span><span class="p">;</span><span class="nl">position</span><span class="p">:</span><span class="nb">relative</span><span class="p">}</span>
+  <span class="nt">&lt;/style&gt;</span>
+<span class="nt">&lt;/head&gt;</span>
+ 
+<span class="nt">&lt;body&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"rowone"</span><span class="nt">&gt;&lt;/div&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"rowtow"</span><span class="nt">&gt;&lt;/div&gt;</span>
+<span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p><img src="http://7tszky.com1.z0.glb.clouddn.com/FiKfTvfdtd75mfdlcR0kTpXAoLfa" alt="" width="200" height="150" /></p>
+
+<p>根据 CSS 2.1 8.3.1 Collapsing margins 第一条，两个相邻的普通流中的块框在垂直位置的空白边会发生折叠现象。也就是处于同一个BFC中的两个垂直窗口的margin会重叠。</p>
+
+<p>根据 CSS 2.1 8.3.1 Collapsing margins 第三条，生成 block formatting context 的元素不会和在流中的子元素发生空白边折叠。所以解决这种问题的办法是要为两个容器添加具有BFC的包裹容器。</p>
+
+<p>所以解这个问题的办法就是,把两个容器分别放在两个据有BFC的包裹容器中，IE里就是触发layout的两个包裹容器中！</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26</pre></td><td class="code"><pre><span class="cp">&lt;!DOCTYPE HTML&gt;</span>
+<span class="nt">&lt;html&gt;</span>
+<span class="nt">&lt;head&gt;</span>
+<span class="nt">&lt;meta</span> <span class="na">http-equiv=</span><span class="s">"Content-Type"</span> <span class="na">content=</span><span class="s">"text/html; charset=gb2312"</span><span class="nt">&gt;&lt;title&gt;</span>无标题文档<span class="nt">&lt;/title&gt;&lt;style&gt;</span>
+<span class="nt">html</span><span class="o">,</span> <span class="nt">body</span>
+<span class="p">{</span> <span class="nl">height</span><span class="p">:</span><span class="m">100%</span><span class="p">;</span> <span class="p">}</span>
+<span class="o">*</span>
+<span class="p">{</span> <span class="nl">padding</span><span class="p">:</span><span class="m">0</span><span class="p">;</span> <span class="nl">margin</span><span class="p">:</span><span class="m">0</span><span class="p">;</span> <span class="nl">color</span><span class="p">:</span><span class="m">#fff</span><span class="p">;</span> <span class="nl">text-decoration</span><span class="p">:</span><span class="nb">none</span><span class="p">;</span> <span class="nl">list-style</span><span class="p">:</span><span class="nb">none</span><span class="p">;</span> <span class="nl">font-family</span><span class="p">:</span><span class="s1">"微软雅黑"</span> <span class="p">}</span>
+<span class="nc">.mg</span>
+<span class="p">{</span><span class="nl">overflow</span><span class="p">:</span><span class="nb">hidden</span><span class="p">;</span> <span class="p">}</span>
+<span class="nc">.rowone</span>
+<span class="p">{</span> <span class="nl">background</span><span class="p">:</span><span class="m">#f00</span><span class="p">;</span> <span class="nl">height</span><span class="p">:</span><span class="m">100px</span><span class="p">;</span> <span class="nl">margin-bottom</span><span class="p">:</span><span class="m">20px</span><span class="p">;</span> <span class="p">}</span>
+<span class="nc">.rowtow</span>
+<span class="p">{</span> <span class="nl">background</span><span class="p">:</span><span class="m">#090</span><span class="p">;</span> <span class="nl">height</span><span class="p">:</span><span class="m">100px</span><span class="p">;</span> <span class="nl">margin-top</span><span class="p">:</span><span class="m">20px</span><span class="p">;</span> <span class="p">}</span>
+<span class="nt">&lt;/style&gt;</span>
+<span class="nt">&lt;/head&gt;</span>
+<span class="nt">&lt;body&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"mg"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"rowone"</span><span class="nt">&gt;&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"mg"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"rowtow"</span><span class="nt">&gt;&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
+
+</pre></td></tr></tbody></table>
+</div>
+</div>
+<p><img src="http://7tszky.com1.z0.glb.clouddn.com/FhExCZoe4f8cP9NybM3kl9TiwpqN" alt="" width="200" height="150" /></p>
+
+<h3 id="iehaslayout">四、什么是IE的haslayout</h3>
+
+<p>在中如果使用了zoom:1,实际上可以触发了IE的layout属性。Layout 是 IE 浏览器渲染引擎的一个内部组成部分。在 IE 浏览器中，一个元素要么自己对自身的内容进行组织和计算大小， 要么依赖于包含块来计算尺寸和组织内容。为了协调这两种方式的矛盾，渲染引擎采用了 ‘hasLayout’ 属性，属性值可以为 true 或 false。 当一个元素的 ‘hasLayout’ 属性值为 true 时，我们说这个元素有一个布局（layout），或拥有布局。可以通过 hasLayout 属性来判断一个元素是否拥有 layout ，</p>
+
+<p>如 object.currentStyle.hasLayout 。</p>
+
+<p>hasLayout 与 BFC 有很多相似之处，但 hasLayout 的概念会更容易理解。在 Internet Explorer 中，元素使用“布局”概念来控制尺寸和定位，分为拥有布局和没有布局两种情况，拥有布局的元素由它控制本身及其子元素的尺寸和定位，而没有布局的元素则通过父元素（最近的拥有布局的祖先元素）来控制尺寸和定位，而一个元素是否拥有布局则由 hasLayout 属性告知浏览器，它是个布尔型变量，true 代表元素拥有布局，false 代表元素没有布局。简而言之，hasLayout 只是一个 IE 下专有的属性，hasLayout 为 true 的元素浏览器会赋予它一系列的效果。</p>
+
+<p>特别注意的是，hasLayout 在 IE 8 及之后的 IE 版本中已经被抛弃，所以在实际开发中只需针对 IE 8 以下的浏览器为某些元素触发 hasLayout。</p>
+
+<h3 id="layout">五、怎样触发layout</h3>
+
+<p>一个元素触发 hasLayout 会影响一个元素的尺寸和定位，这样会消耗更多的系统资源，因此 IE 设计者默认只为一部分的元素触发 hasLayout （即默认有部分元素会触发 hasLayout ，这与 BFC 基本完全由开发者通过特定 CSS 触发并不一样），这部分元素如下：</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre><span class="nt">&lt;html&gt;</span>, <span class="nt">&lt;body&gt;&lt;table&gt;</span>, <span class="nt">&lt;tr&gt;</span>, <span class="nt">&lt;th&gt;</span>, <span class="nt">&lt;td&gt;&lt;img&gt;&lt;hr&gt;&lt;input&gt;</span>, <span class="nt">&lt;button&gt;</span>, <span class="nt">&lt;select&gt;</span>, <span class="nt">&lt;textarea&gt;</span>, <span class="nt">&lt;fieldset&gt;</span>, <span class="nt">&lt;legend&gt;&lt;iframe&gt;</span>, <span class="nt">&lt;embed&gt;</span>, <span class="nt">&lt;object&gt;</span>, <span class="nt">&lt;applet&gt;&lt;marquee&gt;</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p>除了 IE 默认会触发 hasLayout 的元素外，Web 开发者还可以使用特定的 CSS 触发元素的 hasLayout 。</p>
+
+<p>通过为元素设置以下任一 CSS ，可以触发 hasLayout （即把元素的 hasLayout 属性设置为 true）。</p>
+
+<div class="language-css highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15</pre></td><td class="code"><pre><span class="nt">display</span><span class="o">:</span> <span class="nt">inline-block</span>
+<span class="nt">height</span><span class="o">:</span> <span class="o">(</span><span class="err">除</span> <span class="nt">auto</span> <span class="err">外任何值</span><span class="o">)</span>
+<span class="nt">width</span><span class="o">:</span> <span class="o">(</span><span class="err">除</span> <span class="nt">auto</span> <span class="err">外任何值</span><span class="o">)</span>
+<span class="nt">float</span><span class="o">:</span> <span class="o">(</span><span class="nt">left</span> <span class="err">或</span> <span class="nt">right</span><span class="o">)</span>
+<span class="nt">position</span><span class="o">:</span> <span class="nt">absolute</span>
+<span class="nt">writing-mode</span><span class="o">:</span> <span class="nt">tb-rl</span>
+<span class="nt">zoom</span><span class="o">:</span> <span class="o">(</span><span class="err">除</span> <span class="nt">normal</span> <span class="err">外任意值</span><span class="o">)</span>
+<span class="nt">min-height</span><span class="o">:</span> <span class="o">(</span><span class="err">任意值</span><span class="o">)</span>
+<span class="nt">min-width</span><span class="o">:</span> <span class="o">(</span><span class="err">任意值</span><span class="o">)</span>
+<span class="nt">max-height</span><span class="o">:</span> <span class="o">(</span><span class="err">除</span> <span class="nt">none</span> <span class="err">外任意值</span><span class="o">)</span>
+<span class="nt">max-width</span><span class="o">:</span> <span class="o">(</span><span class="err">除</span> <span class="nt">none</span> <span class="err">外任意值</span><span class="o">)</span>
+<span class="nt">overflow</span><span class="o">:</span> <span class="o">(</span><span class="err">除</span> <span class="nt">visible</span> <span class="err">外任意值，仅用于块级元素</span><span class="o">)</span>
+<span class="nt">overflow-x</span><span class="o">:</span> <span class="o">(</span><span class="err">除</span> <span class="nt">visible</span> <span class="err">外任意值，仅用于块级元素</span><span class="o">)</span>
+<span class="nt">overflow-y</span><span class="o">:</span> <span class="o">(</span><span class="err">除</span> <span class="nt">visible</span> <span class="err">外任意值，仅用于块级元素</span><span class="o">)</span>
+<span class="nt">position</span><span class="o">:</span> <span class="nt">fixed</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p>对于内联元素(可以是默认被浏览器认为是内联元素的 span 元素，也可以是设置了 display: inline 的元素)，width 和 height 只在 IE5.x 下和 IE6 或更新版本的 quirks 模式下能触发元素的 hasLayout ，但是对于 IE6，如果浏览器运行于标准兼容模式下，内联元素会忽略 width 或 height 属性，所以设置 width 或 height 不能在此种情况下令该元素触发 hasLayout 。但 zoom 除了在 IE 5.0 中外，总是能触发 hasLayout 。zoom 用于设置或检索元素的缩放比例，为元素设置 zoom: 1 既可以触发元素的 hasLayout 同时不会对元素造成多余的影响。因此综合考虑浏览器之间的兼容和对元素的影响， 建议使用 zoom: 1 来触发元素的 hasLayout 。</p>
+
+<h3 id="section">六、能解决的问题</h3>
+
+<p>hasLayout表现出来的特性跟BFC很相似，所以可以认为是IE中的BFC。上面的规则几乎都遵循，所以上面的问题在IE里都可以通过触发hasLayout来解决。</p>
+
+<p>虽然 hasLayout 也会像 BFC 那样影响着元素的尺寸和定位，但它却又不是一套完整的标准，并且由于它默认只为某些元素触发，这导致了 IE 下很多前端开发的 bugs ，触发 hasLayout 更大的意义在于解决一些 IE 下的 bugs ，而不是利用它的一些“副作用”来达到某些效果。另外由于触发 hasLayout 的元素会出现一些跟触发 BFC 的元素相似的效果，因此为了统一元素在 IE 与支持 BFC 的浏览器下的表现，Kayo 建议为触发了 BFC 的元素同时触发 hasLayout ，当然还需要考虑实际的情况，也有可能只需触发其中一个就可以达到表现统一。</p>
+
+</article>
+
+
+<div class="tags">
+	<strong>Tags:</strong> <a target="_blank" href="/tags/?tag=css">css</a>,&nbsp;<a target="_blank" href="/tags/?tag=bfc">bfc</a>
+</div>
+
+
+	<script src="/assets/js/github.comment.js"></script>
+	<div class="gc-comments" data-repos="ouvens/ouvens.github.io" data-issues="3" >
+	    <div class="gc-comments-title">
+	        评论
+	    </div>
+	    <div class="gc-comments-info">
+	        想在此留下评论，请访问 <a href="issues_link">issues_link</a> 提交评论
+	    </div>
+	</div>
+</div>
+</div>
+
+
+    </div>
+    
+<div class="qr-code qr-code-pay" title="加个微信交流交流">
+    <img src="/assets/qrcode/qr-code-person.jpg" width="200" height="200" alt="公众号">
+    <p>加我赏红包，哈哈哈</p>
+</div>
+
+<div class="qr-code qr-code-wx" title="定期获取更新动态">
+    <img src="/assets/qrcode/qrcode.jpg" width="200" height="200" alt="公众号">
+    <p>欢迎关注 <strong>极限前端</strong> 公众号</p>
+</div>
+
+
+    
+<footer class="site-footer">
+  <div class="wrapper">
+    <h3 class="footer-heading">极限前端</h3>
+    <div class="site-navigation">
+    	<p><strong>站内</strong></p>
+      <ul class="pages">
+        
+        
+          <li class="nav-link"><a href="/about/">关于</a>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+          <li class="nav-link"><a href="/category/">所有文章</a>
+        
+        
+        
+          <li class="nav-link"><a href="/tags/">标签分类</a>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+      </ul>
+    </div>
+    <div class="site-contact">
+    	<p><strong>相关链接</strong></p>
+        <ul class="social-media-list">
+      	<li>
+      		<a href="mailto:1025224452@qq.com">
+	      		<i class="icon-font i-star"></i>
+	      		<span class="username">1025224452@qq.com</span>
+      		</a>
+      	</li>
+
+      	
+	      	
+	      	<li>
+	           <a href="https://github.com/ouvens" title="Fork me on GitHub">
+	               <i class="icon-font i-heart"></i>
+	               <span class="username">ouvens</span>
+	           </a>
+	        </li>
+	      	
+      	
+
+      </ul>
+    </div>
+    <div class="site-signature">
+    	<p class="rss-subscribe text"><strong>订阅<a href="/feed.xml">via RSS</a></strong></p>
+      <p class="text">极限前端, 极限前端社区, ouven的博客, ouvenzhang的博客, www.jixianqianduan.com, github地址, 前端技术, 讲述前端高效技术与前沿。</p>
+    </div>
+  </div>
+</footer>
+
+<!-- Scripts -->
+<script src="//1.url.cn/jslib/jquery/1.9.1/jquery.min.js" defer></script>
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.5/highlight.min.js" defer></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/lightbox2/2.7.1/js/lightbox.min.js" defer></script>
+
+<script src="/assets/js/main.js" defer></script>
+
+    </body>
+</html>
