@@ -1,0 +1,10 @@
+F:\用户自定义控件\DllInject\DllInject\bin\Debug\DllInject.exe
+F:\用户自定义控件\DllInject\DllInject\bin\Debug\DllInject.pdb
+F:\用户自定义控件\DllInject\DllInject\obj\Debug\ResolveAssemblyReference.cache
+F:\用户自定义控件\DllInject\DllInject\obj\Debug\DllInject.Form1.resources
+F:\用户自定义控件\DllInject\DllInject\obj\Debug\DllInject.Properties.Resources.resources
+F:\用户自定义控件\DllInject\DllInject\obj\Debug\DllInject.csproj.GenerateResource.Cache
+F:\用户自定义控件\DllInject\DllInject\obj\Debug\DllInject.exe
+F:\用户自定义控件\DllInject\DllInject\obj\Debug\DllInject.pdb
+D:\vsproject\2016-10-08 dll inject\DllInject\DllInject\DllInject\obj\Debug\DllInject.exe
+D:\vsproject\2016-10-08 dll inject\DllInject\DllInject\DllInject\obj\Debug\DllInject.pdb

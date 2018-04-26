@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="google-site-verification" content="0FNbiBWk1FugWYo-RiGxQyIHebGeLoXp3HB7AxIFKy8" />
+    <meta name="baidu-site-verification" content="tYoUqpkCCv" />
+    <meta name="baidu-site-verification" content="IGN97NW90O" />
+    
+    <title>产品数据库设计 | ouvenzhang的博客</title>
+
+    <meta http-equiv="x-dns-prefetch-control" content="on" />
+    <link rel="dns-prefetch" href="cdnjs.cloudflare.com" />
+    <link rel="dns-prefetch" href="1.url.cn" />
+
+    <meta name="description" itemprop="description" content="产品数据库设计,产品 ">
+    <meta itemprop="name" content="产品数据库设计">
+    <meta itemprop="image" content="http://ouvens.github.io/blog/assets/logo.png">
+    <meta itemprop="keywords" name="keywords" content="产品数据库设计,产品 ">
+
+    
+    <meta name="author" content="ouvenzhang">
+    <meta name="copyright" content="&copy; ouvenzhang 2017">
+    <meta name="protocol" content="1">
+    
+
+    <!-- External libraries -->
+    <link rel="stylesheet" href="/assets/css/iconfont.css">
+    <link rel="stylesheet" href="/css/monokai_sublime.css">
+
+    <!-- Favicon and other icons (made with http://www.favicon-generator.org/) -->
+    <link rel="shortcut icon" href="/assets/favicon.ico" type="image/x-icon">
+  	<link rel="icon" href="/assets/favicon.ico" type="image/x-icon">
+    
+  	<meta name="msapplication-TileColor" content="#ffffff">
+  	<meta name="theme-color" content="#ffffff">
+    <meta name="msapplication-TileImage" content="/assets/icons/icon.png">
+
+  	<!-- Site styles -->
+    <link rel="stylesheet" href="/css/main.css">
+
+    <link rel="alternate" type="application/rss+xml" title="极限前端" href="http://ouvens.github.io//feed.xml" />
+    <script>
+    // 访问统计
+    var domain = 'jixianqianduan.com';
+    var oldDomain = 'ouvens.github.io';
+    if(location.host === domain){
+        var _hmt = _hmt || [];
+        (function() {
+          var hm = document.createElement("script");
+          hm.src = "//hm.baidu.com/hm.js?b536b128dc21c3d18fdc028f0609e3f0";
+          var s = document.getElementsByTagName("script")[0]; 
+          s.parentNode.insertBefore(hm, s);
+        })();
+    }else if(location.host === oldDomain){
+        window.location.href = location.href.replace(oldDomain, domain);
+        var _hmt = _hmt || [];
+        (function() {
+          var hm = document.createElement("script");
+          hm.src = "//hm.baidu.com/hm.js?041efd2cb345ca1b9dbdbb2383cb716d";
+          var s = document.getElementsByTagName("script")[0]; 
+          s.parentNode.insertBefore(hm, s);
+        })();
+    }
+
+    // 链接提交
+
+    if(location.protocol === 'https'){
+        !function(){var e=/([http|https]:\/\/[a-zA-Z0-9\_\.]+\.baidu\.com)/gi,r=window.location.href,t=document.referrer;if(!e.test(r)){var o="https://sp0.baidu.com/9_Q4simg2RQJ8t7jm9iCKT-xh_/s.gif";t?(o+="?r="+encodeURIComponent(document.referrer),r&&(o+="&l="+r)):r&&(o+="?l="+r);var i=new Image;i.src=o}}(window);
+    }else{
+        !function(){var e=/([http|https]:\/\/[a-zA-Z0-9\_\.]+\.baidu\.com)/gi,r=window.location.href,o=document.referrer;if(!e.test(r)){var n="//api.share.baidu.com/s.gif";o?(n+="?r="+encodeURIComponent(document.referrer),r&&(n+="&l="+r)):r&&(n+="?l="+r);var t=new Image;t.src=n}}(window);
+    }
+
+
+    </script>
+</head>
+
+    <body>
+        <div class="navigation" role="banner">
+    <div class="navigation-wrapper">
+    <a href="/" class="logo">
+    	
+      <img src="/assets/logo.png" alt="极限前端">
+      
+    </a>
+    <span class="search-input" id="search-input">
+      <input type="text" value="" class="search-text" placeholder="输入搜索关键字">
+      <i class="icon-font i-search search-btn"></i>
+    </span>
+    <a href="javascript:void(0)" class="navigation-menu-button" id="js-mobile-menu">
+    	<i class="icon-font i-list fa fa-bars"></i>
+    </a>
+    <span class="nav" role="navigation">
+      <ul id="js-navigation-menu" class="navigation-menu show">
+      	
+          
+          <li class="nav-link">
+            <a href="/about/">关于</a>
+          </li>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+          <li class="nav-link">
+            <a href="/category/">所有文章</a>
+          </li>
+          
+        
+          
+          <li class="nav-link">
+            <a href="/tags/">标签分类</a>
+          </li>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          <li id="github-info" class="nav-link" title="https://github.com/ouvens">
+            <a class="github-info" href="https://github.com/ouvens" target="_blank">
+            <img src="/assets/github.png" height="34" width="130" alt="github地址"></a>
+          </li>
+      </ul>
+    </span>
+  </div>
+</div>
+
+            <div class="page-content">
+        <div class="post">
+<div class="post-header-container has-cover">
+	<header class="post-header">
+	  <h1 class="title">产品数据库设计</h1>
+	  <p class="info">by <strong>ouven</strong></p>
+	</header>
+</div>
+<div class="wrapper">
+
+
+
+<div class="post-meta">
+	<div class="post-date">2015年01月18日</div>
+	<div class="post-categories">
+	 in  
+		<a target="_blank" href="/category/?cate=product-product">Product-product</a>
+	  
+	</div>
+</div>	
+
+<article class="post-content">
+  <h3 id="app">app数据库数据</h3>
+
+<h4 id="user">user表结构设计</h4>
+
+<table>
+  <thead>
+    <tr>
+      <th>字段</th>
+      <th>描述</th>
+      <th>类型</th>
+      <th>备注</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>userid</td>
+      <td>用户id</td>
+      <td>Number</td>
+      <td>用户唯一id, 并非_id</td>
+    </tr>
+    <tr>
+      <td>appid</td>
+      <td>app对应的id</td>
+      <td>Number</td>
+      <td>用户app的id</td>
+    </tr>
+    <tr>
+      <td>name</td>
+      <td>用户名</td>
+      <td>String</td>
+      <td>用户名，用于登陆</td>
+    </tr>
+    <tr>
+      <td>password</td>
+      <td>密码</td>
+      <td>String</td>
+      <td>密码加密后密文</td>
+    </tr>
+    <tr>
+      <td>accessToken</td>
+      <td>第三方token</td>
+      <td>String</td>
+      <td>第三方密文</td>
+    </tr>
+    <tr>
+      <td>nick</td>
+      <td>昵称</td>
+      <td>String</td>
+      <td>用户显示的昵称，不用于登陆</td>
+    </tr>
+    <tr>
+      <td>userType</td>
+      <td>用户类型</td>
+      <td>Number</td>
+      <td>0为注册用户，1为qq, 2为微信，3为微博</td>
+    </tr>
+    <tr>
+      <td>gender</td>
+      <td>性别</td>
+      <td>Number</td>
+      <td>1为男，0为女</td>
+    </tr>
+    <tr>
+      <td>realName</td>
+      <td>姓名</td>
+      <td>String</td>
+      <td>用户的真实姓名</td>
+    </tr>
+    <tr>
+      <td>age</td>
+      <td>年龄</td>
+      <td>Number</td>
+      <td>用户年龄，可以由生日推算</td>
+    </tr>
+    <tr>
+      <td>birth</td>
+      <td>生日</td>
+      <td>Date</td>
+      <td>用户生日，可以推算出年龄</td>
+    </tr>
+    <tr>
+      <td>sign</td>
+      <td>签名</td>
+      <td>String</td>
+      <td>用户个性签名</td>
+    </tr>
+    <tr>
+      <td>avatar</td>
+      <td>头像</td>
+      <td>String</td>
+      <td>用户头像</td>
+    </tr>
+    <tr>
+      <td>email</td>
+      <td>邮箱</td>
+      <td>String</td>
+      <td>用户邮箱</td>
+    </tr>
+    <tr>
+      <td>mobile</td>
+      <td>手机号</td>
+      <td>String</td>
+      <td>用户手机</td>
+    </tr>
+    <tr>
+      <td>phone</td>
+      <td>电话</td>
+      <td>String</td>
+      <td>用户电话</td>
+    </tr>
+    <tr>
+      <td>qq</td>
+      <td>qq号</td>
+      <td>String</td>
+      <td>用户QQ号，可以注册后填写，注册后填写不可用于登陆</td>
+    </tr>
+    <tr>
+      <td>weixin</td>
+      <td>微信</td>
+      <td>String</td>
+      <td>用户微信登陆产生，也可以注册后填写，注册后填写不可用用于登陆</td>
+    </tr>
+    <tr>
+      <td>weibo</td>
+      <td>微博</td>
+      <td>String</td>
+      <td>用户微博账号，也可以注册后填写，注册后填写不可用于登陆</td>
+    </tr>
+    <tr>
+      <td>link</td>
+      <td>个人网页</td>
+      <td>String</td>
+      <td>包括博客，微博首页</td>
+    </tr>
+    <tr>
+      <td>linkType</td>
+      <td>链接类型</td>
+      <td>Number</td>
+      <td>1为qq空间，3为微博，4为博客</td>
+    </tr>
+    <tr>
+      <td>bankid</td>
+      <td>银行卡号</td>
+      <td>String</td>
+      <td>银行卡号</td>
+    </tr>
+    <tr>
+      <td>active</td>
+      <td>是否激活</td>
+      <td>Boolean</td>
+      <td>用户账号是否可用</td>
+    </tr>
+    <tr>
+      <td>isVip</td>
+      <td>是否是会员</td>
+      <td>Boolean</td>
+      <td>用户是否为会员</td>
+    </tr>
+    <tr>
+      <td>vipLevel</td>
+      <td>会员等级</td>
+      <td>Number</td>
+      <td>会员等级</td>
+    </tr>
+    <tr>
+      <td>isAdmin</td>
+      <td>是否为管理员</td>
+      <td>Boolean</td>
+      <td>用户是否为管理员</td>
+    </tr>
+    <tr>
+      <td>distCoutry</td>
+      <td>国家</td>
+      <td>String</td>
+      <td>用户所在的国家</td>
+    </tr>
+    <tr>
+      <td>distProvince</td>
+      <td>省份</td>
+      <td>String</td>
+      <td>用户所在的省份</td>
+    </tr>
+    <tr>
+      <td>distCity</td>
+      <td>城市</td>
+      <td>String</td>
+      <td>用户所在的城市</td>
+    </tr>
+    <tr>
+      <td>distArea</td>
+      <td>地区</td>
+      <td>String</td>
+      <td>用户所在城市的地区</td>
+    </tr>
+    <tr>
+      <td>createTime</td>
+      <td>添加时间</td>
+      <td>Time</td>
+      <td>用户加入的时间</td>
+    </tr>
+  </tbody>
+</table>
+
+<h4 id="content">content表结构设计</h4>
+
+<table>
+  <thead>
+    <tr>
+      <th>字段</th>
+      <th>描述</th>
+      <th>类型</th>
+      <th>备注</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>id</td>
+      <td>内容id</td>
+      <td>Number</td>
+      <td>内容唯一id, 并非_id</td>
+    </tr>
+    <tr>
+      <td>name</td>
+      <td>内容名称或标题</td>
+      <td>String</td>
+      <td>内容标题或名称</td>
+    </tr>
+    <tr>
+      <td>description</td>
+      <td>内容描述</td>
+      <td>String</td>
+      <td>内容描述或全文</td>
+    </tr>
+    <tr>
+      <td>pic</td>
+      <td>内容相关图片</td>
+      <td>String</td>
+      <td>内容涉及的图片</td>
+    </tr>
+    <tr>
+      <td>link</td>
+      <td>内容详情链接</td>
+      <td>String</td>
+      <td>内容涉及的内容链接</td>
+    </tr>
+    <tr>
+      <td>extendPic</td>
+      <td>内容额外的相关图片</td>
+      <td>Array</td>
+      <td>内容涉及的额外图片</td>
+    </tr>
+    <tr>
+      <td>time</td>
+      <td>内容相关时间</td>
+      <td>Time</td>
+      <td>内容相关时间</td>
+    </tr>
+    <tr>
+      <td>category</td>
+      <td>内容分类</td>
+      <td>String</td>
+      <td>内容对应的主分类</td>
+    </tr>
+    <tr>
+      <td>subCategory</td>
+      <td>内容子分类</td>
+      <td>String</td>
+      <td>内容对应的子分类</td>
+    </tr>
+    <tr>
+      <td>thirCategory</td>
+      <td>内容三级分类</td>
+      <td>String</td>
+      <td>内容对应的三级分类</td>
+    </tr>
+    <tr>
+      <td>userid</td>
+      <td>用户id</td>
+      <td>String</td>
+      <td>内容对应的用户id</td>
+    </tr>
+    <tr>
+      <td>createTime</td>
+      <td>内容添加时间</td>
+      <td>Time</td>
+      <td>内容描述或全文</td>
+    </tr>
+  </tbody>
+</table>
+
+<h4 id="comment">comment表结构设计</h4>
+
+<table>
+  <thead>
+    <tr>
+      <th>字段</th>
+      <th>描述</th>
+      <th>类型</th>
+      <th>备注</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>id</td>
+      <td>评论id</td>
+      <td>Number</td>
+      <td>内容唯一id, 并非_id</td>
+    </tr>
+    <tr>
+      <td>parentid</td>
+      <td>评论父评论id</td>
+      <td>Number</td>
+      <td>内容唯一id, 并非_id</td>
+    </tr>
+    <tr>
+      <td>context</td>
+      <td>评论内容</td>
+      <td>String</td>
+      <td>评论内容</td>
+    </tr>
+    <tr>
+      <td>userid</td>
+      <td>用户id</td>
+      <td>String</td>
+      <td>内容对应的用户id</td>
+    </tr>
+    <tr>
+      <td>avatar</td>
+      <td>用户头像</td>
+      <td>String</td>
+      <td>内容对应的用户头像</td>
+    </tr>
+    <tr>
+      <td>createTime</td>
+      <td>内容添加时间</td>
+      <td>Time</td>
+      <td>内容描述或全文</td>
+    </tr>
+  </tbody>
+</table>
+
+
+</article>
+
+
+<div class="tags">
+	<strong>Tags:</strong> <a target="_blank" href="/tags/?tag=产品">产品</a>
+</div>
+
+
+	<script src="/assets/js/github.comment.js"></script>
+	<div class="gc-comments" data-repos="ouvens/ouvens.github.io" data-issues="3" >
+	    <div class="gc-comments-title">
+	        评论
+	    </div>
+	    <div class="gc-comments-info">
+	        想在此留下评论，请访问 <a href="issues_link">issues_link</a> 提交评论
+	    </div>
+	</div>
+</div>
+</div>
+
+
+    </div>
+    
+<div class="qr-code qr-code-pay" title="加个微信交流交流">
+    <img src="/assets/qrcode/qr-code-person.jpg" width="200" height="200" alt="公众号">
+    <p>加我赏红包，哈哈哈</p>
+</div>
+
+<div class="qr-code qr-code-wx" title="定期获取更新动态">
+    <img src="/assets/qrcode/qrcode.jpg" width="200" height="200" alt="公众号">
+    <p>欢迎关注 <strong>极限前端</strong> 公众号</p>
+</div>
+
+
+    
+<footer class="site-footer">
+  <div class="wrapper">
+    <h3 class="footer-heading">极限前端</h3>
+    <div class="site-navigation">
+    	<p><strong>站内</strong></p>
+      <ul class="pages">
+        
+        
+          <li class="nav-link"><a href="/about/">关于</a>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+          <li class="nav-link"><a href="/category/">所有文章</a>
+        
+        
+        
+          <li class="nav-link"><a href="/tags/">标签分类</a>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+      </ul>
+    </div>
+    <div class="site-contact">
+    	<p><strong>相关链接</strong></p>
+        <ul class="social-media-list">
+      	<li>
+      		<a href="mailto:1025224452@qq.com">
+	      		<i class="icon-font i-star"></i>
+	      		<span class="username">1025224452@qq.com</span>
+      		</a>
+      	</li>
+
+      	
+	      	
+	      	<li>
+	           <a href="https://github.com/ouvens" title="Fork me on GitHub">
+	               <i class="icon-font i-heart"></i>
+	               <span class="username">ouvens</span>
+	           </a>
+	        </li>
+	      	
+      	
+
+      </ul>
+    </div>
+    <div class="site-signature">
+    	<p class="rss-subscribe text"><strong>订阅<a href="/feed.xml">via RSS</a></strong></p>
+      <p class="text">极限前端, 极限前端社区, ouven的博客, ouvenzhang的博客, www.jixianqianduan.com, github地址, 前端技术, 讲述前端高效技术与前沿。</p>
+    </div>
+  </div>
+</footer>
+
+<!-- Scripts -->
+<script src="//1.url.cn/jslib/jquery/1.9.1/jquery.min.js" defer></script>
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.5/highlight.min.js" defer></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/lightbox2/2.7.1/js/lightbox.min.js" defer></script>
+
+<script src="/assets/js/main.js" defer></script>
+
+    </body>
+</html>

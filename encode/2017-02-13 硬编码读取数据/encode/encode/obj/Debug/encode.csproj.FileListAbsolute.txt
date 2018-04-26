@@ -1,0 +1,6 @@
+D:\vsproject\encode\encode\bin\Debug\encode.exe.config
+D:\vsproject\encode\encode\bin\Debug\encode.exe
+D:\vsproject\encode\encode\bin\Debug\encode.pdb
+D:\vsproject\encode\encode\obj\Debug\encode.csprojResolveAssemblyReference.cache
+D:\vsproject\encode\encode\obj\Debug\encode.exe
+D:\vsproject\encode\encode\obj\Debug\encode.pdb

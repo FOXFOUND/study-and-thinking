@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="google-site-verification" content="0FNbiBWk1FugWYo-RiGxQyIHebGeLoXp3HB7AxIFKy8" />
+    <meta name="baidu-site-verification" content="tYoUqpkCCv" />
+    <meta name="baidu-site-verification" content="IGN97NW90O" />
+    
+    <title>Nativescript跨终端应用程序开发方案研究 | ouvenzhang的博客</title>
+
+    <meta http-equiv="x-dns-prefetch-control" content="on" />
+    <link rel="dns-prefetch" href="cdnjs.cloudflare.com" />
+    <link rel="dns-prefetch" href="1.url.cn" />
+
+    <meta name="description" itemprop="description" content="Nativescript跨终端应用程序开发方案研究,nativescript ">
+    <meta itemprop="name" content="Nativescript跨终端应用程序开发方案研究">
+    <meta itemprop="image" content="http://ouvens.github.io/blog/assets/logo.png">
+    <meta itemprop="keywords" name="keywords" content="Nativescript跨终端应用程序开发方案研究,nativescript ">
+
+    
+    <meta name="author" content="ouvenzhang">
+    <meta name="copyright" content="&copy; ouvenzhang 2017">
+    <meta name="protocol" content="1">
+    
+
+    <!-- External libraries -->
+    <link rel="stylesheet" href="/assets/css/iconfont.css">
+    <link rel="stylesheet" href="/css/monokai_sublime.css">
+
+    <!-- Favicon and other icons (made with http://www.favicon-generator.org/) -->
+    <link rel="shortcut icon" href="/assets/favicon.ico" type="image/x-icon">
+  	<link rel="icon" href="/assets/favicon.ico" type="image/x-icon">
+    
+  	<meta name="msapplication-TileColor" content="#ffffff">
+  	<meta name="theme-color" content="#ffffff">
+    <meta name="msapplication-TileImage" content="/assets/icons/icon.png">
+
+  	<!-- Site styles -->
+    <link rel="stylesheet" href="/css/main.css">
+
+    <link rel="alternate" type="application/rss+xml" title="极限前端" href="http://ouvens.github.io//feed.xml" />
+    <script>
+    // 访问统计
+    var domain = 'jixianqianduan.com';
+    var oldDomain = 'ouvens.github.io';
+    if(location.host === domain){
+        var _hmt = _hmt || [];
+        (function() {
+          var hm = document.createElement("script");
+          hm.src = "//hm.baidu.com/hm.js?b536b128dc21c3d18fdc028f0609e3f0";
+          var s = document.getElementsByTagName("script")[0]; 
+          s.parentNode.insertBefore(hm, s);
+        })();
+    }else if(location.host === oldDomain){
+        window.location.href = location.href.replace(oldDomain, domain);
+        var _hmt = _hmt || [];
+        (function() {
+          var hm = document.createElement("script");
+          hm.src = "//hm.baidu.com/hm.js?041efd2cb345ca1b9dbdbb2383cb716d";
+          var s = document.getElementsByTagName("script")[0]; 
+          s.parentNode.insertBefore(hm, s);
+        })();
+    }
+
+    // 链接提交
+
+    if(location.protocol === 'https'){
+        !function(){var e=/([http|https]:\/\/[a-zA-Z0-9\_\.]+\.baidu\.com)/gi,r=window.location.href,t=document.referrer;if(!e.test(r)){var o="https://sp0.baidu.com/9_Q4simg2RQJ8t7jm9iCKT-xh_/s.gif";t?(o+="?r="+encodeURIComponent(document.referrer),r&&(o+="&l="+r)):r&&(o+="?l="+r);var i=new Image;i.src=o}}(window);
+    }else{
+        !function(){var e=/([http|https]:\/\/[a-zA-Z0-9\_\.]+\.baidu\.com)/gi,r=window.location.href,o=document.referrer;if(!e.test(r)){var n="//api.share.baidu.com/s.gif";o?(n+="?r="+encodeURIComponent(document.referrer),r&&(n+="&l="+r)):r&&(n+="?l="+r);var t=new Image;t.src=n}}(window);
+    }
+
+
+    </script>
+</head>
+
+    <body>
+        <div class="navigation" role="banner">
+    <div class="navigation-wrapper">
+    <a href="/" class="logo">
+    	
+      <img src="/assets/logo.png" alt="极限前端">
+      
+    </a>
+    <span class="search-input" id="search-input">
+      <input type="text" value="" class="search-text" placeholder="输入搜索关键字">
+      <i class="icon-font i-search search-btn"></i>
+    </span>
+    <a href="javascript:void(0)" class="navigation-menu-button" id="js-mobile-menu">
+    	<i class="icon-font i-list fa fa-bars"></i>
+    </a>
+    <span class="nav" role="navigation">
+      <ul id="js-navigation-menu" class="navigation-menu show">
+      	
+          
+          <li class="nav-link">
+            <a href="/about/">关于</a>
+          </li>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+          <li class="nav-link">
+            <a href="/category/">所有文章</a>
+          </li>
+          
+        
+          
+          <li class="nav-link">
+            <a href="/tags/">标签分类</a>
+          </li>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          <li id="github-info" class="nav-link" title="https://github.com/ouvens">
+            <a class="github-info" href="https://github.com/ouvens" target="_blank">
+            <img src="/assets/github.png" height="34" width="130" alt="github地址"></a>
+          </li>
+      </ul>
+    </span>
+  </div>
+</div>
+
+            <div class="page-content">
+        <div class="post">
+<div class="post-header-container has-cover">
+	<header class="post-header">
+	  <h1 class="title">Nativescript跨终端应用程序开发方案研究</h1>
+	  <p class="info">by <strong>ouven</strong></p>
+	</header>
+</div>
+<div class="wrapper">
+
+
+
+<div class="post-meta">
+	<div class="post-date">2015年06月18日</div>
+	<div class="post-categories">
+	 in  
+		<a target="_blank" href="/category/?cate=frontend-client">Frontend-client</a>
+	  
+	</div>
+</div>	
+
+<article class="post-content">
+  <h3 id="section">1.环境准备</h3>
+<ul>
+  <li>安装nodejs</li>
+  <li>安装nativescript</li>
+</ul>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre><span class="nx">$npm</span> <span class="nx">install</span> <span class="o">-</span><span class="nx">g</span> <span class="nx">nativescript</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p>或者下载github上项目代码进行构建(不推荐)
+- 安装java JDK
+jdk是Java运行开发环境，按android开发必须的开发的环境</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3</pre></td><td class="code"><pre><span class="nx">JAVA_HOME</span>   <span class="nx">D</span><span class="err">:</span><span class="o">/</span><span class="nx">program</span> <span class="nx">file</span><span class="o">/</span><span class="nx">java</span><span class="o">/</span><span class="nx">jdk_1</span><span class="p">.</span><span class="mf">7.34</span><span class="o">/</span>
+<span class="nx">path</span>         <span class="nx">D</span><span class="err">:</span><span class="o">/</span><span class="nx">program</span> <span class="nx">file</span><span class="o">/</span><span class="nx">java</span><span class="o">/</span><span class="nx">jdk_1</span><span class="p">.</span><span class="mf">7.34</span><span class="o">/</span><span class="nx">bin</span>
+<span class="nx">classpath</span>   <span class="nx">D</span><span class="err">:</span><span class="o">/</span><span class="nx">program</span> <span class="nx">file</span><span class="o">/</span><span class="nx">java</span><span class="o">/</span><span class="nx">jdk_1</span><span class="p">.</span><span class="mf">7.34</span><span class="o">/</span><span class="nx">lib</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p>测试方法：java -version</p>
+
+<ul>
+  <li>安装Apache ant
+Apache Ant,是一个将软件编译、测试、部署等步骤联系在一起加以自动化的一个工具，大多用于Java环境中的软件开发。由Apache软件基金会所提供。这里用到的的是用于android签名证书等打包(android开发过程中ide使用gradle配置打包，早期都是用的ant打包，这里使用的方法比较原始)
+http://ant.apache.org/bindownload.cgi 上下载最新版apache-bin(可选择安装型或压缩包型)，然后添加系统环境变量</li>
+</ul>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3</pre></td><td class="code"><pre><span class="nx">ANT_HOME</span>    <span class="nx">C</span><span class="err">:</span><span class="o">/</span> <span class="nx">apache</span><span class="o">-</span><span class="nx">ant</span><span class="o">-</span><span class="mf">1.9</span><span class="p">.</span><span class="mi">5</span>
+<span class="nx">path</span>        <span class="nx">C</span><span class="err">:</span><span class="o">/</span> <span class="nx">apache</span><span class="o">-</span><span class="nx">ant</span><span class="o">-</span><span class="mf">1.9</span><span class="p">.</span><span class="mi">5</span><span class="o">/</span><span class="nx">bin</span>
+<span class="nx">classpath</span>   <span class="nx">C</span><span class="err">:</span><span class="o">/</span><span class="nx">apache</span><span class="o">-</span><span class="nx">ant</span><span class="o">-</span><span class="mf">1.9</span><span class="p">.</span><span class="mi">5</span><span class="o">/</span><span class="nx">lib</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p>测试方法：ant -version</p>
+
+<ul>
+  <li>安装Android sdk
+下载最新的adk，http://developer.android.com/sdk/installing/index.html 下载后解压到某个目录(例如D盘)，然后添加系统环境变量</li>
+</ul>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3</pre></td><td class="code"><pre><span class="nx">ANDROID_HOME</span>   <span class="nx">D</span><span class="err">:</span><span class="o">/</span><span class="nx">android</span><span class="o">-</span><span class="nx">sdk</span><span class="o">-</span><span class="nx">windows</span>
+<span class="nx">path</span>        <span class="nx">D</span><span class="err">:</span><span class="o">/</span><span class="nx">android</span><span class="err">\</span><span class="nx">android</span><span class="o">-</span><span class="nx">sdk</span><span class="o">-</span><span class="nx">windows</span><span class="err">\</span><span class="nx">tools</span>
+<span class="nx">classpath</span>  <span class="nx">D</span><span class="err">:</span><span class="o">/</span><span class="nx">android</span><span class="err">\</span><span class="nx">android</span><span class="o">-</span><span class="nx">sdk</span><span class="o">-</span><span class="nx">windows</span><span class="err">\</span><span class="nx">tools</span><span class="err">\</span><span class="nx">lib</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p>测试方法：android
+必须掌握的两个命令：abd start-server/ adb kill-server，用于启动android debug服务，adb使用与启动模拟器或是通过手机的自动安装调试，并可以看到log信息。这两个命令会经常用到
+然后 命令行运行一下tns，如果看到以下提示信息，就可以开始第一个开发了。</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9</pre></td><td class="code"><pre><span class="err">#</span> <span class="nx">NativeScript</span>
+<span class="err">┌─────────┬─────────────────────────────</span>
+<span class="err">───────────────────────────────────┐</span>
+<span class="err">│</span> <span class="nx">Usage</span>   <span class="err">│</span> <span class="nx">Synopsis</span>                                                       <span class="err">│</span>
+<span class="err">│</span> <span class="nx">General</span> <span class="err">│</span> <span class="nx">$</span> <span class="nx">tns</span> <span class="o">&lt;</span><span class="nx">Command</span><span class="o">&gt;</span> <span class="p">[</span><span class="nx">Command</span> <span class="nx">Parameters</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="nx">command</span> <span class="o">&lt;</span><span class="nx">Options</span><span class="o">&gt;</span><span class="p">]</span>     <span class="err">│</span>
+<span class="err">│</span> <span class="nx">Alias</span>   <span class="err">│</span> <span class="nx">$</span> <span class="nx">nativescript</span> <span class="o">&lt;</span><span class="nx">Command</span><span class="o">&gt;</span> <span class="p">[</span><span class="nx">Command</span> <span class="nx">Parameters</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="nx">command</span>       <span class="err">│</span>
+<span class="err">│</span>         <span class="err">│</span> <span class="o">&lt;</span><span class="nx">Options</span><span class="o">&gt;</span><span class="p">]</span>                                                     <span class="err">│</span>
+<span class="err">└─────────┴─────────────────────────────</span>
+<span class="err">───────────────────────────────────┘</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h3 id="section-1">2.开始项目</h3>
+<ul>
+  <li>创建项目</li>
+</ul>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20</pre></td><td class="code"><pre><span class="nx">$</span> <span class="nx">tns</span> <span class="nx">create</span> <span class="nx">demo</span>
+<span class="nx">$</span> <span class="nx">cd</span> <span class="nx">demo</span>
+<span class="nx">$</span> <span class="nx">tns</span> <span class="nx">platform</span> <span class="nx">add</span> <span class="nx">andrdoi</span><span class="o">/</span><span class="nx">ios</span>
+<span class="err">├──</span> <span class="nx">app</span>     <span class="c1">// bower dependencies</span>
+        <span class="err">├──</span> <span class="nx">App_Resources</span>    <span class="c1">// bower dependencies</span>
+                        <span class="err">├──</span> <span class="nx">Android</span>  <span class="c1">// android项目的drawble静态图片等文件，项目转换的时候直接拷贝到android项目下</span>
+                        <span class="err">├──</span> <span class="nx">iOS</span>        <span class="c1">//ios项目用到的图片文件</span>
+        <span class="err">├──</span> <span class="nx">tns_modules</span>    <span class="c1">//tns node模块，可以用来调用移动设备功能</span>
+        <span class="err">├──</span> <span class="nx">app</span><span class="p">.</span><span class="nx">css</span>    <span class="c1">// 内部控件样式</span>
+        <span class="err">├──</span> <span class="nx">app</span><span class="p">.</span><span class="nx">js</span>    <span class="c1">// 页面配置入口配置</span>
+        <span class="err">├──</span> <span class="nx">LICENSE</span>
+        <span class="err">├──</span> <span class="nx">main</span><span class="o">-</span><span class="nx">page</span><span class="p">.</span><span class="nx">js</span>    <span class="c1">// 页面js文件</span>
+        <span class="err">├──</span> <span class="nx">main</span><span class="o">-</span><span class="nx">page</span><span class="p">.</span><span class="nx">xml</span>    <span class="c1">// 页面布局文件</span>
+        <span class="err">├──</span> <span class="nx">main</span><span class="o">-</span><span class="nx">view</span><span class="o">-</span><span class="nx">model</span><span class="p">.</span><span class="nx">js</span>    <span class="c1">// vm对象生成文件</span>
+        <span class="err">├──</span> <span class="kr">package</span><span class="p">.</span><span class="nx">json</span>    <span class="c1">// bower dependencies</span>
+<span class="err">├──</span> <span class="nx">node_module</span>     <span class="c1">// node插件忽略</span>
+<span class="err">├──</span> <span class="nx">platforms</span>           <span class="c1">// 转换后的移动端平台代码</span>
+        <span class="err">├──</span> <span class="nx">android</span>           <span class="c1">// 标准的可移植android项目代码</span>
+        <span class="err">├──</span> <span class="nx">ios</span>                  <span class="c1">//标准的可移植ios项目代码</span>
+<span class="err">└──</span><span class="kr">package</span><span class="p">.</span><span class="nx">json</span>           <span class="c1">//项目信息配置文件 </span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+<p>从项目的结构可以看出，项目代码使用的mvvm结构，而且它的viewmodel是通过方法操作的。</p>
+
+<ul>
+  <li>配置移动平台</li>
+</ul>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2</pre></td><td class="code"><pre><span class="nx">$</span> <span class="nx">tns</span> <span class="nx">platform</span> <span class="nx">add</span> <span class="nx">ios</span><span class="o">/</span><span class="nx">android</span>
+<span class="nx">$</span> <span class="nx">tns</span> <span class="nx">run</span> <span class="nx">android</span><span class="o">/</span><span class="nx">ios</span> <span class="p">(</span><span class="err">真机启动</span><span class="p">)</span> <span class="err">或者</span>  <span class="nx">tns</span> <span class="nx">run</span> <span class="nx">android</span><span class="o">/</span><span class="nx">ios</span> <span class="o">--</span><span class="nx">emulator</span><span class="p">(</span><span class="err">启动模拟器</span><span class="p">)</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p>如果没问题的话就可以看到手机或模拟器上启动了应用程序
+来自： http://docs.nativescript.org/hello-world/hello-world-ns-cli.html</p>
+
+<h3 id="section-2">3.项目分析与实例</h3>
+<p>分析一下页面主要的代码结构
+- app.js，页面的预处理入口，表示启动main-page这个页面</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4</pre></td><td class="code"><pre><span class="kd">var</span> <span class="nx">application</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">"application"</span><span class="p">);</span>
+<span class="nx">application</span><span class="p">.</span><span class="nx">mainModule</span> <span class="o">=</span> <span class="s2">"main-page"</span><span class="p">;</span>
+<span class="nx">application</span><span class="p">.</span><span class="nx">cssFile</span> <span class="o">=</span> <span class="s2">"./app.css"</span><span class="p">;</span>
+<span class="nx">application</span><span class="p">.</span><span class="nx">start</span><span class="p">();</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<ul>
+  <li>main-page.js 页面的数据绑定处理，将vm和方法绑定，也可认为是把vm和对象关联绑定</li>
+</ul>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6</pre></td><td class="code"><pre><span class="kd">var</span> <span class="nx">vmModule</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">"./main-view-model"</span><span class="p">);</span>
+<span class="kd">function</span> <span class="nx">pageLoaded</span><span class="p">(</span><span class="nx">args</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">page</span> <span class="o">=</span> <span class="nx">args</span><span class="p">.</span><span class="nx">object</span><span class="p">;</span>
+    <span class="nx">page</span><span class="p">.</span><span class="nx">bindingContext</span> <span class="o">=</span> <span class="nx">vmModule</span><span class="p">.</span><span class="nx">mainViewModel</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nx">exports</span><span class="p">.</span><span class="nx">pageLoaded</span> <span class="o">=</span> <span class="nx">pageLoaded</span><span class="p">;</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<ul>
+  <li>main-view-model.js 页面的vm定义模块，申明方法和数据</li>
+</ul>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30</pre></td><td class="code"><pre><span class="kd">var</span> <span class="nx">__extends</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">__extends</span> <span class="o">||</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">d</span><span class="p">,</span> <span class="nx">b</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">p</span> <span class="k">in</span> <span class="nx">b</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="nx">b</span><span class="p">.</span><span class="nx">hasOwnProperty</span><span class="p">(</span><span class="nx">p</span><span class="p">))</span> <span class="nx">d</span><span class="p">[</span><span class="nx">p</span><span class="p">]</span> <span class="o">=</span> <span class="nx">b</span><span class="p">[</span><span class="nx">p</span><span class="p">];</span>
+    <span class="kd">function</span> <span class="nx">__</span><span class="p">()</span> <span class="p">{</span> <span class="k">this</span><span class="p">.</span><span class="nx">constructor</span> <span class="o">=</span> <span class="nx">d</span><span class="p">;</span> <span class="p">}</span>
+    <span class="nx">__</span><span class="p">.</span><span class="nx">prototype</span> <span class="o">=</span> <span class="nx">b</span><span class="p">.</span><span class="nx">prototype</span><span class="p">;</span>
+    <span class="nx">d</span><span class="p">.</span><span class="nx">prototype</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">__</span><span class="p">();</span>
+<span class="p">};</span>
+<span class="kd">var</span> <span class="nx">observable</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">"data/observable"</span><span class="p">);</span>
+
+<span class="kd">var</span> <span class="nx">HelloWorldModel</span> <span class="o">=</span> <span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">_super</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">__extends</span><span class="p">(</span><span class="nx">HelloWorldModel</span><span class="p">,</span> <span class="nx">_super</span><span class="p">);</span>
+
+    <span class="kd">function</span> <span class="nx">HelloWorldModel</span><span class="p">()</span> <span class="p">{</span>
+        <span class="nx">_super</span><span class="p">.</span><span class="nx">call</span><span class="p">(</span><span class="k">this</span><span class="p">);</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">counter</span> <span class="o">=</span> <span class="mi">42</span><span class="p">;</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="s2">"message"</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">counter</span> <span class="o">+</span> <span class="s2">" taps left"</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="nx">HelloWorldModel</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">tapAction</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">counter</span><span class="o">--</span><span class="p">;</span>
+        <span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">counter</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">this</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="s2">"message"</span><span class="p">,</span> <span class="s2">"Hoorraaay! You unlocked the NativeScript clicker achievement!"</span><span class="p">);</span>
+        <span class="p">}</span>
+        <span class="k">else</span> <span class="p">{</span>
+            <span class="k">this</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="s2">"message"</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">counter</span> <span class="o">+</span> <span class="s2">" taps left"</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">};</span>
+    <span class="k">return</span> <span class="nx">HelloWorldModel</span><span class="p">;</span>
+<span class="p">})(</span><span class="nx">observable</span><span class="p">.</span><span class="nx">Observable</span><span class="p">);</span>
+<span class="nx">exports</span><span class="p">.</span><span class="nx">HelloWorldModel</span> <span class="o">=</span> <span class="nx">HelloWorldModel</span><span class="p">;</span>
+<span class="nx">exports</span><span class="p">.</span><span class="nx">mainViewModel</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">HelloWorldModel</span><span class="p">();</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<ul>
+  <li>app.css</li>
+</ul>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16</pre></td><td class="code"><pre><span class="p">.</span><span class="nx">title</span> <span class="p">{</span>
+    <span class="nx">font</span><span class="o">-</span><span class="nx">size</span><span class="err">:</span> <span class="mi">30</span><span class="p">;</span>
+    <span class="nx">horizontal</span><span class="o">-</span><span class="nx">align</span><span class="err">:</span> <span class="nx">center</span><span class="p">;</span>
+    <span class="nl">margin</span><span class="p">:</span><span class="mi">20</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nx">button</span> <span class="p">{</span>
+    <span class="nx">font</span><span class="o">-</span><span class="nx">size</span><span class="err">:</span> <span class="mi">42</span><span class="p">;</span>
+    <span class="nx">horizontal</span><span class="o">-</span><span class="nx">align</span><span class="err">:</span> <span class="nx">center</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="p">.</span><span class="nx">message</span> <span class="p">{</span>
+    <span class="nx">font</span><span class="o">-</span><span class="nx">size</span><span class="err">:</span> <span class="mi">20</span><span class="p">;</span>
+    <span class="nl">color</span><span class="p">:</span> <span class="err">#</span><span class="mi">284848</span><span class="p">;</span>
+    <span class="nx">horizontal</span><span class="o">-</span><span class="nx">align</span><span class="err">:</span> <span class="nx">center</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p>main-page.xml android上布局的文件，类似vm模板，注意，是xml的，不是html</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7</pre></td><td class="code"><pre><span class="nt">&lt;Page</span> <span class="na">xmlns=</span><span class="s">"http://www.nativescript.org/tns.xsd"</span> <span class="na">loaded=</span><span class="s">"pageLoaded"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;StackLayout&gt;</span>
+    <span class="nt">&lt;Label</span> <span class="na">text=</span><span class="s">"Tap the button"</span> <span class="na">cssClass=</span><span class="s">"title"</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;Button</span> <span class="na">text=</span><span class="s">"TAP"</span> <span class="na">tap=</span><span class="s">""</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;Label</span> <span class="na">text=</span><span class="s">""</span> <span class="na">cssClass=</span><span class="s">"message"</span> <span class="na">textWrap=</span><span class="s">"true"</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;/StackLayout&gt;</span>
+<span class="nt">&lt;/Page&gt;</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h3 id="section-3">4.总结分析</h3>
+<ol>
+  <li>核心是用JavaScript来写代码，然后预处理成android/ios项目进行打包安装</li>
+  <li>开发模式基本遵循前端的mvvm思想来实现，只是实现和表现不一样</li>
+  <li>参考文档完善，整理来说是一个不错的native开发方案</li>
+  <li>开发使用commonJs的规范，容易理解</li>
+  <li>但是不足之处也很明显，很难做现有单页面的改造，迭代不方便，功能上线必须像客户端那样发布审核，某些程度上还是需要web页面的支持</li>
+</ol>
+
+<p>当然这次只分析了个简单的例子，后面自己搞个复杂的例子来分享下，敬请期待(类似的还有samurai-native和react-native，坐等android支持)~</p>
+
+</article>
+
+
+<div class="tags">
+	<strong>Tags:</strong> <a target="_blank" href="/tags/?tag=nativescript">nativescript</a>
+</div>
+
+
+	<script src="/assets/js/github.comment.js"></script>
+	<div class="gc-comments" data-repos="ouvens/ouvens.github.io" data-issues="3" >
+	    <div class="gc-comments-title">
+	        评论
+	    </div>
+	    <div class="gc-comments-info">
+	        想在此留下评论，请访问 <a href="issues_link">issues_link</a> 提交评论
+	    </div>
+	</div>
+</div>
+</div>
+
+
+    </div>
+    
+<div class="qr-code qr-code-pay" title="加个微信交流交流">
+    <img src="/assets/qrcode/qr-code-person.jpg" width="200" height="200" alt="公众号">
+    <p>加我赏红包，哈哈哈</p>
+</div>
+
+<div class="qr-code qr-code-wx" title="定期获取更新动态">
+    <img src="/assets/qrcode/qrcode.jpg" width="200" height="200" alt="公众号">
+    <p>欢迎关注 <strong>极限前端</strong> 公众号</p>
+</div>
+
+
+    
+<footer class="site-footer">
+  <div class="wrapper">
+    <h3 class="footer-heading">极限前端</h3>
+    <div class="site-navigation">
+    	<p><strong>站内</strong></p>
+      <ul class="pages">
+        
+        
+          <li class="nav-link"><a href="/about/">关于</a>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+          <li class="nav-link"><a href="/category/">所有文章</a>
+        
+        
+        
+          <li class="nav-link"><a href="/tags/">标签分类</a>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+      </ul>
+    </div>
+    <div class="site-contact">
+    	<p><strong>相关链接</strong></p>
+        <ul class="social-media-list">
+      	<li>
+      		<a href="mailto:1025224452@qq.com">
+	      		<i class="icon-font i-star"></i>
+	      		<span class="username">1025224452@qq.com</span>
+      		</a>
+      	</li>
+
+      	
+	      	
+	      	<li>
+	           <a href="https://github.com/ouvens" title="Fork me on GitHub">
+	               <i class="icon-font i-heart"></i>
+	               <span class="username">ouvens</span>
+	           </a>
+	        </li>
+	      	
+      	
+
+      </ul>
+    </div>
+    <div class="site-signature">
+    	<p class="rss-subscribe text"><strong>订阅<a href="/feed.xml">via RSS</a></strong></p>
+      <p class="text">极限前端, 极限前端社区, ouven的博客, ouvenzhang的博客, www.jixianqianduan.com, github地址, 前端技术, 讲述前端高效技术与前沿。</p>
+    </div>
+  </div>
+</footer>
+
+<!-- Scripts -->
+<script src="//1.url.cn/jslib/jquery/1.9.1/jquery.min.js" defer></script>
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.5/highlight.min.js" defer></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/lightbox2/2.7.1/js/lightbox.min.js" defer></script>
+
+<script src="/assets/js/main.js" defer></script>
+
+    </body>
+</html>

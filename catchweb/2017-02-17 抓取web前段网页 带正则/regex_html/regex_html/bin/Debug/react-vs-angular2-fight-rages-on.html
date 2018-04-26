@@ -1,0 +1,1112 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="google-site-verification" content="0FNbiBWk1FugWYo-RiGxQyIHebGeLoXp3HB7AxIFKy8" />
+    <meta name="baidu-site-verification" content="tYoUqpkCCv" />
+    <meta name="baidu-site-verification" content="IGN97NW90O" />
+    
+    <title>【原译】React vs Angular 2: 战争继续 | ouvenzhang的博客</title>
+
+    <meta http-equiv="x-dns-prefetch-control" content="on" />
+    <link rel="dns-prefetch" href="cdnjs.cloudflare.com" />
+    <link rel="dns-prefetch" href="1.url.cn" />
+
+    <meta name="description" itemprop="description" content="【原译】React vs Angular 2: 战争继续,React,Angular,2 ">
+    <meta itemprop="name" content="【原译】React vs Angular 2: 战争继续">
+    <meta itemprop="image" content="http://ouvens.github.io/blog/assets/logo.png">
+    <meta itemprop="keywords" name="keywords" content="【原译】React vs Angular 2: 战争继续,React,Angular,2 ">
+
+    
+    <meta name="author" content="ouvenzhang">
+    <meta name="copyright" content="&copy; ouvenzhang 2017">
+    <meta name="protocol" content="1">
+    
+
+    <!-- External libraries -->
+    <link rel="stylesheet" href="/assets/css/iconfont.css">
+    <link rel="stylesheet" href="/css/monokai_sublime.css">
+
+    <!-- Favicon and other icons (made with http://www.favicon-generator.org/) -->
+    <link rel="shortcut icon" href="/assets/favicon.ico" type="image/x-icon">
+  	<link rel="icon" href="/assets/favicon.ico" type="image/x-icon">
+    
+  	<meta name="msapplication-TileColor" content="#ffffff">
+  	<meta name="theme-color" content="#ffffff">
+    <meta name="msapplication-TileImage" content="/assets/icons/icon.png">
+
+  	<!-- Site styles -->
+    <link rel="stylesheet" href="/css/main.css">
+
+    <link rel="alternate" type="application/rss+xml" title="极限前端" href="http://ouvens.github.io//feed.xml" />
+    <script>
+    // 访问统计
+    var domain = 'jixianqianduan.com';
+    var oldDomain = 'ouvens.github.io';
+    if(location.host === domain){
+        var _hmt = _hmt || [];
+        (function() {
+          var hm = document.createElement("script");
+          hm.src = "//hm.baidu.com/hm.js?b536b128dc21c3d18fdc028f0609e3f0";
+          var s = document.getElementsByTagName("script")[0]; 
+          s.parentNode.insertBefore(hm, s);
+        })();
+    }else if(location.host === oldDomain){
+        window.location.href = location.href.replace(oldDomain, domain);
+        var _hmt = _hmt || [];
+        (function() {
+          var hm = document.createElement("script");
+          hm.src = "//hm.baidu.com/hm.js?041efd2cb345ca1b9dbdbb2383cb716d";
+          var s = document.getElementsByTagName("script")[0]; 
+          s.parentNode.insertBefore(hm, s);
+        })();
+    }
+
+    // 链接提交
+
+    if(location.protocol === 'https'){
+        !function(){var e=/([http|https]:\/\/[a-zA-Z0-9\_\.]+\.baidu\.com)/gi,r=window.location.href,t=document.referrer;if(!e.test(r)){var o="https://sp0.baidu.com/9_Q4simg2RQJ8t7jm9iCKT-xh_/s.gif";t?(o+="?r="+encodeURIComponent(document.referrer),r&&(o+="&l="+r)):r&&(o+="?l="+r);var i=new Image;i.src=o}}(window);
+    }else{
+        !function(){var e=/([http|https]:\/\/[a-zA-Z0-9\_\.]+\.baidu\.com)/gi,r=window.location.href,o=document.referrer;if(!e.test(r)){var n="//api.share.baidu.com/s.gif";o?(n+="?r="+encodeURIComponent(document.referrer),r&&(n+="&l="+r)):r&&(n+="?l="+r);var t=new Image;t.src=n}}(window);
+    }
+
+
+    </script>
+</head>
+
+    <body>
+        <div class="navigation" role="banner">
+    <div class="navigation-wrapper">
+    <a href="/" class="logo">
+    	
+      <img src="/assets/logo.png" alt="极限前端">
+      
+    </a>
+    <span class="search-input" id="search-input">
+      <input type="text" value="" class="search-text" placeholder="输入搜索关键字">
+      <i class="icon-font i-search search-btn"></i>
+    </span>
+    <a href="javascript:void(0)" class="navigation-menu-button" id="js-mobile-menu">
+    	<i class="icon-font i-list fa fa-bars"></i>
+    </a>
+    <span class="nav" role="navigation">
+      <ul id="js-navigation-menu" class="navigation-menu show">
+      	
+          
+          <li class="nav-link">
+            <a href="/about/">关于</a>
+          </li>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+          <li class="nav-link">
+            <a href="/category/">所有文章</a>
+          </li>
+          
+        
+          
+          <li class="nav-link">
+            <a href="/tags/">标签分类</a>
+          </li>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          <li id="github-info" class="nav-link" title="https://github.com/ouvens">
+            <a class="github-info" href="https://github.com/ouvens" target="_blank">
+            <img src="/assets/github.png" height="34" width="130" alt="github地址"></a>
+          </li>
+      </ul>
+    </span>
+  </div>
+</div>
+
+            <div class="page-content">
+        <div class="post">
+<div class="post-header-container has-cover">
+	<header class="post-header">
+	  <h1 class="title">【原译】React vs Angular 2: 战争继续</h1>
+	  <p class="info">by <strong>ouven</strong></p>
+	</header>
+</div>
+<div class="wrapper">
+
+
+
+<div class="post-meta">
+	<div class="post-date">2016年04月07日</div>
+	<div class="post-categories">
+	 in  
+		<a target="_blank" href="/category/?cate=article-translation">Article-translation</a>
+	  
+	</div>
+</div>	
+
+<article class="post-content">
+  <h2 id="react-vs-angular-2-">React vs Angular 2: 战争继续</h2>
+
+<p>【原译】：https://tech.evojam.com/2016/03/31/react-vs-angular2-the-fight-rages-on/</p>
+
+<p>  google的Angular和Facebook的React是现在最流行（但不是只有两个）的浏览器端应用开发工具，它们都是很优秀的解决方案。然而angular 2仍然在beta版中，Google的一部分工程师已经对它进行测试了。使用react开发的应用也很多，像instagram，netlfix，paypal等。</p>
+
+<p> 残忍的战争就要到来了。</p>
+
+<h3 id="section">第一滴血</h3>
+
+<p>已经有一篇”血腥“的文章《<a href="https://medium.freecodecamp.com/angular-2-versus-react-there-will-be-blood-66595faafd51#.c71slhy9c">Angular 2 versus React</a>》（作者：Cory House）来比较angular2与react，它体现了两者很多方面的亮点，第一次对决已经结束，但是大战才刚刚开始。（译者注：老外写个文章真的一定要这么夸张吗？哈哈~）</p>
+
+<h3 id="section-1">认清你的对手</h3>
+
+<blockquote>
+  <p>作为开发者，选择angular还是react就像购买现成的电脑还是用现成的零件来组装电脑一样。</p>
+</blockquote>
+
+<p>Cory House告诉我们：</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>angular 2</th>
+      <th>React</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>压缩后764K</td>
+      <td>压缩后151k</td>
+    </tr>
+    <tr>
+      <td>独立的完整解决方案</td>
+      <td>简单的视图库</td>
+    </tr>
+    <tr>
+      <td>很多angular特定的语法</td>
+      <td>javascript语法</td>
+    </tr>
+    <tr>
+      <td>很好的一致性（和typescript）</td>
+      <td>基本语法有点混淆</td>
+    </tr>
+    <tr>
+      <td>使用html和js</td>
+      <td>jsx语法</td>
+    </tr>
+    <tr>
+      <td>综合成熟稳定的框架</td>
+      <td>发展迅速的开源库</td>
+    </tr>
+    <tr>
+      <td>手动debug，缺少完全的支持</td>
+      <td>jsx-很好的开发体验</td>
+    </tr>
+    <tr>
+      <td>对web components友好</td>
+      <td>有可能支持web componnets</td>
+    </tr>
+    <tr>
+      <td>静态执行</td>
+      <td>jsx-动态执行</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>我想补充的是react有很多优秀的浏览器开发插件，然而并没有看到angular 2的。</p>
+
+<h3 id="section-2">竞技场</h3>
+
+<p>  为了比较这些前端的技术，我做了一些TODO应用。为了使问题更加简单，我在两个应用中只使用了Redux core（受<a href="https://medium.com/google-developer-experts/angular-2-introduction-to-redux-1cf18af27e6e#.ls2fsirdp">angular 2-introduction to Redux</a>启发）。两个都是使用typescript开发的，所以比较起来比较清晰些。你可以对比下代码：</p>
+
+<p>– Redux Core: https://github.com/evojam/redux-todo-lib
+– Angular2 App: https://github.com/evojam/angular2-redux-sample-app
+– React App: https://github.com/evojam/react-redux-sample-app</p>
+
+<h3 id="section-3">对抗</h3>
+
+<p>  两者的核心都是一个component或是一个view单元。两个都将你的app形成一个组件树。它们都鼓励将数据通过顶层传递给组件树。根到叶子的数据流思路使我们开发的应用”更灵活”，所以现在开始。</p>
+
+<h3 id="section-4">第一轮：功能组件</h3>
+
+<p>  在这个树形结构的基础应用中，每个顶层树是一个组件，每个组件的特点：</p>
+
+<ul>
+  <li>从父节点接受数据（称之为输入）</li>
+  <li>返回一个组件的子树（视图view）</li>
+</ul>
+
+<p>  在angular2和React中，输入都是通过子节点属性（不是html属性）从一个元素传递到它的子树，两种解决方案中，视图view都可以理解为xml树。</p>
+
+<h3 id="todolist">TodoList组件</h3>
+
+<p>  一个可复用、可选择、简单的todo list需要做到两点–todos数组（我做的数组）和过滤的方式（要展示的数组）。所以我们的组件输入可以是这样的：</p>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4</pre></td><td class="code"><pre>interface ITodoListProps {
+    todos: ITodo[];
+    filter: FilterType;
+}
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p>  而组件在任何地方都可以这样使用：</p>
+
+<p>– React</p>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>&lt;TodoList todoList={todos} filter={filterType}/&gt;
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p>–Angular 2</p>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2</pre></td><td class="code"><pre>&lt;ul [todoList]="todos" [filter]="filterType"&gt;&lt;/ul&gt;
+
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p>下面是React组件的定义：</p>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14</pre></td><td class="code"><pre>// src/components/todo-list.tsx
+
+import { Todo } from './todo';
+
+export function TodoList(props: ITodoListProps): JSX.Element {
+    return (
+        &lt;ul className="todo-list"&gt;
+            {todosFilter(props.todoList, props.filter)
+                .map(todo =&gt; (
+                    &lt;Todo todo={todo} key={todo.id}/&gt;
+                ))}
+        &lt;/ul&gt;
+    );
+}
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p>下面是Angulart2组件定义的版本：</p>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16</pre></td><td class="code"><pre>// src/components/todo-list.ts
+
+import { Todo } from './todo';
+
+@Component({
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    directives: [Todo],
+    host: {'class':'todo-list'},
+    pipes: [TodosFilter],
+    selector: '[todoList]',
+    templateUrl: '/src/components/todo-list.html'
+})
+export class TodoList implements ITodoListProps {
+    @Input() todoList: ITodo[];
+    @Input() filter: FilterType;
+}
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5</pre></td><td class="code"><pre>// src/components/todo-list.html
+
+&lt;template ngFor #todo [ngForOf]="todoList | todosFilter:filter"&gt;
+    &lt;li [todo]="todo"&gt;&lt;/li&gt;
+&lt;/template&gt;
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p>  毫无疑问，React版本是没有状态，更纯正，更简单，它使用data并返回dom，很好。</p>
+
+<p>  这里可以运行但是不能正确编译，我不知道它是不是typescript支持性的原因或者React编码输入的错误（如果知道错误请给issue）。无论怎样，它失败了，我不得不在React组件基础上切换成一个class。React保存了状态–就是组件成员的属性–但是属性仍然可以被当做immutable的数据输入：</p>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14</pre></td><td class="code"><pre>// src/components/todo-list.tsx
+
+import { Todo } from './todo';
+
+export class TodoList extends Component&lt;ITodoListProps, {}&gt; {
+    render(): JSX.Element {
+        return (
+            &lt;ul className="todo-list"&gt;
+                {todosFilter(this.props.todoList, this.props.filter)
+                    .map(todo =&gt; &lt;Todo todo={todo} key={todo.id} /&gt;)}
+            &lt;/ul&gt;
+        );
+    }
+}
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p>  angular2 版本需要多得多的配置，对于这个简单的应用要干的事情太多了。这是因为angular没有将js和html混合在一起（directives，host，pipes，selector，templateUrl）和更多复杂的数据修改检测机制（数据监听）。</p>
+
+<ul>
+  <li>selector是一种将组件js定义和模板元素绑定起来的方法–而在React它不需要因为js组件就是jsx组件元素。</li>
+  <li>pipes和directives用于通知组件哪些其它的组件、directives和pipes（内置html filter）将要在模板中使用，而React中的js组件是直接在jsx模板中使用的。React不提供任何无模板的directive（对我来说这是个问题，我后面会提到）或者内联的pipes（因为我们可以使用纯js功能）。</li>
+  <li>templateUrl是大家都明白的，对吧？它被因为是线下引用的，但是我确实觉得从组件文件中分离出更大的模板是比较合理的做法。缺少实时编译的模板检查确实是angular的劣势。</li>
+  <li>而host的出现是因为模板渲染中过程不大一样</li>
+</ul>
+
+<p>  React的组件功能（或是渲染方法）返回整个顶层模板包含的组件树。</p>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5</pre></td><td class="code"><pre>return (
+    &lt;ul className="todo-list"&gt;
+        { todoList.map( todo =&gt; &lt;Todo todo={todo}/&gt; ) }
+    &lt;/ul&gt;
+);
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p>  在angular中，组件是与组件的根元素绑定的（通过上面提到的选择器selector），这个组件的根元素就被称为host，所以在angular模板中，我们只放入根元素的内容：</p>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3</pre></td><td class="code"><pre>// src/components/todo-list.html
+
+&lt;li [todo]="todo" *ngFor="#todo of todoList"&gt;&lt;/li&gt;
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p>  如果我们想添加一下东西（例如css的class，属性值）给host元素，我们称之为host定义，例如 <code class="highlighter-rouge"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre><span class="p">{</span><span class="err">'class':'todo-list'</span><span class="p">}</span><span class="w">
+</span></pre></td></tr></tbody></table>
+</code> 会添加 <code class="highlighter-rouge"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>todo-list<span class="w">
+</span></pre></td></tr></tbody></table>
+</code>类到<code class="highlighter-rouge"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>&lt;ul [todoList]=… &gt;&lt;/ul&gt;<span class="w">
+</span></pre></td></tr></tbody></table>
+</code>元素中。我们也可以通过typescript的装饰器功能绑定动态值和监听器给host元素。</p>
+
+<h3 id="todo-">Todo 组件</h3>
+
+<p>  所以我们现在开始绑定一些事件处理器。angular todo组件就像这样：</p>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21</pre></td><td class="code"><pre>// src/components/todo.ts
+
+interface ITodoProps {
+    todo: ITodo;
+}
+
+@Component({
+    host: {'class': 'todo'},
+    selector: '[todo]',
+    templateUrl: '/src/components/todo.html'
+})
+export class Todo implements ITodoProps {
+    constructor(private todoActions: TodoActions) {}
+
+    @Input() todo: ITodo;
+
+    @HostBinding('class.done')
+    private get isCompleted() {
+        return this.todo.completed;
+    }
+}
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8</pre></td><td class="code"><pre>// src/components/todo.html
+
+&lt;button (click)="todoActions.toggleTodo(todo.id)" class="toggle"&gt;
+    
+&lt;/button&gt;
+&lt;button (click)="todoActions.removeTodo(todo.id)" class="remove ion"&gt;
+    Remove
+&lt;/button&gt;
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p>  我们把<code class="highlighter-rouge"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>ITodo<span class="w">
+</span></pre></td></tr></tbody></table>
+</code>实例当做一个输入值。输出为带有两个按钮的host元素。我们也绑定了静态<code class="highlighter-rouge"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>todo<span class="w">
+</span></pre></td></tr></tbody></table>
+</code>和条件的<code class="highlighter-rouge"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>"done"<span class="w">
+</span></pre></td></tr></tbody></table>
+</code>css类到host元素中。按钮点击触发组件的<code class="highlighter-rouge"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>todoActions<span class="w">
+</span></pre></td></tr></tbody></table>
+</code>成员相应的方法。没什么亮点，只有<code class="highlighter-rouge"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>(click)=...<span class="w">
+</span></pre></td></tr></tbody></table>
+</code>或许会引起我们的注意。我们也可以”加点糖“并使用<code class="highlighter-rouge"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>&lt;button on-click=… &gt;<span class="w">
+</span></pre></td></tr></tbody></table>
+</code>来代替<code class="highlighter-rouge"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>bind-anything=…<span class="w">
+</span></pre></td></tr></tbody></table>
+</code>或<code class="highlighter-rouge"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>[anything]=…<span class="w">
+</span></pre></td></tr></tbody></table>
+</code>。</p>
+
+<p>  而React版本：</p>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33</pre></td><td class="code"><pre>interface ITodoProps {
+    todo: ITodo;
+    key: string;
+}
+
+export class Todo extends Component&lt;ITodoProps, {}&gt; {
+    private getToggleAction(todo: ITodo) {
+        return () =&gt; {
+            todoActions.toggleTodo(todo.id);
+        }
+    }
+
+    private removeTodo(todo: ITodo) {
+        todoActions.removeTodo(this.props.todo.id);
+    }
+
+    public render(): JSX.Element {
+        return (
+        &lt;li className={'todo' + (this.props.todo.completed ? ' done' : '')}&gt;
+            &lt;button 
+                onClick={this.getToggleAction(this.props.todo)} 
+                className="toggle"&gt;
+                {this.props.todo.text}
+            &lt;/button&gt;
+            &lt;button 
+                onClick={this.removeTodo.bind(this)} 
+                className="remove ion"&gt;
+                Remove
+            &lt;/button&gt;
+        &lt;/li&gt;
+        );
+    }
+}
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p>  我们把<code class="highlighter-rouge"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>ITodo<span class="w">
+</span></pre></td></tr></tbody></table>
+</code>实例当做一个输入值。输出为带有两个按钮的一个元素。XML树返回的根元素也绑定了静态<code class="highlighter-rouge"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>todo<span class="w">
+</span></pre></td></tr></tbody></table>
+</code>和条件的<code class="highlighter-rouge"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>"done"<span class="w">
+</span></pre></td></tr></tbody></table>
+</code>css类。目前为止都基本相似。但是我们看到这里两个React令人失望的特点：</p>
+
+<ul>
+  <li>在<code class="highlighter-rouge"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>onClick<span class="w">
+</span></pre></td></tr></tbody></table>
+</code>处理中this的上下文丢失了–我们必须做下修改（绑定或添加）</li>
+  <li>class属性必须和整个元素一起保存–没有css类管理机制</li>
+</ul>
+
+<p>  我也不喜欢<code class="highlighter-rouge"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>className<span class="w">
+</span></pre></td></tr></tbody></table>
+</code>和<code class="highlighter-rouge"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>htmlFor<span class="w">
+</span></pre></td></tr></tbody></table>
+</code>属性，但是他们必须要使用，因为class和For都是js的保留字，就像我们必须将html和js混合在一起一样。</p>
+
+<h3 id="react">组合：React</h3>
+
+<p><strong>Todo</strong></p>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4</pre></td><td class="code"><pre>&lt;li className={…}&gt;
+    &lt;button onClick={…} className="toggle"&gt;{…}&lt;/button&gt;
+    &lt;button onClick={…} className="remove ion"&gt;Remove&lt;/button&gt;
+&lt;/li&gt;
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p><strong>TodoList</strong></p>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3</pre></td><td class="code"><pre>&lt;ul className="todo-list"&gt;
+    { todoList.map( todo =&gt; &lt;Todo todo={todo}/&gt; ) }
+&lt;/ul&gt;
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p>对于对象更深的结构：</p>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>&lt;TodoList todoList={this.props.todoList.todos} filter={this.props.filter}/&gt;
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p>输出为：</p>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11</pre></td><td class="code"><pre>&lt;ul class="todo-list" data-reactid=".0.1.1…"&gt;
+    &lt;li class="todo" data-reactid=".0.1.1…"&gt;
+        &lt;button class="toggle" data-reactid=".0.1.1…"&gt;
+            Toggle
+        &lt;/button&gt;
+        &lt;button class="remove ion" data-reactid=".0.1.1…"&gt;
+            Remove
+        &lt;/button&gt;
+    &lt;/li&gt;
+    …
+&lt;/ul&gt;
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h3 id="angular2">组合：Angular2</h3>
+
+<p><strong>Todo</strong></p>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6</pre></td><td class="code"><pre>@Component({ host: {'class': 'todo'}, selector: '[todo]', … })
+export class Todo … {
+    …
+    @HostBinding('class.done')
+    private get isCompleted() { … }
+}
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2</pre></td><td class="code"><pre>&lt;button (click)="…" class="toggle"&gt;&lt;/button&gt;
+&lt;button (click)="…" class="remove ion"&gt;&lt;/button&gt;
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p><strong>TodoList</strong></p>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2</pre></td><td class="code"><pre>@Component({ host: {'class':'todo-list'}, selector: '[todoList]', … })
+export class TodoList … { … }
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3</pre></td><td class="code"><pre>&lt;template ngFor #todo [ngForOf]="todoList | todosFilter:filter"&gt;
+    &lt;li [todo]="todo"&gt;&lt;/li&gt;
+&lt;/template&gt;
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p>对于对象更深的结构：</p>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>&lt;ul [todoList]="todoList.todos" [filter]="filter"&gt;&lt;/ul&gt;
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p>输出为：</p>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7</pre></td><td class="code"><pre>&lt;ul class="todo-list"&gt;&lt;!--template bindings={}--&gt;
+    &lt;li class="todo"&gt;
+        &lt;button class="toggle"&gt;asd fasd f&lt;/button&gt;
+        &lt;button class="remove ion"&gt;Remove&lt;/button&gt;
+    &lt;/li&gt;
+    …
+&lt;/ul&gt;
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h3 id="section-5">第一轮结果</h3>
+
+<p>  React在开发轻量级单一组件场景下具有绝对优势。如果你的应用可以用数据视图简单描述清楚的话React似乎是最佳的解决方案。而且无疑是我们见过的最灵活的视图渲染框架。但是事件处理逻辑越多，UI渲染越复杂，angular2就越具有优势。事实上，angular2的组件配置和绑定声明复杂度和组件的复杂性成反比。此外，它还有灵活的使用方式（从数据到视图的绑定）。可能某一天Reactangular或者Angulareact框架能让我们高效的在一个应用中使用两种实现方式。但现在我们必须要选择。</p>
+
+<p>  灵活与否，都应该以减轻开发者的痛苦来作为考量。代码的可读性也是一方面，但目前html在这里是很重要的判断。</p>
+
+<h3 id="section-6">第二轮：视图美学</h3>
+
+<p>  让我们来准备一个新的组件来处理更复杂的结构–列表结构。</p>
+
+<p><strong>angular2</strong></p>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14</pre></td><td class="code"><pre>&lt;li *ngFor="#todoList of lists trackBy _byId"
+    [class.active]="isCurrent(todoList)"
+    class="todo-lists-list-item"&gt;
+    &lt;header [todo-list-header]="todoList"&gt;&lt;/header&gt;
+    &lt;ul *ngIf="!isCurrent(todoList)" class="todo-list"&gt;
+        &lt;li *ngFor="#todo of todoList.todos"
+            class="todo-preview"
+            [class.done]="todo.completed"&gt;
+            
+        &lt;/li&gt;
+    &lt;/ul&gt;
+    &lt;editable-list *ngIf="isCurrent(todoList)" [todoList]="todoList"&gt;
+    &lt;/editable-list&gt;
+&lt;/li&gt;
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p><strong>React</strong></p>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20</pre></td><td class="code"><pre>&lt;ul className="todo-lists-list"&gt;
+    {this.props.lists.map(list =&gt; (
+    &lt;li key={list.id}
+        className={this.listClassName(list)}&gt;
+        &lt;TodoListHeader todoList={list}/&gt;
+        {list.id !== this.props.currentId ? (
+        &lt;ul className="todo-list"&gt;
+            {list.todos.map(todo =&gt; (
+                &lt;li key={todo.id}
+                    className={this.todoClassName(todo)}&gt;
+                    {todo.text}
+                &lt;/li&gt;
+            ))}
+        &lt;/ul&gt;
+        ) : (
+        &lt;EditableList todoList={list} filter={this.props.filter}/&gt;
+        )}
+    &lt;/li&gt;
+    ))}
+&lt;/ul&gt;
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h3 id="section-7">第二轮结果</h3>
+
+<p>  有什么好说的吗？选择你喜欢的就好了~</p>
+
+<p>  ok，我认为<code class="highlighter-rouge"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>&lt;li *ngFor="#item in list trackBy fn"&gt;…&lt;li&gt;&lt;li *ngFor="#item in list trackBy fn"&gt;…&lt;li&gt;<span class="w">
+</span></pre></td></tr></tbody></table>
+</code>相比<code class="highlighter-rouge"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre><span class="p">{</span><span class="err">list.map((item,</span><span class="w"> </span><span class="err">index)</span><span class="w"> </span><span class="err">=&gt;</span><span class="w"> </span><span class="err">(&lt;li</span><span class="w"> </span><span class="err">key={index</span><span class="p">}</span><span class="err">&gt;…&lt;/li&gt;))}</span><span class="w">
+</span></pre></td></tr></tbody></table>
+</code>更具有可读性，在某些地方，将js和xml混合起来就比较混乱。当然，只是个人观点。</p>
+
+<h3 id="section-8">第三轮：数据修改监听</h3>
+
+<p>  我们在此声明一件重要的事情–Dom修改（在修改被检测到以后）在两种框架中处理方式是类似的。它们只修改确实需要改变的部分。我们来看下如果发生数据变化，处理的方式有什么不同；</p>
+
+<p><strong>React</strong></p>
+
+<p>  React的基本处理方式很简单。如果组件的<code class="highlighter-rouge"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>state<span class="w">
+</span></pre></td></tr></tbody></table>
+</code>或者<code class="highlighter-rouge"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>props<span class="w">
+</span></pre></td></tr></tbody></table>
+</code>发生改变，就会调用修改处理函数：</p>
+
+<ul>
+  <li><code class="highlighter-rouge"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>state<span class="w">
+</span></pre></td></tr></tbody></table>
+</code>在<code class="highlighter-rouge"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>setState()<span class="w">
+</span></pre></td></tr></tbody></table>
+</code>被调用时触发</li>
+  <li><code class="highlighter-rouge"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>props<span class="w">
+</span></pre></td></tr></tbody></table>
+</code>在父组件重新渲染时发生变化</li>
+</ul>
+
+<p>  当然也可以通过调用<code class="highlighter-rouge"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>forceUpdate()<span class="w">
+</span></pre></td></tr></tbody></table>
+</code>来触发改变，修改监听器只在子树发生改变的地方触发。简单便捷，唯一不好的地方是我们必须在顶层元素里手动调用<code class="highlighter-rouge"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>setState()<span class="w">
+</span></pre></td></tr></tbody></table>
+</code>方法。</p>
+
+<p>  你可能会注意到例子里面的<code class="highlighter-rouge"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>key={todo.id}<span class="w">
+</span></pre></td></tr></tbody></table>
+</code>，这里是来列表元素检测改变的机制必须的，如果一个<code class="highlighter-rouge"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>key<span class="w">
+</span></pre></td></tr></tbody></table>
+</code>上面的值修改了–html相对应的元素就会重新渲染。有点啰嗦，但是有必要。另外在项目中使用严格模式编程是，你必须在你的列表组件中额外定义一个<code class="highlighter-rouge"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>key:string<span class="w">
+</span></pre></td></tr></tbody></table>
+</code>。</p>
+
+<p><strong>Angular</strong></p>
+
+<p>  angular 团队决定使用稍微不同的方式。他们包含了<code class="highlighter-rouge"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>zone.js<span class="w">
+</span></pre></td></tr></tbody></table>
+</code>到浏览器异步回调中（例如：setTimeout，setInterval，事件处理和xhr请求事件）。当他们当中任意一个被调用，就会运行修改检测。你可参考下<a href="http://blog.thoughtram.io/angular/2016/02/22/angular-2-change-detection-explained.html">great in-depth explanation</a>，更有趣的是，你可以在你任意一个组件树上选择使用的检测策略。</p>
+
+<p>  在样例中，我使用了<code class="highlighter-rouge"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>onPush<span class="w">
+</span></pre></td></tr></tbody></table>
+</code>策略，所以所有的组件修改检测只在他们<code class="highlighter-rouge"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>@input()<span class="w">
+</span></pre></td></tr></tbody></table>
+</code>属性发生变化时才会触发。所以angular里的修改检测可以在任何合适的时候触发，而react只在一个时候触发。当然angular还有更多的触发策略：<code class="highlighter-rouge"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>CheckOnce, Checked, CheckAlways, Detached, OnPush, Default<span class="w">
+</span></pre></td></tr></tbody></table>
+</code>。跟多信息可以参考：<a href="https://angular.io/docs/ts/latest/api/core/ChangeDetectionStrategy-enum.html">ChangeDetectionStrategy docs</a>。</p>
+
+<p>  就像React的<code class="highlighter-rouge"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>key={…}<span class="w">
+</span></pre></td></tr></tbody></table>
+</code>一样，angular有自己的方式来处理列表的变化–<code class="highlighter-rouge"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>NgFor.ngForTrackBy<span class="w">
+</span></pre></td></tr></tbody></table>
+</code>。在代码里就是<code class="highlighter-rouge"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>&lt;li *ngFor="#todoList of lists trackBy _byId" …&gt;…&lt;/li&gt;<span class="w">
+</span></pre></td></tr></tbody></table>
+</code>。这里传递的<code class="highlighter-rouge"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>_byId<span class="w">
+</span></pre></td></tr></tbody></table>
+</code>是<code class="highlighter-rouge"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>list =&gt; list.id<span class="w">
+</span></pre></td></tr></tbody></table>
+</code>的一个函数。所以很像React–我们必须给列表里的每个元素创建唯一的标识来辨别当修改触发是是不是发生在同一个元素上面。可能稍微比React优雅一点，但是你必须学习更多框架里面特定的语法。</p>
+
+<h3 id="section-9">第三轮结论</h3>
+
+<p>  两种解决方案都提供了一个相对健全的途径，然而React的默认修改检测无疑更优一些。另一方面，angular这种在底层的检测相当于一个浏览器开发玩家使用的因为它把检测插入到浏览器一些异步调用层，所以广播检测的职责对开发者来说不可控。当然每种方案都有他们不尽人意的地方。React的组件检测如果数据不是来自属性的话必须通过手动调用触发，如果使用了其它存储方式会直接触发（Flux 框架）。如果你想让angular变得灵活些，你必须在每个单一的组件定义他们的数据检测触发策略。</p>
+
+<p>  不过两种方式都很好。angular使用简洁的配置工具实现了更多的扩展性，这点React就没做到。</p>
+
+<h3 id="html">第四轮：扩展html</h3>
+
+<p>  做什么？就是像html添加一些功能，让它在更多的元素中被复用。</p>
+
+<p><strong><em>Angular</em></strong></p>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11</pre></td><td class="code"><pre>@Directive({selector: '[inp-alerter]'})
+export class InpAlerter {
+
+    @Input('inp-alerter') inpAlerter: string; 
+
+    @HostBinding() placeholder = 'Write something here';
+
+    @HostListener('keyup.enter', ['$event.target.value'])
+    onInput(val: string): void { … }
+
+}
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p>  上面的例子展示了我们怎样从一个输入属性中获取值、绑定一些其他值给元素属性或给元素添加监听事件。而且它可以用<code class="highlighter-rouge"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>inp-alerter<span class="w">
+</span></pre></td></tr></tbody></table>
+</code>属性应用到其它任意一个html元素中。而且这只是我们能做的很小的一部分，实际上<code class="highlighter-rouge"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>@Directive<span class="w">
+</span></pre></td></tr></tbody></table>
+</code>定义的类可以作为绝大多数功能用于<code class="highlighter-rouge"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>@components<span class="w">
+</span></pre></td></tr></tbody></table>
+</code>，但是没有模板。简单强大。</p>
+
+<p><strong>React</strong></p>
+
+<p>  有一种可能是使用React mixins的方式来实现相同的功能，但是有点过度设计的倾向而且容易出错。无论怎样，开发者必须为应用中使用的每个元素功能创建一个组件。</p>
+
+<h3 id="ko">K.O.</h3>
+
+<p>  最后一轮决出了胜负，React被战胜了。</p>
+
+<p>  感谢上帝，这只是个比喻。</p>
+
+<p>  总之，这是一个angular 1.x统治的世界，而且也正准备走向html扩展元素web components的世界。angular 2赢的了这一轮。但是我确定React不会就此放弃。</p>
+
+<h3 id="section-10">落幕</h3>
+
+<p>  显然，React和Angular 2有很多共同点，他们在处理应用框架和数据上使用了相似的原理。另一方面，每个功能的实现都使用了不同的方式（好吧，组件调用的生命周期还是完全一致的）。这些不同点并不意味着应用开发时的难度，每种方案都提供了足够完善的工具来开发一个大型、严谨、灵活的应用核心。</p>
+
+<p>  当然React更小并且只涵盖view/component的操作–这是我这里要对比的。缺少向html的扩展机制无疑是React唯一不足的地方。</p>
+
+<p>  Angular2则更加稳定、可扩展和更加完善。但是它仍然在beta阶段–并且相对对手具有优势因为无论相比angular1还是React的经历来看它具有更加优秀的合并思想。</p>
+
+<p>译者：ouven
+原文作者：JAKUB STROJEWSKI</p>
+
+<p>参考文章：</p>
+
+<p><a href="http://www.ociweb.com/resources/publications/sett/comparison-of-angular-2-and-react/">Comparison of Angular 2 and React</a></p>
+
+<p><a href="https://www.linkedin.com/pulse/state-management-angular-2-react-michel-herszak">State Management in Angular 2 and React</a></p>
+
+<p><a href="http://react-etc.net/entry/choosing-between-react-vs-angular-2">Choosing between React vs. Angular 2</a></p>
+
+</article>
+
+
+<div class="tags">
+	<strong>Tags:</strong> <a target="_blank" href="/tags/?tag=React">React</a>,&nbsp;<a target="_blank" href="/tags/?tag=Angular">Angular</a>,&nbsp;<a target="_blank" href="/tags/?tag=2">2</a>
+</div>
+
+
+	<script src="/assets/js/github.comment.js"></script>
+	<div class="gc-comments" data-repos="ouvens/ouvens.github.io" data-issues="3" >
+	    <div class="gc-comments-title">
+	        评论
+	    </div>
+	    <div class="gc-comments-info">
+	        想在此留下评论，请访问 <a href="issues_link">issues_link</a> 提交评论
+	    </div>
+	</div>
+</div>
+</div>
+
+
+    </div>
+    
+<div class="qr-code qr-code-pay" title="加个微信交流交流">
+    <img src="/assets/qrcode/qr-code-person.jpg" width="200" height="200" alt="公众号">
+    <p>加我赏红包，哈哈哈</p>
+</div>
+
+<div class="qr-code qr-code-wx" title="定期获取更新动态">
+    <img src="/assets/qrcode/qrcode.jpg" width="200" height="200" alt="公众号">
+    <p>欢迎关注 <strong>极限前端</strong> 公众号</p>
+</div>
+
+
+    
+<footer class="site-footer">
+  <div class="wrapper">
+    <h3 class="footer-heading">极限前端</h3>
+    <div class="site-navigation">
+    	<p><strong>站内</strong></p>
+      <ul class="pages">
+        
+        
+          <li class="nav-link"><a href="/about/">关于</a>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+          <li class="nav-link"><a href="/category/">所有文章</a>
+        
+        
+        
+          <li class="nav-link"><a href="/tags/">标签分类</a>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+      </ul>
+    </div>
+    <div class="site-contact">
+    	<p><strong>相关链接</strong></p>
+        <ul class="social-media-list">
+      	<li>
+      		<a href="mailto:1025224452@qq.com">
+	      		<i class="icon-font i-star"></i>
+	      		<span class="username">1025224452@qq.com</span>
+      		</a>
+      	</li>
+
+      	
+	      	
+	      	<li>
+	           <a href="https://github.com/ouvens" title="Fork me on GitHub">
+	               <i class="icon-font i-heart"></i>
+	               <span class="username">ouvens</span>
+	           </a>
+	        </li>
+	      	
+      	
+
+      </ul>
+    </div>
+    <div class="site-signature">
+    	<p class="rss-subscribe text"><strong>订阅<a href="/feed.xml">via RSS</a></strong></p>
+      <p class="text">极限前端, 极限前端社区, ouven的博客, ouvenzhang的博客, www.jixianqianduan.com, github地址, 前端技术, 讲述前端高效技术与前沿。</p>
+    </div>
+  </div>
+</footer>
+
+<!-- Scripts -->
+<script src="//1.url.cn/jslib/jquery/1.9.1/jquery.min.js" defer></script>
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.5/highlight.min.js" defer></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/lightbox2/2.7.1/js/lightbox.min.js" defer></script>
+
+<script src="/assets/js/main.js" defer></script>
+
+    </body>
+</html>

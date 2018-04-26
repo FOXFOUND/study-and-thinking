@@ -1,0 +1,8 @@
+D:\vsproject\my\my\bin\Debug\my.exe.config
+D:\vsproject\my\my\bin\Debug\my.exe
+D:\vsproject\my\my\bin\Debug\my.pdb
+D:\vsproject\my\my\obj\Debug\my.exe
+D:\vsproject\my\my\obj\Debug\my.pdb
+D:\vsproject\2016-10-08 dll inject\my\my\bin\Debug\my.exe.config
+D:\vsproject\2016-10-08 dll inject\my\my\obj\Debug\my.exe
+D:\vsproject\2016-10-08 dll inject\my\my\obj\Debug\my.pdb

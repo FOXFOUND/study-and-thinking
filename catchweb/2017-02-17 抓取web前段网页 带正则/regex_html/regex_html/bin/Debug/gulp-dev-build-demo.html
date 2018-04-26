@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="google-site-verification" content="0FNbiBWk1FugWYo-RiGxQyIHebGeLoXp3HB7AxIFKy8" />
+    <meta name="baidu-site-verification" content="tYoUqpkCCv" />
+    <meta name="baidu-site-verification" content="IGN97NW90O" />
+    
+    <title>gulp搭建简单构建环境 | ouvenzhang的博客</title>
+
+    <meta http-equiv="x-dns-prefetch-control" content="on" />
+    <link rel="dns-prefetch" href="cdnjs.cloudflare.com" />
+    <link rel="dns-prefetch" href="1.url.cn" />
+
+    <meta name="description" itemprop="description" content="gulp搭建简单构建环境,构建,gulp ">
+    <meta itemprop="name" content="gulp搭建简单构建环境">
+    <meta itemprop="image" content="http://ouvens.github.io/blog/assets/logo.png">
+    <meta itemprop="keywords" name="keywords" content="gulp搭建简单构建环境,构建,gulp ">
+
+    
+    <meta name="author" content="ouvenzhang">
+    <meta name="copyright" content="&copy; ouvenzhang 2017">
+    <meta name="protocol" content="1">
+    
+
+    <!-- External libraries -->
+    <link rel="stylesheet" href="/assets/css/iconfont.css">
+    <link rel="stylesheet" href="/css/monokai_sublime.css">
+
+    <!-- Favicon and other icons (made with http://www.favicon-generator.org/) -->
+    <link rel="shortcut icon" href="/assets/favicon.ico" type="image/x-icon">
+  	<link rel="icon" href="/assets/favicon.ico" type="image/x-icon">
+    
+  	<meta name="msapplication-TileColor" content="#ffffff">
+  	<meta name="theme-color" content="#ffffff">
+    <meta name="msapplication-TileImage" content="/assets/icons/icon.png">
+
+  	<!-- Site styles -->
+    <link rel="stylesheet" href="/css/main.css">
+
+    <link rel="alternate" type="application/rss+xml" title="极限前端" href="http://ouvens.github.io//feed.xml" />
+    <script>
+    // 访问统计
+    var domain = 'jixianqianduan.com';
+    var oldDomain = 'ouvens.github.io';
+    if(location.host === domain){
+        var _hmt = _hmt || [];
+        (function() {
+          var hm = document.createElement("script");
+          hm.src = "//hm.baidu.com/hm.js?b536b128dc21c3d18fdc028f0609e3f0";
+          var s = document.getElementsByTagName("script")[0]; 
+          s.parentNode.insertBefore(hm, s);
+        })();
+    }else if(location.host === oldDomain){
+        window.location.href = location.href.replace(oldDomain, domain);
+        var _hmt = _hmt || [];
+        (function() {
+          var hm = document.createElement("script");
+          hm.src = "//hm.baidu.com/hm.js?041efd2cb345ca1b9dbdbb2383cb716d";
+          var s = document.getElementsByTagName("script")[0]; 
+          s.parentNode.insertBefore(hm, s);
+        })();
+    }
+
+    // 链接提交
+
+    if(location.protocol === 'https'){
+        !function(){var e=/([http|https]:\/\/[a-zA-Z0-9\_\.]+\.baidu\.com)/gi,r=window.location.href,t=document.referrer;if(!e.test(r)){var o="https://sp0.baidu.com/9_Q4simg2RQJ8t7jm9iCKT-xh_/s.gif";t?(o+="?r="+encodeURIComponent(document.referrer),r&&(o+="&l="+r)):r&&(o+="?l="+r);var i=new Image;i.src=o}}(window);
+    }else{
+        !function(){var e=/([http|https]:\/\/[a-zA-Z0-9\_\.]+\.baidu\.com)/gi,r=window.location.href,o=document.referrer;if(!e.test(r)){var n="//api.share.baidu.com/s.gif";o?(n+="?r="+encodeURIComponent(document.referrer),r&&(n+="&l="+r)):r&&(n+="?l="+r);var t=new Image;t.src=n}}(window);
+    }
+
+
+    </script>
+</head>
+
+    <body>
+        <div class="navigation" role="banner">
+    <div class="navigation-wrapper">
+    <a href="/" class="logo">
+    	
+      <img src="/assets/logo.png" alt="极限前端">
+      
+    </a>
+    <span class="search-input" id="search-input">
+      <input type="text" value="" class="search-text" placeholder="输入搜索关键字">
+      <i class="icon-font i-search search-btn"></i>
+    </span>
+    <a href="javascript:void(0)" class="navigation-menu-button" id="js-mobile-menu">
+    	<i class="icon-font i-list fa fa-bars"></i>
+    </a>
+    <span class="nav" role="navigation">
+      <ul id="js-navigation-menu" class="navigation-menu show">
+      	
+          
+          <li class="nav-link">
+            <a href="/about/">关于</a>
+          </li>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+          <li class="nav-link">
+            <a href="/category/">所有文章</a>
+          </li>
+          
+        
+          
+          <li class="nav-link">
+            <a href="/tags/">标签分类</a>
+          </li>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          <li id="github-info" class="nav-link" title="https://github.com/ouvens">
+            <a class="github-info" href="https://github.com/ouvens" target="_blank">
+            <img src="/assets/github.png" height="34" width="130" alt="github地址"></a>
+          </li>
+      </ul>
+    </span>
+  </div>
+</div>
+
+            <div class="page-content">
+        <div class="post">
+<div class="post-header-container has-cover">
+	<header class="post-header">
+	  <h1 class="title">gulp搭建简单构建环境</h1>
+	  <p class="info">by <strong>ouven</strong></p>
+	</header>
+</div>
+<div class="wrapper">
+
+
+
+<div class="post-meta">
+	<div class="post-date">2015年08月16日</div>
+	<div class="post-categories">
+	 in  
+		<a target="_blank" href="/category/?cate=frontend-build">Frontend-build</a>
+	  
+	</div>
+</div>	
+
+<article class="post-content">
+  <p>Gulp 是一款基于任务的设计模式的自动化工具，通过插件的配合解决全套前端解决方案，如静态页面压缩、图片压缩、JS合并、SASS同步编译并压缩CSS、服务器控制客户端同步刷新。</p>
+
+<p>所有功能前提需要安装nodejs和ruby。</p>
+
+<h4 id="gulp">Gulp安装</h4>
+
+<p>全局安装Gulpjs</p>
+
+<p>npm install -g gulp  #全局安装</p>
+
+<p>局部安装Gulpjs</p>
+
+<p>npm install gulp –save-dev # 局部安装</p>
+
+<p>全局安装
+1. 将安装包放在 /usr/local 下
+2. 可以直接在命令行里使用</p>
+
+<p>本地安装
+1. 将安装包放在 ./node_modules 下（运行npm时所在的目录）
+2. 可以通过 require() 来引入本地安装的包</p>
+
+<h4 id="gulp-1">选择Gulp组件</h4>
+
+<p>前端项目需要的功能：
+1、图片（压缩图片支持jpg、png、gif）
+2、样式 （支持sass 同时支持合并、压缩、重命名）
+3、javascript （检查、合并、压缩、重命名）
+4、html （压缩）
+5、客户端同步刷新显示修改
+6、构建项目前清除发布环境下的文件（保持发布环境的清洁）</p>
+
+<p>通过gulp plugins，寻找对于的gulp组件
+gulp-imagemin: 压缩图片
+gulp-ruby-sass: 支持sass
+gulp-minify-css: 压缩css
+gulp-jshint: 检查js
+gulp-uglify: 压缩js
+gulp-concat: 合并文件
+gulp-rename: 重命名文件
+gulp-htmlmin: 压缩html
+gulp-clean: 清空文件夹
+gulp-livereload: 服务器控制客户端同步刷新（需配合chrome插件LiveReload及tiny-lr）</p>
+
+<h4 id="gulp-2">安装Gulp组件</h4>
+
+<p>安装组件项目目录，通过cd project 进入目录，执行下边的npm安装组件。</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3</pre></td><td class="code"><pre>
+<span class="nx">npm</span> <span class="nx">install</span> <span class="nx">gulp</span><span class="o">-</span><span class="nx">util</span> <span class="nx">gulp</span><span class="o">-</span><span class="nx">imagemin</span> <span class="nx">gulp</span><span class="o">-</span><span class="nx">ruby</span><span class="o">-</span><span class="nx">sass</span> <span class="nx">gulp</span><span class="o">-</span><span class="nx">minify</span><span class="o">-</span><span class="nx">css</span> <span class="nx">gulp</span><span class="o">-</span><span class="nx">jshint</span> <span class="nx">gulp</span><span class="o">-</span><span class="nx">uglify</span> <span class="nx">gulp</span><span class="o">-</span><span class="nx">rename</span> <span class="nx">gulp</span><span class="o">-</span><span class="nx">concat</span> <span class="nx">gulp</span><span class="o">-</span><span class="nx">clean</span> <span class="nx">gulp</span><span class="o">-</span><span class="nx">livereload</span> <span class="nx">tiny</span><span class="o">-</span><span class="nx">lr</span> <span class="o">--</span><span class="nx">save</span><span class="o">-</span><span class="nx">dev</span>
+
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p>项目目录结构</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17</pre></td><td class="code"><pre>
+<span class="nx">project</span><span class="p">(</span><span class="err">项目名称</span><span class="p">)</span>
+<span class="o">|</span><span class="err">–</span><span class="p">.</span><span class="nx">git</span> <span class="err">通过</span><span class="nx">git</span><span class="err">管理项目会生成这个文件夹</span>
+<span class="o">|</span><span class="err">–</span><span class="nx">node_modules</span> <span class="err">组件目录</span>
+<span class="o">|</span><span class="err">–</span><span class="nx">dist</span> <span class="err">发布环境</span>
+    <span class="o">|</span><span class="err">–</span><span class="nx">css</span> <span class="err">样式文件</span><span class="p">(</span><span class="nx">style</span><span class="p">.</span><span class="nx">css</span> <span class="nx">style</span><span class="p">.</span><span class="nx">min</span><span class="p">.</span><span class="nx">css</span><span class="p">)</span>
+    <span class="o">|</span><span class="err">–</span><span class="nx">images</span> <span class="err">图片文件</span><span class="p">(</span><span class="err">压缩图片</span><span class="p">)</span>
+    <span class="o">|</span><span class="err">–</span><span class="nx">js</span> <span class="nx">js</span><span class="err">文件</span><span class="p">(</span><span class="nx">main</span><span class="p">.</span><span class="nx">js</span> <span class="nx">main</span><span class="p">.</span><span class="nx">min</span><span class="p">.</span><span class="nx">js</span><span class="p">)</span>
+    <span class="o">|</span><span class="err">–</span><span class="nx">index</span><span class="p">.</span><span class="nx">html</span> <span class="err">静态文件</span><span class="p">(</span><span class="err">压缩</span><span class="nx">html</span><span class="p">)</span>
+<span class="o">|</span><span class="err">–</span><span class="nx">src</span> <span class="err">生产环境</span>
+    <span class="o">|</span><span class="err">–</span><span class="nx">sass</span> <span class="nx">sass</span><span class="err">文件</span>
+    <span class="o">|</span><span class="err">–</span><span class="nx">images</span> <span class="err">图片文件</span>
+    <span class="o">|</span><span class="err">–</span><span class="nx">js</span> <span class="nx">js</span><span class="err">文件</span>
+    <span class="o">|</span><span class="err">–</span><span class="nx">index</span><span class="p">.</span><span class="nx">html</span> <span class="err">静态文件</span>
+<span class="o">|</span><span class="err">–</span><span class="p">.</span><span class="nx">jshintrc</span> <span class="nx">jshint</span><span class="err">配置文件</span>
+<span class="o">|</span><span class="err">–</span><span class="nx">gulpfile</span><span class="p">.</span><span class="nx">js</span> <span class="nx">gulp</span><span class="err">任务文件</span>
+
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p>Windows 下安装ruby和sass，下载安装ruby，http://rubyinstaller.org/downloads/ ，安装完成后使用 gem install sass安装sass</p>
+
+<p>由于网络，安装时注意网络和更换国内安装源：</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4</pre></td><td class="code"><pre>
+<span class="nx">$</span> <span class="nx">gem</span> <span class="nx">sources</span> <span class="o">--</span><span class="nx">remove</span> <span class="nx">https</span><span class="err">:</span><span class="c1">//rubygems.org/</span>
+<span class="nx">$</span> <span class="nx">gem</span> <span class="nx">sources</span> <span class="o">-</span><span class="nx">a</span> <span class="nx">https</span><span class="err">:</span><span class="c1">//ruby.taobao.org/</span>
+<span class="nx">$</span> <span class="nx">gem</span> <span class="nx">sources</span> <span class="o">-</span><span class="nx">l</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p><em>** CURRENT SOURCES **</em>
+https://ruby.taobao.org</p>
+
+<p>确保只有 ruby.taobao.org后</p>
+
+<p>$ gem install rails</p>
+
+<p>gulp基础语法
+gulp通过gulpfile文件来完成相关任务，因此项目中必须包含gulpfile.js</p>
+
+<p>gulp有五个方法：src、dest、task、run、watch
+src和dest：指定源文件和处理后文件的路径
+watch：用来监听文件的变化
+task：指定任务
+run：执行任务</p>
+
+<p>编写gulp任务</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113</pre></td><td class="code"><pre>
+<span class="cm">/**
+ * 组件安装
+ * npm install gulp-util gulp-imagemin gulp-ruby-sass gulp-minify-css gulp-jshint gulp-uglify gulp-rename gulp-concat gulp-clean gulp-livereload tiny-lr --save-dev
+ */</span>
+
+<span class="c1">// 引入 gulp及组件</span>
+<span class="kd">var</span> <span class="nx">gulp</span>    <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'gulp'</span><span class="p">),</span>                 <span class="c1">//基础库</span>
+    <span class="nx">imagemin</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'gulp-imagemin'</span><span class="p">),</span>       <span class="c1">//图片压缩</span>
+    <span class="nx">sass</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'gulp-ruby-sass'</span><span class="p">),</span>          <span class="c1">//sass</span>
+    <span class="nx">minifycss</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'gulp-minify-css'</span><span class="p">),</span>    <span class="c1">//css压缩</span>
+    <span class="nx">jshint</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'gulp-jshint'</span><span class="p">),</span>           <span class="c1">//js检查</span>
+    <span class="nx">uglify</span>  <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'gulp-uglify'</span><span class="p">),</span>          <span class="c1">//js压缩</span>
+    <span class="nx">rename</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'gulp-rename'</span><span class="p">),</span>           <span class="c1">//重命名</span>
+    <span class="nx">concat</span>  <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'gulp-concat'</span><span class="p">),</span>          <span class="c1">//合并文件</span>
+    <span class="nx">clean</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'gulp-clean'</span><span class="p">),</span>             <span class="c1">//清空文件夹</span>
+    <span class="nx">tinylr</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'tiny-lr'</span><span class="p">),</span>               <span class="c1">//livereload</span>
+    <span class="nx">server</span> <span class="o">=</span> <span class="nx">tinylr</span><span class="p">(),</span>
+    <span class="nx">port</span> <span class="o">=</span> <span class="mi">35729</span><span class="p">,</span>
+    <span class="nx">livereload</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'gulp-livereload'</span><span class="p">);</span>   <span class="c1">//livereload</span>
+
+<span class="c1">// HTML处理</span>
+<span class="nx">gulp</span><span class="p">.</span><span class="nx">task</span><span class="p">(</span><span class="s1">'html'</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">htmlSrc</span> <span class="o">=</span> <span class="s1">'./src/*.html'</span><span class="p">,</span>
+        <span class="nx">htmlDst</span> <span class="o">=</span> <span class="s1">'./dist/'</span><span class="p">;</span>
+
+    <span class="nx">gulp</span><span class="p">.</span><span class="nx">src</span><span class="p">(</span><span class="nx">htmlSrc</span><span class="p">)</span>
+        <span class="p">.</span><span class="nx">pipe</span><span class="p">(</span><span class="nx">livereload</span><span class="p">(</span><span class="nx">server</span><span class="p">))</span>
+        <span class="p">.</span><span class="nx">pipe</span><span class="p">(</span><span class="nx">gulp</span><span class="p">.</span><span class="nx">dest</span><span class="p">(</span><span class="nx">htmlDst</span><span class="p">))</span>
+<span class="p">});</span>
+
+<span class="c1">// 样式处理</span>
+<span class="nx">gulp</span><span class="p">.</span><span class="nx">task</span><span class="p">(</span><span class="s1">'css'</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">cssSrc</span> <span class="o">=</span> <span class="s1">'./src/scss/*.scss'</span><span class="p">,</span>
+        <span class="nx">cssDst</span> <span class="o">=</span> <span class="s1">'./dist/css'</span><span class="p">;</span>
+
+    <span class="nx">gulp</span><span class="p">.</span><span class="nx">src</span><span class="p">(</span><span class="nx">cssSrc</span><span class="p">)</span>
+        <span class="p">.</span><span class="nx">pipe</span><span class="p">(</span><span class="nx">sass</span><span class="p">({</span> <span class="na">style</span><span class="p">:</span> <span class="s1">'expanded'</span><span class="p">}))</span>
+        <span class="p">.</span><span class="nx">pipe</span><span class="p">(</span><span class="nx">gulp</span><span class="p">.</span><span class="nx">dest</span><span class="p">(</span><span class="nx">cssDst</span><span class="p">))</span>
+        <span class="p">.</span><span class="nx">pipe</span><span class="p">(</span><span class="nx">rename</span><span class="p">({</span> <span class="na">suffix</span><span class="p">:</span> <span class="s1">'.min'</span> <span class="p">}))</span>
+        <span class="p">.</span><span class="nx">pipe</span><span class="p">(</span><span class="nx">minifycss</span><span class="p">())</span>
+        <span class="p">.</span><span class="nx">pipe</span><span class="p">(</span><span class="nx">livereload</span><span class="p">(</span><span class="nx">server</span><span class="p">))</span>
+        <span class="p">.</span><span class="nx">pipe</span><span class="p">(</span><span class="nx">gulp</span><span class="p">.</span><span class="nx">dest</span><span class="p">(</span><span class="nx">cssDst</span><span class="p">));</span>
+<span class="p">});</span>
+
+<span class="c1">// 图片处理</span>
+<span class="nx">gulp</span><span class="p">.</span><span class="nx">task</span><span class="p">(</span><span class="s1">'images'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(){</span>
+    <span class="kd">var</span> <span class="nx">imgSrc</span> <span class="o">=</span> <span class="s1">'./src/images/**/*'</span><span class="p">,</span>
+        <span class="nx">imgDst</span> <span class="o">=</span> <span class="s1">'./dist/images'</span><span class="p">;</span>
+    <span class="nx">gulp</span><span class="p">.</span><span class="nx">src</span><span class="p">(</span><span class="nx">imgSrc</span><span class="p">)</span>
+        <span class="p">.</span><span class="nx">pipe</span><span class="p">(</span><span class="nx">imagemin</span><span class="p">())</span>
+        <span class="p">.</span><span class="nx">pipe</span><span class="p">(</span><span class="nx">livereload</span><span class="p">(</span><span class="nx">server</span><span class="p">))</span>
+        <span class="p">.</span><span class="nx">pipe</span><span class="p">(</span><span class="nx">gulp</span><span class="p">.</span><span class="nx">dest</span><span class="p">(</span><span class="nx">imgDst</span><span class="p">));</span>
+<span class="p">})</span>
+
+<span class="c1">// js处理</span>
+<span class="nx">gulp</span><span class="p">.</span><span class="nx">task</span><span class="p">(</span><span class="s1">'js'</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">jsSrc</span> <span class="o">=</span> <span class="s1">'./src/js/*.js'</span><span class="p">,</span>
+        <span class="nx">jsDst</span> <span class="o">=</span><span class="s1">'./dist/js'</span><span class="p">;</span>
+
+    <span class="nx">gulp</span><span class="p">.</span><span class="nx">src</span><span class="p">(</span><span class="nx">jsSrc</span><span class="p">)</span>
+        <span class="p">.</span><span class="nx">pipe</span><span class="p">(</span><span class="nx">jshint</span><span class="p">(</span><span class="s1">'.jshintrc'</span><span class="p">))</span>
+        <span class="p">.</span><span class="nx">pipe</span><span class="p">(</span><span class="nx">jshint</span><span class="p">.</span><span class="nx">reporter</span><span class="p">(</span><span class="s1">'default'</span><span class="p">))</span>
+        <span class="p">.</span><span class="nx">pipe</span><span class="p">(</span><span class="nx">concat</span><span class="p">(</span><span class="s1">'main.js'</span><span class="p">))</span>
+        <span class="p">.</span><span class="nx">pipe</span><span class="p">(</span><span class="nx">gulp</span><span class="p">.</span><span class="nx">dest</span><span class="p">(</span><span class="nx">jsDst</span><span class="p">))</span>
+        <span class="p">.</span><span class="nx">pipe</span><span class="p">(</span><span class="nx">rename</span><span class="p">({</span> <span class="na">suffix</span><span class="p">:</span> <span class="s1">'.min'</span> <span class="p">}))</span>
+        <span class="p">.</span><span class="nx">pipe</span><span class="p">(</span><span class="nx">uglify</span><span class="p">())</span>
+        <span class="p">.</span><span class="nx">pipe</span><span class="p">(</span><span class="nx">livereload</span><span class="p">(</span><span class="nx">server</span><span class="p">))</span>
+        <span class="p">.</span><span class="nx">pipe</span><span class="p">(</span><span class="nx">gulp</span><span class="p">.</span><span class="nx">dest</span><span class="p">(</span><span class="nx">jsDst</span><span class="p">));</span>
+<span class="p">});</span>
+
+<span class="c1">// 清空图片、样式、js</span>
+<span class="nx">gulp</span><span class="p">.</span><span class="nx">task</span><span class="p">(</span><span class="s1">'clean'</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">gulp</span><span class="p">.</span><span class="nx">src</span><span class="p">([</span><span class="s1">'./dist/css'</span><span class="p">,</span> <span class="s1">'./dist/js'</span><span class="p">,</span> <span class="s1">'./dist/images'</span><span class="p">],</span> <span class="p">{</span><span class="na">read</span><span class="p">:</span> <span class="kc">false</span><span class="p">})</span>
+        <span class="p">.</span><span class="nx">pipe</span><span class="p">(</span><span class="nx">clean</span><span class="p">());</span>
+<span class="p">});</span>
+
+<span class="c1">// 默认任务 清空图片、样式、js并重建 运行语句 gulp</span>
+<span class="nx">gulp</span><span class="p">.</span><span class="nx">task</span><span class="p">(</span><span class="s1">'default'</span><span class="p">,</span> <span class="p">[</span><span class="s1">'clean'</span><span class="p">],</span> <span class="kd">function</span><span class="p">(){</span>
+    <span class="nx">gulp</span><span class="p">.</span><span class="nx">start</span><span class="p">(</span><span class="s1">'html'</span><span class="p">,</span><span class="s1">'css'</span><span class="p">,</span><span class="s1">'images'</span><span class="p">,</span><span class="s1">'js'</span><span class="p">);</span>
+<span class="p">});</span>
+
+<span class="c1">// 监听任务 运行语句 gulp watch</span>
+<span class="nx">gulp</span><span class="p">.</span><span class="nx">task</span><span class="p">(</span><span class="s1">'watch'</span><span class="p">,</span><span class="kd">function</span><span class="p">(){</span>
+
+    <span class="nx">server</span><span class="p">.</span><span class="nx">listen</span><span class="p">(</span><span class="nx">port</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">){</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">err</span><span class="p">);</span>
+        <span class="p">}</span>
+
+        <span class="c1">// 监听html</span>
+        <span class="nx">gulp</span><span class="p">.</span><span class="nx">watch</span><span class="p">(</span><span class="s1">'./src/*.html'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">event</span><span class="p">){</span>
+            <span class="nx">gulp</span><span class="p">.</span><span class="nx">run</span><span class="p">(</span><span class="s1">'html'</span><span class="p">);</span>
+        <span class="p">})</span>
+
+        <span class="c1">// 监听css</span>
+        <span class="nx">gulp</span><span class="p">.</span><span class="nx">watch</span><span class="p">(</span><span class="s1">'./src/scss/*.scss'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(){</span>
+            <span class="nx">gulp</span><span class="p">.</span><span class="nx">run</span><span class="p">(</span><span class="s1">'css'</span><span class="p">);</span>
+        <span class="p">});</span>
+
+        <span class="c1">// 监听images</span>
+        <span class="nx">gulp</span><span class="p">.</span><span class="nx">watch</span><span class="p">(</span><span class="s1">'./src/images/**/*'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(){</span>
+            <span class="nx">gulp</span><span class="p">.</span><span class="nx">run</span><span class="p">(</span><span class="s1">'images'</span><span class="p">);</span>
+        <span class="p">});</span>
+
+        <span class="c1">// 监听js</span>
+        <span class="nx">gulp</span><span class="p">.</span><span class="nx">watch</span><span class="p">(</span><span class="s1">'./src/js/*.js'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(){</span>
+            <span class="nx">gulp</span><span class="p">.</span><span class="nx">run</span><span class="p">(</span><span class="s1">'js'</span><span class="p">);</span>
+        <span class="p">});</span>
+
+    <span class="p">});</span>
+<span class="p">});</span>
+
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p><strong>LiveReload配置</strong></p>
+
+<p>1、安装Chrome LiveReload
+2、通过npm安装http-server ，快速建立http服务</p>
+
+<p>npm install http-server -g</p>
+
+<p>3、通过cd找到发布环境目录dist
+4、运行http-server，默认端口是8080
+5、访问路径localhost:8080
+6、再打开一个cmd，通过cd找到项目路径执行gulp，清空发布环境并初始化
+7、执行监控 gulp
+8、点击chrome上的LiveReload插件，空心变成实心即关联上，你可以修改css、js、html即时会显示到页面中。</p>
+
+
+</article>
+
+
+<div class="tags">
+	<strong>Tags:</strong> <a target="_blank" href="/tags/?tag=构建">构建</a>,&nbsp;<a target="_blank" href="/tags/?tag=gulp">gulp</a>
+</div>
+
+
+	<script src="/assets/js/github.comment.js"></script>
+	<div class="gc-comments" data-repos="ouvens/ouvens.github.io" data-issues="3" >
+	    <div class="gc-comments-title">
+	        评论
+	    </div>
+	    <div class="gc-comments-info">
+	        想在此留下评论，请访问 <a href="issues_link">issues_link</a> 提交评论
+	    </div>
+	</div>
+</div>
+</div>
+
+
+    </div>
+    
+<div class="qr-code qr-code-pay" title="加个微信交流交流">
+    <img src="/assets/qrcode/qr-code-person.jpg" width="200" height="200" alt="公众号">
+    <p>加我赏红包，哈哈哈</p>
+</div>
+
+<div class="qr-code qr-code-wx" title="定期获取更新动态">
+    <img src="/assets/qrcode/qrcode.jpg" width="200" height="200" alt="公众号">
+    <p>欢迎关注 <strong>极限前端</strong> 公众号</p>
+</div>
+
+
+    
+<footer class="site-footer">
+  <div class="wrapper">
+    <h3 class="footer-heading">极限前端</h3>
+    <div class="site-navigation">
+    	<p><strong>站内</strong></p>
+      <ul class="pages">
+        
+        
+          <li class="nav-link"><a href="/about/">关于</a>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+          <li class="nav-link"><a href="/category/">所有文章</a>
+        
+        
+        
+          <li class="nav-link"><a href="/tags/">标签分类</a>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+      </ul>
+    </div>
+    <div class="site-contact">
+    	<p><strong>相关链接</strong></p>
+        <ul class="social-media-list">
+      	<li>
+      		<a href="mailto:1025224452@qq.com">
+	      		<i class="icon-font i-star"></i>
+	      		<span class="username">1025224452@qq.com</span>
+      		</a>
+      	</li>
+
+      	
+	      	
+	      	<li>
+	           <a href="https://github.com/ouvens" title="Fork me on GitHub">
+	               <i class="icon-font i-heart"></i>
+	               <span class="username">ouvens</span>
+	           </a>
+	        </li>
+	      	
+      	
+
+      </ul>
+    </div>
+    <div class="site-signature">
+    	<p class="rss-subscribe text"><strong>订阅<a href="/feed.xml">via RSS</a></strong></p>
+      <p class="text">极限前端, 极限前端社区, ouven的博客, ouvenzhang的博客, www.jixianqianduan.com, github地址, 前端技术, 讲述前端高效技术与前沿。</p>
+    </div>
+  </div>
+</footer>
+
+<!-- Scripts -->
+<script src="//1.url.cn/jslib/jquery/1.9.1/jquery.min.js" defer></script>
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.5/highlight.min.js" defer></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/lightbox2/2.7.1/js/lightbox.min.js" defer></script>
+
+<script src="/assets/js/main.js" defer></script>
+
+    </body>
+</html>

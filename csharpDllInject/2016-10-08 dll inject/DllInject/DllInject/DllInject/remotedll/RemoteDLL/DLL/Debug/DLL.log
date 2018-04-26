@@ -1,0 +1,15 @@
+﻿生成启动时间为 2016/10/9 8:46:09。
+     1>项目“D:\vsproject\2016-10-08 dll inject\DllInject\DllInject\DllInject\remotedll\RemoteDLL\DLL\DLL.vcxproj”在节点 2 上(Rebuild 个目标)。
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _WINDOWS /D _USRDLL /D DLL_EXPORTS /D _VC80_UPGRADE=0x0600 /D _WINDLL /D _MBCS /Gm /EHsc /RTC1 /MTd /GS /Gy- /fp:precise /Zc:wchar_t /Zc:forScope /Fo".\Debug\\" /Fd".\Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt DLL.CPP
+         DLL.CPP
+     1>C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V120\Microsoft.CppBuild.targets(1185,5): warning MSB8012: TargetPath(D:\vsproject\2016-10-08 dll inject\DllInject\DllInject\DllInject\remotedll\RemoteDLL\DLL\.\Debug\DLL.dll) does not match the Linker's OutputFile property value (). This may cause your project to build incorrectly. To correct this, please make sure that $(OutDir), $(TargetName) and $(TargetExt) property values match the value specified in %(Link.OutputFile).
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /INCREMENTAL /NOLOGO odbc32.lib odbccp32.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:".\Debug\DLL.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:".\Debug\DLL.lib" /MACHINE:X86 /SAFESEH /DLL .\Debug\DLL.obj
+     1>DLL.obj : warning LNK4075: 忽略“/EDITANDCONTINUE”(由于“/SAFESEH”规范)
+         DLL.vcxproj -> D:\vsproject\2016-10-08 dll inject\DllInject\DllInject\DllInject\remotedll\RemoteDLL\DLL\.\Debug\DLL.dll
+     1>已完成生成项目“D:\vsproject\2016-10-08 dll inject\DllInject\DllInject\DllInject\remotedll\RemoteDLL\DLL\DLL.vcxproj”(Rebuild 个目标)的操作。
+
+生成成功。
+
+已用时间 00:00:02.16

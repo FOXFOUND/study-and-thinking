@@ -1,0 +1,12 @@
+D:\vsproject\dlinject\dlinject\bin\Debug\dlinject.exe.config
+D:\vsproject\dlinject\dlinject\bin\Debug\dlinject.exe
+D:\vsproject\dlinject\dlinject\bin\Debug\dlinject.pdb
+D:\vsproject\dlinject\dlinject\obj\Debug\dlinject.exe
+D:\vsproject\dlinject\dlinject\obj\Debug\dlinject.pdb
+D:\vsproject\dlinject\dlinject\obj\Debug\dlinject.csprojResolveAssemblyReference.cache
+D:\vsproject\2016-10-08 dll inject\dlinject\dlinject\bin\Debug\dlinject.exe.config
+D:\vsproject\2016-10-08 dll inject\dlinject\dlinject\obj\Debug\dlinject.exe
+D:\vsproject\2016-10-08 dll inject\dlinject\dlinject\obj\Debug\dlinject.pdb
+D:\vsproject\2016-10-08 dll inject\dlinject\dlinject\bin\Debug\dlinject.exe
+D:\vsproject\2016-10-08 dll inject\dlinject\dlinject\bin\Debug\dlinject.pdb
+D:\vsproject\2016-10-08 dll inject\dlinject\dlinject\obj\Debug\dlinject.csprojResolveAssemblyReference.cache

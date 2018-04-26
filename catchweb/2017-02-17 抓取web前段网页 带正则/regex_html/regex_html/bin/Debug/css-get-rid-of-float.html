@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="google-site-verification" content="0FNbiBWk1FugWYo-RiGxQyIHebGeLoXp3HB7AxIFKy8" />
+    <meta name="baidu-site-verification" content="tYoUqpkCCv" />
+    <meta name="baidu-site-verification" content="IGN97NW90O" />
+    
+    <title>css清除浮动 | ouvenzhang的博客</title>
+
+    <meta http-equiv="x-dns-prefetch-control" content="on" />
+    <link rel="dns-prefetch" href="cdnjs.cloudflare.com" />
+    <link rel="dns-prefetch" href="1.url.cn" />
+
+    <meta name="description" itemprop="description" content="css清除浮动,css,清除浮动 ">
+    <meta itemprop="name" content="css清除浮动">
+    <meta itemprop="image" content="http://ouvens.github.io/blog/assets/logo.png">
+    <meta itemprop="keywords" name="keywords" content="css清除浮动,css,清除浮动 ">
+
+    
+    <meta name="author" content="ouvenzhang">
+    <meta name="copyright" content="&copy; ouvenzhang 2017">
+    <meta name="protocol" content="1">
+    
+
+    <!-- External libraries -->
+    <link rel="stylesheet" href="/assets/css/iconfont.css">
+    <link rel="stylesheet" href="/css/monokai_sublime.css">
+
+    <!-- Favicon and other icons (made with http://www.favicon-generator.org/) -->
+    <link rel="shortcut icon" href="/assets/favicon.ico" type="image/x-icon">
+  	<link rel="icon" href="/assets/favicon.ico" type="image/x-icon">
+    
+  	<meta name="msapplication-TileColor" content="#ffffff">
+  	<meta name="theme-color" content="#ffffff">
+    <meta name="msapplication-TileImage" content="/assets/icons/icon.png">
+
+  	<!-- Site styles -->
+    <link rel="stylesheet" href="/css/main.css">
+
+    <link rel="alternate" type="application/rss+xml" title="极限前端" href="http://ouvens.github.io//feed.xml" />
+    <script>
+    // 访问统计
+    var domain = 'jixianqianduan.com';
+    var oldDomain = 'ouvens.github.io';
+    if(location.host === domain){
+        var _hmt = _hmt || [];
+        (function() {
+          var hm = document.createElement("script");
+          hm.src = "//hm.baidu.com/hm.js?b536b128dc21c3d18fdc028f0609e3f0";
+          var s = document.getElementsByTagName("script")[0]; 
+          s.parentNode.insertBefore(hm, s);
+        })();
+    }else if(location.host === oldDomain){
+        window.location.href = location.href.replace(oldDomain, domain);
+        var _hmt = _hmt || [];
+        (function() {
+          var hm = document.createElement("script");
+          hm.src = "//hm.baidu.com/hm.js?041efd2cb345ca1b9dbdbb2383cb716d";
+          var s = document.getElementsByTagName("script")[0]; 
+          s.parentNode.insertBefore(hm, s);
+        })();
+    }
+
+    // 链接提交
+
+    if(location.protocol === 'https'){
+        !function(){var e=/([http|https]:\/\/[a-zA-Z0-9\_\.]+\.baidu\.com)/gi,r=window.location.href,t=document.referrer;if(!e.test(r)){var o="https://sp0.baidu.com/9_Q4simg2RQJ8t7jm9iCKT-xh_/s.gif";t?(o+="?r="+encodeURIComponent(document.referrer),r&&(o+="&l="+r)):r&&(o+="?l="+r);var i=new Image;i.src=o}}(window);
+    }else{
+        !function(){var e=/([http|https]:\/\/[a-zA-Z0-9\_\.]+\.baidu\.com)/gi,r=window.location.href,o=document.referrer;if(!e.test(r)){var n="//api.share.baidu.com/s.gif";o?(n+="?r="+encodeURIComponent(document.referrer),r&&(n+="&l="+r)):r&&(n+="?l="+r);var t=new Image;t.src=n}}(window);
+    }
+
+
+    </script>
+</head>
+
+    <body>
+        <div class="navigation" role="banner">
+    <div class="navigation-wrapper">
+    <a href="/" class="logo">
+    	
+      <img src="/assets/logo.png" alt="极限前端">
+      
+    </a>
+    <span class="search-input" id="search-input">
+      <input type="text" value="" class="search-text" placeholder="输入搜索关键字">
+      <i class="icon-font i-search search-btn"></i>
+    </span>
+    <a href="javascript:void(0)" class="navigation-menu-button" id="js-mobile-menu">
+    	<i class="icon-font i-list fa fa-bars"></i>
+    </a>
+    <span class="nav" role="navigation">
+      <ul id="js-navigation-menu" class="navigation-menu show">
+      	
+          
+          <li class="nav-link">
+            <a href="/about/">关于</a>
+          </li>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+          <li class="nav-link">
+            <a href="/category/">所有文章</a>
+          </li>
+          
+        
+          
+          <li class="nav-link">
+            <a href="/tags/">标签分类</a>
+          </li>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          <li id="github-info" class="nav-link" title="https://github.com/ouvens">
+            <a class="github-info" href="https://github.com/ouvens" target="_blank">
+            <img src="/assets/github.png" height="34" width="130" alt="github地址"></a>
+          </li>
+      </ul>
+    </span>
+  </div>
+</div>
+
+            <div class="page-content">
+        <div class="post">
+<div class="post-header-container has-cover">
+	<header class="post-header">
+	  <h1 class="title">css清除浮动</h1>
+	  <p class="info">by <strong>ouven</strong></p>
+	</header>
+</div>
+<div class="wrapper">
+
+
+
+<div class="post-meta">
+	<div class="post-date">2014年11月07日</div>
+	<div class="post-categories">
+	 in  
+		<a target="_blank" href="/category/?cate=frontend-css">Frontend-css</a>
+	  
+	</div>
+</div>	
+
+<article class="post-content">
+  <h3 id="css-float">一、什么是css float</h3>
+
+<p>理解float：元素float后，确实可以从文档流中消失，表现在他们外面的DIV的边框不能被他们撑起来。可是，文档中在他们下面的元素又确实不会和他们重叠。先理解下float做了什么。
+​</p>
+
+<table>
+  <thead>
+    <tr>
+      <th> </th>
+      <th>是否脱离文档流</th>
+      <th>参考物</th>
+      <th>描述</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>position:relative</td>
+      <td>否</td>
+      <td>元素在文档流中位置</td>
+      <td>top,left,right,bottom指定了相对于参考物位置</td>
+    </tr>
+    <tr>
+      <td>postition:absolute</td>
+      <td>是</td>
+      <td>最近外层relative元素</td>
+      <td>否则为body，top,left,right,bottom指定了相对于参考物位置</td>
+    </tr>
+    <tr>
+      <td>float</td>
+      <td>是</td>
+      <td>元素在文档流中位置，相对于参考物</td>
+      <td>尽可能向left(向左),top(向上)，right向右，both(向两侧)</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="section">二、清除浮动</h3>
+
+<h4 id="divheight">1，父级div自定义height</h4>
+
+<p>原理：父级div手动定义height，就解决了父级div无法自动获取到高度的问题。
+优点：简单，代码少，容易掌握
+缺点：只适合高度固定的布局，要给出精确的高度，如果高度和父级div不一样时，会产生问题
+建议：不推荐使用，只建议高度固定的布局时使用</p>
+
+<h4 id="clearboth">2，尾处加入clear:both的空标签</h4>
+
+<p>原理：添加一个空div，利用css提高的clear:both清除浮动，让父级div能自动获取到高度
+优点：简单，代码少，浏览器支持好，不容易出现怪问题
+缺点：不少初学者不理解原理；如果页面浮动布局多，就要增加很多空div，让人感觉很不爽
+建议：不推荐使用，但此方法是以前主要使用的一种清除浮动方法</p>
+
+<h4 id="overflowhiddenbfc">3，父元素使用overflow:hidden触发BFC</h4>
+
+<p>原理：必须定义width或zoom:1，同时不能定义height，使用overflow:hidden时，浏览器会自动检查浮动区域的高度
+优点：简单，代码少，浏览器支持好
+缺点：不能和position配合使用，因为超出的尺寸的会被隐藏。
+建议：只推荐没有使用position或对overflow:hidden理解比较深的朋友使用。</p>
+
+<h4 id="overflowautobfc">4，父元素使用overflow:auto触发BFC</h4>
+
+<p>原理：必须定义width或zoom:1，同时不能定义height，使用overflow:auto时，浏览器会自动检查浮动区域的高度
+优点：简单，代码少，浏览器支持好
+缺点：内部宽高超过父级div时，会出现滚动条。
+建议：不推荐使用，如果你需要出现滚动条或者确保你的代码不会出现滚动条就使用吧。</p>
+
+<h4 id="div-afterzoom">5，父级div定义 伪类:after和zoom</h4>
+
+<p>原理：IE8以上和非IE浏览器才支持:after，原理和方法2有点类似，zoom(IE转有属性)可解决ie6,ie7浮动问题
+优点：浏览器支持好，不容易出现怪问题（目前：大型网站都有使用，如：腾迅，网易，新浪等等）
+缺点：代码多，不少初学者不理解原理，要两句代码结合使用，才能让主流浏览器都支持。
+建议：推荐使用，建议定义公共类，以减少CSS代码。</p>
+
+<h4 id="section-1">6，让父元素也一起浮动</h4>
+
+<p>原理：所有代码一起浮动，就变成了一个整体
+优点：没有优点
+缺点：会产生新的浮动问题。
+建议：不推荐使用，只作了解。</p>
+
+<h4 id="divdisplaytable">7，父元素div定义display:table</h4>
+
+<p>原理：将div属性变成表格
+优点：没有优点
+缺点：会产生新的未知问题。
+建议：不推荐使用，只作了解。</p>
+
+<h4 id="brclearboth">8，结尾处加br标签clear:both</h4>
+
+<p>原理：父级div定义zoom:1来解决IE浮动问题，结尾处加 br标签 clear:both
+建议：不推荐使用，只作了解。
+总结：建议使用方法3 overflow:hidden触发BFC或方法5 使用after、zoom两种方式解决问题</p>
+
+<h3 id="section-2">三、相对应实例如下</h3>
+
+<p>实例1：</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11</pre></td><td class="code"><pre><span class="nt">&lt;style </span><span class="na">type=</span><span class="s">"text/css"</span><span class="nt">&gt;</span> 
+<span class="nc">.div1</span><span class="p">{</span><span class="nl">background</span><span class="p">:</span><span class="m">#000080</span><span class="p">;</span><span class="nl">border</span><span class="p">:</span><span class="m">1px</span> <span class="nb">solid</span> <span class="no">red</span><span class="p">;</span><span class="c">/*解决代码*/</span><span class="nl">height</span><span class="p">:</span><span class="m">200px</span><span class="p">;}</span>
+<span class="nc">.div2</span><span class="p">{</span><span class="nl">background</span><span class="p">:</span><span class="m">#800080</span><span class="p">;</span><span class="nl">border</span><span class="p">:</span><span class="m">1px</span> <span class="nb">solid</span> <span class="no">red</span><span class="p">;</span><span class="nl">height</span><span class="p">:</span><span class="m">100px</span><span class="p">;</span><span class="nl">margin-top</span><span class="p">:</span><span class="m">10px</span><span class="p">}</span>
+<span class="nc">.left</span><span class="p">{</span><span class="nl">float</span><span class="p">:</span><span class="nb">left</span><span class="p">;</span><span class="nl">width</span><span class="p">:</span><span class="m">20%</span><span class="p">;</span><span class="nl">height</span><span class="p">:</span><span class="m">200px</span><span class="p">;</span><span class="nl">background</span><span class="p">:</span><span class="m">#DDD</span><span class="p">}</span>
+<span class="nc">.right</span><span class="p">{</span><span class="nl">float</span><span class="p">:</span><span class="nb">right</span><span class="p">;</span><span class="nl">width</span><span class="p">:</span><span class="m">30%</span><span class="p">;</span><span class="nl">height</span><span class="p">:</span><span class="m">80px</span><span class="p">;</span><span class="nl">background</span><span class="p">:</span><span class="m">#DDD</span><span class="p">}</span>
+<span class="nt">&lt;/style&gt;</span> 
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"div1"</span><span class="nt">&gt;</span> 
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"left"</span><span class="nt">&gt;</span>Left<span class="nt">&lt;/div&gt;</span> 
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"right"</span><span class="nt">&gt;</span>Right<span class="nt">&lt;/div&gt;</span> 
+<span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"div2"</span><span class="nt">&gt;</span>div2<span class="nt">&lt;/div&gt;</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p>实例2</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14</pre></td><td class="code"><pre><span class="nt">&lt;style </span><span class="na">type=</span><span class="s">"text/css"</span><span class="nt">&gt;</span> 
+<span class="nc">.div1</span><span class="p">{</span><span class="nl">background</span><span class="p">:</span><span class="m">#000080</span><span class="p">;</span><span class="nl">border</span><span class="p">:</span><span class="m">1px</span> <span class="nb">solid</span> <span class="no">red</span><span class="p">}</span>
+<span class="nc">.div2</span><span class="p">{</span><span class="nl">background</span><span class="p">:</span><span class="m">#800080</span><span class="p">;</span><span class="nl">border</span><span class="p">:</span><span class="m">1px</span> <span class="nb">solid</span> <span class="no">red</span><span class="p">;</span><span class="nl">height</span><span class="p">:</span><span class="m">100px</span><span class="p">;</span><span class="nl">margin-top</span><span class="p">:</span><span class="m">10px</span><span class="p">}</span>
+<span class="nc">.left</span><span class="p">{</span><span class="nl">float</span><span class="p">:</span><span class="nb">left</span><span class="p">;</span><span class="nl">width</span><span class="p">:</span><span class="m">20%</span><span class="p">;</span><span class="nl">height</span><span class="p">:</span><span class="m">200px</span><span class="p">;</span><span class="nl">background</span><span class="p">:</span><span class="m">#DDD</span><span class="p">}</span>
+<span class="nc">.right</span><span class="p">{</span><span class="nl">float</span><span class="p">:</span><span class="nb">right</span><span class="p">;</span><span class="nl">width</span><span class="p">:</span><span class="m">30%</span><span class="p">;</span><span class="nl">height</span><span class="p">:</span><span class="m">80px</span><span class="p">;</span><span class="nl">background</span><span class="p">:</span><span class="m">#DDD</span><span class="p">}</span>
+<span class="c">/*清除浮动代码*/</span>
+<span class="nc">.clearfloat</span><span class="p">{</span><span class="nl">clear</span><span class="p">:</span><span class="nb">both</span><span class="p">}</span>
+<span class="nt">&lt;/style&gt;</span> 
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"div1"</span><span class="nt">&gt;</span> 
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"left"</span><span class="nt">&gt;</span>Left<span class="nt">&lt;/div&gt;</span> 
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"right"</span><span class="nt">&gt;</span>Right<span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"clearfloat"</span><span class="nt">&gt;&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"div2"</span><span class="nt">&gt;</span>div2<span class="nt">&lt;/div&gt;</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p>实例3</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11</pre></td><td class="code"><pre><span class="nt">&lt;style </span><span class="na">type=</span><span class="s">"text/css"</span><span class="nt">&gt;</span> 
+<span class="nc">.div1</span><span class="p">{</span><span class="nl">background</span><span class="p">:</span><span class="m">#000080</span><span class="p">;</span><span class="nl">border</span><span class="p">:</span><span class="m">1px</span> <span class="nb">solid</span> <span class="no">red</span><span class="p">;</span><span class="c">/*解决代码*/</span><span class="nl">overflow</span><span class="p">:</span><span class="nb">hidden</span><span class="p">;}</span>
+<span class="nc">.div2</span><span class="p">{</span><span class="nl">background</span><span class="p">:</span><span class="m">#800080</span><span class="p">;</span><span class="nl">border</span><span class="p">:</span><span class="m">1px</span> <span class="nb">solid</span> <span class="no">red</span><span class="p">;</span><span class="nl">height</span><span class="p">:</span><span class="m">100px</span><span class="p">;</span><span class="nl">margin-top</span><span class="p">:</span><span class="m">10px</span><span class="p">}</span>
+<span class="nc">.left</span><span class="p">{</span><span class="nl">float</span><span class="p">:</span><span class="nb">left</span><span class="p">;</span><span class="nl">width</span><span class="p">:</span><span class="m">20%</span><span class="p">;</span><span class="nl">height</span><span class="p">:</span><span class="m">200px</span><span class="p">;</span><span class="nl">background</span><span class="p">:</span><span class="m">#DDD</span><span class="p">}</span>
+<span class="nc">.right</span><span class="p">{</span><span class="nl">float</span><span class="p">:</span><span class="nb">right</span><span class="p">;</span><span class="nl">width</span><span class="p">:</span><span class="m">30%</span><span class="p">;</span><span class="nl">height</span><span class="p">:</span><span class="m">80px</span><span class="p">;</span><span class="nl">background</span><span class="p">:</span><span class="m">#DDD</span><span class="p">}</span>
+<span class="nt">&lt;/style&gt;</span> 
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"div1"</span><span class="nt">&gt;</span> 
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"left"</span><span class="nt">&gt;</span>Left<span class="nt">&lt;/div&gt;</span> 
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"right"</span><span class="nt">&gt;</span>Right<span class="nt">&lt;/div&gt;</span> 
+<span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"div2"</span><span class="nt">&gt;</span>div2<span class="nt">&lt;/div&gt;</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p>实例4</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30</pre></td><td class="code"><pre><span class="nt">&lt;style </span><span class="na">type=</span><span class="s">"text/css"</span><span class="nt">&gt;</span> 
+<span class="nc">.div1</span><span class="p">{</span><span class="nl">background</span><span class="p">:</span><span class="m">#000080</span><span class="p">;</span><span class="nl">border</span><span class="p">:</span><span class="m">1px</span> <span class="nb">solid</span> <span class="no">red</span><span class="p">;</span><span class="c">/*解决代码*/</span><span class="nl">overflow</span><span class="p">:</span><span class="nb">auto</span><span class="p">}</span>
+<span class="nc">.div2</span><span class="p">{</span><span class="nl">background</span><span class="p">:</span><span class="m">#800080</span><span class="p">;</span><span class="nl">border</span><span class="p">:</span><span class="m">1px</span> <span class="nb">solid</span> <span class="no">red</span><span class="p">;</span><span class="nl">height</span><span class="p">:</span><span class="m">100px</span><span class="p">;</span><span class="nl">margin-top</span><span class="p">:</span><span class="m">10px</span><span class="p">}</span>
+<span class="nc">.left</span><span class="p">{</span><span class="nl">float</span><span class="p">:</span><span class="nb">left</span><span class="p">;</span><span class="nl">width</span><span class="p">:</span><span class="m">20%</span><span class="p">;</span><span class="nl">height</span><span class="p">:</span><span class="m">200px</span><span class="p">;</span><span class="nl">background</span><span class="p">:</span><span class="m">#DDD</span><span class="p">}</span>
+<span class="nc">.right</span><span class="p">{</span><span class="nl">float</span><span class="p">:</span><span class="nb">right</span><span class="p">;</span><span class="nl">width</span><span class="p">:</span><span class="m">30%</span><span class="p">;</span><span class="nl">height</span><span class="p">:</span><span class="m">80px</span><span class="p">;</span><span class="nl">background</span><span class="p">:</span><span class="m">#DDD</span><span class="p">}</span>
+<span class="o">&lt;/</span><span class="nt">style</span><span class="o">&gt;</span> 
+<span class="o">&lt;</span><span class="nt">div</span> <span class="nt">class</span><span class="o">=</span><span class="s1">"div1"</span><span class="o">&gt;</span> 
+    <span class="o">&lt;</span><span class="nt">div</span> <span class="nt">class</span><span class="o">=</span><span class="s1">"left"</span><span class="o">&gt;</span><span class="nt">Left</span><span class="o">&lt;/</span><span class="nt">div</span><span class="o">&gt;</span> 
+    <span class="o">&lt;</span><span class="nt">div</span> <span class="nt">class</span><span class="o">=</span><span class="s1">"right"</span><span class="o">&gt;</span><span class="nt">Right</span><span class="o">&lt;/</span><span class="nt">div</span><span class="o">&gt;</span> 
+<span class="o">&lt;/</span><span class="nt">div</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="nt">div</span> <span class="nt">class</span><span class="o">=</span><span class="s1">"div2"</span><span class="o">&gt;</span><span class="nt">div2</span><span class="o">&lt;/</span><span class="nt">div</span><span class="o">&gt;</span>
+ <span class="err">```</span>
+ 
+<span class="err">实例</span><span class="nt">5</span>
+
+<span class="err">```</span><span class="nt">html</span>
+<span class="o">&lt;</span><span class="nt">style</span> <span class="nt">type</span><span class="o">=</span><span class="s1">"text/css"</span><span class="o">&gt;</span> 
+<span class="nc">.div1</span><span class="p">{</span><span class="nl">background</span><span class="p">:</span><span class="m">#000080</span><span class="p">;</span><span class="nl">border</span><span class="p">:</span><span class="m">1px</span> <span class="nb">solid</span> <span class="no">red</span><span class="p">;}</span>
+<span class="nc">.div2</span><span class="p">{</span><span class="nl">background</span><span class="p">:</span><span class="m">#800080</span><span class="p">;</span><span class="nl">border</span><span class="p">:</span><span class="m">1px</span> <span class="nb">solid</span> <span class="no">red</span><span class="p">;</span><span class="nl">height</span><span class="p">:</span><span class="m">100px</span><span class="p">;</span><span class="nl">margin-top</span><span class="p">:</span><span class="m">10px</span><span class="p">}</span>
+<span class="nc">.left</span><span class="p">{</span><span class="nl">float</span><span class="p">:</span><span class="nb">left</span><span class="p">;</span><span class="nl">width</span><span class="p">:</span><span class="m">20%</span><span class="p">;</span><span class="nl">height</span><span class="p">:</span><span class="m">200px</span><span class="p">;</span><span class="nl">background</span><span class="p">:</span><span class="m">#DDD</span><span class="p">}</span>
+<span class="nc">.right</span><span class="p">{</span><span class="nl">float</span><span class="p">:</span><span class="nb">right</span><span class="p">;</span><span class="nl">width</span><span class="p">:</span><span class="m">30%</span><span class="p">;</span><span class="nl">height</span><span class="p">:</span><span class="m">80px</span><span class="p">;</span><span class="nl">background</span><span class="p">:</span><span class="m">#DDD</span><span class="p">}</span>
+<span class="c">/*清除浮动代码*/</span>
+<span class="nc">.clearfloat</span><span class="nd">:after</span><span class="p">{</span><span class="nl">display</span><span class="p">:</span><span class="nb">block</span><span class="p">;</span><span class="nl">clear</span><span class="p">:</span><span class="nb">both</span><span class="p">;</span><span class="nl">content</span><span class="p">:</span><span class="s1">""</span><span class="p">;</span><span class="nl">visibility</span><span class="p">:</span><span class="nb">hidden</span><span class="p">;</span><span class="nl">height</span><span class="p">:</span><span class="m">0</span><span class="p">}</span>
+<span class="nc">.clearfloat</span><span class="p">{</span><span class="py">zoom</span><span class="p">:</span><span class="m">1</span><span class="p">}</span>
+<span class="nt">&lt;/style&gt;</span> 
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"div1 clearfloat"</span><span class="nt">&gt;</span> 
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"left"</span><span class="nt">&gt;</span>Left<span class="nt">&lt;/div&gt;</span> 
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"right"</span><span class="nt">&gt;</span>Right<span class="nt">&lt;/div&gt;</span> 
+<span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"div2"</span><span class="nt">&gt;</span>div2<span class="nt">&lt;/div&gt;</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p>实例6、实例7、实例8极不推荐，实例略</p>
+
+
+</article>
+
+
+<div class="tags">
+	<strong>Tags:</strong> <a target="_blank" href="/tags/?tag=css">css</a>,&nbsp;<a target="_blank" href="/tags/?tag=清除浮动">清除浮动</a>
+</div>
+
+
+	<script src="/assets/js/github.comment.js"></script>
+	<div class="gc-comments" data-repos="ouvens/ouvens.github.io" data-issues="3" >
+	    <div class="gc-comments-title">
+	        评论
+	    </div>
+	    <div class="gc-comments-info">
+	        想在此留下评论，请访问 <a href="issues_link">issues_link</a> 提交评论
+	    </div>
+	</div>
+</div>
+</div>
+
+
+    </div>
+    
+<div class="qr-code qr-code-pay" title="加个微信交流交流">
+    <img src="/assets/qrcode/qr-code-person.jpg" width="200" height="200" alt="公众号">
+    <p>加我赏红包，哈哈哈</p>
+</div>
+
+<div class="qr-code qr-code-wx" title="定期获取更新动态">
+    <img src="/assets/qrcode/qrcode.jpg" width="200" height="200" alt="公众号">
+    <p>欢迎关注 <strong>极限前端</strong> 公众号</p>
+</div>
+
+
+    
+<footer class="site-footer">
+  <div class="wrapper">
+    <h3 class="footer-heading">极限前端</h3>
+    <div class="site-navigation">
+    	<p><strong>站内</strong></p>
+      <ul class="pages">
+        
+        
+          <li class="nav-link"><a href="/about/">关于</a>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+          <li class="nav-link"><a href="/category/">所有文章</a>
+        
+        
+        
+          <li class="nav-link"><a href="/tags/">标签分类</a>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+      </ul>
+    </div>
+    <div class="site-contact">
+    	<p><strong>相关链接</strong></p>
+        <ul class="social-media-list">
+      	<li>
+      		<a href="mailto:1025224452@qq.com">
+	      		<i class="icon-font i-star"></i>
+	      		<span class="username">1025224452@qq.com</span>
+      		</a>
+      	</li>
+
+      	
+	      	
+	      	<li>
+	           <a href="https://github.com/ouvens" title="Fork me on GitHub">
+	               <i class="icon-font i-heart"></i>
+	               <span class="username">ouvens</span>
+	           </a>
+	        </li>
+	      	
+      	
+
+      </ul>
+    </div>
+    <div class="site-signature">
+    	<p class="rss-subscribe text"><strong>订阅<a href="/feed.xml">via RSS</a></strong></p>
+      <p class="text">极限前端, 极限前端社区, ouven的博客, ouvenzhang的博客, www.jixianqianduan.com, github地址, 前端技术, 讲述前端高效技术与前沿。</p>
+    </div>
+  </div>
+</footer>
+
+<!-- Scripts -->
+<script src="//1.url.cn/jslib/jquery/1.9.1/jquery.min.js" defer></script>
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.5/highlight.min.js" defer></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/lightbox2/2.7.1/js/lightbox.min.js" defer></script>
+
+<script src="/assets/js/main.js" defer></script>
+
+    </body>
+</html>
