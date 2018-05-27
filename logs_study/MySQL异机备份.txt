@@ -1,0 +1,35 @@
+mysqldump -uusername -ppassword DatabaseName > /home/backup/DatabaseName_$(date +%Y%m%d_%H%M%S).sql
+
+
+mysqldump -uusername -ppassword DatabaseName | gzip > /home/backup/DatabaseName_$(date +%Y%m%d_%H%M%S).sql.gz
+
+#! /bin/bash
+mysqldump -cp --user=root --password='123' dbName | gzip > ~/db/dbName-`date +%Y%m%d%H`.sql.gz ;
+
+
+2、使用crontab定时调用。crontab教程：
+http://blog.csdn.net/richerg85/article/details/17887879
+http://www.jb51.net/article/26645.htm
+
+使用crontab -e命令，编辑crontab文件，编辑方式和使用VI一样。
+新添加一行：
+00 2 * * * ~/db/dbBackup.sh
+表示每天2：00执行~/db/dbBackup.sh这个文件。
+保存后，crontab -l看到有新加的数据行即可。
+
+OVER，以后每天系统就会调用这个脚本来备份数据了。
+
+
+一：新建一个以当前日期为文件名的txt文件并发送到10.1.1.213的root目录下：
+        [root@A qt]# vi c.sh
+        #!/bin/sh
+        DATE=`date +%d -d 'now'`;
+        MONTH=`date --date 'now' +%m`;
+        mv *.txt bak/ ;
+        date >>date$MONTH$DATE.txt;
+        scp *.txt root@10.1.1.213:/root/;
+
+    这样执行c.sh需要输入10.1.1.213的密码
+	
+	
+	 tail -f /var/log/cron
