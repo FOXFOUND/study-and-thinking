@@ -37,7 +37,7 @@ namespace _2016_10_11_排序算法
                     right--;
                 }
                 arr[left] = arr[right];
-                while (left < right && arr[left] < prikey)
+                while (left < right && arr[left] <= prikey)
                 {
                     left++;
                 }
