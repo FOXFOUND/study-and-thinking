@@ -1,9 +1,0 @@
-D:\vsproject\test\test\bin\Debug\test.exe.config
-D:\vsproject\test\test\bin\Debug\test.exe
-D:\vsproject\test\test\bin\Debug\test.pdb
-D:\vsproject\test\test\obj\Debug\test.csprojResolveAssemblyReference.cache
-D:\vsproject\test\test\obj\Debug\test.exe
-D:\vsproject\test\test\obj\Debug\test.pdb
-D:\vsproject\2016-10-05 cmd聊天\test\test\bin\Debug\test.exe.config
-D:\vsproject\2016-10-05 cmd聊天\test\test\obj\Debug\test.exe
-D:\vsproject\2016-10-05 cmd聊天\test\test\obj\Debug\test.pdb

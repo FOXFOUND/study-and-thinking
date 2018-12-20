@@ -1,9 +1,0 @@
-D:\vsproject\2016-10-08 dll inject\my\myn\bin\Debug\myn.exe.config
-D:\vsproject\2016-10-08 dll inject\my\myn\bin\Debug\myn.exe
-D:\vsproject\2016-10-08 dll inject\my\myn\bin\Debug\myn.pdb
-D:\vsproject\2016-10-08 dll inject\my\myn\obj\Debug\myn.csprojResolveAssemblyReference.cache
-D:\vsproject\2016-10-08 dll inject\my\myn\obj\Debug\myn.Form1.resources
-D:\vsproject\2016-10-08 dll inject\my\myn\obj\Debug\myn.Properties.Resources.resources
-D:\vsproject\2016-10-08 dll inject\my\myn\obj\Debug\myn.csproj.GenerateResource.Cache
-D:\vsproject\2016-10-08 dll inject\my\myn\obj\Debug\myn.exe
-D:\vsproject\2016-10-08 dll inject\my\myn\obj\Debug\myn.pdb

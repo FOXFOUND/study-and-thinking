@@ -1,6 +1,0 @@
-D:\vsproject\2017-02-20 图片木马\2017-02-20 图片木马\bin\Debug\2017-02-20 图片木马.exe.config
-D:\vsproject\2017-02-20 图片木马\2017-02-20 图片木马\obj\Debug\2017-02-20 图片木马.csprojResolveAssemblyReference.cache
-D:\vsproject\2017-02-20 图片木马\2017-02-20 图片木马\bin\Debug\2017-02-20 图片木马.exe
-D:\vsproject\2017-02-20 图片木马\2017-02-20 图片木马\bin\Debug\2017-02-20 图片木马.pdb
-D:\vsproject\2017-02-20 图片木马\2017-02-20 图片木马\obj\Debug\2017-02-20 图片木马.exe
-D:\vsproject\2017-02-20 图片木马\2017-02-20 图片木马\obj\Debug\2017-02-20 图片木马.pdb

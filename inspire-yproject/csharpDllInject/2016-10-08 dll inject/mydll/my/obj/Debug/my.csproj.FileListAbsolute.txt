@@ -1,8 +1,0 @@
-D:\vsproject\mydll\my\bin\Debug\my.dll
-D:\vsproject\mydll\my\bin\Debug\my.pdb
-D:\vsproject\mydll\my\obj\Debug\my.dll
-D:\vsproject\mydll\my\obj\Debug\my.pdb
-D:\vsproject\2016-10-08 dll inject\mydll\my\bin\Debug\my.dll
-D:\vsproject\2016-10-08 dll inject\mydll\my\bin\Debug\my.pdb
-D:\vsproject\2016-10-08 dll inject\mydll\my\obj\Debug\my.dll
-D:\vsproject\2016-10-08 dll inject\mydll\my\obj\Debug\my.pdb

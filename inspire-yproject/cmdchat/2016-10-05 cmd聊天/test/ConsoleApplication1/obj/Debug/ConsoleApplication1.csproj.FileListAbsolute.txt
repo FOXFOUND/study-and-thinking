@@ -1,8 +1,0 @@
-D:\vsproject\test\ConsoleApplication1\bin\Debug\ConsoleApplication1.exe.config
-D:\vsproject\test\ConsoleApplication1\bin\Debug\ConsoleApplication1.exe
-D:\vsproject\test\ConsoleApplication1\bin\Debug\ConsoleApplication1.pdb
-D:\vsproject\test\ConsoleApplication1\obj\Debug\ConsoleApplication1.exe
-D:\vsproject\test\ConsoleApplication1\obj\Debug\ConsoleApplication1.pdb
-D:\vsproject\2016-10-05 cmd聊天\test\ConsoleApplication1\bin\Debug\ConsoleApplication1.exe.config
-D:\vsproject\2016-10-05 cmd聊天\test\ConsoleApplication1\obj\Debug\ConsoleApplication1.exe
-D:\vsproject\2016-10-05 cmd聊天\test\ConsoleApplication1\obj\Debug\ConsoleApplication1.pdb

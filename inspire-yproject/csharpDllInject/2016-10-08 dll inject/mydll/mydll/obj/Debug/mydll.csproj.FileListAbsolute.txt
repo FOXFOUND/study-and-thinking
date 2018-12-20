@@ -1,2 +1,0 @@
-D:\vsproject\mydll\mydll\bin\Debug\mydll.exe.config
-D:\vsproject\2016-10-08 dll inject\mydll\mydll\bin\Debug\mydll.exe.config
