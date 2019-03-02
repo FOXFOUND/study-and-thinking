@@ -55,10 +55,10 @@ public class SearchServiceImpl implements SearchService {
         ArrayList<String> arrayList = new ArrayList<>(requestObject.getKetWordsSet());
         ArrayList<ArrayList<String>> keyWordsSubList = getSubset(arrayList);
         Set searchWordsSet = new HashSet();
-        keyWordsSubList.parallelStream().forEach(eachkeyWordsSubList -> {
+        keyWordsSubList.parallelStream().forEach(eachKeyWordsSubList -> {
             StringBuilder stringBuilder = new StringBuilder();
-            for (int i = 0; i < eachkeyWordsSubList.size(); i++) {
-                stringBuilder.append(eachkeyWordsSubList.get(i));
+            for (int i = 0; i < eachKeyWordsSubList.size(); i++) {
+                stringBuilder.append(eachKeyWordsSubList.get(i));
             }
             searchWordsSet.add(stringBuilder.toString());
         });
