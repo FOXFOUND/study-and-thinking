@@ -4,10 +4,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class SearcheyeApplication {
+public class SearchEyeApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(SearcheyeApplication.class, args);
+        SpringApplication.run(SearchEyeApplication.class, args);
     }
 
 }

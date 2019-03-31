@@ -20,7 +20,7 @@ public class SearchController {
         ResponseObject responseObject = searchService.getResponseObject(requestObject);
 
         Gson gson = new Gson();
-        System.out.println(responseObject.getResultArrayList().get(0));
-        return gson.toJson(responseObject.getResultArrayList().get(0));
+        //System.out.println(responseObject.getResultArrayList().get(0));
+        return gson.toJson(responseObject.getResultArrayList());
     }
 }
