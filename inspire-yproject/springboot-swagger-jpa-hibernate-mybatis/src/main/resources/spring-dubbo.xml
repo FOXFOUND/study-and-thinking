@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--&lt;!&ndash;-->
+<!--  ~-->
+<!--  ~ Copyright 2017-2018 549477611@qq.com(xiaoyu)-->
+<!--  ~-->
+<!--  ~ This copyrighted material is made available to anyone wishing to use, modify,-->
+<!--  ~ copy, or redistribute it subject to the terms and conditions of the GNU-->
+<!--  ~ Lesser General Public License, as published by the Free Software Foundation.-->
+<!--  ~-->
+<!--  ~ This program is distributed in the hope that it will be useful,-->
+<!--  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY-->
+<!--  ~ or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU Lesser General Public License-->
+<!--  ~ for more details.-->
+<!--  ~-->
+<!--  ~ You should have received a copy of the GNU Lesser General Public License-->
+<!--  ~ along with this distribution; if not, see <http://www.gnu.org/licenses/>.-->
+<!--  ~-->
+<!--  &ndash;&gt;-->
+
+<!--<beans xmlns="http://www.springframework.org/schema/beans"-->
+<!--       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"-->
+<!--       xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"-->
+<!--       xsi:schemaLocation="http://www.springframework.org/schema/beans-->
+<!--       http://www.springframework.org/schema/beans/spring-beans.xsd-->
+<!--       http://code.alibabatech.com/schema/dubbo-->
+<!--       http://code.alibabatech.com/schema/dubbo/dubbo.xsd">-->
+
+<!--    <dubbo:application name="@dubbo.application.name@">-->
+<!--        &lt;!&ndash;从2.6.4/2.7.0开始，qosAcceptForeignIp默认配置改为false（拒绝远端主机发出的命令，只允许服务本机执行），如果qosAcceptForeignIp设置为true，有可能带来安全风险，请仔细评估后再打开。&ndash;&gt;-->
+<!--        <dubbo:parameter key="qos.enable" value="@qos.enable@"/>-->
+<!--        <dubbo:parameter key="qos.accept.foreign.ip" value="@qos.accept.foreign.ip@"/>-->
+<!--        <dubbo:parameter key="qos.port" value="@qos.port@"/>-->
+<!--    </dubbo:application>-->
+
+<!--    <dubbo:registry protocol="@dubbo.protocol@" address="@dubbo.zookeeper.address@"/>-->
+
+<!--    <dubbo:protocol accesslog="true" name="dubbo" port="@dubbo.port@"/>-->
+<!--    <dubbo:provider threads="100" timeout="8000" retries="0"/>-->
+<!--</beans>-->

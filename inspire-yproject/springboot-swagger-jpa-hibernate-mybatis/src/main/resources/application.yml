@@ -31,6 +31,12 @@ hibernate:
 entitymanager:
   packagesToScan: com.javainuse.swaggertest.entity
 
+mybatis:
+  type-aliases-package: com.javainuse.*.entity
+  config-location: classpath:mybatis-config.xml
+  mapper-locations: classpath*:/com/javainuse/swaggertest/**/**/dao/mapping/*.xml
+
+
 
 
 

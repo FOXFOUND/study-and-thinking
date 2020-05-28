@@ -12,5 +12,6 @@ public class CityService {
 
     public void getCity(){
         System.out.println(cityMapper.findByState("CA"));
+        System.out.println(cityMapper.find2ByState("CA"));
     }
 }
