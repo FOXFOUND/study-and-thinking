@@ -1,0 +1,42 @@
+ Name                         作用                         
+ ----                          
+ client                        mysql-cli实现的源码
+ cmake                         
+ components                        
+ Docs                          
+ doxygen_resources                         
+ extra                         
+ include                           
+ libbinlogevents                           
+ libbinlogstandalone                           
+ libmysql                          
+ libservices                           
+ man                           
+ mysql-test                        
+ mysys                         
+ packaging                         
+ plugin                        密码校验,连接协议等
+ router                        rest接口,mysql协议,io操作
+ scripts                       mysql初始化脚本
+ share                         字符集
+ sql                           sql命令的实现,例如:sql_select.h
+ sql-common                        
+ storage                       数据存储引擎的实现,myism,innodb(ndb)
+ strings                       string类型的字符集    
+ support-files                         
+ testclients                           
+ unittest                          
+ utilities                         
+ vio                           
+ .clang-format                         
+ .gitconfig                        
+ CMakeLists.txt                        
+ config.h.cmake                        
+ configure.cmake                           
+ Doxyfile-ignored                          
+ Doxyfile.in                           
+ INSTALL                           
+ LICENSE                           
+ MYSQL_VERSION                         
+ README                        
+ run_doxygen.cmake                         
