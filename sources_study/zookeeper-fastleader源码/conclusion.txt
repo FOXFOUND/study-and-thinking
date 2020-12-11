@@ -1,0 +1,37 @@
+1.zookeeper通过QuorumPeer的run方法启动,读取zoo.proptery配置文件,并且初始化端口监听
+注册fastleading选举算法
+2.fastleading选举算法可以分为AuthFastLeading和FastLeading
+3.通过QuorumPeer的setCurrentVote方法设置选举算法具体实现为makeLEStratgy().lookForLeader()
+4.FastLeaderElection类通过实现lookForLeader实现选举
+5.在fastLeaderElection中初始化了两个map集合用户存储投票结果 recvset 和 outElection
+recvset用来存储当前节点的投票,outElection用来存储之前leader节点传递过来的投票
+6.进行选举的时候,首先当前节点根据自己的id,事务id(zxid),选举时间戳(peerEpoch)将Leader节点设置成自己
+并进行广播
+7.在进行广播的过程中,广播的投票节点的状态被写死成Looking状态
+投票节点一共有4中状态: LOOKING,OBSERVING,FOLLOWIN
+zookeeper在选举过程中有两个线程用来对应发送队列和接受队列
+在发送投票信息的过程中会将选举vote方法sendqueue中
+8.在进入投票过程中,当前线程会不断的从接受队列里面获取消息,获取的超时时间为3s,直到选举结束
+9.当获取到从其他节点传递过来的vote信息的时候,首先会判断remote vote的投票信息中的时间戳是否大于本地
+的投票时间戳,
+大于的话,通过totalOrderPredicate方法判断remote vote是否获取一半以上的选票,如果
+获得一半以上的选票,表示remote vote成为Leader节点,则本地广播Leading节点的信息,并且清空recvqueue
+队列,广播remote vote的信息
+判断remote vote 和当前节点哪个更优的条件是
+1.判断选举时间戳,选举时间戳大的当选
+2.选举时间戳相同,事务id大的当选
+3.选举时间戳,事务id都相同,zk在zoo.property中配置id大的当选
+
+小于,等于 则使用远程的选举时间戳更新本地的选举时间戳,并进行广播
+10.如果remote vote的选举时间戳小于当前的选举时间戳,则不予理会
+11.当remote vote的选举时间戳和当前的选举时间戳相等的时候,表示二者处于同一轮选举中
+则调用totalOrderPredicate方法判断最优leader节点
+12.当获取最有leader节点之后,调用getVoteTracker方法计算选举人票,
+zk集群有两种方式:
+1.带权重的集群:通过权重累计求和,达到集群中权重一半以上当选节点
+2.不带权重: 获取一半以上投票的当选
+判断是否当选的最终实现方法为containsQuorum
+13.leader节点当选之后,当前节点通过while循环检测leader节点是否有变换,当时间超过
+finalizewait后,获取没有消息则进行lead当选流程处理,设置lead节点,清空接受队列等
+如果leader节点当选后,有消息发过来则将消息方法接受队列中,重新进入选举流程
+
