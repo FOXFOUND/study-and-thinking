@@ -1,0 +1,25 @@
+mysql语句的执行过程:
+1.mysql-server通过sql_parse.cc的mysql_parse方法解析用户传入的字符串
+2.mysql_parse方法通过parse_sql解析用字符串
+3.mysql_parse方法中通过mysql_command_execute方法执行sql命令
+4.在mysql_command_execute中通过swtich-case结构,调用对应命令的execute方法
+5.sql_select为select方法的解析方法,sql_insert为insert方法的解析方法
+6.sql_select的execute方法通过判断是否为explain执行,使用不同方法执行用户sql,
+当为正常的sql语句的时候使用sql_union的execute方法执行sql
+7.sql_union的execute调用自身的ExecuteIteratorQuery方法执行,在这个方法执行的过程中
+会判断sql语句的格式,返回对象元数据,还是真实的数据
+8.在ExecuteIteratorQuery方法中,通过 Query_result *query_result = this->query_result()获得查询
+结果
+
+sql_optimizer的执行过程:
+1.对于join方法,mysql是有优化的
+2.通过调用sql_optimizer的push_to_engines方法将优化的sql推送到对应的存储引擎进行优化
+
+
+sql语句和存储引擎的连接过程,以update语句为例:
+1.当mysql_command_execute方法解析到sql_update类中的update_single_update方法的
+时候,在update_single_update方法中通过调用table的check_read_removal方法到达table类
+2.table类调用文件file->start_read_removal方法
+3.start_read_removal实现了handler接口,最终调用ha_ndbcluster_stroange的start_read_removal方法
+
+myisam 和 innnodb 的调用过程类似

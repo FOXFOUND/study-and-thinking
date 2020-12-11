@@ -1,0 +1,28 @@
+CMS 垃圾回收:
+1. Initialing Mark (Stop the World)
+标记整个堆中存活的对象
+2. Concurrent Mark 
+通过可达性分析分析堆中存活的对象,确定哪些可以被回收
+3. Remark (Stop the World)
+再次标记堆中存活的对象,用来兼容第二步,并发标记过程中的update对象
+4. concurrent sweeep
+将可以回收的对象放到finlize列表中回收,并且压缩空间
+5.reset
+清理相关data,等待下一次回收
+
+G1 垃圾回收:
+1.Initialing Mark (Stop the world)
+标记 survoir中满足年龄,可以晋升 eden generation的对象
+2.ROOT region Mark 
+对于晋升eden generation的对象进行可达性分析
+3.concurrent Mark 
+发现整个堆的存活对象,如果年轻代垃圾回收发生,可以被打断
+4.remark (stop the world)
+完成对象存活对象的标记,使用 snapshot-at-the-beginning算法
+5.clean up (stop the world)
+1.计算存活对象需要的空间
+2.压缩Remember set
+3.归还空的空间
+6.copying (stop the world)
+1.复制存活对象到新空间
+

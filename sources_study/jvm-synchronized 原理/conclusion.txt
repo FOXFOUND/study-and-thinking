@@ -1,0 +1,11 @@
+1.synchronized在class文件通过javac反编译字节码查看,是通过monitorEnter和monitorExit实现
+的锁控制
+2.synchronized通过在对象头的 monitor_value 标识位来设置的对象锁
+3.在设置synchronized的过程中是和线程有关的,根据monitor对象中的线程名是否是自己
+来判断是否获取锁成功
+4.synchronized存在锁膨胀过程偏向锁,轻量级锁,重量级锁,也就说即使用了synchronized
+也不会马上使用monitor进行控制,而是由偏向锁逐步演化而来的,其中偏向锁和轻量级锁利用了
+对象的header的偏向锁标志位,而只有不满足才会使用monitor_value设置重量级锁
+5.在使用synchronized进行轻量级锁的过程中,线程会创建Lock Record的空间,将对象的Mark Word
+加上Displaced前缀拷贝过来,并且通过cas将对象的mark word 设置成当前线程,在线程执行完成后
+将栈类的Lock Record的值拷贝回去.

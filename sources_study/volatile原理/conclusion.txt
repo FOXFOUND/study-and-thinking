@@ -1,0 +1,13 @@
+现象:
+1.当对应的类的成员变量没有使用volatile关键字的时候,通过CountDownLauch控制11个线程并发 +1,会出现+1丢失的情况
+
+源码解析:
+1.通过查看class文件字节码发现使用volatile修饰的变量会有,ACC_VOLATILE 的flag修饰
+2.通过查看jvm的ClassConstant中关于ACC_VOLATILE的说明描述为不能被寄存器缓存
+3.jvm中判断filed是否使用volatile修饰,调用的是field的isVolatile()方法
+4.volatile的最终实现是通过CreateAtomLoad和CreateAtomStore实现的原子操作
+通过LoadInst类和StroeInst类实现
+5.LoadInst类和StroeInst类是通过llvm(low level virtual machine)提供,是一个编译框架
+LoadInst用于变量读取
+StroeInst用于变量存储
+6.LoadInst 和 StoreInst就是网上教程说的内存屏障(Memory Barrier)

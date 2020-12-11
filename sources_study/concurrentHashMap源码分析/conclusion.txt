@@ -1,0 +1,6 @@
+1.concurrentHashMap通过for循环和cas方法(预期值,本次要放入的值)实现无锁的put操作
+2.concurrentHashMap通过counterCells数组将计算统计进行分散化,通过不同的countercell桶的
+的正数(put)和负数(remove)的累计求和用来计数的,并且减少了计数压力
+3.在concurrentHashMap的扩容的时候或者帮助扩容的时候,通过将原有的数组使用bound,i,transferIndex进行
+分块操作,来进行并发扩容的
+4.在进行hash冲突的时候,如果当前冲突链表的长度大于8则转换为红黑树,小于6则转换会冲突链表
