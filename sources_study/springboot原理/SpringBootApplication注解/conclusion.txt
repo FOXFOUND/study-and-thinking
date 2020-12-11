@@ -1,0 +1,6 @@
+1.springboot项目注解通过springbootapplication实现自动配置功能
+2.autoconfigureation的具体实现斯通AutoConfigrationImportSelector实现的
+3.AutoConfigrationImportSelector的selectImport方法中,通过初始化SpringFactoryLoader实现类
+在这个实现类中读取spring.factory文件
+4.在spring-boot-autoconfiguration.jar的包下spring.factory这个文件定义了MybatisAutoConfiguration等
+自动配置文件类
