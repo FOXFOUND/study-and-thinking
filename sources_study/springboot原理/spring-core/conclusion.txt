@@ -1,0 +1,49 @@
+// Prepare this context for refreshing.
+prepareRefresh()  
+//记录时间,初始化envirment环境变量和propertites变量
+
+// Tell the subclass to refresh the internal bean factory.
+ConfigurableListableBeanFactory beanFactory = obtainFreshBeanFactory()
+//创建DefaultListableBeanFactory对象
+spring中通过beanFactory
+1.管理bean定义,BeanDifinition
+2.识别bean和注入bean相关的依赖,invokeBeanFactoryPostProcessors
+
+// Prepare the bean factory for use in this context.
+prepareBeanFactory(beanFactory)
+//设置beanfactory不需要依赖和需要依赖的注入的属性
+
+// Allowsst-processing of the bean factory in context subclasses.
+postProcessBeanFactory(beanFactory);
+//调用applicaationContext的postProcessBeanFacotry方法,默认调用AnnotationConfigServletWebSeriverApplicationContext用来
+扫描指定的basePackage的bedeifinition
+
+StartupStep beanPostProcess = this.applicationStartup.start("spring.context.beans.post-process");
+// Invoke factory processors registered as beans in the context.
+invokeBeanFactoryPostProcessors(beanFactory);
+//调用beanFactory的BeanFactoryPostProcessor扫描springBootApplication所有的beandifinition
+
+// Register bean processors that intercept bean creation.
+registerBeanPostProcessors(beanFactory);
+//由于一些beanFactory的beanFactoryPostProcessor在之前的调用过程中没有加载到ioc中,这里重新调用一遍
+//比较有代表性的有AutowiredAnnotationBeanProcessors
+
+beanPostProcess.end();
+// Initialize message source for this context.
+initMessageSource();
+// Initialize event multicaster for this context.
+initApplicationEventMulticaster();
+// Initialize other special beans in specific context subclasses.
+
+onRefresh();
+//spring所有的bean加载完成之后,给子类回调使用
+
+// Check for listener beans and register them.
+registerListeners();
+
+// Instantiate all remaining (non-lazy-init) singletons.
+finishBeanFactoryInitialization(beanFactory);
+//创建bean对象
+
+// Last step: publish corresponding event.
+finishRefresh();
