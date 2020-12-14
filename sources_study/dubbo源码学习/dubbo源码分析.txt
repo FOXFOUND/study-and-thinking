@@ -1,0 +1,83 @@
+总结
+1.provider对应的bean为ServiceBean,consumer对应的bean为ReferenceBean,二者都是在spring初始化bean
+之后调用afterProptertiesSet#getObject方法中进行初始化的
+2.初始化过程中org.apache.dubbo.registry.integration.RegistryProtocol#refer创建代理类
+org.apache.dubbo.rpc.proxy.AbstractProxyFactory#getProxy(org.apache.dubbo.rpc.Invoker<T>, java.lang.Class<?>[])
+org.apache.dubbo.rpc.proxy.javassist.JavassistProxyFactory#getInvoker
+org.apache.dubbo.common.bytecode.Wrapper#invokeMethod
+3.provider和consumer之前都是启动netty通过handler,InvokerInvocationHandler处理
+4.在调用invoker的过程中,会经过一系列filter进行超时过滤等
+5.provider和consumer通过注册zk-listener进行监控节点的变化
+6.节点注册的重试任务是通过定时任务线程池进行控制,consumer失败重试通过FailoverClusterInvoker实现,默认重试3次,通过retry
+可以控制,通过reteies设置重启次数也可以控制,最终落到了reteies上
+7.dubbo使用extensionLoader加载自定义的类,如ReferenceConfig,Protrol等
+8.dubbo中设置了4中负载均衡策略,其中ConsistentHashLoadBalance(一致性hash)引入了虚拟节点的设计,避免了真实节点挂了
+之后无法访问的问题
+9.dubbo引入了自定义的标签,通过DubboBeanDefinitionParser进行解析
+
+
+
+Dubbo源码解析之配置解析篇
+1.通过DubboNamespaceHandler的init方法配置dubbo不同标签的解析方法,使用的解析器类
+都是DubboBeanDefinitionParser,不同的是传入的Config不同,每一个dubbo标签对应一个config
+
+Dubbo源码解析之扩展点（ExtensionLoader）篇
+1.在extensionLoader的构造中使用了本地缓存,本地缓存找不到才会new ExtendLoader
+2.在创建ExtendLoader使用了双重检查的方式创建对象,
+第一次检查的目的是提高效率,
+第二次检查的作用是防止在synchronized可能存在wait方法释放锁,导致重复初始化
+
+Dubbo源码解析之provider初始化
+1.ServiceBean实现了InitializingBean,在spring-ioc初始化会会调用afterPropertiesSet方法
+在这个方法中,检查Provider,Application,Module,Registry,Monitor,Protocol,Path等标签
+Provider设置提供者线程数,超时时间,重试次数等
+Application设置dubbo服务名,qos端口(dubbo诊断端口)
+Registry设置注册中心协议,注册中心地址
+Protocol设置dubbo端口,以及dubbo访问控制,是否可以日志输出等
+
+Dubbo源码解析之provider暴露篇
+1.获取invoker，暴露服务 
+1.1 使用了wrapper包装类,最终调用JavassistProxyFactory生成的wrapper.invokeMethod方法执行,exportorMap维护invoke
+1.2 在调用ProtocolFilterWrapper.invoke方法的时候调用了buildInvokerChain构建invokeFilter
+invokeFilter通过ExtendsionLoader加载
+EchoFilter、ClassLoaderFilter、GenericFIlter、ContextFilter、TraceFilter、TimeoutFilter、MonitorFilter、ExceptionFilter
+2.开启dubbo服务过程
+DubboProtocol.requestHandler --> DecodeHandler --> HeaderExchangeHandler --> MultiMessageHandler 
+--> HeartbeatHandler --> AllChannelHandler --> NettyHandler
+DubboProtocol.openServer-->DubboProtocol.createServer-->Exchangers.bind-->Transporters.bind-->NettyTransporter.( new NettyServer)
+
+Dubbo源码解析之registry注册中心
+1.dubbo通过在zk上添加listener,在zk有变动的时候调用FailbackRegistry.retry()方法,通过判断注册,订阅失败集合的size>0进行
+相应的处理的
+2.dubbo初始化registry的时候,在AbstractRegistry的构造方法中和本地的cache进行更新和读取,会创建.lock和.cache两个文件
+只有在.lock不存在的时候,才会创建.cache文件
+3.AbstractZookeeperClient.create中通过ephemeral判断创建临时节点还是永久节点
+
+Dubbo源码解析之provider调用篇
+1.经过了拦截器之后，接下来会分别调用RegistryProtocol.InvokerDelegete和DelegateProviderMetaDataInvoker的invoke方法
+2.通过NettyChannel.write方法将消息写入缓冲区，发送给调用方
+
+Dubbo源码解析之consumer初始化
+1.ReferenceBean实现了InitializingBean,在spring-ioc加载完成后会调用afterPropertiesSet方法
+2.ReferenceBean会加载Consumer,Module,Registry,Application,Monitor的相关配置
+3.通过ReferenceConfig.createProxy创建代理对象
+
+Dubbo源码解析之consumer关联provider
+1.通过reconnectExecutorService.scheduleWithFixedDelay实现定时重连
+2.AbstractClient.initConnectStatusCheckCommand() 初始化重连线程定时任务,NettyClient.doConnect()建立连接
+3.InvokerInvocationHandler.invoke进行consumer方法调用,最终由FailoverClusterInvoker实现调用
+
+Dubbo源码解析之LoadBalance负载均衡
+1.dubbo一共支持四种负载均衡策略，RoundRobinLoadBalance（轮询）、RandomLoadBalance（随机）
+、LeastActiveLoadBalance（最少活跃）、ConsistentHashLoadBalance（一致性哈希）。默认为随机策略
+2.dubbo-provider可以配置权重,其中随机策略是构建随机数的时候使用,轮询权重是在拼接访问区块的时候使用,
+一致性哈希是默认使用了160个虚拟节点,如果一个hash节点挂了,则根据构造的虚拟节点treeMap取出高于节点的tailMap,
+// 取出映射中key大于或等于给定参数哈希值的部分视图
+SortedMap<Long, Invoker<T>> tailMap = virtualInvokers.tailMap(key);
+if (tailMap.isEmpty()) {
+    // 如果取出的部分视图是空的，则直接返回第一个key
+    key = virtualInvokers.firstKey();
+} else {
+    // 不为空则直接获取部分视图的第一个key
+    key = tailMap.firstKey();
+}
