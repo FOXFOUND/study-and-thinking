@@ -11,3 +11,58 @@ AutoProxyRegister这个类,在sping-core加载BeanDefition的过程中创建了�
 调用目标方法
 7.在使用事务管理执行事务的过程中,通过判断执行方法的过程中是否发生异常决定是提交还是回退,值得注意的是
 即使发生异常也可能存在提交,具体是否提交由TransactionInfo中的transactionStatus决定
+
+spring事务注册的流程
+1.springioc中在创建对象的时候调用doCreate方法,doCreate方法会调用到
+org.springframework.aop.framework.adapter.DefaultAdvisorAdapterRegistry#wrap判断是否是Advice对象
+2.将TransactionInterceptor转换成MethodInterceptor,进行拦截
+Advice advice = (Advice) adviceObject;
+if (advice instanceof MethodInterceptor) {
+	// So well-known it doesn't even need an adapter.
+	return new DefaultPointcutAdvisor(advice);
+}
+3.在TransactionInterceptor中调用invoke方法进行拦截,实际调用
+org.springframework.transaction.interceptor.TransactionAspectSupport#invokeWithinTransaction
+4.在这个方法中通过
+org.springframework.transaction.interceptor.TransactionAttributeSource#getTransactionAttribute
+org.springframework.transaction.interceptor.AbstractFallbackTransactionAttributeSource#getTransactionAttribute
+org.springframework.transaction.interceptor.AbstractFallbackTransactionAttributeSource#computeTransactionAttribute
+org.springframework.transaction.annotation.SpringTransactionAnnotationParser#parseTransactionAnnotation(java.lang.reflect.AnnotatedElement)
+判断method是否是public,是否有Transational注解
+
+
+spring-事务和spring-aop,aspectjweaver的联系和区别
+1.spring事务是利用aop中的Interceptor方式,实现了自己的TransactionInterceptor实现
+2.spring-aop提供了默认的切面注解如advice,interceptor,joinpoint等,但是@around,@AfterReturning等注解需要引入aspectjweaver包来实现
+org.springframework.aop.framework.adapter.MethodBeforeAdviceInterceptor#invoke
+		this.advice.before(mi.getMethod(), mi.getArguments(), mi.getThis());
+		return mi.proceed();
+3.spring-aop中存在一个joinPoint,aspectjweaver也存在一个joinPoint,但是他们的process方法所在的类不同,aspectjweaver包中proceedingJoinPoint
+spring-aop在Joinpoint中,所以只要使用正确的对象就不会冲突
+4.在spring-aop中
+org.springframework.aop.aspectj.AbstractAspectJAdvice#invokeAdviceMethod(org.aspectj.weaver.tools.JoinPointMatch, java.lang.Object, java.lang.Throwable)
+引入aspectjweaver包中proceedingJoinPoint
+5.在spring-aop ProxyFactoryBean引入AdvisorAdapterRegistry-->DefaultAdvisorAdapterRegistry-->AbstractAspectJAdvice
+	public DefaultAdvisorAdapterRegistry() {
+		registerAdvisorAdapter(new MethodBeforeAdviceAdapter());
+		registerAdvisorAdapter(new AfterReturningAdviceAdapter());
+		registerAdvisorAdapter(new ThrowsAdviceAdapter());
+	}
+	
+6.aspectjweaver通过ExposeInvocationInterceptor,实现aop ExposeInvocationInterceptor implements MethodInterceptor
+spring通过ReflectiveMethodInvocation实现
+	public static JoinPoint currentJoinPoint() {
+		MethodInvocation mi = ExposeInvocationInterceptor.currentInvocation();
+		if (!(mi instanceof ProxyMethodInvocation)) {
+			throw new IllegalStateException("MethodInvocation is not a Spring ProxyMethodInvocation: " + mi);
+		}
+		ProxyMethodInvocation pmi = (ProxyMethodInvocation) mi;
+		JoinPoint jp = (JoinPoint) pmi.getUserAttribute(JOIN_POINT_KEY);
+		if (jp == null) {
+			jp = new MethodInvocationProceedingJoinPoint(pmi);
+			pmi.setUserAttribute(JOIN_POINT_KEY, jp);
+		}
+		return jp;
+	}
+	
+MethodInvocation是aspectjweaver的实现,ProxyMethodInvocation是spring aop实现
