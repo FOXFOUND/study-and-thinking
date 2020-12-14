@@ -1,0 +1,2 @@
+1.spring-aop的AbstractAdvisingBeanPostProcessor类通过实现beanPostProcessor接口
+将其添加到beanPostProcessor的list集合里,在spring创建bean的doCreate方法中被调用

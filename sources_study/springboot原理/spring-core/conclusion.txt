@@ -47,3 +47,17 @@ finishBeanFactoryInitialization(beanFactory);
 
 // Last step: publish corresponding event.
 finishRefresh();
+
+
+
+doCreate方法的调用
+1.在invokeBeanFactoryPostProcessors 中调用context的BeanFactoryPostProcessor时创建context的BeanFactoryPostProcessor对象
+2.在registerBeanPostProcessors中创建beanFactory的BeanPostProcessor,创建beanFacotry中的BeanPostProcessor对象
+3.在finishBeanFactoryInitialization 中创建bean的时候,创建单例bean
+
+
+BeanFactoryPostProcessor和BeanPostProcessor的区别
+1.调用时间不同,通过BeanFactoryPostProcessor向beanFactory中添加BeanPostProcessor,最终通过BeanPostProcessor创建bean
+2.BeanPostProcessor的定义接口是postProcessBeforeInitialization(Object bean, String beanName)),postProcessAfterInitialization(Object bean, String beanName))
+BeanFactoryPostProcessor定义的接口是postProcessBeanFactory(ConfigurableListableBeanFactory beanFactory)
+3.如果想要修改bean定义,应该在BeanPostProcessor
