@@ -1,19 +1,22 @@
 package proxy.test;
 
+import java.lang.reflect.Proxy;
+
 public class JdkProxyTest {
     public static void main(String[] args) {
         System.out.println("**********************JDKProxy**********************");
-        System.getProperties().put("sun.misc.ProxyGenerator.saveGeneratedFiles","true");
+        //System.getProperties().put("sun.misc.ProxyGenerator.saveGeneratedFiles","true");
         JDKProxy jdkPrpxy = new JDKProxy();
         IUserManager userManagerJDK = (IUserManager) jdkPrpxy.newProxy(new UserManagerImpl());
         userManagerJDK.addUser("jpeony", "123456");
-        IUserManager userManagerJDK2 = (IUserManager) jdkPrpxy.newProxy(userManagerJDK);
-        userManagerJDK2.addUser("jpeony", "123456");
+        System.out.println(userManagerJDK instanceof Proxy);  //true
 
         /**
          * jdk 二次代理会出现死循环
          */
         /**
+         * //        IUserManager userManagerJDK2 = (IUserManager) jdkPrpxy.newProxy(userManagerJDK);
+         * //        userManagerJDK2.addUser("jpeony", "123456");
          * at proxy.test.JDKProxy.invoke(JDKProxy.java:36)
          * 	at com.sun.proxy.$Proxy0.addUser(Unknown Source)
          * 	at sun.reflect.GeneratedMethodAccessor1.invoke(Unknown Source)
