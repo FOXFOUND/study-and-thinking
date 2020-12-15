@@ -66,3 +66,11 @@ spring通过ReflectiveMethodInvocation实现
 	}
 	
 MethodInvocation是aspectjweaver的实现,ProxyMethodInvocation是spring aop实现
+
+
+mybatis的事务和spring中@tractional的区别
+1.mybatis中的事务实现是利用Session.commit 和 Session.rollback进行事务控制,针对的是一次查询
+spring中利用interceptor实现代理方法,通过对目标方法的异常判断实现控制,二者的作用维度不同
+2.spring中的事务有7种传播机制,可以也是基于二者的作用维度不同自然而生的
+3.mybatis中也存在transtional接口,但是通过openSessionFromDataSource创建session对象使用,
+spring中的trational是注解,用来控制方法行为,二者的变量类型不同
