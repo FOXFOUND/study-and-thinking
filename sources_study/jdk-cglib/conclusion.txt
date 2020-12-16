@@ -1,0 +1,23 @@
+1.jdk代理和cglib代理都是生成匿名代理对象的方式实现,
+jdk是通过继承proxy类,实现接口
+cglib通过继承代理类,实现Factory接口
+2.对于没有接口的类,只能通过cglib的方式进行代理
+3.可以通过instanceof proxy ,Factory 判断当前类是否是代理类
+4.可以通过构造jvm对象格式的byte[]数组,进行无文件创建对象,调用difine方法
+5.jdk1.6,1.7,1.8中 cglib比jdk性能高 ,很多研究表明高8倍,实际测试结果高2倍
+
+jvm-native(热代码) , jdk-proxy, cglib 性能对比
+方法1
+native      2   0
+Dynamic     50  64
+Cglib       27  45
+方法2
+native      49      24
+Dynamic     1600    890
+Cglib       866     897
+
+6.个人觉得,cglib更快的原因可能针对系统内存存取的块结构做了对齐.
+https://blog.csdn.net/zhangxiong2532/article/details/50826917/
+
+
+

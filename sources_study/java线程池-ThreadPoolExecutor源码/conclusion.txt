@@ -1,0 +1,23 @@
+1.java提供不同的线程池实现都是实现了executorService的接口,在executorService里面定义了submit,shutdown等线程池操作
+的基本接口
+2.线程池具体执行的方法中是调用线程池的execute的方法,在execute方法中将实现了runnable的方法作为参数传递进来
+3.execute的方法逻辑是将用户任务包装成一个Worker对象,这和Worker对象中有两个属性一个是Thread,另一个是Task对象
+其中Worker对象实现了Runnable接口,并且将Worker作为参数传递给Thread对象,也就是锁Thread的执行run方法就是执行
+Worker的run方法,也就是执行Task的run方法
+4.在execute创建Worker对象的时候,会根据corePoolSize以及工作线程数量进行判断,决定是立即创建一个Worker对象并且执行
+还是将任务方法workQueue,等待工作中的Worker空闲了,取workQueue中的任务进行执行
+case 1: 工作线程数量 < corePoolSize , 创建Worker
+case 2: 工作线程数量 >= corePoolSize 并且 workQueue 队列没有满 , 放到workQueue里面
+case 3: 工作线程数量 >= corePoolSize 并且 workQueue 满了, 创建Worker
+case 4: 工作线程数量 > MaxPoolSize ,工作线程数量 >= corePoolSize,并且 workQueue 满了, 拒绝执行任务,调用
+创建线程池设置了rejectHandler进行处理
+5.线程池中有一些变量是线程不安全的,如记录工作worker数组的是HashSet,所以在一些操作的时候使用RetrantLock进行加锁
+6.线程池记录线程池状态和线程池执行线程数量都是使用了同一个字段,通过这个字段的不同bit位进行区分,其中高3位记录线程状态,后
+29位记录线程数量
+7.线程池执行的过程中使用了workQueue进行了被执行的任务,执行的线程,以及线程池的管理三者的解耦
+8.线程池的状态和线程的状态是两回事,线程池有Running,ShutDown,Stop,Ternimate 四种状态,用来表示线程池中worker如何处理
+线程池中的剩余任务
+9.线程中中比较特殊的是ScheduleThreadPoolExecutor,表示定时任务线程池,其利用了通用的线程池执行逻辑,而是在用户task的run方法上
+做了自己的一层封装将任务包装成一个ScheduFutureTask对象,其也实现了runnable接口,在ScheduleFudureTask的run方法中,
+通过reExecutePeriodic方法重新添加任务
+10.在线程池的runtask相关方法中有对Thread的状态进行了判断,维护了线程池中线程数量的可预期
