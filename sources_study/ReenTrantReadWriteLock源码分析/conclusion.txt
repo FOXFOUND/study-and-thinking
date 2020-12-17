@@ -1,0 +1,17 @@
+1.readLock使用高16位记录数量,writeLock使用低16位记录数量
+2.在进行请求队列维护的时候,在setHead方法中进行头节点的问题,在unParkSuccessors方法中进行tail节点的维护
+3.请求队列初始化的时候,head和tail指向的是同一个节点,而在setHead设置头节点的过程中使用的preSuccessor节点 == head
+进行判断,也就是说默认设置的node节点,直接被移除,而node节点后边的第一个任务节点在unparkSuccessor方法中会唤醒下一个节点
+Node <--> Task1 <--> Task2
+
+head                  tail
+
+4.readLock会设置一个变量值,提高解锁和重入效率,如firstReader , cacheThreadLoader ....
+5.公平模式都是判断等待队列,非公平模式利用线程竞争cas的操作
+6.同一个线程的读写锁可以重入,
+不同线程
+1.有写锁,则不可以重入读写锁,
+2.有读锁,可以重入读锁,不可以重入写锁
+
+7.countDownLatch的await方法,利用aqs的等待队列,进行直到countDown方法进行头节点唤醒,之后依次唤醒等待队列
+可以先countDown再await,因为await利用的是state变量,

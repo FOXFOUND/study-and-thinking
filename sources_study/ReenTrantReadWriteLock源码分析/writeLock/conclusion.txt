@@ -1,0 +1,6 @@
+1.ReenTrantReadWriteLock都是利用Sync实现的锁控制,Sync继承了AbstractQueuedSynchronizer
+2.在lock的时候,Sync有两种模式公平模式(fair)和非公平模式(nonFair),二者的区别在于
+公平模式获取锁的时候是按照等待队列的顺序依次获取,
+而非公平模式获取锁的时候只要当前锁为空就获取,此时的等待队列可以不为空,看哪个线程抢的快
+3.当获取不到锁的时候,公平模式和非公平模式都会设置前驱节点的waitStatus为signal,并且将当前节点挂起
+在unlock的时候,如果前去节点会唤醒后继节点(Successor)
