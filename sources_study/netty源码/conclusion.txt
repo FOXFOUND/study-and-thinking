@@ -1,0 +1,54 @@
+1.context的作用
+^netty将handler转换成AbstractChannelHandlerContext,使用双向链表进行管理
+^通过双向列表引入了header,tail两个节点,用来进行inBound (外部数据流入) 和 outBound (内部数据流出) 事件的控制
+
+2.channel - initializer的注册流程
+^在ServerBootstrap.bind-->AbstractBootStrap.initAndRegister-->ServerBootStrap.init-->DefaultChannelPipeline.addLast
+-->DefaultChannelPipeline.callHandlerAdded0-->AbstractChannelHandlerContext.callHandlerAdded-->ChannelInitializer.handlerAdded
+-->ChannelInitializer.initChannel-->自定义的ChannelInitializer.initchannel方法
+^自定义的ChannelInitializer 需要继承ChannelInitializer类
+
+3.inbound outbound 的调用顺序
+^outbind事件  
+ServerBootstrap.bind-->AbstractBootStrap.dobind0-->AbstractChannel.bind-->DefaultChannelPipeline.bind
+-->tail.bind-->AbstractChannelHandlerContext.bind-->AbstractChannelHandlerContext.invokeBind
+-->ChannelOutboundHandlerAdapter.bind-->AbstractChannelHandlerContext.bind
+^inboud事件  
+ServerBootstrap.bind-->AbstractBootStrap.initAndRegister-->SingleThreadEvnetLoop.register-->AbstractChannel.register
+-->AbstractChannel.register0-->DefaultChannelPipeline.fireChannelRegistered
+-->AbstractChannelHandlerContext.invokedChannelRegistered-->HeadContext.channelRegistered
+-->AbstractChannelHandlerContext.fireChannelRegistered-->AbstractChannelHandlerContext.invokeChannelRegistered
+
+4.nio流程在代码中的分布
+^注册selector
+ServerBootstrap.bind-->AbstractBootStrap.initAndRegister-->SingleThreadEvnetLoop.register-->AbstractChannel.register
+-->AbstractChannel.register0-->AbstractNioChannel.doRegister-->AbstractSelectableChannel.register
+-->SelectorImpl.register
+
+^获取nio的selector数据
+ new NioEventLoopGroup()-->new MultithreadEventExecutorGroup --> DefaultEventExecutorGroup.newChild
+ --new SingleThreadEventExecutor()
+ ServerBootstrap.bind-->AbstractBootStrap.dobind0-->AbstractChannelHandlerContext.bind-->AbstractChannelHandlerContext.safeExecute
+ -->SingleThreadEventExecutor.execute-->SingleThreadEventExecutor.doStartThread-->SingleThreadEventExecutor.run
+ -->NioEventLoop.run-->NioEventLoop.processSelectedKeys-->unsafe.read
+ -->AbstractNioMessageChannel.read--> pipeline.fireChannelRead-->从头节点开始读
+
+5.no-copy buffer 的实现原理
+^netty使用了自定义的ByteBuf进行数据读取
+ * <pre>
+ *      +-------------------+------------------+------------------+
+ *      | discardable bytes |  readable bytes  |  writable bytes  |
+ *      |                   |     (CONTENT)    |                  |
+ *      +-------------------+------------------+------------------+
+ *      |                   |                  |                  |
+ *      0      <=      readerIndex   <=   writerIndex    <=    capacity
+ * </pre>
+
+ 通过3个执行,避免了write buffer 向 read buffer复制的过程
+
+6.netty的优点总结
+1.封装了jdk-nio操作
+2.使用了bossGroup-workerGroup 定义了线程模型,降低了io阻塞
+3.netty定义了no-buffer并且针对tcp粘包,半包 进行了处理
+4.netty通过context节点维护了一组handler队列,引入了inBound和outBound事件进行了处理
+5.netty框架通过channelInitializer等接口类,增加了编程的灵活性
