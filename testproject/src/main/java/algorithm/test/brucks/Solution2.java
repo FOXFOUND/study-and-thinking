@@ -121,24 +121,26 @@ public class Solution2 {
 //
 //    }
 
-    public static void main(String[] args) {
-        int[] l1 = new int[]{1};
-        int[] l2 = new int[]{1};
-        int[] l3 = new int[]{1};
-        int[] l4 = new int[]{1};
-        int[] l5 = new int[]{1};
-        int[] hitL1 = new int[]{3, 0};
-        int[] hitL2 = new int[]{4, 0};
-        int[] hitL3 = new int[]{1, 0};
-        int[] hitL4 = new int[]{2, 0};
-        int[] hitL5 = new int[]{0, 0};
-        int[][] grid = new int[][]{l1, l2, l3, l4, l5};
-        int[][] hits = new int[][]{hitL1, hitL2, hitL3, hitL4, hitL5};
-        Solution2 solution = new Solution2();
-        int[] res = solution.hitBricks(grid, hits);
-        // [1,0,1,0,0]
-        System.out.println(JSON.toJSONString(res));
-    }
+//    public static void main(String[] args) {
+//        int[] l1 = new int[]{1};
+//        int[] l2 = new int[]{1};
+//        int[] l3 = new int[]{1};
+//        int[] l4 = new int[]{1};
+//        int[] l5 = new int[]{1};
+//        int[] hitL1 = new int[]{3, 0};
+//        int[] hitL2 = new int[]{4, 0};
+//        int[] hitL3 = new int[]{1, 0};
+//        int[] hitL4 = new int[]{2, 0};
+//        int[] hitL5 = new int[]{0, 0};
+//        int[][] grid = new int[][]{l1, l2, l3, l4, l5};
+//        int[][] hits = new int[][]{hitL1, hitL2, hitL3, hitL4, hitL5};
+//        Solution2 solution = new Solution2();
+//        int[] res = solution.hitBricks(grid, hits);
+//        // [1,0,1,0,0]
+//        System.out.println(JSON.toJSONString(res));
+//    }
+
+
 
 
 }
