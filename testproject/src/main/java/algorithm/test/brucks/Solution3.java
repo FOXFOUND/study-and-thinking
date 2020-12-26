@@ -26,6 +26,11 @@ public class Solution3 {
         int[][] directionArr = new int[4][5];
         int x = hit[0];
         int y = hit[1];
+
+        if (hit.length != 2 && hit[3] == 0) {
+            return 0;
+        }
+
         //已经引用到了顶级子节点
         if (hit.length != 2 && hit[4] == 1) {
             return 0;
@@ -41,8 +46,6 @@ public class Solution3 {
         if (hit.length == 2 && grid[x][y] == 0) {
             return 0;
         }
-        //标记清除
-        grid[x][y] = 0;
         int xPlus = x + 1;
         int xSub = x - 1;
         int yPlus = y + 1;
@@ -77,30 +80,22 @@ public class Solution3 {
             directionArr[3][3] = 1;
             hasNode++;
         }
-        /**
-         * 节点掉落条件:
-         * 1.周围没有其他的节点了
-         * 2.并且不是顶层子节点
-         * 3.并且没有和顶层子节点连起来
-         */
-        if (hasNode == 0 && x != 0 ) {
-            return 1;
 
+        //无法搜索到其他的节点了,当前节点是否掉落取决于父节点
+        if (hasNode == 1) {
+            return 1;
         }
 
-
-        directionArr[3][2] = initDirection(grid, directionArr[3]);
         directionArr[0][2] = initDirection(grid, directionArr[0]);
         directionArr[1][2] = initDirection(grid, directionArr[1]);
         directionArr[2][2] = initDirection(grid, directionArr[2]);
+        directionArr[3][2] = initDirection(grid, directionArr[3]);
         int drawCount = 0;
 
         int rootCount = 0;
-        int directionCount = 0;
         for (int i = 0; i < directionArr.length; i++) {
             //只有是存在的方向节点,才会进行统计
             if (directionArr[i][3] == 1) {
-                directionCount++;
                 //已经可以追溯到顶部不需要累加
                 if (directionArr[i][4] == 1) {
                     //回溯标记父节点
@@ -116,15 +111,15 @@ public class Solution3 {
 
         }
 
+        if (rootCount > 0) {
+            drawCount = 0;
+        }
+
         //没有节点落下,当前节点恢复
         if (drawCount == 0) {
             grid[x][y] = 1;
         }
 
-        //每一个方向,都可以到达顶层顶点
-        if (rootCount == directionCount) {
-            return 0;
-        }
 
         //子节点下落了,那么当前节点也应该下落
         if (drawCount != 0 && hit.length != 2) {
@@ -136,18 +131,18 @@ public class Solution3 {
     }
 
     public static void main(String[] args) {
-        extracted1();
-        extracted2();
-            extracted3();
-            extracted4();
+//        extracted1();
+//        extracted2();
+//            extracted3();
+//            extracted4();
 
         extracted5();
 
     }
 
     private static void extracted5() {
-        int[][] grid = {{0,1,1,1,1,1},{1,1,1,1,1,1},{0,0,1,0,0,0},{0,0,0,0,0,0},{0,0,0,0,0,0}};
-        int[][] hits = {{1,3},{3,5},{0,3},{3,3},{1,1},{4,2},{1,0},{3,0},{4,5},{2,1},{4,4},{4,0},{2,4},{2,5},{3,4},{0,5},{0,4},{3,2},{1,5},{4,1},{2,2},{0,2}};
+        int[][] grid = {{0, 1, 1, 1, 1, 1}, {1, 1, 1, 1, 1, 1}, {0, 0, 1, 0, 0, 0}, {0, 0, 0, 0, 0, 0}, {0, 0, 0, 0, 0, 0}};
+        int[][] hits = {{1, 3}, {3, 5}, {0, 3}, {3, 3}, {1, 1}, {4, 2}, {1, 0}, {3, 0}, {4, 5}, {2, 1}, {4, 4}, {4, 0}, {2, 4}, {2, 5}, {3, 4}, {0, 5}, {0, 4}, {3, 2}, {1, 5}, {4, 1}, {2, 2}, {0, 2}};
         Solution3 solution = new Solution3();
         int[] res = solution.hitBricks(grid, hits);
         //[0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,2,0,0,0,0,1]
