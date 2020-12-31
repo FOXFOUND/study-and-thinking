@@ -2,6 +2,7 @@ package hashmap.test;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.ConcurrentHashMap;
@@ -20,6 +21,13 @@ public class HashMapTest {
         CopyOnWriteArrayList copyOnWriteArrayList;
         ArrayBlockingQueue arrayBlockingQueue;
         ArrayList arrayList;
+        /**
+         * linkedHashMap可以实现insert和remove,select实现O(1)的时间复杂度
+         * 相比于直接使用链表的时间复杂度O(n)
+         */
+        Map map1 = new LinkedHashMap();
+        map1.put("1","1");
+        map1.remove("1");
 
 
     }
