@@ -1,15 +1,18 @@
 package hashmap.test;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.LinkedHashMap;
-import java.util.Map;
+import java.util.*;
 import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.CopyOnWriteArrayList;
 
 public class HashMapTest {
     public static void main(String[] args) {
+
+        Map treeMap =new TreeMap();
+        treeMap.put("1","1");
+
+        Map linkHashMap =new  LinkedHashMap();
+
         Map map = new HashMap<>();
         map.put("1", 1);
         System.out.println("1");
