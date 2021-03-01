@@ -1,5 +1,6 @@
 package queue.test;
 
+import java.util.Stack;
 import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.SynchronousQueue;
@@ -12,6 +13,8 @@ public class QueueTest {
         arrayBlockingQueue.offer("1");
         linkedBlockingQueue.offer("1");
         synchronousQueue.offer("1");
+        Stack<Integer> stack = new Stack<>();
+        stack.push(1);
 
     }
 }
