@@ -1,6 +1,7 @@
 package algorithm.test;
 
 import java.util.Arrays;
+import java.util.Queue;
 
 /**
  * Created by chengxiao on 2016/12/17.
@@ -17,7 +18,6 @@ public class HeapSort {
     public static void main(String[] args) {
 
         int[] arr = new int[]{1, 7, 3, 5, 7, 6, 8, 3, 0, 1, 3, 8, 9, 5, 7, 9, 10};
-
         sort(arr);
         System.out.println(Arrays.toString(arr));
     }
