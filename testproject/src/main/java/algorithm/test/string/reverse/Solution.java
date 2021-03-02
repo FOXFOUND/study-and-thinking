@@ -29,7 +29,7 @@ public class Solution {
     }
 
     private boolean validPalindromeSub(String s, int left, int right, int deleteCount) {
-        if (deleteCount > 1 ) {
+        if (deleteCount > 2 ) {
             return false;
         }
         while (left < right) {
@@ -48,5 +48,6 @@ public class Solution {
     public static void main(String[] args) {
         Solution solution = new Solution();
         System.out.println(solution.validPalindrome("abbca"));
+        System.out.println(solution.validPalindrome("abbbbcca"));
     }
 }

@@ -1,4 +1,4 @@
-package algorithm.test.LinkRevert;
+package algorithm.test.string.reverse;
 
 public class Solution2 {
     public static int minCount = 0;
