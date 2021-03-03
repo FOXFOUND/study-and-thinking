@@ -1,4 +1,4 @@
-package algorithm.test;
+package algorithm.test.array.sort;
 
 public class FastSort {
     //private static int[] arr = new int[]{1, 10, 9, 4, 6, 6};  9

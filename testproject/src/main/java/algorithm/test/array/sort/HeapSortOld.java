@@ -1,4 +1,4 @@
-package algorithm.test;
+package algorithm.test.array.sort;
 
 import java.util.Arrays;
 import java.util.Queue;
@@ -7,7 +7,7 @@ import java.util.Queue;
  * Created by chengxiao on 2016/12/17.
  * 堆排序demo
  */
-public class HeapSort {
+public class HeapSortOld {
     /**
      * 1.堆排序,利用了冒泡的思想和树的特性,可以二分查找
      * 2.构造堆的树,每一层的根节点都比左右节点的值大,也就是最大的三个数就是根左右,可以利用构建最大堆

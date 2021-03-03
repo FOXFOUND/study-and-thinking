@@ -1,4 +1,4 @@
-package algorithm.test;
+package algorithm.test.array.sort;
 
 import com.alibaba.fastjson.JSON;
 
