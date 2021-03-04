@@ -1,8 +1,7 @@
-package algorithm.test;
+package algorithm.test.threeSum;
 
 import com.alibaba.fastjson.JSON;
 
-import java.sql.SQLOutput;
 import java.util.*;
 
 /**
@@ -19,27 +18,34 @@ import java.util.*;
  */
 public class NumSum {
 
-    public  List<List<Integer>>  getNumSum(int[] arr) {
+    public List<List<Integer>> threeSum(int[] nums) {
         List<List<Integer>> res = new ArrayList<>();
-        List<Integer> inputList = new ArrayList() ;
-        for (int i = 0; i < arr.length; i++) {
-            inputList.add(arr[i]);
+        List<Integer> inputList = new ArrayList();
+        for (int i = 0; i < nums.length; i++) {
+            inputList.add(nums[i]);
         }
         Collections.sort(inputList);
-        Map<Integer, Integer> inputMap = new HashMap<>();
+        Map<Integer, List<Integer>> inputMap = new HashMap<>();
         for (int i = 0; i < inputList.size(); i++) {
-                inputMap.put(inputList.get(i), 1);
+            List<Integer> integerList = inputMap.getOrDefault(inputList.get(i), new ArrayList<>());
+            integerList.add(i);
+            inputMap.put(inputList.get(i), integerList);
         }
-
-        int leftPoint = 0;
-        int rightPoint = 0;
         for (int i = 0; i < inputList.size(); i++) {
             for (int j = i; j < inputList.size(); j++) {
                 int leftValueA = inputList.get(i).intValue();
                 int rightValueB = inputList.get(j).intValue();
                 int valueC = 0 - leftValueA - rightValueB;
-                if (inputMap.get(valueC) != null) {
-                    for (int k = 0; k < inputMap.get(valueC); k++) {
+                List currentList = inputMap.get(valueC);
+
+                if(valueC == leftValueA && currentList != null ){
+                    currentList.remove(new Integer(i));
+                }
+                if(valueC == rightValueB && currentList != null ){
+                    currentList .remove(new Integer(j));
+                }
+                if (currentList != null ) {
+                    for (int k = 0; k < currentList.size(); k++) {
                         List<Integer> resReturnSub = new ArrayList<>();
                         resReturnSub.add(leftValueA);
                         resReturnSub.add(rightValueB);
@@ -47,6 +53,13 @@ public class NumSum {
                         res.add(resReturnSub);
                     }
                 }
+                if(valueC == leftValueA && currentList != null ){
+                    currentList .add(i);
+                }
+                if(valueC == rightValueB && currentList != null ){
+                    currentList .add(j);
+                }
+
             }
         }
 
@@ -54,11 +67,11 @@ public class NumSum {
     }
 
     public static void main(String[] args) {
-        int []  nums =new int[] {-1, 0, 1, 2, -1, -4};
+        int[] nums = new int[]{-1, 0, 1, 2, -1, -4};
         NumSum numSum = new NumSum();
-        List<List<Integer>> lists= numSum.getNumSum(nums);
+        List<List<Integer>> lists = numSum.threeSum(nums);
         System.out.println(JSON.toJSONString(lists));
-        System.out.println(lists.size());
+        System.out.println(lists.size());  // 2
     }
 
 }
