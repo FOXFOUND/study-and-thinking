@@ -1,4 +1,4 @@
-package algorithm.test;
+package algorithm.test.bstFromPreorder;
 
 import com.alibaba.fastjson.JSON;
 

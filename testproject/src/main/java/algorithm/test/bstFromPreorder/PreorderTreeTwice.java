@@ -1,7 +1,6 @@
-package algorithm.test;
+package algorithm.test.bstFromPreorder;
 
 import com.alibaba.fastjson.JSON;
-import org.apache.poi.ss.formula.functions.T;
 
 /**
  * 根据前序遍历构建二叉树
