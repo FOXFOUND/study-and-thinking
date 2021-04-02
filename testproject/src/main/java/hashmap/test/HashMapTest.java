@@ -15,6 +15,7 @@ public class HashMapTest {
 
         Map map = new HashMap<>();
         map.put("1", 1);
+        map.remove("1", 1);
         System.out.println("1");
         ConcurrentHashMap concurrentHashMap = new ConcurrentHashMap();
         concurrentHashMap.put("1", 1);
